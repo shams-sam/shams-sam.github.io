@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Neural Networks Intuition | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionNeural networks can be used to build all types of function. This post tries to map functions of logical operations using the network. How the parameters are derived in explained in the ..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Neural Networks Intuition"/>
+  
+  <meta property="og:description" content="IntroductionNeural networks can be used to build all types of function. This post tries to map functions of logical operations using the network. How the parameters are derived in explained in the ..." />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/abstract.png" />
+  <meta property="og:url" content="http://localhost:4000/2017/09/27/neural-network-intuition/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-09-27T00:00:00+05:30">
+
+  <link rel="canonical" href="http://localhost:4000/2017/09/27/neural-network-intuition/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-09-27T00:00:00+05:30">Sep 27</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/abstract.png) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://maxoffsky.com/word/wp-content/uploads/2014/04/Screen-Shot-2014-04-28-at-10.32.16-AM.png</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Neural Networks Intuition</h1>
+            <h2 class="post-description">The relationship between logistic regression and neural networks. Explaination about how neural network is the logical successor of logistic regression</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Neural networks can be used to build all types of function. This post tries to <strong>map functions of logical operations using the network</strong>. How the parameters are derived in explained in the later posts.</p>
+
+<h3 id="and-gate">AND Gate</h3>
+<p>Using a single neuron, it is possible to achieve the approximation of an and gate. The architecture with the parameters can be seen below.</p>
+
+<p><img src="/assets/2017-09-27-neural-network-intuition/fig-1-and-gate.png?raw=true" alt="And Implementation" /></p>
+
+<p>The hypothesis for the above network is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(-30 + 20\,x_1 + 20\,x_2)</script>
+
+<ul>
+  <li>Where g is the sigmoid function which <strong>asymptotes at 0 and 1</strong>.</li>
+</ul>
+
+<p>The output table for the hypothesis above is given below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">\(x_1\)</th>
+      <th style="text-align: center">\(x_2\)</th>
+      <th style="text-align: center">\(h_\theta(x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(-30) \approx 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(-10) \approx 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(-10) \approx 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(10) \approx 1\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The values of \(h_\theta(x)\) is nothing but the expected value of the AND gate.</p>
+
+<h3 id="or-gate">OR Gate</h3>
+<p>Similarly, using a single neuron, it is possible to achieve the approximation of an or gate. The architecture with the parameters can be seen below. It is same as AND gate but the bias weight is changed.</p>
+
+<p><img src="/assets/2017-09-27-neural-network-intuition/fig-2-or-gate.png?raw=true" alt="Or Implementation" /></p>
+
+<p>The hypothesis for the above network is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(-10 + 20\,x_1 + 20\,x_2)</script>
+
+<ul>
+  <li>Where g is the sigmoid function which <strong>asymptotes at 0 and 1</strong>.</li>
+</ul>
+
+<p>The output table for the hypothesis above is given below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">\(x_1\)</th>
+      <th style="text-align: center">\(x_2\)</th>
+      <th style="text-align: center">\(h_\theta(x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(-10) \approx 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(10) \approx 1\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(10) \approx 1\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(30) \approx 1\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The values of \(h_\theta(x)\) is nothing but the expected value of the OR gate.</p>
+
+<h3 id="not-gate">NOT Gate</h3>
+<p>Unlike the previous two examples, NOT gate is a unary operator, but still simple weights can give easy implementation of the NOT gate. The architecture and the parameters are shown below.</p>
+
+<p><img src="/assets/2017-09-27-neural-network-intuition/fig-3-not-gate.png?raw=true" alt="Not Implementation" /></p>
+
+<p>The hypothesis for the above network is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(10 - 20\,x_1)</script>
+
+<ul>
+  <li>Where g is the sigmoid function which <strong>asymptotes at 0 and 1</strong>.</li>
+</ul>
+
+<p>The output table for the hypothesis above is given below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">\(x_1\)</th>
+      <th style="text-align: center">\(h_\theta(x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(10) \approx 1\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(-10) \approx 0\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The values of \(h_\theta(x)\) is nothing but the expected value of the NOT gate.</p>
+
+<h3 id="not-x_1-and-not-x_2">(NOT \(x_1\)) AND (NOT \(x_2\))</h3>
+<p>Unlike the previous examples, this operation does not look straight forward, but actually it is. Here is an architecture implementation of the above gate.</p>
+
+<p><img src="/assets/2017-09-27-neural-network-intuition/fig-4-not-x1-and-not-x2.png?raw=true" alt="Not x1 and Not x2 Implementation" /></p>
+
+<p>The hypothesis for the above network is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(10 - 20\,x_1 - 20\,x_2)</script>
+
+<ul>
+  <li>Where g is the sigmoid function which <strong>asymptotes at 0 and 1</strong>.</li>
+</ul>
+
+<p>The output table for the hypothesis above is given below.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">\(x_1\)</th>
+      <th style="text-align: center">\(x_2\)</th>
+      <th style="text-align: center">\(h_\theta(x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(10) \approx 1\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(-10) \approx 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">\(g(-10) \approx 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">\(g(-30) \approx 0\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The values of \(h_\theta(x)\) is nothing but the expected value of the (NOT \(x_1\)) AND (NOT \(x_2\)) operation.</p>
+
+<h3 id="perceptron-limitation">Perceptron Limitation</h3>
+<p>All the examples untill this one were linearly seperable and hence were solved using a single neuron. But and XOR Gate is not linearly seperable as was the case with AND and OR gates and this can be clearly seen in the plot below.</p>
+
+<p><img src="/assets/2017-09-27-neural-network-intuition/fig-5-linearly-seperable.png?raw=true" alt="Linearly Seperable" /></p>
+
+<p>It is evident that there is no single straight line that can seperate the two classes in plot (c) and hence termed as <strong>not linearly seperable</strong>. This is a major drawback of <strong>perceptron (single layer neural networks)</strong>.</p>
+
+<p>There is a simple <strong>proof</strong> for concluding that the XOR is not linearly seperable. Say, perceptron were capable of separating the two classes, then it would mean that there exists a set of weights (or parameters), \(\theta_0,\, \theta_1,\,\theta_2\) such that the hypothesis is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(\theta_0\,x_0 + \theta_1\,x_1 + \theta_2\,x_2)</script>
+
+<p>Then the above hypothesis should satisfy the following truth table,</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">\(x_1\)</th>
+      <th style="text-align: center">\(x_2\)</th>
+      <th style="text-align: center">\(x_1\,XOR\,x_2\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Substituting and equating to 0, the hypothesis, following inequalities are generated that would determine the decision boundary.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    \theta_0 \cdot 1 + 0 \cdot x_1 + 0 \cdot x_2 &\lt 0 \\
+    \theta_0 \cdot 1 + 0 \cdot x_1 + 1 \cdot x_2 &\gt 0 \\
+    \theta_0 \cdot 1 + 1 \cdot x_1 + 0 \cdot x_2 &\gt 0 \\
+    \theta_0 \cdot 1 + 1 \cdot x_1 + 1 \cdot x_2 &\lt 0 \\
+  \end{align} %]]></script>
+
+<p>Substituting \(b = -\theta_0\), above inequalities can be written as,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    b &\gt 0 \\
+    x_2 &\gt b \\
+    x_1 &\gt b \\
+    x_1 + x_2 &\lt b \\
+  \end{align} %]]></script>
+
+<p>It can be seen that the first three inequalities directly contradict the fourth one. Which means that the very first assumption made that there exist such parameters \(\theta_0,\, \theta_1,\,\theta_2\) was incorrect. Hence, <strong>the XOR gate is not linearly seperable</strong>.</p>
+
+<p>This is where the utility and finesse of multi-layer neural network in deriving intricate features from the input features can be seen in action.</p>
+
+<h3 id="xnor-gate">XNOR Gate</h3>
+<p>For simplicity, let’s consider a XNOR gate which is nothing but the negation of an XOR gate. So, it would not be wrong to say that if XNOR gate is achieved, XOR gate is not very far. Consider the following neural network with one hidden layer and the given weights.</p>
+
+<p><img src="/assets/2017-09-27-neural-network-intuition/fig-6-xnor-gate.png?raw=true" alt="XNOR" /></p>
+
+<p>Here if weights are seen carefully, \(a_1^{(2)}\) is nothing but the AND gate and \(a_2^{(2)}\) is nothing but (NOT \(x_1\)) AND (NOT \(x_2\)). Similarly the output neuron is nothing but the OR gate. It calculates the following result table,</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">\(x_1\)</th>
+      <th style="text-align: center">\(x_2\)</th>
+      <th style="text-align: center">\(a_1^{(2)}\)</th>
+      <th style="text-align: center">\(a_2^{(2)}\)</th>
+      <th style="text-align: center">\(h_\theta(x)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The values of \(h_\theta(x)\) is nothing but the expected value of the XNOR operation.</p>
+
+<blockquote>
+  <p>This gives the intuition that the hidden layers are calculating a more complex input which inturn helps to turn the problem into a linearly seperable one using the transformations. This is the main reason the neural networks are fairly powerful classifiers because as the depth (or number of hidden layers) of the neural network increases it can derive more and more complex features for the final layer.</p>
+</blockquote>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/rBZmG/examples-and-intuitions-i" target="_blank">Machine Learning: Coursera - Examples and Intutions I</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/solUx/examples-and-intuitions-ii" target="_blank">Machine Learning: Coursera - Examples and Intutions II</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/09/27/neural-network-intuition/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Neural Networks Intuition&url=http://localhost:4000/2017/09/27/neural-network-intuition/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://localhost:4000/2017/09/27/neural-network-intuition/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2017/09/27/neural-network-intuition/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://localhost:4000/2017/09/27/neural-network-intuition/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://localhost:4000/2017/09/27/neural-network-intuition/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/09/27/neural-network-intuition/&title=Neural Networks Intuition&summary=The relationship between logistic regression and neural networks. Explaination about how neural network is the logical successor of logistic regression&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Neural Networks Intuition&amp;body=Check out this site http://localhost:4000/2017/09/27/neural-network-intuition/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-09-27 00:00">27 Sep 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://localhost:4000/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

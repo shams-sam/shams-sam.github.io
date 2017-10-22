@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>The Normal Distribution | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionThe concept of normal distribution as explained using the game of darts is easier to understand and explain. Consider a game of dart with aim of throwing the dart at the origin of a car..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="The Normal Distribution"/>
+  
+  <meta property="og:description" content="IntroductionThe concept of normal distribution as explained using the game of darts is easier to understand and explain. Consider a game of dart with aim of throwing the dart at the origin of a car..." />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/normal-distribution.jpg" />
+  <meta property="og:url" content="http://localhost:4000/2017/07/31/normal-distribution/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-07-31T00:00:00+05:30">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/31/normal-distribution/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-07-31T00:00:00+05:30">Jul 31</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/normal-distribution.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://pbs.twimg.com/media/DBQttG0XYAAK8_M.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">The Normal Distribution</h1>
+            <h2 class="post-description">The normal distribution, also known as the Gaussian or standard normal distribution, is the probability distribution that plots all of its values in a symmetrical fashion, and most of the results are situated around the probability's mean.</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>The concept of normal distribution as explained using the game of darts is easier to understand and explain. Consider a game of dart with aim of throwing the dart at the origin of a cartesian plane. The errors in throwing the dart at the origin will have random errors and produce varying results in different trials. Some of the assumptions one can make in this game are:</p>
+
+<ul>
+  <li>The errors do not depend on the orientation of the cartesian plane.</li>
+  <li>Errors in perpendicular directions are independent i.e. dart hitting too high does not alter the probability of it being off to the right.</li>
+  <li>Large errors are less likely to occur than the small errors.</li>
+</ul>
+
+<h3 id="determining-the-shape-of-the-distribution">Determining the Shape of the Distribution</h3>
+
+<p>The probability of dart falling in a region that lies in the vertical strip from \(x\) to \(x + \Delta x\) can be given by,</p>
+
+<script type="math/tex; mode=display">p(x) \Delta x</script>
+
+<p>Similarly, the probability of dart landing in horizontal strip from \(y\) to \(y + \Delta y\) can be given by,</p>
+
+<script type="math/tex; mode=display">p(y) \Delta y</script>
+
+<p><img src="/assets/2017-07-31-normal-distribution/fig-1-dart-game-visualization.png?raw=true" alt="The Dart Game" /></p>
+
+<p>Because the two events are assumed to be independent, the probability of dart falling in the shaded region is given by</p>
+
+<script type="math/tex; mode=display">p(x) \Delta x \cdot p(y) \Delta y</script>
+
+<p>Also, since orientation does not alter probability of an error, any region r units from the origin and with area \(\Delta x \cdot \Delta y\) has the same probability and hence can be expressed as,</p>
+
+<script type="math/tex; mode=display">p(x) \Delta x \cdot p(y) \Delta y = g(r) \Delta x \Delta y</script>
+
+<p>This results in the inference</p>
+
+<script type="math/tex; mode=display">g(r) = p(x) \cdot p(y)</script>
+
+<p>Differentiating on both the sides,</p>
+
+<script type="math/tex; mode=display">0 = p(x) \frac {dp(y)} {d \theta} + p(y) \frac {dp(x)} {d \theta} \tag{1}</script>
+
+<p>From the figure above,</p>
+
+<script type="math/tex; mode=display">x = r cos(\theta) \tag{2}</script>
+
+<script type="math/tex; mode=display">y = r sin(\theta) \tag{3}</script>
+
+<p>So the derivative in (1) can be expressed as,</p>
+
+<script type="math/tex; mode=display">0 = p(x) p'(y) r\,cos(\theta) + p(y) p'(x)(- r\,sin(\theta)) \tag{4}</script>
+
+<p>Using (2) and (3), (4) can be rewritten as,</p>
+
+<script type="math/tex; mode=display">0 = p(x) p'(y) x - p(y) p'(x) y \tag{5}</script>
+
+<p>Differential equation can be solved by seperating the variables, so (5) becomes,</p>
+
+<script type="math/tex; mode=display">\frac {p'(x)} {x\,p(x)} = \frac {p'(y)} {y\,p(y)} \tag{6}</script>
+
+<p>Differential equation (6) is true for any x and y, and x and y are independent. This leads to the result that the ratio must be a constant, i.e.,</p>
+
+<script type="math/tex; mode=display">\frac {p'(x)} {x\,p(x)} = \frac {p'(y)} {y\,p(y)} = C</script>
+
+<p>So,</p>
+
+<script type="math/tex; mode=display">\frac {p'(x)} {p(x)} = Cx \tag{7}</script>
+
+<p>Integrating (7),</p>
+
+<script type="math/tex; mode=display">ln(p(x)) = \frac {Cx^2} {2} + c</script>
+
+<p>So,</p>
+
+<script type="math/tex; mode=display">p(x) = Ae^{ {C \over 2} x^2 }</script>
+
+<p>Since, large errors are less likely than smaller errors, C must be negative, so,</p>
+
+<script type="math/tex; mode=display">p(x) = Ae^{ - {k \over 2} x^2 }</script>
+
+<p>where k is positive.</p>
+
+<h3 id="determining-the-coefficient-a">Determining the Coefficient A</h3>
+
+<p>If p is the probability density function of a random variable following normal distribution, then the total area under the curve must be 1. So value of A should be such that this property is satisfied. The equation to ve evaluated is,</p>
+
+<script type="math/tex; mode=display">\int_{-\infty}^\infty A e^{ - {k \over 2} x^2 } dx = 1</script>
+
+<p>Dividing both sides by A,</p>
+
+<script type="math/tex; mode=display">\int_{-\infty}^\infty e^{ - {k \over 2} x^2 } dx = {1 \over A}</script>
+
+<p>Since the distribution is symmetric, changing the limits of distribution,</p>
+
+<script type="math/tex; mode=display">\int_0^\infty e^{ - {k \over 2} x^2 } dx = {1 \over 2A}</script>
+
+<p>Then,</p>
+
+<script type="math/tex; mode=display">\int_0^\infty e^{ - {k \over 2} x^2 } dx \cdot \int_0^\infty e^{ - {k \over 2} y^2 } dy = {1 \over 4A^2} \tag{8}</script>
+
+<p>Since x and y are independent, (8) can be rewritten as double integral,</p>
+
+<script type="math/tex; mode=display">\int_0^\infty \int_0^\infty e^{ - {k \over 2} (x^2 + y^2) } dx = {1 \over 4A^2} \tag{9}</script>
+
+<p>The double integral in (9) can be evaluated as polar coordinates,</p>
+
+<script type="math/tex; mode=display">\int_0^\infty \int_0^\infty e^{ - {k \over 2} (x^2 + y^2) } dx = \int_0^{\pi/2} \int_0^\infty e^{ - {k \over 2} r^2 } r\,dr\,d \theta \tag{10}</script>
+
+<p>Applying u-substitution to (9),</p>
+
+<script type="math/tex; mode=display">u = - {k \over 2} r^2 \tag{11}</script>
+
+<p>differentiating w.r.t. r,</p>
+
+<script type="math/tex; mode=display">{du \over dr} = -{k \over 2} \cdot 2</script>
+
+<p>So,</p>
+
+<script type="math/tex; mode=display">r\,dr = {du \over -k} \tag{12}</script>
+
+<p>Substituting (11) and (12) in (10),</p>
+
+<script type="math/tex; mode=display">\int_0^{\pi/2} \int_0^\infty e^{ - {k \over 2} r^2 } r\,dr\,d \theta = \int_0^{\pi/2} {-1 \over k} [\int_0^{-\infty} e^u du]\,d \theta = \int_0^{\pi/2} {d\theta \over k} = {\pi \over 2k}</script>
+
+<p>Using (9),</p>
+
+<script type="math/tex; mode=display">{1 \over 4A^2} = {\pi \over 2k}</script>
+
+<p>So finally,</p>
+
+<script type="math/tex; mode=display">A = \sqrt{ \frac {k} {2 \pi} } \tag{13}</script>
+
+<p>Substituting A in the \(p(x)\) for normal distribution,</p>
+
+<script type="math/tex; mode=display">p(x) = \sqrt{ \frac {k} {2 \pi} } e^{ - {k \over 2} x^2 }</script>
+
+<h3 id="determining-the-value-of-k">Determining the value of k</h3>
+
+<p>Probably k can be calculated using the formulae for mean or variance.</p>
+
+<p>The mean, \(\mu\), is defined as the following integral,</p>
+
+<script type="math/tex; mode=display">\int_{-\infty}^\infty x\, p(x) dx</script>
+
+<p>Since function \(x\,p(x)\) is an odd function, \(\mu\) is zero.</p>
+
+<p>The variance, \(\sigma^2\), is given by following integral,</p>
+
+<script type="math/tex; mode=display">\int_{-\infty}^\infty (x-\mu)^2\, p(x) dx</script>
+
+<p>Since mean is zero, above equation becomes,</p>
+
+<script type="math/tex; mode=display">\int_{-\infty}^\infty x^2\, p(x) dx = \sigma^2</script>
+
+<p>Changing the limits of integral,</p>
+
+<script type="math/tex; mode=display">2 \sqrt{ \frac {k} {2 \pi} } \int_0^\infty x^2 \, e^{ - {k \over 2} x^2} dx = \sigma^2 \tag{14}</script>
+
+<p>Evaluating the integral on left by parts where u and v are given by,</p>
+
+<script type="math/tex; mode=display">u = x</script>
+
+<script type="math/tex; mode=display">dv = x\, e^{ {-k \over 2} x^2}</script>
+
+<script type="math/tex; mode=display">v = \int x\, e^{ {-k \over 2} x^2} dx \tag{15}</script>
+
+<p>Then v can be evaluated by substitution,</p>
+
+<script type="math/tex; mode=display">y = {-k \over 2} x^2 \tag{16}</script>
+
+<p>So,</p>
+
+<script type="math/tex; mode=display">x\,dx = {dy \over -k} \tag{17}</script>
+
+<p>Substituting (16) and (17) in (15),</p>
+
+<script type="math/tex; mode=display">v = -{1 \over k} \int e^y\, dy = {e^y \over -k} = \frac {e^{ {-k \over 2} x^2 } } {-k}</script>
+
+<p>Applying the parts to (14) ,</p>
+
+<script type="math/tex; mode=display">2 \sqrt{ \frac {k} {2 \pi} } \left( \lim_{M \to \infty} \left[ {-x \over k} e^{ {-k \over 2} x^2 } \right]_0^M + {1 \over k} \int_0^\infty e^{ {-k \over 2} x^2 } dx \right) = \sigma^2 \tag{18}</script>
+
+<p>Simplifying it further,</p>
+
+<script type="math/tex; mode=display">\lim_{M \to \infty} \left[ {-x \over k} e^{ {-k \over 2} x^2 } \right]_0^M = 0 \tag{19}</script>
+
+<p>Now consider the second part of the integral in (18),</p>
+
+<p>Let \(k_1 = {k \over 2}\), and \(u = x \sqrt{k}\) which means \(du = dx \sqrt{k} \), and using gaussian integral.</p>
+
+<script type="math/tex; mode=display">\int_0^\infty e^{ -k_1 x^2 } dx = {1 \over 2\sqrt{k_1}} \int_{-\infty}^\infty e^{-u^2} du =  { \sqrt{\pi} \over 2\sqrt{k_1} } = { \sqrt{2 \pi} \over 2\sqrt{k} } \tag{20}</script>
+
+<p>Substituting (19) and (20) in (18),</p>
+
+<script type="math/tex; mode=display">2 \sqrt{ \frac {k} {2 \pi} } \cdot {1 \over k} \cdot  { \sqrt{2 \pi} \over 2\sqrt{k} } = {1 \over k} = \sigma^2</script>
+
+<p>So,</p>
+
+<script type="math/tex; mode=display">k = {1 \over \sigma^2} \tag{21}</script>
+
+<p>Substituting A and k from (13) and (21) in the basic equation,</p>
+
+<script type="math/tex; mode=display">p(x) = {1 \over {\sigma \sqrt{2 \pi } } } e^{- {1 \over 2} \left( {x \over \sigma} \right)^2 }</script>
+
+<p>The general equation for the normal distribution with mean \(\mu\) and standard deviation \(\sigma\) is a simple horizontal shift of this basic distribution,</p>
+
+<script type="math/tex; mode=display">p(x) = {1 \over {\sigma \sqrt{2 \pi } } } e^{- {1 \over 2} \left( {x - \mu \over \sigma} \right)^2 }</script>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="http://courses.ncssm.edu/math/Talks/PDFS/normal.pdf" target="_blank">The Normal Distribution: A derivation from basic principles</a></small><br />
+<small><a href="http://www.planetmathematics.com/DerNorm.pdf" target="_blank">Derivation of univariate normal distribution</a></small></p>
+
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/concept" class='category-links'><h1>concept</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/probability" class='category-links'><h1>probability</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/07/31/normal-distribution/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=The Normal Distribution&url=http://localhost:4000/2017/07/31/normal-distribution/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://localhost:4000/2017/07/31/normal-distribution/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2017/07/31/normal-distribution/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://localhost:4000/2017/07/31/normal-distribution/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://localhost:4000/2017/07/31/normal-distribution/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/07/31/normal-distribution/&title=The Normal Distribution&summary=The normal distribution, also known as the Gaussian or standard normal distribution, is the probability distribution that plots all of its values in a symmetrical fashion, and most of the results are situated around the probability's mean.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=The Normal Distribution&amp;body=Check out this site http://localhost:4000/2017/07/31/normal-distribution/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-07-31 00:00">31 Jul 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://localhost:4000/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

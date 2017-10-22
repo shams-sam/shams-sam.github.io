@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Basics of Language Model | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionGiven the finite set of all the words in a language, \(\nu\), a sentence in the language is the sequence of words" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Basics of Language Model"/>
+  
+  <meta property="og:description" content="IntroductionGiven the finite set of all the words in a language, \(\nu\), a sentence in the language is the sequence of words" />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/language-model.jpg" />
+  <meta property="og:url" content="http://localhost:4000/2017/09/12/basics-of-language-modeling/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-09-12T00:00:00+05:30">
+
+  <link rel="canonical" href="http://localhost:4000/2017/09/12/basics-of-language-modeling/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-09-12T00:00:00+05:30">Sep 12</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/language-model.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://i.pinimg.com/originals/54/1f/45/541f45629bb88e0c905ed6d3e4eac121.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Basics of Language Model</h1>
+            <h2 class="post-description">Language modeling is used in speech recognition, machine translation, part-of-speech tagging, parsing, handwriting recognition, information retrieval and other applications.</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Given the <strong>finite set of all the words</strong> in a language, \(\nu\), a sentence in the language is the <strong>sequence of words</strong></p>
+
+<script type="math/tex; mode=display">x_1\,x_2\,\cdots\,x_n</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(n \ge 1\)</li>
+      <li>\(x_1 \cdots x_{n-1} \in \nu\)</li>
+      <li>\(x_n\) is a special symbol STOP \(\require{cancel}\cancel{\in} \nu \)</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Set of all the words in a language are assumed to be finite.</p>
+</blockquote>
+
+<p>Let \(\nu^{\dagger}\) be the <strong>infinite set of all sentences</strong> with the vocabulary \(\nu\).</p>
+
+<p>A <strong>language model</strong> consists of a finite set \(\nu\) as a function \(p(x_1, x_2, \cdots, x_n)\), such that:</p>
+
+<ul>
+  <li>
+    <p>For any \(⟨ x_1 \cdots x_n ⟩ \in  \nu^\dagger, \, p(x_1, x_2, \cdots, x_n) \ge 0\)</p>
+  </li>
+  <li>
+    <p>\(\sum_{⟨ x_1 \cdots x_n ⟩ \in  \nu^\dagger} p(x_1, x_2, \cdots, x_n) = 1\)</p>
+  </li>
+</ul>
+
+<p>So, \(p(x_1, x_2, \cdots, x_n)\) is basically a <strong>probability distribution</strong> over the sentences \(\nu^\dagger\).</p>
+
+<h3 id="applications-of-language-modeling">Applications of Language Modeling</h3>
+<p>A distribution of \(p(x_1 \cdots x_n)\) signifies how probable a sentence is in a language. Such a distribution can prove useful in <strong>speech recognition</strong> or <strong>machine translation</strong>. Candidates generated by these algorithms can be run against the language model to check how probable the sentences are.</p>
+
+<h3 id="frequency-based-modeling">Frequency Based Modeling</h3>
+<p>Frequency based modeling is given by,</p>
+
+<script type="math/tex; mode=display">p(x_1 \cdots x_n) = \frac {c(x_1 \cdots x_n)} {N}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(c(x_1 \cdots x_n)\) is the number of times \(x_1 \cdots x_n\) occurs in the training corpus</li>
+      <li>N is the total number of sentences in the corpus.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>One major drawback of such a model is that it would <strong>assign probability 0 to any sentence not seen in the training corpus</strong>.</p>
+
+<h3 id="markov-models-for-fixed-length-sequences">Markov Models for Fixed Length Sequences</h3>
+<p>Consider a sequence of random variables, \(X_1, X_2, \cdots, X_n\), where each random variable can take any value in a finite set \(\nu\). <strong>n is assumed to be a fixed number.</strong></p>
+
+<p>Language model aims to find the probability of \(x_1 \cdots x_n\), where \(n\ge1\) and \(x_i \in \nu\) for \(i = 1 \cdots n\), i.e. to model the join probability,</p>
+
+<script type="math/tex; mode=display">P(X_1 = x_1, X_2 = x_2, \cdots , X_n = x_n)</script>
+
+<p>If n is a fixed number there are \(|\nu|^n\) possible sequences of the form \(x_1 \cdots x_n\), which makes it impossible to list all the possible sequences for a large value of n and \(|\nu|\). This is where markov models help to build a more compact model.</p>
+
+<p><strong>First-Order Markov Process</strong> make the assumption that identity of an element in a sequence depends only on the identity of previous element in the sequence, i.e. \(X_i\) is <strong>conditionally independent</strong> of \( X_1 \cdots X_{i-2} \), given the value of \(X_{i-1}\).</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    P(X_1 = x_1, \cdots , X_n = x_n) &= P(X_1 = x_1) \prod_{i=2}^n P(X_i = x_i | X_1=x_1 \cdots X_{i-1}=x_{i-1}) \\
+    &= P(X_1 = x_1) \prod_{i=2}^n P(X_i=x_i|X_{i-1} = x_{i-1})
+  \end{align} %]]></script>
+
+<p>The first step of the equation above is <strong>exact</strong> using the chain rule of probability. The second step is a result of <strong>first-order markov model assumption</strong>.</p>
+
+<p>Similarly, <strong>second-order Markov models</strong> assume that identity of an element in a sequence depends only on the identity of previous two elements in the sequence, i.e. \(X_i\) is <strong>conditionally independent</strong> of \(X_1 \cdots X_{i-3}\), given the value of \(X_{i-1}\) and \(X_{i-2}\).</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    P(X_1 = x_1, \cdots , X_n = x_n) &= \prod_{i=1}^n P(X_i = x_i | X_1=x_1 \cdots X_{i-1}=x_{i-1}) \\
+    &= \prod_{i=1}^n P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})
+  \end{align} %]]></script>
+
+<blockquote>
+  <p>It is assumed that \(x_0,\, x_{-1} = *\), where  * is the special start symbol.</p>
+</blockquote>
+
+<h3 id="markov-sequences-for-variable-length-sentences">Markov Sequences for Variable-length Sentences</h3>
+<p>The value n, assumed to be fixed number in previous section, is considered to be a random variable itself and the nth word is always equal to the special symbol STOP.</p>
+
+<p>Using the <strong>second-order markov assumption</strong>,</p>
+
+<script type="math/tex; mode=display">P(X_1 = x_1, \cdots , X_n = x_n) = \prod_{i=1}^n P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(n \ge 1\)</li>
+      <li>\(x_n =\) STOP</li>
+      <li>\(x_i \in \nu\) for \(i=1 \cdots (n-1)\)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Process of generating a sequence using the above distribution would be as follows:</p>
+
+<ul>
+  <li>Initialize \(i=1\), and \(x_0, x_{-1} = *\)</li>
+  <li>Generate \(x_i\) from the distribution,</li>
+</ul>
+
+<script type="math/tex; mode=display">P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})</script>
+
+<ul>
+  <li>If \(x_i = \) STOP then return the sequence \(x_1 \cdots x_i\), else set i = i+1 and repeat previous step.</li>
+</ul>
+
+<h3 id="trigram-language-models">Trigram Language Models</h3>
+<p>Trigram language models are direct application of second-order markov models to the language modeling problem. Each sentence is modeled as a sequence of n random variables, \(X_1, \cdots, X_n\) where n is itself a random variable.</p>
+
+<p>A trigram model consists of finite set \(\nu\), and a parameter,</p>
+
+<script type="math/tex; mode=display">q(w|u,v)</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>u, v, w is a <strong>trigram</strong></li>
+      <li>\(w \in \nu \cup \{STOP\}\)</li>
+      <li>\(u, v \in \nu \cup \{*\}\)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>The value of \(q(w| u, v)\) can be interpreted as the <strong>probability of seeing the word w immediately after bigram u, v.</strong></p>
+
+<p>So, for any sequence \(x_1 \cdots x_n\) where \(x_i \in \nu\) for \(i = 1 \cdots (n-1)\) and \(x_n = \) STOP, the probability of the sentence under trigram language model is</p>
+
+<script type="math/tex; mode=display">p(x_1 \cdots x_n) = \prod_{i=1}^n q(x_i|x_{i-2}, x_{i-1}) \tag{1}</script>
+
+<ul>
+  <li>Where \(x_0 = x_{-1} = *\)</li>
+</ul>
+
+<p><strong>Trigram assumption: Each word depends on the previous two.</strong> This is essentially the second-order markov assumption used over sentences.</p>
+
+<p>The only step remaining in the trigram language model is the <strong>estimation of language parameters</strong>, i.e., \(q(w|u,v)\). Since the total number of words are \(| \nu |\) the total number of possible parameters would be \(| \nu |^3\). It is a very big number and hence needs some kind of <strong>indirect estimation process</strong>.</p>
+
+<h3 id="maximum-likelyhood-estimates">Maximum Likelyhood Estimates</h3>
+<p>This is the most generic solution to the estimation problem shown above.</p>
+
+<p>For any w, u, v,</p>
+
+<script type="math/tex; mode=display">q(w|u,v) = \frac {c(u,v,w)} {c(u, v)}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>c(u,v,w) is the number of times the trigram is seen in corpus</li>
+      <li>c(u, v) is the number of times the bigram is seen in the corpus</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Many of the frequencies c(u,v,w) and c(u,v) would be 0. This would effect the estimation and present the following flaws:</p>
+
+<ul>
+  <li>\(q(w|u,v) = 0\) because c(u,v,w) is 0 which would underestimate many trigram probabilities which is unreasonable</li>
+  <li>If the denominator is 0, then \(q(w|u,v)\) would be undefined.</li>
+</ul>
+
+<h3 id="perplexity">Perplexity</h3>
+<p>It is one of the <strong>evaluation metrics for the language models</strong> and is calculated on a held-out data after the model is trained on some corpus. The <strong>held-out data is not used for parameter estimation</strong> of the language model.</p>
+
+<p>Consider a test dataset consisting of sentences, \(s_1, \cdots, s_m\), then \(p(s_i)\) gives probability for sentence \(s_i\) in the language model.</p>
+
+<p>A basic measure of quality of language model would be the probability it assigns to the entire test set, give by</p>
+
+<script type="math/tex; mode=display">\prod_{i=1}^m p(s_i)</script>
+
+<p>So, higher the quantity is, the better the language model is at modeling unseen sentences.</p>
+
+<p>Perplexity is a direct transformation of this basic defination. Let M be the total number of words in the corpus, then <strong>average log probability</strong> under the model is</p>
+
+<script type="math/tex; mode=display">{1 \over M} log \prod_{i=1}^m p(s_i) = {1 \over M} \sum_{i=1}^m log \,p(s_i)</script>
+
+<p>which is the log probability of the entire corpus, divided by the total number of words in the corpus. Again the higher the value of this, the better the language model.</p>
+
+<p>Then, <strong>Perplexity</strong> is defined as</p>
+
+<script type="math/tex; mode=display">2^{-l} \tag{2}</script>
+
+<ul>
+  <li>Where</li>
+</ul>
+
+<script type="math/tex; mode=display">l = {1 \over M} \sum_{i=1}^m log_2\, p(s_i) \tag{3}</script>
+
+<p>The perplexity is a positive number. The smaller the value of perplexity, the better the language model is at modeling unseen data. Perplexity becomes a minimization parameter because of the negative power that is applied to the defination.</p>
+
+<h3 id="intuition-for-perplexity">Intuition for Perplexity</h3>
+<p>Let the vocabulary, \(\nu\) have N words, and the model predicts uniform distribution over the vocabulary, i.e.,</p>
+
+<script type="math/tex; mode=display">q(w|u,v) = {1 \over N}</script>
+
+<p>Then evaluating (3) using (1),</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    l  &= {1 \over M} \sum_{i=1}^m log_2\, p(s_i) \\
+    &= {1 \over M} \left[log_2\,  \left({1 \over N}\right)^{n_1} + \cdots +  log_2\, \left({1 \over N}\right)^{n_m} \right] \\
+    &= - {1 \over M} * log_2\,N * (n_1 + n_2 + \cdots + n_m) \\
+    &= - log_2\, N \tag{4}
+  \end{align} %]]></script>
+
+<ul>
+  <li>Where \(n_1, n_2, \cdots, n_m\) are the number of words in each sentence in the test sample and,</li>
+</ul>
+
+<script type="math/tex; mode=display">n_1, n_2, \cdots, n_m = M</script>
+
+<p>Using (4) in (2),</p>
+
+<script type="math/tex; mode=display">Perplexity = 2^{-l} = 2^{-(-log_2\,N)} = N \tag{5}</script>
+
+<p>So, <strong>under a uniform distribution model, the perplexity is equal to the vocabulary size</strong>. Perplexity can be considered the effective vocabulary size under the model.</p>
+
+<p><strong>Properties of perplexity</strong>:</p>
+
+<ul>
+  <li>
+    <p>If for any trigram u, v, w, the estimated probability \(q(w|u, v) = 0\) then the <strong>perplexity will be \(\infty\)</strong> which is consistent with the rule stating that a good model should not predict probability zero for an unseen dataset and perplexity is low for good models.</p>
+  </li>
+  <li>
+    <p>If perplexity is the measure of language model, then <strong>0 estimates should be avoided</strong> at all costs.</p>
+  </li>
+</ul>
+
+<h3 id="linear-interpolation">Linear Interpolation</h3>
+<p>The following <strong>trigram, bigram and unigram maximum-likelihood estimates</strong> are defined,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    q_{ML}(w|u, v) &= {c(u,v,w) \over c(u,v)} \\
+    q_{ML}(w|v) &= {c(v,w) \over c(v)} \\
+    q_{ML}(w) &= {c(w) \over c()} \\
+  \end{align} %]]></script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(c(u,v,w)\) is the number of times trigram u, v, w occurs</li>
+      <li>\(c(v,w)\) is the number of times bigram v, w occurs</li>
+      <li>\(c(w)\) is the number of times unigram w occurs</li>
+      <li>\(c()\) is the total number of words seen in the training</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Properties</strong> of these models:</p>
+<ul>
+  <li>The <strong>unigram model</strong> will never face the issue of number or denominator being 0, so the estimate is always well defined and greater than 0. But it completely ignores the context and hence discards valuable information.</li>
+  <li>The <strong>trigram model</strong> use the context better than the unigram model, but has the problem of many of its counts being 0 rendering estimate value 0 or undefined.</li>
+  <li>The <strong>bigram model</strong> falls between the two extremes.</li>
+</ul>
+
+<p><strong>Linear Interpolation</strong> uses all three of these estimates to define the trigram estimate as follows,</p>
+
+<script type="math/tex; mode=display">q(w|u, v) = \lambda_1 * q_{ML}(w|u, v) + \lambda_2 * q_{ML}(w|v) + \lambda_3 * q_{ML}(w) \tag{6}</script>
+
+<ul>
+  <li>Where</li>
+</ul>
+
+<script type="math/tex; mode=display">\lambda_1 \ge 0,\,\lambda_2 \ge 0,\,\lambda_3 \ge 0</script>
+
+<script type="math/tex; mode=display">\lambda_1 + \lambda_2 + \lambda_3 = 1</script>
+
+<p>i.e. (6) is a <strong>weighted average</strong> of the three estimates.</p>
+
+<h3 id="discounting-methods-and-katz-back-off">Discounting Methods and Katz Back-off</h3>
+<p>An alternative estimation method commonly used in practice.</p>
+
+<p>Consider a bigram language model where the following parameter is to be found,</p>
+
+<script type="math/tex; mode=display">q(w|v) \tag{7}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(w \in \nu \cup \) {STOP}</li>
+      <li>\(v \in \nu \cup\) {*}</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Discounted Counts</strong> are used to reflect the intuition that if the counts are taken from the training corpus, there would be a systematic over-estimation of probability of bigrams seen in the corpus and hence underestimate the bigrams not seen in the corpus. So, discounted count is given by,</p>
+
+<script type="math/tex; mode=display">c^*(v, w) = c(v,w) - 0.5</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(c^*(v, w)\) is the discounted count</li>
+      <li>\(c(v,w)\) is the count of bigrams, such that, \(c(v,w) \gt 0\)</li>
+      <li>0.5 is the discount value</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Using the discounted count, (7) can be written as,</p>
+
+<script type="math/tex; mode=display">q(w|v) = {c^*(v, w) \over c(v)}</script>
+
+<p>i.e., use the discounted count in the numberator and regular count in the denominator.</p>
+
+<p>For any context \(v\), there is a <strong>missing mass</strong>, defined as,</p>
+
+<script type="math/tex; mode=display">\alpha(v) = 1 - \sum_w {c^*(v, w) \over c(v)}</script>
+
+<blockquote>
+  <p>The intuition behind discounted methods is to divide the missing mass among words \(w\), such that \(c(v,w) = 0\).</p>
+</blockquote>
+
+<p>Formally, for any \(v\), there exist sets</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    A(v) &= {w: c(v,w) > 0} \\
+    B(v) &= {w: c(v,w) = 0}
+  \end{align} %]]></script>
+
+<p>Then the estimate is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+q_{BO}(w|v) = 
+  \begin{cases}
+    {c^*(v, w) \over c(v)} & If w \in A(v)\\
+    \alpha(v) * {q_{ML}(w) \over \sum_{w \in B(v)} q_{ML}(w)} & If w \in B(v)
+  \end{cases}
+  \tag{8} %]]></script>
+
+<p>i.e if \(c(v,w) \gt 0\) return \({c^*(v, w) \over c(v)}\) else divide the remaining probability mass \(\alpha(v)\) in proportion to the unigram estimates \(q_{ML}(w)\).</p>
+
+<p>This method can be generalized to <strong>trigram language model</strong> in a recursive way, i.e., for any bigram (u, v) define,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    A(u,v) &= {w: c(u,v,w) > 0} \\
+    B(u,v) &= {w: c(u,v,w) = 0}
+  \end{align} %]]></script>
+
+<ul>
+  <li>Where 0.5 is the discount value and hence discounted count is given by,</li>
+</ul>
+
+<script type="math/tex; mode=display">c^*(u, v, w) = c(u,v,w) - 0.5</script>
+
+<p>Then the trigram model is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+q_{BO}(w|v) = 
+  \begin{cases}
+    {c^*(u, v, w) \over c(u, v)} & If w \in A(u, v)\\
+    \alpha(u, v) * {q_{BO}(w|v) \over \sum_{w \in B(u,v)} q_{BO}(w|v)} & If w \in B(u,v)
+  \end{cases} %]]></script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">\alpha(u, v) = 1 - \sum_{w \in A(u,v)} {c^*(u, v, w) \over c(u, v)}</script>
+
+<p>\(\alpha(u, v)\) is the missing probability mass of the bigram. It can be noted that the missing probability is distributed in proportion to the bigram estimaes \(q_{BO}(w|v)\) given in (8).</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/lm.pdf" target="_blank">Language Modeling - Michael Collins</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/nlp" class='category-links'><h1>NLP</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Basics of Language Model&url=http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/09/12/basics-of-language-modeling/&title=Basics of Language Model&summary=Language modeling is used in speech recognition, machine translation, part-of-speech tagging, parsing, handwriting recognition, information retrieval and other applications.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Basics of Language Model&amp;body=Check out this site http://localhost:4000/2017/09/12/basics-of-language-modeling/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-09-12 00:00">12 Sep 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://localhost:4000/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

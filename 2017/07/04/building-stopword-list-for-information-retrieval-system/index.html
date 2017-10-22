@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Building Stopword List for Information Retrieval System | Machine Learning Medium</title>
+  <meta name="description" content="What are stopwords ?  Words in a document that are frequently occuring but meaningless in terms of Information Retrieval (IR) are called stopwords.  Use of a fixed set of stopwords across various d..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Building Stopword List for Information Retrieval System"/>
+  
+  <meta property="og:description" content="What are stopwords ?  Words in a document that are frequently occuring but meaningless in terms of Information Retrieval (IR) are called stopwords.  Use of a fixed set of stopwords across various d..." />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/word-cloud.jpg" />
+  <meta property="og:url" content="http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-07-04T00:00:00+05:30">
+
+  <link rel="canonical" href="http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-07-04T00:00:00+05:30">Jul 4</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/word-cloud.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://orig00.deviantart.net/f759/f/2012/244/b/9/asoiaf_word_cloud___jon_snow_by_galanix-d5d83v0.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Building Stopword List for Information Retrieval System</h1>
+            <h2 class="post-description">In computing, stop words are words which are filtered out before or after processing of natural language data (text).</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="what-are-stopwords-">What are stopwords ?</h3>
+<ul>
+  <li>Words in a document that are <strong>frequently occuring but meaningless</strong> in terms of Information Retrieval (IR) are called <strong>stopwords</strong>.</li>
+  <li>Use of a fixed set of stopwords across various documents of different kinds is not suggested because as the context changes so does the utility of a word. For example, a word like economy might not be a stopword in context of automobiles but would be a stopword in an Economic Times Newspaper.</li>
+  <li>Also the pattern of words changes over time as the trends change, so the list of stopwords used should keep up with the trends in word usages.</li>
+  <li>They are also called <strong>noise words</strong> or the <strong>negative dictionary</strong>.</li>
+</ul>
+
+<h3 id="zipfs-law"><a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank">Zipf’s law</a></h3>
+
+<ul>
+  <li>
+    <p><strong>The law states that given some corpus of natural language, the frequency of any word is inversely proportional to its rank in the frequency table</strong> i.e. the most frequent word will occur approximately twice as often as the second most frequent word, three times as often as the third most frequent word, etc.</p>
+  </li>
+  <li>
+    <p>This law can be seen in action in the <a href="https://en.wikipedia.org/wiki/Brown_Corpus" target="_blank">Brown Corpus</a> of English text, where <strong>the</strong> is the most frequently occuring word and accounts for 7% of the word occurences and <strong>of</strong> is the second most occuring word which is approximately 3.5% of the corpus, followed by <strong>and</strong>. And only 135 words in the vocabulary account for half the Brown Corpus.</p>
+  </li>
+  <li>
+    <p>The same relationship can be seen in other rankings unrelated to language, such as population rank of cities etc.</p>
+  </li>
+  <li>
+    <p>It is an empirical law formulated using mathematical statistics that states that many types of data in physical and social sciences can be approximated with a <strong>Zipfian Distribution (ZD)</strong>.</p>
+  </li>
+  <li>
+    <p>ZD belongs to a family of discrete power law probabiliy distributions.</p>
+  </li>
+</ul>
+
+<h3 id="observations">Observations</h3>
+
+<ul>
+  <li>
+    <p>It can be seen from Zipf’s Law that a relatively small number of words account for a very significant fraction of all text’s size.</p>
+  </li>
+  <li>
+    <p>These terms make very poor index terms because of their <strong>low discriminative value</strong>.</p>
+  </li>
+</ul>
+
+<h3 id="kullbackleibler-divergence"><a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence" target="_blank">Kullback–Leibler Divergence</a></h3>
+
+<ul>
+  <li>
+    <p>It is the measure of how on probability distribution diverges from a second expected probability distribution.</p>
+  </li>
+  <li>
+    <p>Applications lie in finding the <strong>relative (Shannon) Entropy</strong> in information systems, <strong>randomness</strong> in continuous time-series, and <strong>information gain</strong> when comparing statistical models of inference.</p>
+  </li>
+  <li>
+    <p>In summary it can help find the amount of information a word provides in a corpus. And the lesser the information a word has the more likely it is to be a stopword.</p>
+  </li>
+</ul>
+
+<h3 id="classical-methods">Classical Methods</h3>
+
+<ul>
+  <li>Zipf’s Law can be mathematically represented by</li>
+</ul>
+
+<p>\[F(r) = \frac{C}{r_\alpha}\]</p>
+<ul>
+  <li>Where
+    <ul>
+      <li>\(\alpha \approx 1\)</li>
+      <li>\(C \approx 0.1\)</li>
+      <li>\(r\) is the rank frequency</li>
+    </ul>
+  </li>
+  <li>Four different classical methods exist by replacing the term frequency \(r\) above with one of the four refinements given below.
+    <ul>
+      <li><strong>Term Frequency (TF)</strong>: The number of times a term occurs in a specific collection.</li>
+      <li><strong>Normalized TF</strong>: Generated by normalizing the term frequency by the total number of tokens in the collection i.e. the size of the lexicon file given by</li>
+    </ul>
+
+    <script type="math/tex; mode=display">TF_{Norm} = -log (\frac{TF}{v})</script>
+
+    <ul>
+      <li>Where
+        <ul>
+          <li>TF is the term frequency</li>
+          <li>\(v\) is total number of tokens in the lexicon file</li>
+        </ul>
+      </li>
+      <li><strong>Inverse Document Frequency (IDF)</strong>: Calculated using the TF distribution where IDF of term k is given by
+\[idf_k = log (\frac{N_{Doc}}{D_k})\]
+        <ul>
+          <li>Where
+            <ul>
+              <li>\(N_{Doc}\) is the total number of documents in the corpus</li>
+              <li>\(D_k\) is the number of documents containing term k</li>
+            </ul>
+          </li>
+          <li>So infrequently occuring terms have a greater probability of occuring in relevant documents and hence are more informative.</li>
+        </ul>
+      </li>
+      <li><strong>Normalized IDF</strong>: Many normalizing techniques are used in this case but one of the most frequently used ones is given by <strong>Robertson and Sparck-Jones</strong> which normalizes with respect to number of documents not containing the term and adds a constant to both numerator and denominator to moderate extreme values.</li>
+    </ul>
+
+    <script type="math/tex; mode=display">idf_{k Norm} = log (\frac{N_{Doc} - D_k + 0.5}{D_k + 0.5})</script>
+
+    <ul>
+      <li>Where
+        <ul>
+          <li>\(N_{Doc}\) is the total number of documents in the corpus</li>
+          <li>\(D_k\) is the number of documents containing term k</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>A <strong>threshold value</strong> is to be determined to produce the best average precision. It cannont be chosen at random. It is needed to check the difference between the frequency of consecutive ranks say \(F(r)\) and \(F(r+1)\) because if the difference is big enough threshold can be set as \(frequency \geq F(r)\) for choosing the stopwords.</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># imports</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+
+<span class="c"># documents is the list of documents in the collection</span>
+
+<span class="n">vocab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">sub_doc</span> <span class="ow">in</span> <span class="n">documents</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sub_doc</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]))</span>
+
+<span class="c"># TfidfVectorizer from sklearn</span>
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
+    <span class="n">stop_words</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="n">norm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="n">min_df</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">sublinear_tf</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">token_pattern</span><span class="o">=</span><span class="s">r'(?u)</span><span class="err">\</span><span class="s">b</span><span class="err">\</span><span class="s">w+</span><span class="err">\</span><span class="s">b'</span><span class="p">,</span>
+    <span class="n">vocabulary</span><span class="o">=</span><span class="n">vocab</span>
+<span class="p">)</span>
+
+<span class="c"># calculate tf-idf</span>
+<span class="k">def</span> <span class="nf">tf_idf</span><span class="p">(</span><span class="n">documents</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+<span class="c"># create dataframe from pandas</span>
+<span class="n">tf_idf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'word'</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary</span><span class="p">,</span> <span class="s">'idf'</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">idf_</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="n">tf_idf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'idf'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_word_idf</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf_idf</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tf_idf</span><span class="o">.</span><span class="n">word</span><span class="o">==</span><span class="n">word</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h3 id="term-based-random-sampling-approach">Term Based Random Sampling Approach</h3>
+
+<ul>
+  <li>
+    <p>Based on how informative a particular term is.</p>
+  </li>
+  <li>
+    <p>Importance of term is determined using <strong>Kullback–Leibler divergence measure</strong>.</p>
+  </li>
+  <li>
+    <p>Approach is similar to idea of query expansion in which a query is expanded based on a particular query term. The idea is to find terms that complement the initially chosen query terms which follows from the idea that a individual term might be inadequate to express a concept accurately.</p>
+  </li>
+  <li>
+    <p>It differs from the standard approach in that instead of finding the similar terms, find all the documents containing the current term and use them as the new sample and then extract the least informative term from the sample by measuring divergence of a given term distribution within the sampled document set from its distribution in the collection. After this Kullback–Leibler divergence can be used to measure the importance of each term.</p>
+  </li>
+  <li>
+    <p>Weight of a term t in  the sampled document set is given by</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">w(t) = P_x . log_2 \frac{P_x}{P_c}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(P_x = \frac{tf_x}{l_x}\)</li>
+      <li>\(P_c = \frac{F}{token_c}\)</li>
+      <li>\(tf_x\) is the frequency of the query term in the sampled documents</li>
+      <li>\(l_x\) is the sum of the length of the sampled document set</li>
+      <li>F is the term frequency of the query term in the collection</li>
+      <li>\(token_c\) is the total number of tokens in the whole collection</li>
+    </ul>
+  </li>
+  <li>
+    <p>Issues and Solutions</p>
+
+    <ul>
+      <li>Selecting a random term has the possibility of finding only one document containing that term which would result in a relatively small sample.</li>
+      <li>This problem can be solved by repeating selection step Y times which would theoretically result in a better sample, creating a better view of term distribution and their importance.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Advantages:</p>
+
+    <ul>
+      <li>Easier to implement than the classical methods even though algorithm looks complex.</li>
+      <li>Because all steps here are automatic and do not require manual interventions like in the classical techniques for choosing proper threshold.</li>
+      <li>Classical techniques need to check \(F(r)-F(r+1)\) listing one by one and tf-idf graph is needed for zipf’s law.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="c"># imports</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
+
+<span class="c"># documents is the list of documents in the collection</span>
+<span class="c"># Collection Analysis</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'</span><span class="err">\</span><span class="s">w+'</span><span class="p">,</span> <span class="s">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">documents</span><span class="p">)))</span>
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tokens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<span class="n">TOKEN_C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">P_c</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">word</span><span class="p">))</span><span class="o">/</span><span class="n">TOKEN_C</span>
+
+<span class="c"># creating inverted index</span>
+<span class="k">def</span> <span class="nf">create_index</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">document</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
+            <span class="n">index</span><span class="p">[</span><span class="n">token</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">index</span>
+<span class="n">inv_index</span> <span class="o">=</span> <span class="n">create_index</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+<span class="c"># sample analysis</span>
+<span class="k">def</span> <span class="nf">P_x</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="n">documents</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">inv_index</span><span class="p">[</span><span class="n">word</span><span class="p">]]</span>
+    <span class="n">tokens_sample</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'</span><span class="err">\</span><span class="s">w+'</span><span class="p">,</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sample</span><span class="p">)))</span>
+    <span class="n">L_x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tokens_sample</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">L_x</span> <span class="o">+=</span> <span class="n">v</span>
+    <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens_sample</span><span class="p">[</span><span class="n">word</span><span class="p">])</span><span class="o">/</span><span class="n">L_x</span>
+
+<span class="c"># kullback leibler divergence</span>
+<span class="k">def</span> <span class="nf">kl_div</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="n">p_x</span> <span class="o">=</span> <span class="n">P_x</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="n">p_c</span> <span class="o">=</span> <span class="n">P_c</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">p_x</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">p_x</span><span class="o">/</span><span class="n">p_c</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># collection analysis if the dataset is not huge</span>
+<span class="n">terms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">kl_div_val</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
+    <span class="n">kl_div_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kl_div</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+
+<span class="n">df_kl_div</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'term'</span><span class="p">:</span> <span class="n">terms</span><span class="p">,</span> <span class="s">'kl_div'</span><span class="p">:</span> <span class="n">kl_div_val</span><span class="p">})</span>
+<span class="n">df_kl_div</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'kl_div'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_word_kl_metric</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df_kl_div</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_kl_div</span><span class="o">.</span><span class="n">term</span> <span class="o">==</span> <span class="n">word</span><span class="p">]</span>
+</code></pre>
+</div>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="http://terrierteam.dcs.gla.ac.uk/publications/rtlo_DIRpaper.pdf" target="_blank">Automatically Building a Stopword List for an Information Retrieval System</a></small><br />
+<small><a href="https://en.wikipedia.org/wiki/Zipf%27s_law" target="_blank">Zipf’s law</a></small><br />
+<small><a href="https://en.wikipedia.org/wiki/Kullback%E2%80%93Leibler_divergence" target="_blank">Kullback–Leibler Divergence</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/nlp" class='category-links'><h1>NLP</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Building Stopword List for Information Retrieval System&url=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/&title=Building Stopword List for Information Retrieval System&summary=In computing, stop words are words which are filtered out before or after processing of natural language data (text).&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Building Stopword List for Information Retrieval System&amp;body=Check out this site http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-07-04 00:00">04 Jul 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://localhost:4000/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

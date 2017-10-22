@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Normal Equation | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionGradient descent is an algorithm which is used to reach an optimal solution iteratively using the gradient of the loss function or the cost function. In contrast, normal equation is a m..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Normal Equation"/>
+  
+  <meta property="og:description" content="IntroductionGradient descent is an algorithm which is used to reach an optimal solution iteratively using the gradient of the loss function or the cost function. In contrast, normal equation is a m..." />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/regression.jpeg" />
+  <meta property="og:url" content="http://localhost:4000/2017/08/28/normal-equation/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-08-28T00:00:00+05:30">
+
+  <link rel="canonical" href="http://localhost:4000/2017/08/28/normal-equation/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-08-28T00:00:00+05:30">Aug 28</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/regression.jpeg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn-images-1.medium.com/max/1440/1*VoNxmH8kRLKlNI_uuEoBvw.jpeg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Normal Equation</h1>
+            <h2 class="post-description">Given a matrix equation, the normal equation is one which minimizes the sum of the square differences between the left and right sides</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Gradient descent is an algorithm which is used to reach an optimal solution iteratively using the gradient of the loss function or the cost function. In contrast, normal equation is a method that helps <strong>solve for the parameters analytically</strong> i.e. instead of reaching the solution iteratively, solution for the parameter \(\theta\) is reached at directly by solving the normal equation.</p>
+
+<h3 id="intuition">Intuition</h3>
+<p>Consider a <strong>one-dimensional</strong> equation for the cost function given by,</p>
+
+<script type="math/tex; mode=display">J(\theta) = a\theta^2 + b\theta + c \tag{1}</script>
+
+<ul>
+  <li>Where \(\theta \in \mathbb{R} \)</li>
+</ul>
+
+<p>According to calculus, one can find the minimum of this function by calculating the derivative and <strong>solving the equation by setting derivative equal to zero</strong>, i.e.</p>
+
+<script type="math/tex; mode=display">{d \over d\theta} J(\theta) = 0 \tag{2}</script>
+
+<p>Similarly, extending (1) to <strong>multi-dimensional</strong> setup, the cost function is given by,</p>
+
+<script type="math/tex; mode=display">J(\theta_0, \theta_1, \cdots, \theta_n) = {1 \over 2m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \tag{3}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(\theta \in \mathbb{R}^{n+1} \)</li>
+      <li>n is the number of features</li>
+      <li>m is the number of training samples</li>
+    </ul>
+  </li>
+</ul>
+
+<p>And similar to (2), the minimum of (3) can be found by taking <strong>partial derivatives</strong> w.r.t. individual \(\theta_i \forall i \in (0, 1, 2, \cdots, n)  \) and solving the equations by setting them to zero, i.e.</p>
+
+<script type="math/tex; mode=display">{\partial \over \partial \theta_i}J(\theta) = 0 \tag{4}</script>
+
+<ul>
+  <li>where \(i \in (0, 1, 2, \cdots, n)\)</li>
+</ul>
+
+<p>Through derivation one can find that \(\theta\) is given by,</p>
+
+<script type="math/tex; mode=display">\theta = \left( X^TX \right)^{-1}X^Ty \tag{5}</script>
+
+<p><strong>Feature scaling is not necessary for the normal equation method.</strong> Reason being, the feature scaling was implemented to prevent any skewness in the contour plot of the cost function which affects the gradient descent but the analytical solution using normal equation does not suffer from the same drawback.</p>
+
+<h3 id="comparison-between-gradient-descent-and-normal-equation">Comparison between Gradient Descent and Normal Equation</h3>
+
+<p>Given m training examples, and n features</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Gradient Descent</th>
+      <th style="text-align: center">Normal Equation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>Proper choice of \(\alpha\) is important</strong></td>
+      <td style="text-align: center">\(\alpha\) is not needed</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>Iterative Method</strong></td>
+      <td style="text-align: center">Direct Solution</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Works well with large n. Complexity of algorithm is O(\(kn^2\))</td>
+      <td style="text-align: center"><strong>Slow for large n</strong>. Need to compute \((X^TX)^{-1}\). Generally the cost for computing the inverse is O(\(n^3\))</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Generally if the <strong>number of features is less than 10000, one can use normal equation</strong> to get the solution beyond which the order of growth of the algorithm will make the computation very slow.</p>
+
+<h3 id="non-invertibility">Non-invertibility</h3>
+
+<p>Matrices that do not have an inverse are called <strong>singular or degenerate</strong>.</p>
+
+<p><strong>Reasons</strong> for non-invertibility:</p>
+
+<ul>
+  <li><strong>Linearly dependent</strong> features i.e. redundant features.</li>
+  <li>Too many features i.e. \(m \leq n\), then reduce the number of features or use regularization.</li>
+</ul>
+
+<blockquote>
+  <p>Calculating psuedo-inverse instead of inverse can also solve the issue of non-invertibility.</p>
+</blockquote>
+
+<h3 id="implementation">Implementation</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="s">"""
+Dummy Data for Linear Regression
+"""</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>    
+
+<span class="s">"""
+Matrix Operations
+"""</span>
+<span class="n">inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span>
+<span class="n">mul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x_i</span><span class="p">,</span> <span class="n">y_i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">x_i</span><span class="p">])</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_i</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="s">"""
+Theta Calculation Using equation (5)
+"""</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">mul</span><span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="n">inv</span><span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="p">)),</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="s">"""
+Prediction of y using theta
+"""</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+
+<span class="s">"""
+Plot Graph
+"""</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span> <span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">data</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">,</span> <span class="s">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Regression using Normal Equation'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/2017-08-28-normal-equation/fig-1-normal-equation-solution.png?raw=true" alt="Normal Equation Solution" /></p>
+
+<h3 id="derivation-of-normal-equation">Derivation of Normal Equation</h3>
+
+<p>Given the hypothesis,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    h_\theta(x) &= \theta_0\,x_0 + \theta_1\,x_1 + \cdots + \theta_n\,x_n \\
+    &= \theta_T\,x \\
+  \end{align}
+  \tag{6} %]]></script>
+
+<ul>
+  <li>\(\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \vdots \\ \theta_n \end{bmatrix} \)</li>
+</ul>
+
+<p>Let <strong>X be the design matrix wherein each row corresponds to the features in \(i^{th}\) sample of the m samples</strong>. Similarly, y is the vector with all the target values for all the m training samples. The cost function for the hypothesis (6) is given by (3). The cost function can be vectorized as follows for replacing the sigma operation with the sum over terms for matrix multiplication,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    J(\theta) &= {1 \over 2m} \left( X\theta - y \right)^T \left( X\theta - y \right) \\
+    & = {1 \over 2m} \left( (X\theta)^T - y^T \right) \left( X\theta - y \right) \\ 
+    & = {1 \over 2m} \left( (X\theta)^TX\theta - (X\theta)^Ty - y^T(X\theta) + y^Ty \right) \\ 
+  \end{align}
+  \tag{7} %]]></script>
+
+<p>Since \(X\theta\) and \(y\) both are vectors, \((X\theta)^Ty = y^T(X\theta)\). So (7) can be further simplified as,</p>
+
+<script type="math/tex; mode=display">J(\theta) = {1 \over 2m} \left( (X\theta)^TX\theta - 2(X\theta)^Ty + y^Ty \right)</script>
+
+<p>Taking partial derivative w.r.t \(\theta\) and equating to zero,</p>
+
+<script type="math/tex; mode=display">{\partial \over \partial \theta} \left( (X\theta)^TX\theta - 2(X\theta)^Ty \right) = 0 \tag{8}</script>
+
+<p>Let,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    Q(\theta) &= 2(X\theta)^Ty \\
+    &= 2 \theta^T X^T y \\
+    &= 2 
+    \begin{bmatrix}
+      \theta_0 & \cdots & \theta_n
+    \end{bmatrix}
+    \begin{bmatrix}
+      x_{10} & \cdots & x_{m0} \\
+      x_{11} & \cdots & x_{m1} \\
+      \vdots & \ddots & \vdots \\
+      x_{1n} & \cdots & x_{mn} \\
+    \end{bmatrix} 
+    \begin{bmatrix}
+      y_{1} \\
+      \vdots \\
+      y_{m}
+    \end{bmatrix}\\
+    &= 2 
+    \begin{bmatrix}
+      (\theta_0 * x_{10} + \cdots + \theta_n * x_{1n}) \cdots (\theta_0 * x_{m0} + \cdots + \theta_n * x_{mn}) \\
+    \end{bmatrix} 
+    \begin{bmatrix}
+      y_{1} \\
+      \vdots \\
+      y_{m}
+    \end{bmatrix}\\
+    &= 2 
+    \begin{bmatrix}
+      (\theta_0 * x_{10} + \cdots + \theta_n * x_{1n})y_1 \cdots (\theta_0 * x_{m0} + \cdots + \theta_n * x_{mn})y_m \\
+    \end{bmatrix} \\
+    &= 2 \sum_{i=1}^m y_i \sum_{j=0}^n \theta_j * x_{ij}
+  \end{align}
+  \tag{9} %]]></script>
+
+<p>Taking partial derivatives,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    {\partial Q \over \partial \theta_0} &= 2(x_{10}y_1 + \cdots + x_{m0}y_m) \\
+    & \vdots \\
+    {\partial Q \over \partial \theta_n} &= 2(x_{1n}y_1 + \cdots + x_{mn}y_m) \\
+  \end{align}
+  \tag{10} %]]></script>
+
+<p>Vectorizing (10),</p>
+
+<script type="math/tex; mode=display">{\partial Q \over \partial \theta} = 2X^Ty \tag{11}</script>
+
+<p>Similarly, let,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    P(\theta)&= (X\theta)^T(X\theta) \\
+    &= \theta^T X^T X \theta \\
+    &= 
+    \begin{bmatrix}
+      \theta_0 \cdots \theta_n
+    \end{bmatrix} 
+    \begin{bmatrix}
+      x_{10} & \cdots & x_{m0} \\
+      x_{11} & \cdots & x_{m1} \\
+      \vdots & \ddots & \vdots \\
+      x_{1n} & \cdots & x_{mn}
+    \end{bmatrix} 
+    \begin{bmatrix}
+      x_{10} & \cdots & x_{1n} \\
+      \vdots & \ddots & \vdots \\
+      x_{m0} & \cdots & x_{mn}
+    \end{bmatrix} 
+    \begin{bmatrix}
+      \theta_0 \\ \vdots \\ \theta_n
+    \end{bmatrix} 
+    \\
+    &= 
+    \begin{bmatrix}
+      (\theta_0x_{10} + \cdots + \theta_nx_{1n}) \cdots (\theta_0x_{m0} + \cdots + \theta_nx_{mn})
+    \end{bmatrix}
+    \begin{bmatrix}
+      (\theta_0x_{10} + \cdots + \theta_nx_{1n}) \\ 
+      \vdots \\
+      (\theta_0x_{m0} + \cdots + \theta_nx_{mn})
+    \end{bmatrix} \\
+    & = (\theta_0x_{10} + \cdots + \theta_nx_{1n})^2 + \cdots + (\theta_0x_{m0} + \cdots + \theta_nx_{mn})^2
+  \end{align} %]]></script>
+
+<p>Taking partial derivatives,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    {\partial P \over \partial \theta_0} &= 2x_{10}(\theta_0x_{10} + \cdots + \theta_nx_{1n}) + \cdots + 2x_{m0}(\theta_0x_{m0} + \cdots + \theta_nx_{mn})\\
+    & \vdots \\
+    {\partial P \over \partial \theta_n} &= 2x_{1n}(\theta_0x_{10} + \cdots + \theta_nx_{1n}) + \cdots + 2x_{mn}(\theta_0x_{m0} + \cdots + \theta_nx_{mn}) \\
+  \end{align}
+  \tag{12} %]]></script>
+
+<p>Vectorizing above equations,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    {\partial P \over \partial \theta} &= 2 
+    \begin{bmatrix}
+      x_{10} & \cdots & x_{m0} \\
+      \vdots & \ddots & \vdots \\
+      x_{1n} & \cdots & x_{mn}
+    \end{bmatrix}
+    \begin{bmatrix}
+      \theta_0x_{10} + \cdots + \theta_nx_{1n} \\
+      \vdots \\
+      \theta_0x_{m0} + \cdots + \theta_nx_{mn}
+    \end{bmatrix} \\
+    &= 2 X^T
+    \begin{bmatrix}
+      x_{10} & \cdots & x_{1n} \\
+      \vdots & \ddots & \vdots \\
+      x_{m0} & \cdots & x_{mn}
+    \end{bmatrix}
+    \begin{bmatrix}
+      \theta_0 \\
+      \vdots\\
+      \theta_n
+    \end{bmatrix} \\
+    &= 2X^T X\theta \tag{13}
+  \end{align} %]]></script>
+
+<p>Substitution (13) and (11) in (8),</p>
+
+<script type="math/tex; mode=display">2X^T X\theta = 2X^Ty</script>
+
+<p>If \(X^T X\) is invertible, then,</p>
+
+<script type="math/tex; mode=display">\theta = \left( X^TX \right)^{-1}X^Ty</script>
+
+<p>which is same as (5)</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/2DKxQ/normal-equation" target="_blank">Machine Learning: Coursera - Normal Equation</a></small><br />
+<small><a href="http://eli.thegreenplace.net/2014/derivation-of-the-normal-equation-for-linear-regression" target="_blank">Derivation of the Normal Equation for linear regression</a></small><br />
+<small><a href="http://eli.thegreenplace.net/2015/the-normal-equation-and-matrix-calculus/" target="_blank">Normal Equation and Matrix Calculus</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/08/28/normal-equation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Normal Equation&url=http://localhost:4000/2017/08/28/normal-equation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://localhost:4000/2017/08/28/normal-equation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2017/08/28/normal-equation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://localhost:4000/2017/08/28/normal-equation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://localhost:4000/2017/08/28/normal-equation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/08/28/normal-equation/&title=Normal Equation&summary=Given a matrix equation, the normal equation is one which minimizes the sum of the square differences between the left and right sides&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Normal Equation&amp;body=Check out this site http://localhost:4000/2017/08/28/normal-equation/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-08-28 00:00">28 Aug 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://localhost:4000/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

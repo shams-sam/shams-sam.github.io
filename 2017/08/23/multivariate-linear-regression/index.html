@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Multivariate Linear Regression | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionMultivariate linear regression is the generalization of the univariate linear regression seen earlier i.e. Cost Function of Linear Regression. As the name suggests, there are more than ..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Multivariate Linear Regression"/>
+  
+  <meta property="og:description" content="IntroductionMultivariate linear regression is the generalization of the univariate linear regression seen earlier i.e. Cost Function of Linear Regression. As the name suggests, there are more than ..." />
+  
+  <meta property="og:image" content="http://localhost:4000/assets/images/multi-dimensional.jpg" />
+  <meta property="og:url" content="http://localhost:4000/2017/08/23/multivariate-linear-regression/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-08-23T00:00:00+05:30">
+
+  <link rel="canonical" href="http://localhost:4000/2017/08/23/multivariate-linear-regression/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-08-23T00:00:00+05:30">Aug 23</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/multi-dimensional.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://i.pinimg.com/originals/12/10/17/121017deafcab3026b8fba0a9bce9b68.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Multivariate Linear Regression</h1>
+            <h2 class="post-description">When linear regression is applied on a higher-dimensional dataset, a generalization of linear regression is obtained</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Multivariate linear regression is the generalization of the univariate linear regression seen earlier i.e. <a href="/2017/08/11/cost-function-of-linear-regression/" target="_blank">Cost Function of Linear Regression</a>. As the name suggests, there are more than one independent variables, \(x_1, x_2 \cdots, x_n\) and a dependent variable \(y\).</p>
+
+<h3 id="notation">Notation</h3>
+
+<ul>
+  <li>\(x_1, x_2 \cdots, x_n\) denote the n features</li>
+  <li>\(y\) denotes the output variable to be predicted</li>
+  <li>\(n\) is number of features</li>
+  <li>\(m\) is the number of training examples</li>
+  <li>\(x^{(i)}\) is the \(i^{th}\) training example</li>
+  <li>\(x_j^{(i)}\) is the \(j^{th}\) feature of the \(i^{th}\) training example</li>
+</ul>
+
+<h3 id="hypothesis">Hypothesis</h3>
+
+<p>The hypothesis in case of univariate linear regression was,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = \theta_0 + \theta_1\,x</script>
+
+<p>Extending the above function to multiple features, hypothesis of multivariate linear regression is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    h_\theta(x) &= \theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \cdots + \theta_n\,x_n \\
+    &= \theta_0\,x_0 + \theta_1\,x_1 + \theta_2\,x_2 + \cdots + \theta_n\,x_n \text{, where }x_0 = 1 \\
+    &= \theta^T x \text{, vectorizing above equation}
+  \end{align}
+   \tag{1} %]]></script>
+
+<ul>
+  <li>Where,
+    <ul>
+      <li>\(\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \vdots \\ \theta_n \\ \end{bmatrix} \in \mathbb{R}^{n+1}\) and \(x = \begin{bmatrix} x_0 \\ x_1 \\ \vdots \\ x_n \\ \end{bmatrix} \in \mathbb{R}^{n+1} \)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="cost-function">Cost Function</h3>
+
+<p>The cost function for univariate linear regression was,</p>
+
+<script type="math/tex; mode=display">J(\theta_0, \theta_1) = {1 \over 2m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2</script>
+
+<p>Extending the above function to multiple features, the cost function for multiple features is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    J(\theta) &= {1 \over 2m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \\
+    &= {1 \over 2m} \sum_{i=1}^m \left( \theta^T x^{(i)} - y^{(i)} \right)^2 \\
+    &= {1 \over 2m} \sum_{i=1}^m \left( \left( \sum_{j=0}^n \theta_j x_j^{(i)} \right) - y^{(i)} \right)^2 \\
+  \end{align}
+  \tag{2} %]]></script>
+
+<ul>
+  <li>Where \(\theta\) is a vector give by \(\theta = \begin{bmatrix} \theta_0 \\ \theta_1 \\ \vdots \\ \theta_n \\ \end{bmatrix} \)</li>
+</ul>
+
+<h3 id="gradient-descent">Gradient Descent</h3>
+
+<script type="math/tex; mode=display">\begin{align}
+    \text{repeat until convergence}
+    \begin{cases}
+      \theta_j := \theta_j - \alpha {\partial \over \partial \theta_j} J(\theta) \\
+    \end{cases}
+  \end{align}
+  \tag{3}</script>
+
+<blockquote>
+  <p>Note: simultaneous update only</p>
+</blockquote>
+
+<p>Evaluating the partial derivative \({\partial \over \partial \theta_j} J(\theta)\) gives,</p>
+
+<script type="math/tex; mode=display">{\partial \over \partial \theta_j} J(\theta) = {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_j^{(i)} \tag{4}</script>
+
+<p>It can be easily seen that (4) is generalization of the update equation for univariate linear regression, because if we take only two features \(\theta_0\) and \(\theta_1\) and substitute in (4) the values, it results in the same equations as in <a href="/2017/08/17/gradient-descent-for-linear-regression/" target="_blank">Univariate Linear Regression</a></p>
+
+<h3 id="feature-scaling">Feature Scaling</h3>
+
+<p>It is found that during gradient descent if the features are on the <strong>same scale</strong> then the algorithm tends to work better than when the features are not appropriately scaled in the same range.</p>
+
+<p>The plot below shows the effect of feature scaling on the contour plot of the cost function of hypothesis based on these features.</p>
+
+<p><img src="/assets/2017-08-23-multivariate-linear-regression/fig-1-effect-of-feature-scaling.png?raw=true" alt="Feature Scaling and Contour Plot" /></p>
+
+<p>As seen above, if the <strong>contours are skewed</strong> then learning steps would take longer to converge as the steps would be more prone to oscillatory behaviour as shown in the left plot. Whereas if the features are properly scaled, then the plot is evenly distributed and the steps of gradient descent have better profile of convergence.</p>
+
+<blockquote>
+  <p>Scaling of features between 0 and 1 is achieved by dividing the features by max. This helps in keeping all the features in appropriate ranges. The aim is to ideally keep the features around the range -1 to 1.</p>
+</blockquote>
+
+<p>Different ways of achieving feature scaling:</p>
+
+<ul>
+  <li><strong>Normalization</strong>: Divide each feature by max of the feature column.</li>
+  <li><strong>Mean Normalization</strong>: Replace a feature \(x_i\) with \(x_i - \mu_i\) so that the approximate mean of the features is 0 which is then normalized. <strong>Not applied to the feature</strong> \(x_0\)</li>
+</ul>
+
+<script type="math/tex; mode=display">x_i = \frac {x_i - \mu_i} {S_i} \forall i \in \{1, 2, \cdots, n\}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(x_i\) is the feature value</li>
+      <li>\(\mu_i\) is the mean</li>
+      <li>\(S_i\) is the standard deviation or the range i.e. \(max - min\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="learning-rate">Learning Rate</h3>
+
+<p>There are several ways of debugging the gradient descent algorithm. One of the ways is to plot the graph of cost function as a function of number of epochs. If the value is decreasing for every epoch then the descent is working fine.</p>
+
+<p><img src="/assets/2017-08-23-multivariate-linear-regression/fig-2-learning-rate.png?raw=true" alt="Learning Rate" /></p>
+
+<p>If the curve is plotted as shown one can easily infer that a saturation is reached after 150 iterations.</p>
+
+<ul>
+  <li><strong>Automatic Convergence Test</strong>: Gradient descent can be considered to be converged if the drop in cost function is not more than a preset threshold say \(10^{-3}\)</li>
+</ul>
+
+<p>Looking at the plot can point out if the algorithm is not working properly.</p>
+
+<p><img src="/assets/2017-08-23-multivariate-linear-regression/fig-3-effect-of-alpha.png?raw=true" alt="Learning Rate" /></p>
+
+<p>For example, <strong>plot A</strong> is a proper learning curve but if the plot shows that value of cost function is increasing as in <strong>plot C</strong>, then this indicates the algorithm is diverging. <strong>It generally happens if the value of learning rate \(\alpha\) is too high.</strong></p>
+
+<p>Also, if the plot shows that the value is oscillating or fluctuating then the <strong>learning rate needs to be reduced</strong> as the steps are not small enough to proceed to the minima.</p>
+
+<blockquote>
+  <p>For sufficiently small \(\alpha\), gradient descent should decrease on every iteration.</p>
+</blockquote>
+
+<p>Very small learning rate is not advisable as the algorithm will be slow to converge as seen in <strong>plot B</strong>.</p>
+
+<blockquote>
+  <p>In order to choose optimum value of \(\alpha\) run the algorithm with different values like, 1, 0.3, 0.1, 0.03, 0.01 etc and plot the learning curve to understand whether the value should be increased or descreased.</p>
+</blockquote>
+
+<h3 id="feature-engineering">Feature Engineering</h3>
+
+<p>Sometimes it might be fruitful to <strong>generate new features</strong> by combining the existing ones. For example, given width and length of a property to predict price it might be helpful to use area of the property i.e. width * length as an additional feature.</p>
+
+<h3 id="polynomial-regression">Polynomial Regression</h3>
+
+<p>The concept of feature engineering can be used to achieve <strong>polynomial regression</strong>. Say the polynomial hypothesis chosen is,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = \theta_0 + \theta_1\,x + \theta_2\,x^2 + \cdots + \theta^n\,x^n</script>
+
+<p>This function can be addressed as multivariate linear regression by substitution and is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = \theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \cdots + \theta_n\,x_n</script>
+
+<ul>
+  <li>Where \(x_n = x^n\)</li>
+</ul>
+
+<blockquote>
+  <p>Note: if using features like this then it is very important to apply feature scaling in order to avert issues related to feature range imbalance.</p>
+</blockquote>
+
+<p>This technique can be very powerful because one can fit all types of features using the substitution model. For example one can get a non-decreasing function as opposed to quadratic function which comes back down by using the following function</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = \theta_0 + \theta_1\,x + \theta_2\,\sqrt{x}</script>
+
+<h3 id="implementation">Implementation</h3>
+
+<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="s">"""
+Dummy Data for Multivariate Regression
+"""</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">)]</span>    
+
+<span class="s">"""
+Plot the line using theta_values
+"""</span>
+<span class="k">def</span> <span class="nf">plot_line</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">x_range</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_range</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">formula</span><span class="p">(</span><span class="n">update_features</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">))</span> <span class="k">for</span> <span class="n">x_i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="s">"""
+Hypothesis Function
+"""</span>
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="s">"""
+Partial Derivative w.r.t. theta_i
+"""</span>
+<span class="k">def</span> <span class="nf">j_prime_theta</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">data</span> <span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">update_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="n">result</span>
+
+<span class="s">"""
+Update features by order of the regression
+"""</span>
+
+<span class="k">def</span> <span class="nf">update_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">):</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order_of_regression</span><span class="p">):</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">features</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+<span class="s">"""
+Cost Function
+"""</span>
+<span class="k">def</span> <span class="nf">j</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">):</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">update_features</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">)</span>
+        <span class="n">cost</span> <span class="o">+=</span> <span class="n">math</span><span class="o">.</span><span class="nb">pow</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span> <span class="o">*</span> <span class="n">cost</span>
+
+<span class="s">"""
+Simultaneous Update
+"""</span>
+<span class="k">def</span> <span class="nf">update_theta</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">):</span>
+    <span class="n">temp</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">order_of_regression</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">j_prime_theta</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">,</span> <span class="n">i</span><span class="p">))</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">theta</span>
+    
+<span class="s">"""
+Gradient Descent For Multivariate Regression
+"""</span>
+<span class="k">def</span> <span class="nf">gradient_descent</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">tolerance</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="p">[],</span> <span class="n">order_of_regression</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">order_of_regression</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">prev_j</span> <span class="o">=</span> <span class="mi">10000</span>
+    <span class="n">curr_j</span> <span class="o">=</span> <span class="n">j</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">curr_j</span><span class="p">)</span>
+    <span class="n">cost_history</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">theta_history</span> <span class="o">=</span> <span class="p">[]</span> 
+    <span class="k">while</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">curr_j</span> <span class="o">-</span> <span class="n">prev_j</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cost_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">curr_j</span><span class="p">)</span>
+            <span class="n">theta_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+            <span class="n">theta</span> <span class="o">=</span> <span class="n">update_theta</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">)</span>
+            <span class="n">prev_j</span> <span class="o">=</span> <span class="n">curr_j</span>
+            <span class="n">curr_j</span> <span class="o">=</span> <span class="n">j</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">)</span>
+            <span class="k">print</span><span class="p">(</span><span class="n">curr_j</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"Stopped with Error at </span><span class="si">%.5</span><span class="s">f"</span> <span class="o">%</span> <span class="n">prev_j</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">theta</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">gradient_descent</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/2017-08-23-multivariate-linear-regression/fig-4-multivariate-regression.gif?raw=true" alt="Multivariate Regression" /></p>
+
+<p>The above plot shows the working of <strong>multivariate linear regression to fit polynomial curve</strong>. The higher order terms of the polynomial hypothesis are fed as separate features in the regression. The plot is the shape of a <strong>parabola</strong> which is consistent with the shape of curves of second order polynomials.</p>
+
+<p><strong>Note: The implementation above does not have scaled features</strong>. It would be harder to make the algorithm converge if the features are not scaled. But if they are scaled properly, not only does the <strong>algorithm converges better but also faster</strong>. Below is the plot of the curve fitting by gradient descent when the features are scaled appropriately.</p>
+
+<p><img src="/assets/2017-08-23-multivariate-linear-regression/fig-5-feature-scaling.gif?raw=true" alt="Multivariate Regression" /></p>
+
+<p>A rough implementation of the feature scaling used to get the plot above can be found <a href="https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/GradientDescentForMultivariateRegression.ipynb" target="_blank">here</a>.</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/6Nj1q/multiple-features" target="_blank">Machine Learning: Coursera - Multivariate Linear Regression</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/Z9DKX/gradient-descent-for-multiple-variables" target="_blank">Machine Learning: Coursera - Gradient Descent for Multiple Variables</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/xx3Da/gradient-descent-in-practice-i-feature-scaling" target="_blank">Machine Learning: Coursera - Gradient Descent in Practice I - Feature Scaling</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/3iawu/gradient-descent-in-practice-ii-learning-rate" target="_blank">Machine Learning: Coursera - Gradient Descent in Practice II - Learning Rate</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/Rqgfz/features-and-polynomial-regression" target="_blank">Machine Learning: Coursera - Feature and Polynomial Regerssion</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Multivariate Linear Regression&url=http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/2017/08/23/multivariate-linear-regression/&title=Multivariate Linear Regression&summary=When linear regression is applied on a higher-dimensional dataset, a generalization of linear regression is obtained&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Multivariate Linear Regression&amp;body=Check out this site http://localhost:4000/2017/08/23/multivariate-linear-regression/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-08-23 00:00">23 Aug 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://localhost:4000/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>
