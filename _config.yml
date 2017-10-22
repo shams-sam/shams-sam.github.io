@@ -1,0 +1,110 @@
+# Build settings
+plugins:
+  - jemoji
+  - jekyll-paginate-v2
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge # changed from `pygments` as github says so
+version: 0.1
+
+# Permalinks
+permalink: pretty
+
+# Site settings
+title: "Machine Learning Medium"
+description: Mathematics, Machine Learning, Natural Language Processing Etc.
+cover: "/assets/images/cover.jpeg"
+footer: "/assets/images/footer.jpg"
+url: "http://machinelearningmedium.com"
+baseurl: ""
+google_analytics: UA-108148924-1
+
+# Tags in sectionbar
+category:
+  - machine-learning: Machine Learning
+  - mathematics: Mathematics
+  - papers: Papers
+  - dsa: DSA
+
+# Pagination using jekyll-paginate-v2
+pagination:
+  enabled: true
+  debug: false
+  collection: 'posts'
+  per_page: 9
+  permalink: '/:num/'
+  title: ':title - Page :num'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  category: 'posts'
+  tag: ''
+  locale: ''
+  trail: 
+    before: 1
+    after: 1
+
+# Generate links for all tags
+autopages:
+  enabled: true
+  categories: 
+    enabled: false
+  tags:
+    layouts: 
+      - 'autopage_tags.html'
+    title: 'Tagged In: :tag'
+    permalink: '/tag/:tag'
+  collections:
+    enabled: false
+
+# Author Info
+author:
+  name: 'Shams S'
+  email: shams.sam@live.com
+  description: 'Data Scientist @ Practo'
+  image: "/assets/images/author.jpg"
+  twitter_handle: '@sshamssam'
+  disqus: shams-sam
+
+# Social icons and sharing options
+social:
+  - icon: github-alt
+    url:  https://github.com/shams-sam/shams-sam.github.io
+    desc: Gihub Project
+    share_url:
+    share_title:
+    share_link:
+
+  # - icon: facebook
+  #   url:  https://facebook.com/shams-sam
+  #   desc: Facebook
+  #   share_url: https://www.facebook.com/sharer.php
+  #   share_title: ?t=
+  #   share_link: "&amp;u="
+
+  # - icon:	twitter
+  #   url:	https://twitter.com/sshamssam
+  #   desc: Twitter
+  #   share_url: http://twitter.com/share
+  #   share_title: ?text=
+  #   share_link: "&amp;url="
+
+  - icon: linkedin
+    url:  https://linkedin.com/in/shams-sheikh-20328154
+    desc: LinkedIn
+    share_url:
+    share_title:
+    share_link:
+
+  # - icon: envelope
+  #   url: "mailto:shams.sam@live.com"
+  #   desc: E-mail
+  #   share_url:
+  #   share_title:
+  #   share_link:

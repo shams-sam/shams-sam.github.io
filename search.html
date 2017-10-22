@@ -1,0 +1,18 @@
+---
+layout: page
+title: Search
+tipue_search_active: true
+exclude_from_search: true
+mathjax: true
+---
+
+<!-- <div class="img">
+    <img src="https://www.gravatar.com/avatar/{{site.author.emailalt_md5}}?s=240" />
+</div> -->
+
+<form action="{{ page.url | relative_url }}">
+  <div class="tipue_search_right"><input type="text" name="q" id="tipue_search_input" pattern=".{3,}" placeholder="Search Post, Example: Probability"></div>
+  <div style="clear: both;"></div>
+</form>
+
+<div id="tipue_search_content"></div>

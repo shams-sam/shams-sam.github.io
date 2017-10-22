@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Classification and Logistic Regression | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionClassification is a supervised learning problem wherein the target variable is categorical unlike regression where the target variable is continuous. Classification can be binary i.e. o..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Classification and Logistic Regression"/>
+  
+  <meta property="og:description" content="IntroductionClassification is a supervised learning problem wherein the target variable is categorical unlike regression where the target variable is continuous. Classification can be binary i.e. o..." />
+  
+  <meta property="og:image" content="http://machinelearningmedium.com/assets/images/logistic-regression.png" />
+  <meta property="og:url" content="http://machinelearningmedium.com/2017/08/31/classification-and-representation/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-08-31T00:00:00+00:00">
+
+  <link rel="canonical" href="http://machinelearningmedium.com/2017/08/31/classification-and-representation/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-08-31T00:00:00+00:00">Aug 31</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/logistic-regression.png) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: http://www.onthelambda.com/wp-content/uploads/2014/07/quadratic.png</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Classification and Logistic Regression</h1>
+            <h2 class="post-description">Logistic regression, or logit regression, or logit model is a regression model where the dependent variable is categorical</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Classification is a supervised learning problem wherein the target variable is categorical unlike regression where the target variable is continuous. Classification can be binary i.e. only two possible values of the target variable or multi-class i.e. more than two categories.</p>
+
+<p>The most basic step would be to try and fit regression curve to see if one can achieve classification using the same approach. Below is a plot attempting the same.</p>
+
+<p><img src="/assets/2017-08-31-classification-and-representation/fig-1-regression-for-classification.png?raw=true" alt="Regression Fit for Classification" /></p>
+
+<p>It can be seen below that the attempt to achieve classification using <strong>regression curve and thresholding</strong> will not always yield conclusive results.
+In first case say only red data points are in the dataset, then fitting the curve and setting the threshold at 0.5 would work, but say an outlier is present like the blue data point then the same decision boundary D1 would shift to D2 if the threshold is kept constant and the boundary would not be perfect. Hence there is a need of <strong>Decision Boundary</strong> instead of predictive curve.</p>
+
+<p>Applying linear regression to classification problem might work in some cases but is not advisable as it would not scale with complexity.</p>
+
+<p>Another issue with application of linear regession to classification would be that even know the categorical variables are discreet say 1s and 0s, the hypothesis would give continuous values which maybe much greater that 1 or much lesser than 0. This issue can be solved by using <strong>logistic regression</strong> where</p>
+
+<script type="math/tex; mode=display">0 \leq h_\theta(x) \leq 1 \tag{1}</script>
+
+<h3 id="logistic-regression">Logistic Regression</h3>
+
+<p>Since (1) is to be true, the hypothesis from linear regression given by \(h_\theta(x) = \theta^T\,x\) will not work for logistic regression. Hence there is a need of <strong>squashing function</strong> i.e. a function which limits the output of hypothesis between given range. For logistic regression <strong>sigmoid function is used as the squashing function</strong>. The hypothesis for logistic regression is give by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(\theta^T\,x) = {1 \over 1 + e^{-\theta^Tx}} \tag{2}</script>
+
+<p>Where \(g(z) = {1 \over 1 + e^{-z}}\) and is called <strong>sigmoid function or logistic function</strong>. Plot of the sigmoid function is given below which shows no matter what the value of x, the function returns a value between 0 and 1 consistent with (1).</p>
+
+<p><img src="/assets/2017-08-31-classification-and-representation/fig-2-sigmoid-plot.png?raw=true" alt="Sigmoid Plot" /></p>
+
+<blockquote>
+  <p>The value of hypothesis is interpretted as the probability that the input x belongs to class y=1. i.e. probability that y=1, given x, parametrized by \(\theta\).</p>
+</blockquote>
+
+<p>It can be mathematically represented as,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = P(y=1|x;\theta) \tag{3}</script>
+
+<p>The fundamental properties of probability holds here, i.e.,</p>
+
+<script type="math/tex; mode=display">P(y=0|x;\theta) + P(y=1|x;\theta) = 1 \tag{4}</script>
+
+<h3 id="decision-boundary">Decision Boundary</h3>
+
+<p>for the given hypothesis of logistic regression in (2), say \(\delta=0.5\) is chosen as the <strong>threshold for the binary classification</strong>, i.e.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    \text{predict } y &= 1 \text{, if } h_\theta(x) \geq 0.5 \\
+    \text{predict } y &= 0 \text{, if } h_\theta(x) \lt 0.5 \\
+  \end{align}
+  \tag{5} %]]></script>
+
+<p>From the plot of sigmoid function, it is seen that</p>
+
+<script type="math/tex; mode=display">\begin{align}
+    g(z) \geq 0.5 \text{, if } z \geq 0 \\
+    g(z) \lt 0.5 \text{, if } z \lt 0 \\
+  \end{align}
+  \tag{6}</script>
+
+<p>Using (6), (5) can be rewritten as,
+<script type="math/tex">% <![CDATA[
+\begin{align}
+    \text{predict } y &= 1 \text{, if } \theta^T\,x \geq 0 \\
+    \text{predict } y &= 0 \text{, if } \theta^T\,x \lt 0 \\
+  \end{align}
+  \tag{7} %]]></script></p>
+
+<p><img src="/assets/2017-08-31-classification-and-representation/fig-3-decision-boundary.png?raw=true" alt="Decision Boundary" /></p>
+
+<p>Suppose the training data is as show in the plot above where dots and Xs are the two different classes. Let the hypothesis \(h_\theta(x)\) and the optimal value of \(\theta\) be given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2)\tag{8}</script>
+
+<script type="math/tex; mode=display">\theta = 
+  \begin{bmatrix}
+    -12 \\ 1 \\ 1 \\
+  \end{bmatrix}
+  \tag{9}</script>
+
+<p>Using the \(\theta\) from (9) and hypothesis from (8) , (7) can be written as,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    \text{predict } y &= 1 \text{, if } -12 + x_1 + x_2 \geq 0 \text{ or } x_1 + x_2 \geq 12 \\
+    \text{predict } y &= 0 \text{, if } -12 + x_1 + x_2 \lt 0 \text{ or } x_1 + x_2 \lt 12 \\
+  \end{align} %]]></script>
+
+<p>If the line \(x_1 + x_2 = 12\) is plotted as shown in the plot above then the region below i.e. the yellow region is where \(x_1 + x_2 \lt 12\) and predicted 0 and similarly the white region above the line \(x_1 + x_2 = 12\) is where \(x_1 + x_2 \geq 12\) and hence predicted 1. <strong>The line here is called the decision boundary.</strong> As the name suggests this line seperates the region with prediction 0 from region with prediction 1. <strong>Decision boundary and prediction regions are the property of the hypothesis and not of the dataset</strong>. Dataset is only used to fit the parameters, but once the parameters are determined they solely define the decision boundary</p>
+
+<blockquote>
+  <p>It is possible to achieve non-linear decision boundaries by using the higher order polynomial terms and can be encorporated in a way similar to how multivariate linear regression handles polynomial regression.</p>
+</blockquote>
+
+<p><img src="/assets/2017-08-31-classification-and-representation/fig-4-non-linear-decision-boundary.png?raw=true" alt="Non-Linear Decision Boundary" /></p>
+
+<p>The plot above is an example of <strong>non-linear decision boundary</strong> using higher order polynomial logistic regression.</p>
+
+<p>Say, the hypothesis of the logistic regression has higher order polynomial terms, and is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta(x) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \theta_3\,x_1^2 + \theta_4\,x_2^2) \tag{10}</script>
+
+<p>The, \(\theta\) given below would form an apt decision boundary,</p>
+
+<script type="math/tex; mode=display">\theta = 
+  \begin{bmatrix}
+    -1 \\ 0 \\ 0 \\ 1 \\ 1 \\
+  \end{bmatrix} \tag{11}</script>
+
+<p>Substituting (12) in (11),</p>
+
+<script type="math/tex; mode=display">\theta^T x = -1 + x_1^2 + x_2^2</script>
+
+<p>So, from (7), the decision boundary is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    -1 + x_1^2 + x_2^2 &= 0 \\
+    x_1^2 + x_2^2 &= 1
+  \end{align} %]]></script>
+
+<p>Which the equation of a circle at origin with radius 0, as can be seen in the plot above. And, using the \(\theta\) from (12) and hypothesis from (11) , (7) can be written as,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    \text{predict } y &= 1 \text{, if } -1 + x_1^2 + x_2^2 \geq 0 \text{ or } x_1^2 + x_2^2 \geq 1 \\
+    \text{predict } y &= 0 \text{, if } -1 + x_1^2 + x_2^2 \lt 0 \text{ or } x_1^2 + x_2^2 \lt 1 \\
+  \end{align}
+  \tag{12} %]]></script>
+
+<blockquote>
+  <p>As the order of features is increased more and more complex decision boundaries can be achieved by logistic regression.</p>
+</blockquote>
+
+<p><strong>Gradient Descent is used to fit the parameter values \(\theta\) in (9) and (12).</strong></p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/wlPeP/classification" target="_blank">Machine Learning: Coursera - Classification</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/RJXfB/hypothesis-representation" target="_blank">Machine Learning: Coursera - Hypothesis Representation</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/WuL1H/decision-boundary" target="_blank">Machine Learning: Coursera - Decision Boundary</a></small><br /></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Classification and Logistic Regression&url=http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://machinelearningmedium.com/2017/08/31/classification-and-representation/&title=Classification and Logistic Regression&summary=Logistic regression, or logit regression, or logit model is a regression model where the dependent variable is categorical&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Classification and Logistic Regression&amp;body=Check out this site http://machinelearningmedium.com/2017/08/31/classification-and-representation/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-08-31 00:00">31 Aug 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

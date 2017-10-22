@@ -1,0 +1,25 @@
+---
+layout: default
+title: Tags
+permalink: /tags/
+---
+
+{% include cover.html %}
+
+<main class="content" role="main">
+
+<h5 class="index-headline featured"><span>Tags</span></h5>
+
+<div class="wrap">
+{% assign sorted_tags = site.tags | sort %}
+{% for tag in sorted_tags %}
+<div class="tile">
+  <div class="text">
+  <a href="{{ site.baseurl }}/tag/{{ tag.first | slugify }}" class='category-links'><h1>{{ tag.first }}</h1></a>
+  </div>
+ </div>
+{% endfor %}
+</div>
+
+
+</main>

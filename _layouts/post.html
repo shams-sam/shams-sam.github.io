@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  {% include head.html %}
+  <body itemscope itemtype="http://schema.org/Article">
+    {% include header.html %}
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url({{ site.author.image | prepend: site.baseurl }})">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">{{ site.author.name }}</h4>
+          <h5 class="author-name"> {{site.author.description}} </h5>
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d" }}</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image" {% if page.cover %} style="background-image: url({{ page.cover | prepend: site.baseurl }}) {% else %} style="background-image: url({{ site.cover | prepend: site.baseurl }}) {% endif %}">
+        </div>
+    </div>
+    {% if page.cover_source %}
+    <figcaption>Image Source: {{ page.cover_source }}</figcaption>
+    {% endif %}
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">{{ page.title }}</h1>
+            <h2 class="post-description">{{ page.description }}</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          {{content}}
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            {% for tag in page.tags %}
+              <div class="tile">
+                <div class="text">
+                <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class='category-links'><h1>{{ tag }}</h1></a>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <section class="share">
+            {% include share_bar.html %}
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url({{site.author.image | prepend: site.baseurl}})">Blog Logo</div>
+              <h4>{{ site.author.name }}</h4>
+              <p class="bio">{{site.author.description}}</p>
+              <hr>
+              <p class="published">Published on <time datetime="{{ page.date | date: "%F %R" }}">{{ page.date | date_to_string }}</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="{{ "/feed.xml" | prepend: site.baseurl }}"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="{{site.url}}/">{{site.title}}</a> &copy; {{ site.time | date: '%Y' }}<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        {%if site.author.disqus %}
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = '{{site.author.disqus}}'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        {% endif %}
+      </article>
+    </main>
+    {% include footer.html %}
+    {% include javascripts.html %}
+  </body>
+</html>

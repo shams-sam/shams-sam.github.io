@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+- 2.1
+script: bundle exec jekyll build
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GH_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: master

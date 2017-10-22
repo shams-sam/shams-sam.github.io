@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Cost Function of Linear Regression | Machine Learning Medium</title>
+  <meta name="description" content="Linear RegressionLinear regression is an approach for modeling the relationship between a scalar dependent variable y and one or more explanatory variables (or independent variables) denoted X. The..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Cost Function of Linear Regression"/>
+  
+  <meta property="og:description" content="Linear RegressionLinear regression is an approach for modeling the relationship between a scalar dependent variable y and one or more explanatory variables (or independent variables) denoted X. The..." />
+  
+  <meta property="og:image" content="http://machinelearningmedium.com/assets/images/regression.jpeg" />
+  <meta property="og:url" content="http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-08-11T00:00:00+00:00">
+
+  <link rel="canonical" href="http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-08-11T00:00:00+00:00">Aug 11</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/regression.jpeg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn-images-1.medium.com/max/1440/1*VoNxmH8kRLKlNI_uuEoBvw.jpeg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Cost Function of Linear Regression</h1>
+            <h2 class="post-description">Linear regression is a linear approach for modeling the relationship between a scalar dependent variable y and one or more explanatory variables (or independent variables) denoted X</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="linear-regression">Linear Regression</h3>
+<p>Linear regression is an approach for modeling the relationship between a <strong>scalar dependent variable</strong> y and one or more <strong>explanatory variables</strong> (or <strong>independent variables</strong>) denoted X. The case of one explanatory variable is called <strong>simple linear regression</strong> or <strong>univariate linear regression</strong>. For more than one explanatory variable, the process is called <strong>multiple linear regression</strong>.
+In linear regression, the relationships are modeled using <strong>linear predictor functions</strong> whose unknown model parameters are estimated from the data. Such models are called linear models.</p>
+
+<h3 id="hypothesis">Hypothesis</h3>
+<p>The hypothesis for a univariate linear regression model is given by,</p>
+
+<script type="math/tex; mode=display">h_\theta (x) = \theta_0 + \theta_1\,x \tag{1}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(h_\theta (x)\) is the hypothesis function, also denoted as \(h(x)\) sometimes</li>
+      <li>\(x\) is the independent variable</li>
+      <li>\(\theta_0\) and \(\theta_1\) are the parameters of the  linear regression that need to be learnt</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="parameters-of-the-hypothesis">Parameters of the Hypothesis</h3>
+<p>In the above case of the hypothesis, \(\theta_0\) and \(\theta_1\) are the parameters of the hypothesis. In case of a univariate linear regression, \(\theta_0\) is the <strong>y-intercept</strong> and \(\theta_1\) is the <strong>slope</strong> of the line.</p>
+
+<p>Different values for these parameters will give different hypothesis function based on the values of slope and intercepts.</p>
+
+<h3 id="cost-function-of-linear-regression">Cost Function of Linear Regression</h3>
+
+<p><img src="/assets/2017-08-11-cost-function-of-linear-regression/fig-1-linear-regression.png?raw=true" alt="Linear Regression" height="300px" width="450px" /></p>
+
+<p>Assume we are given a dataset as plotted by the ‘x’ marks in the plot above. The aim of the linear regression is to find a line similar to the blue line in the plot above that fits the given set of training example best. Internally this line is a result of the parameters \(\theta_0\) and \(\theta_1\). So the objective of the learning algorithm is to find the best parameters to fit the dataset i.e. <strong>choose \(\theta_0\) and \(\theta_1\) so that \(h_\theta (x)\) is close to y for the training examples (x, y)</strong>. This can be mathematically represented as,</p>
+
+<script type="math/tex; mode=display">minimize_{\theta_0, \theta_1} {1 \over 2m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \tag{2}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(h_\theta(x^{(i)}) = \theta_0 + \theta_1\,x^{(i)} \)</li>
+      <li>\((x^{(i)},y^{(i)})\) is the \(i^{th}\) training data</li>
+      <li>m is the number of training example</li>
+      <li>\({1 \over 2}\) is a constant that helps cancel 2 in derivative of the function when doing calculations for gradient descent</li>
+    </ul>
+  </li>
+</ul>
+
+<p>So, <strong>cost function</strong> is defined as follows,</p>
+
+<script type="math/tex; mode=display">J(\theta_0, \theta_1) = {1 \over 2m} \sum_{i=1}^m \left( \hat{y^{(i)}} - y^{(i)} \right)^2 = {1 \over 2m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \tag{3}</script>
+
+<p>which is basically \( {1 \over 2} \bar{x}\) where \(\bar{x}\) is the mean of squares of \(h_\theta(x^{(i)}) - y^{(i)}\), or the difference between the predicted value and the actual value.</p>
+
+<p>And <strong>learning objective is to minimize the cost function</strong> i.e.</p>
+
+<script type="math/tex; mode=display">minimize_{\theta_0, \theta_1} J(\theta_0, \theta_1) \tag{4}</script>
+
+<p>This cost function is also called the <strong>squared error function</strong> because of obvious reasons. It is the most commonly used cost function for linear regression as it is simple and performs well.</p>
+
+<h3 id="understanding-cost-function">Understanding Cost Function</h3>
+
+<p>Cost function and Hypthesis are two different concepts and are often mixed up. Some of the key differences to remember are,</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Hypothesis \(h_\theta(x)\)</th>
+      <th style="text-align: center">Cost Function \(J(\theta_1)\)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">For a fixed value of \(\theta_1\), function of x</td>
+      <td style="text-align: center">Function of parameter \(\theta_1\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Each value of \(\theta_1\) corresponds to a different hypothesis as it is the slope of the line</td>
+      <td style="text-align: center">For any such value of \(\theta_1\), \(J(\theta_1)\) can be calculated using (3) by setting \(\theta_0 = 0\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">It is a linear line or a hyperplane</td>
+      <td style="text-align: center">Squared error cost function given in (3) is convex in nature</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Consider a simple case of hypothesis by setting \(\theta_0 = 0\), then (1) becomes</p>
+
+<script type="math/tex; mode=display">h_\theta (x) = \theta_1\,x \tag{5}</script>
+
+<p>which corresponds to different lines passing through the origin as shown in plots below as y-intercept i.e. \(\theta_0\) is nulled out.</p>
+
+<p><img src="/assets/2017-08-11-cost-function-of-linear-regression/fig-2-simple-hypothesis.png?raw=true" alt="Simple Hypothesis" height="300px" width="400px" /></p>
+
+<p>For the given training data, i.e. x’s marked on the graph, one can calculate cost function at different values of \(\theta_1\) using (3) which can be expressed in the following form using (5),</p>
+
+<script type="math/tex; mode=display">J(\theta_1) = {1 \over 2m} \sum_{i=1}^m \left( \theta_1\,x^{(i)} - y^{(i)} \right)^2 \tag{6}</script>
+
+<p>At \(\theta_1 = 2\),</p>
+
+<script type="math/tex; mode=display">J(2) = {1 \over 2 * 3} (1^2 + 2^2 + 3^2) = {14 \over 6} = 2.33</script>
+
+<p>At \(\theta_1 = 1\),</p>
+
+<script type="math/tex; mode=display">J(1) = {1 \over 2 * 3} (0^2 + 0^2 + 0^2) = 0</script>
+
+<p>At \(\theta_1 = 0.5\),</p>
+
+<script type="math/tex; mode=display">J(1) = {1 \over 2 * 3} (0.5^2 + 1^2 + 1.5^2) = 0.58</script>
+
+<p>On plotting points like this further, one gets the following graph for the cost function which is dependent on parameter \(\theta_1\).</p>
+
+<p><img src="/assets/2017-08-11-cost-function-of-linear-regression/fig-3-cost-function.png?raw=true" alt="Simple Hypothesis" height="300px" width="400px" /></p>
+
+<p>In the above plot each value of \(\theta_1\) corresponds to a different hypothesis. The <strong>optimization objective</strong> was to minimize the value of \(J(\theta_1)\) from (4), and it can be seen that the hypothesis correponding to the minimum \(J(\theta_1)\) would be the best fitting straight line through the dataset.</p>
+
+<p>The issue lies in the fact that we cannot always find the optimum global minima of the plot manually because <strong>as the number of dimensions increase, these plots would be much more difficult to visualize and interpret</strong>. So there is a need of an automated algorithm that can help achieve this objective.</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/rkTp3/cost-function" target="_blank">Machine Learning: Coursera - Cost Function</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/N09c6/cost-function-intuition-i" target="_blank">Machine Learning: Coursera - Cost Function Intuition I</a></small><br />
+<small><a href="https://en.wikipedia.org/wiki/Linear_regression" target="_blank">Linear Regression: Wikipedia - Cost Function</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Cost Function of Linear Regression&url=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/&title=Cost Function of Linear Regression&summary=Linear regression is a linear approach for modeling the relationship between a scalar dependent variable y and one or more explanatory variables (or independent variables) denoted X&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Cost Function of Linear Regression&amp;body=Check out this site http://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-08-11 00:00">11 Aug 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

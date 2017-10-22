@@ -1,0 +1,49 @@
+<div class="metabar">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="{{ site.baseurl }}/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="teaserimage">
+    <div class="teaserimage-image" {% if page.cover %} style="background-image: url({{ page.cover | prepend: site.baseurl }})" {% else %} style="background-image: url({{ site.cover | prepend: site.baseurl }})" {% endif %}>
+    </div>
+    <div class="blog-header">
+      <div class="table-cell">
+        <h1 class="blog-title">{{ site.title }}</h1>
+        <h2 class="blog-description"></h2>
+      </div>
+    </div>
+</div>
+
+<div class="sectionbar">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        {% if page.title != "Home" %}
+          <a href={{ "/" | prepend: site.baseurl }}>Home</a>
+        {% endif %}
+        {% for category in site.category %}
+        <a href="{{ site.baseurl }}/tag/{{ category.first[0] }}/">{{ category.first[1] }}</a>
+        {% endfor %}
+        <span class="right-padding-22">|</span>
+        <a href={{ "/tags/" | prepend: site.baseurl }} class="{% if page.url == node.url %} active{% endif %}">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        {% for social in site.social %}
+          {% if social.url %}
+              <a class="icon-{{ social.icon }}" href="{{ social.url }}" {% if social.desc %} title="{{ social.desc }}"{% endif %} target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-{{ social.icon }} fa-stack-1x"></i>
+                </span>
+              </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

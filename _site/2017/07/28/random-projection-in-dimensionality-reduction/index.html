@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Random Projection in Dimensionality Reduction | Machine Learning Medium</title>
+  <meta name="description" content="IntroductionRandom Projections have emerged as a powerful method for dimensionality reduction. Theoretical results indicate that it preserves distances quite nicely but empirical results are sparse..." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Random Projection in Dimensionality Reduction"/>
+  
+  <meta property="og:description" content="IntroductionRandom Projections have emerged as a powerful method for dimensionality reduction. Theoretical results indicate that it preserves distances quite nicely but empirical results are sparse..." />
+  
+  <meta property="og:image" content="http://machinelearningmedium.com/assets/images/projection.jpg" />
+  <meta property="og:url" content="http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-07-28T00:00:00+00:00">
+
+  <link rel="canonical" href="http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-07-28T00:00:00+00:00">Jul 28</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/projection.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Staircase_perspective.jpg/1200px-Staircase_perspective.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Random Projection in Dimensionality Reduction</h1>
+            <h2 class="post-description">The dimensions and distribution of random projections matrices are controlled so as to preserve the pairwise distances between any two samples of the dataset.</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Random Projections have emerged as a powerful method for dimensionality reduction. Theoretical results indicate that it <strong>preserves distances</strong> quite nicely but empirical results are <strong>sparse</strong>. It is often employed in dimensionality reduction in both <strong>noisy and noiseless data</strong> especially image and text data. Results of projecting on <strong>random lower-dimensional subspace</strong> yields results comparable to conventional methods like PCA etc but using it is <strong>computationally less expensive</strong> than the traditional alternatives.</p>
+
+<h3 id="curse-of-dimensionality">Curse of Dimensionality</h3>
+
+<ul>
+  <li>High dimensional data <strong>restricts the choice</strong> of data processing methods.</li>
+  <li>A statistically optimal way of dimensionality reduction is to project the data onto a lower-dimensional orthogonal subspace that <strong>captures as much of the variations of the data as possible</strong>. The most widely used method of this sort is PCA (<strong>Principal Component Analysis</strong>).</li>
+  <li>Drawback of PCA is however that it is <strong>computationally expensive</strong> to calculate as the dimensions of data increases.</li>
+</ul>
+
+<h3 id="johnson-lindenstrauss-lemma">Johnson-Lindenstrauss Lemma</h3>
+
+<p><strong>If points in vector space are projected onto a randomly selected subspace of suitably high dimensions, then the distances between the points are approximately preserved.</strong></p>
+
+<h3 id="random-projection-rp">Random Projection (RP)</h3>
+
+<ul>
+  <li>In RP, a higher dimensional data is projected onto a lower-dimensional subspace <strong>using a random matrix whose columns have unit length</strong>.</li>
+  <li>RP is computationally efficient, yet accurate enough for this purpose as it does not introduce a significant distortion in the data.</li>
+  <li>
+    <p>It is not sensitive to impulse noise. So RP is promising alternative to some existing methods in <strong>noise reduction</strong> (like mean filtering) too.</p>
+  </li>
+  <li>The original d-dimensional data is projected to a k-dimensional \((k \lt \lt d)\) through the origin, using a random \(k * d\) matrix R whose columns have unit lengths. It is given by</li>
+</ul>
+
+<script type="math/tex; mode=display">X_{k*N}^{RP} = R_{k*d} \, X_{d*N} \tag{1}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>\(X_{k*N}^{RP}\) is the k-dimensional random projection</li>
+      <li>\(R_{k*d}\) is the random matrix used for transformation</li>
+      <li>\(X_{d*N}\) are the original set of N d-dimensional observations</li>
+    </ul>
+  </li>
+  <li>
+    <p>The key idea of random mapping arises from <strong>Johnson-Lindenstrauss Lemma</strong></p>
+  </li>
+  <li><strong>Complexity</strong>
+    <ul>
+      <li>Forming a random matrix R and projecting d * N data matrix X into k dimensions is of the order <strong>O(dkN)</strong></li>
+      <li>If X is a sparse matrix with c non-zero values per column, then the complexity is <strong>O(ckN)</strong></li>
+    </ul>
+  </li>
+  <li>
+    <p>Theoretically, equation (1) is not a projection because R is generally not orthogonal. A linear mapping like (1) can cause significant distortion in data if R is not orthogonal. <strong>Orthogonalizing R is computationally expensive.</strong></p>
+  </li>
+  <li>
+    <p>Instead of orthogonalizing, RP relies on the result presented by Hecht-Neilsen i.e. <strong>In a high dimensional space, there exists a much larger number of almost orthogonal than orthogonal directions.</strong> Thus the vectors with random directions might be sufficiently close to orthogonal, and equivalently \(R^TR\) would approximate an identity matrix.</p>
+  </li>
+  <li>
+    <p>Experimental results show the mean squared difference between \(R^TR\) and identity matrix is around <strong>1/k per element</strong>.</p>
+  </li>
+  <li>Euclidean distances between \(x_1\) and \(x_2\) in the original large-dimensional space is given by</li>
+</ul>
+
+<script type="math/tex; mode=display">||x_1 - x_2||</script>
+
+<ul>
+  <li>After RP, this distance can be approximated by <strong>scaled Euclidean distance</strong> of these vectors in reduced spaces:</li>
+</ul>
+
+<script type="math/tex; mode=display">\sqrt{d \over k} || Rx_1 - Rx_2 ||</script>
+
+<ul>
+  <li>
+    <p>Where d is the original and k is the reduced dimensionality of the data set and <strong>scaling factor</strong> \(\sqrt{d \over k}\) takes into account the decrease in dimensionality of the data set.</p>
+  </li>
+  <li>
+    <p>According to <strong>Johnson-Lindenstrauss Lemma</strong>, the expected norm of a projection of unit vector onto a random subspace through origin is \(\sqrt{k \over d}\).</p>
+  </li>
+  <li>
+    <p>The choice of R matrix is generally such that \(r_{ij}\) of R are often <strong>Gaussian Distributed</strong> although many other choices are available. There is a peculiar result which says one can use the following distribution which is much simpler.</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation}
+    X= \sqrt{3} * 
+    \begin{cases}
+      +1 & \text{ with probability }\ {1\over6} \\
+      0 & \text{ with probability }\ {2\over3} \\
+      -1 & \text{ with probability }\ {1\over6}
+    \end{cases}
+    \tag{2}
+  \end{equation} %]]></script>
+
+<ul>
+  <li>
+    <p>Practically, all zero mean, unit variance distributions of \(r_{ij}\) would give a mapping that satisfies the Johnson-Lindenstrauss Lemma.</p>
+  </li>
+  <li>
+    <p>Equation (2) helps reduce the computational expense even further.</p>
+  </li>
+</ul>
+
+<h3 id="principal-component-analysis-pca">Principal Component Analysis (PCA)</h3>
+
+<ul>
+  <li>PCA is eigenvalue decomposition of the data covariance matrix. It is computed as</li>
+</ul>
+
+<script type="math/tex; mode=display">E\{XX^T\} = E \Lambda E^T</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>columns of E are the eigenvectors of the data covariance matrix \(E{XX^T}\)</li>
+      <li>\(\Lambda\) is a the diagonal matrix containing the respective eigenvalues.</li>
+    </ul>
+  </li>
+  <li>Dimensionality reduction of data set is obtained by projection on a subspace spanned by most important eigenvectors, given by</li>
+</ul>
+
+<script type="math/tex; mode=display">X^{PCA} = E_k^T X</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>The d * k matrix \(E_k\) contains the k eigenvectors corresponding to the k larges eigenvalues.</li>
+    </ul>
+  </li>
+  <li>
+    <p>PCA is the optimal way to project data in the mean-square sense, i.e. the squared error introduced in the projection is minimized over all projections onto a k-dimensional space.</p>
+  </li>
+  <li>
+    <p>Eigen value decomposition of the data covariance matrix is very expensive.</p>
+  </li>
+  <li><strong>Computational Complexity</strong> : \(O(d^2N) + O(d^3)\)</li>
+</ul>
+
+<h3 id="singular-value-decomposition-svd">Singular Value Decomposition (SVD)</h3>
+
+<ul>
+  <li>Closely related to PCA, singular value decomposition is given by</li>
+</ul>
+
+<script type="math/tex; mode=display">X = USV^T</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>Orthogonal matrices U and V contain the left and right singular vectors of X respectively</li>
+      <li>The diagonal matrix S contains the singular values of X.</li>
+    </ul>
+  </li>
+  <li>Using SVD, the dimensionality of data can be reduced by projecting data onto the space spanned by the left singular vectors corresponding to the k largest singular values, given by</li>
+</ul>
+
+<script type="math/tex; mode=display">X^{SVD} = U_k^T X</script>
+
+<ul>
+  <li>
+    <p>Where \(U_k\) is of size d * k and contains k singular vectors.</p>
+  </li>
+  <li>
+    <p>Like PCA, SVD is also expensive to compute.</p>
+  </li>
+  <li>
+    <p>For sparse data matrix \(X_{d*N}\) with about c non-zero entries per column, the <strong>computational complexity</strong> is of the order <strong>O(dcN)</strong>.</p>
+  </li>
+</ul>
+
+<h3 id="latent-semantic-indexing-lsi">Latent Semantic Indexing (LSI)</h3>
+
+<ul>
+  <li>
+    <p>It is a dimensionality reduction method for text document data.</p>
+  </li>
+  <li>
+    <p>Using LSI, the document data is represented in a <strong>lower-dimensional “topic” space: the documents are characterized by some underlying (latent, hidden) concepts referred to by the terms</strong>.</p>
+  </li>
+  <li>
+    <p>LSI can be computed either by PCA or SVD of the data matrix of N d-dimensional document vectors.</p>
+  </li>
+</ul>
+
+<h3 id="discrete-cosine-transform-dct">Discrete Cosine Transform (DCT)</h3>
+
+<ul>
+  <li>
+    <p>Widely used for image compression and can be used for dimensionality reduction of image data.</p>
+  </li>
+  <li>
+    <p>Computational more efficient than PCA and has performance approachable to PCA.</p>
+  </li>
+  <li>
+    <p>DCT is optimal for human eye: <strong>the distortions introduced occur at the highest frequencies only</strong>, neglected by human eye as noise.</p>
+  </li>
+  <li>
+    <p>DCT can be performed by simple matrix operations: <strong>Image is first transformed to DCT space and dimensionality reduction is achieved during inverse transform by discarding the transform coefficients corresponding to highest frequencies.</strong></p>
+  </li>
+  <li>
+    <p>Computing DCT is <strong>not data-dependent</strong>, unlike PCA that needs the eigenvalue decomposition of data covariance matrix, which is why DCT is orders of magnitude cheaper to compute than PCA.</p>
+  </li>
+  <li>
+    <p><strong>Computational Complexity</strong> : \(O(dN\,log_2(dN))\) for data matrix of size d * N.</p>
+  </li>
+</ul>
+
+<h3 id="notes-about-random-projection">Notes About Random Projection</h3>
+
+<ul>
+  <li>
+    <p>RP does not distort the data significantly more than PCA. Also at smaller dimensions PCA seems to distort data more than RP because of removal of significantly important eigenvectors by elimination.</p>
+  </li>
+  <li>
+    <p>Computational complexity of RP is significantly lesser than other methods like PCA, but more than DCT.</p>
+  </li>
+  <li>
+    <p>So it can be inferred that <strong>RP are a better choice given the trade off of DCT accuracy for reduced complexity</strong>.</p>
+  </li>
+  <li>
+    <p><strong>At smaller dimension RP outperforms DCT both on accuracy and complexity</strong>.</p>
+  </li>
+  <li>
+    <p>Use case can often be a factor in considering the most optimal way of dimensionality reduction. Say, even though RP outperforms DCT, it cannot be used for purposes where aim is to transmit the minimized dataset and re-obtain original data on the other end for human viewing.</p>
+  </li>
+  <li>
+    <p><strong>Psuedoinverse computation of R is expensive</strong> to compute but because R is almost orthogonal, \(R^T\) would be a <strong>good approximation of psuedoinverse</strong>. So the image can be computed from RP as,</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">X_{d*N}^{new} = R_{d*k}^T X_{k*N}^{RP}</script>
+
+<ul>
+  <li>
+    <p>Where \(X_{k*N}^{RP}\) is the result of random projection. But the <strong>obtained image is visually worse than a DCT compressed image</strong>, to a human eye.</p>
+  </li>
+  <li>
+    <p>So RP would serve very well in applications where distance or similarity between data vectors should be preseved under dimensionality reduction as well as possible, but where data is not intended to be visualized for the human eye, eg. machine vision.</p>
+  </li>
+  <li>
+    <p>In case of text dataset, the error in dimensionality reduction is calculated by calculating the <strong>inner product among randomly chosen data pairs before and after transform</strong>. It is observed that RP is not as accurate as SVD but the error may be neglectable in various use cases. The possible cause could be that the Johnson-Lindenstrauss makes statement about Euclidean distance, but <strong>Inner product is a different metric even if Euclidean distance is maintained well</strong>.</p>
+  </li>
+</ul>
+
+<h2 id="references">REFERENCES</h2>
+
+<p><small><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.24.5135&amp;rep=rep1&amp;type=pdf" target="_blank">Random projection in dimensionality reduction: Applications to image and text data</a></small><br />
+<small><a href="http://scikit-learn.org/stable/auto_examples/manifold/plot_lle_digits.html#sphx-glr-auto-examples-manifold-plot-lle-digits-py" target="_blank">Various Embeddings on Digits Data - Python Sklearn</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/concept" class='category-links'><h1>concept</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Random Projection in Dimensionality Reduction&url=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/&title=Random Projection in Dimensionality Reduction&summary=The dimensions and distribution of random projections matrices are controlled so as to preserve the pairwise distances between any two samples of the dataset.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Random Projection in Dimensionality Reduction&amp;body=Check out this site http://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-07-28 00:00">28 Jul 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

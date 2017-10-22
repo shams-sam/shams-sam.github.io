@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Discrete Random Variables | Machine Learning Medium</title>
+  <meta name="description" content="Probability Series  Basic Probability Concepts  Conditional Probability and Bayes’ Rule  Discrete Random Variables  Continuous Random Variables· · ·" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Discrete Random Variables"/>
+  
+  <meta property="og:description" content="Probability Series  Basic Probability Concepts  Conditional Probability and Bayes’ Rule  Discrete Random Variables  Continuous Random Variables· · ·" />
+  
+  <meta property="og:image" content="http://machinelearningmedium.com/assets/images/dice-steam.jpg" />
+  <meta property="og:url" content="http://machinelearningmedium.com/2017/06/23/discrete-random-variables/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-06-23T00:00:00+00:00">
+
+  <link rel="canonical" href="http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-06-23T00:00:00+00:00">Jun 23</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/dice-steam.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://myplanning.ca/wp-content/uploads/2016/09/dice-game-black-close-up.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Discrete Random Variables</h1>
+            <h2 class="post-description">A random variable is a variable whose value is a numerical outcome of a random phenomenon. A discrete random variable X has a countable number of possible values.</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="probability-series">Probability Series</h3>
+
+<blockquote>
+  <p><a href="/2017/06/16/basic-probability-models-and-rules/">Basic Probability Concepts</a></p>
+
+  <p><a href="/2017/06/22/bayes-rule-conditional-probability-chain-rule/">Conditional Probability and Bayes’ Rule</a></p>
+
+  <p><a href="/2017/06/23/discrete-random-variables/">Discrete Random Variables</a></p>
+
+  <p><a href="/2017/07/28/continuous-random-variable/">Continuous Random Variables</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="discrete-random-variables">Discrete Random Variables</h3>
+
+<p>Even though it is named variable, discrete random variable is actually a function that maps the sample space to a set of discrete real values.</p>
+
+<script type="math/tex; mode=display">X : S \rightarrow R \tag{1}</script>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>X is the random variable</li>
+      <li>S is the sample space</li>
+      <li>R is the set of real numbers</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="probability-mass-function">Probability Mass Function</h3>
+
+<p>Probability mass function is the probability defined over a given random variable, i.e., it gives the probability that a discrete random variable is exactly equal to some value in the sample space, S.</p>
+
+<ul>
+  <li>For a random variable X, \(p(X=c)\) is denoted as \(p(c)\) and the mapping of each value in sample space to their respective probabilities is known as <strong>pmf</strong>.</li>
+  <li>For all values c that are not is sample space \(p(c) = 0\) because it is pointing to an empty set.</li>
+</ul>
+
+<script type="math/tex; mode=display">0 \leq p(c) \leq 1 \tag{2}</script>
+
+<h3 id="commutative-distribution-function">Commutative Distribution Function</h3>
+
+<p>Probability defined over an inequality such as \(X \leq c\) gives probabilities of all the events that satisfy the condition from \(-\infty\) to c i.e. the probability value estimate for X less than or equal to c. Mathematically,</p>
+
+<script type="math/tex; mode=display">CD(c) = \sum_b p(b)\text{ for all } -\infty \leq b \leq c \tag{3}</script>
+
+<h3 id="explaination">Explaination</h3>
+
+<ul>
+  <li>Set has 5 boys and 5 girls.</li>
+  <li>3 kids selected at random but gender not known.</li>
+  <li>X is the random variable that denotes number of girls selected.</li>
+  <li>Event c such that \(X(c) = 3\) is given by set \(c = \{(GGG)\}\) i.e. all three girls selected are girls.</li>
+  <li>The pmf for random variable X will be as follows:</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">a</th>
+      <th style="text-align: center">p(a)</th>
+      <th style="text-align: center">CD(a)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">1/12</td>
+      <td style="text-align: center">1/12</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">5/12</td>
+      <td style="text-align: center">6/12</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">5/12</td>
+      <td style="text-align: center">11/12</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">1/12</td>
+      <td style="text-align: center">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>Calculations:
+    <ul>
+      <li>Number of ways of selecting k kids from total of N kids is given by \(C_k^N = \frac{N!}{k! (N-k)!}\) implies \(C_3^{10} = \frac{10!}{3! (10-3)!} = 120\) for N = 10 and k = 3.</li>
+      <li>value 1 : a = 0 means that no girl is selected which implies that k boys are selected out of the total B boys. The number of ways this can be accomplished is given by \(C_k^B = \frac{B!}{k! (B-k)!}\) implies \(C_3^5 = \frac{5!}{3! (5-3)!} = 10\) for B = 5 and k = 3.</li>
+      <li>For commutative distribution \(CD(2) = p(0) + p(1) + p(2) = 11/12\).</li>
+      <li>Similarly the value of \(p(a)\) and \(CD(a)\) at other values of \(a\) can be calculated.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="random-variable-metrics">Random Variable Metrics</h3>
+
+<p><strong>Expected Value</strong></p>
+
+<p>The average or mean value calculated over all the possible outcomes of the random variable.</p>
+
+<p>\[E(X) = \sum_n v_i * p(v_i) \tag{3}\]</p>
+
+<ul>
+  <li>X is the random variable.</li>
+  <li>\(v_i\) is the value the random variable takes with probability \(p(v_i)\).</li>
+  <li>sample space size is  n.</li>
+  <li>often represented by \(\mu\).</li>
+  <li>it is a measure of central tendency of the random variable.</li>
+  <li>Some other properties of expected value of a random variable:</li>
+</ul>
+
+<script type="math/tex; mode=display">E(X+Y) = E(X) + E(Y) \tag{4}</script>
+
+<script type="math/tex; mode=display">E(cX + d) = c * E(X) + d \label{5} \tag{5}</script>
+
+<p><strong>Variance and Standard Deviation</strong></p>
+
+<p>Variance gives the dispersion of probability mass around the mean value (i.e. E(X), expected value) of the random variable.</p>
+
+<p>\[Var(X) = E((X-\mu)^2) \tag{6}\]
+\[\sigma = \sqrt (Var(X)) \tag{7}\]</p>
+
+<ul>
+  <li>\(\sigma\) is the standard deviation.</li>
+  <li>Some other properties of variance of a random variable:</li>
+</ul>
+
+<p>\[Var(X) = E(X^2) - (E(X))^2 \label{8} \tag{8}\]
+\[Var(aX + b) = a^2 Var(X) \label{9} \tag{9}\]
+\[Var(X+Y) = Var(X) + Var(Y) \text{ iff X and Y are independent } \tag{10}\]</p>
+
+<p><strong>Derivation of equation \eqref{8}</strong></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    Var(X) & = E((X- \mu)^2) \\
+    & = E((X - E(X))^2) \\
+    & = E(X^2 - 2XE(X) + E(X)^2) \\
+    & = E(X^2) - 2E(X) E(X) + E(X)^2 \\
+    & = E(X^2) - E(X)^2
+  \end{align} %]]></script>
+
+<p><strong>Derivation of equation \eqref{9} using equations \eqref{5}, \eqref{8}</strong></p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    Var(aX + b) & = E((aX + b)^2) - (E(aX + b))^2 \\
+    & = E(a^2X^2 + 2abX + b^2) - (aE(X) + b)^2 \\
+    & = a^2 E(X^2) + 2abE(X) + b^2 - a^2 E^2(X) - 2abE(X) - b^2 \\
+    & = a^2 (E(X^2) - E^2(X)) \\
+    & = a^2 Var(X)
+  \end{align} %]]></script>
+
+<h3 id="some-specific-distributions">Some Specific Distributions</h3>
+
+<p><strong>Uniform Distribution</strong></p>
+
+<ul>
+  <li>All outcomes are eqully possible.</li>
+  <li>Eg: Probability of getting a heads or tails for a fair coin.</li>
+  <li>Uniform(N) implies N outcomes and each has probability 1/N.</li>
+</ul>
+
+<p><strong>Bernoulli Distribution</strong></p>
+
+<ul>
+  <li>Used to model the random experiment where each trail has exactly 2 possible outcomes.</li>
+  <li>One possible outcome is termed as success and other as failure.</li>
+  <li>Parameter \(p\) is the probability of success in an experiment.</li>
+  <li>Random variable \(X \in \{0, 1\}\).</li>
+  <li>X = 1 has probability \(p\) and X = 0 has probability \(1-p\) where 0 is denoting failure and 1 denoting success.</li>
+</ul>
+
+<p><strong>Binomial Distribution</strong></p>
+
+<ul>
+  <li>Used to model \(n\) independent traits of Bernoulli Distribution.</li>
+  <li>If X follows Binomial(n, p) then, X = k implies, the event of k successes in n independent Bernoulli trials.</li>
+</ul>
+
+<p>\[P(X=k) = C_k^n * (p^k) * ((1-p)^{n-k})\]</p>
+
+<ul>
+  <li>\(C_k^n\) is the number of ways of picking k success events in n total trials.</li>
+  <li>\((p^k) * ((1-p)^{n-k})\) gives the combined probability of the n Bernoulli trails.</li>
+</ul>
+
+<p><strong>Geometric Distribution</strong></p>
+
+<ul>
+  <li>Also defined over Bernoulli distribution.</li>
+  <li>Models the event of k failures before first success.</li>
+  <li>\(geometric(p)\) is given by</li>
+</ul>
+
+<p>\[P(X=k) = (1-p)^k * p\]</p>
+
+<p>where \(X = k\) is the event where first success occured after k failures.</p>
+
+<ul>
+  <li>If X and Y follows geometric distribution with same probability p, then \(X + Y\) is also a geometric distribution.</li>
+</ul>
+
+<p><strong>Expected Value and Variance for Distributions</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Distribution</th>
+      <th style="text-align: center">E(X)</th>
+      <th style="text-align: center">Var(X)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Uniform</td>
+      <td style="text-align: center">\(\frac{n+1}{2}\)</td>
+      <td style="text-align: center">\(\frac{n^2-1}{12}\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Bernoulli</td>
+      <td style="text-align: center">\(p\)</td>
+      <td style="text-align: center">\(p(1-p)\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Binomial</td>
+      <td style="text-align: center">\(np\)</td>
+      <td style="text-align: center">\(np(1-p)\)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">Geometric</td>
+      <td style="text-align: center">\(\frac{1-p}{p}\)</td>
+      <td style="text-align: center">\(\frac{1-p}{p^2}\)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.hackerearth.com/practice/machine-learning/prerequisites-of-machine-learning/discrete-random-variables/tutorial/" target="_blank">Discrete Random Variables</a></small>
+<small><a href="https://revisionmaths.com/advanced-level-maths-revision/statistics/expectation-and-variance" target="_blank">Expectation and Variance</a></small>
+<small><a href="https://en.wikipedia.org/wiki/Variance" target="_blank">Variance</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/probability" class='category-links'><h1>probability</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Discrete Random Variables&url=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://machinelearningmedium.com/2017/06/23/discrete-random-variables/&title=Discrete Random Variables&summary=A random variable is a variable whose value is a numerical outcome of a random phenomenon. A discrete random variable X has a countable number of possible values.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Discrete Random Variables&amp;body=Check out this site http://machinelearningmedium.com/2017/06/23/discrete-random-variables/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-06-23 00:00">23 Jun 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

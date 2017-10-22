@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Word2Vec | Machine Learning Medium</title>
+  <meta name="description" content="Distributed Vector Representation Series  Word2Vec  Improvements on Word2Vec· · ·" />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Word2Vec"/>
+  
+  <meta property="og:description" content="Distributed Vector Representation Series  Word2Vec  Improvements on Word2Vec· · ·" />
+  
+  <meta property="og:image" content="http://machinelearningmedium.com/assets/images/wordembedding.png" />
+  <meta property="og:url" content="http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-07-11T00:00:00+00:00">
+
+  <link rel="canonical" href="http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+
+
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"> -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-07-11T00:00:00+00:00">Jul 11</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/wordembedding.png) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: http://www.deep-solutions.net/blog/wordembeddings/wordembedding.png</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Word2Vec</h1>
+            <h2 class="post-description">A language modeling or feature learning technique mapping words to vector representations.</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="distributed-vector-representation-series">Distributed Vector Representation Series</h3>
+
+<blockquote>
+  <p><a href="/2017/07/11/word-to-vector-word-representations/">Word2Vec</a></p>
+
+  <p><a href="/2017/07/26/improvements-on-word2vec/">Improvements on Word2Vec</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="introduction">Introduction</h3>
+<ul>
+  <li>Computing the <strong>continuous vector representations</strong> of words from very large data sets.</li>
+  <li>Current <strong>state-of-the-art</strong> performance on semantic and syntactic word similarities.</li>
+  <li>Classical techniques treat words as <strong>atomic</strong> units without any notion of similarities between them because they are represented using indices in a vocabulary (bag-of-words).</li>
+  <li>Advantages of classical techniques lie in <strong>simplicity, robustness</strong> and accuracy of simple model when trained on large data sets over complex models trained on less data.</li>
+  <li>Disadvantage of these methods is observed when the amount of data available to train is limited in certain fields like say, automatic speech recognition and machine translations.</li>
+</ul>
+
+<h3 id="previous-works">Previous Works</h3>
+
+<ul>
+  <li><strong>Neural Network Language Model (NNLM)</strong>:
+    <ul>
+      <li>Consists of input, projection, hidden and output layers.</li>
+      <li>Input layer has N previous words encoded using 1-in-V coding, where V is the size of Vocabulary.</li>
+      <li>Projection layer, P has a projection of input layer has a dimensionality of \(N * D\) and uses a projection matrix.</li>
+      <li>High complexity between projection and hidden layer due to dimensions of the dense projection layer.</li>
+      <li>Computational complexity of NNLM per training example is given by</li>
+    </ul>
+
+    <p>\[Q = N * D + N * D * H + H * V\]</p>
+
+    <ul>
+      <li>Where
+        <ul>
+          <li>Q is the computational cost</li>
+          <li>N is the number of previous words used for learning</li>
+          <li>D is the dimensionality of the projection layer</li>
+          <li>H is the size of hidden layer</li>
+          <li>V is the size of the vocabulary and output layer.</li>
+        </ul>
+      </li>
+      <li>\(H * V\) is the dominating term above which was proposed to be reduced to as less as \(H * log_2(V)\) using
+        <ul>
+          <li>Hierarchical softmax</li>
+          <li>Avoiding normalized models for training</li>
+          <li>Binary tree representations of the vocabulary using Huffman Trees</li>
+        </ul>
+      </li>
+      <li>So, the major complexity is dominated by \(N * D * H\)</li>
+    </ul>
+  </li>
+  <li><strong>Recurrent Neural Network Language Model (RNNLM)</strong>:
+    <ul>
+      <li>Overcome the limitations of NNLM such as need to specify the context length, N (order of the model N)</li>
+      <li>Theoretically RNNs can efficiently represent more complex patterns than shallow neural networks.</li>
+      <li>No projection layer</li>
+      <li>Consists of Input, hidden and output layers.</li>
+      <li>Develops a short term memory of seen data in the self-fed time delayed hidden layer.</li>
+      <li>Computational complexity of NNLM per training example is given by</li>
+    </ul>
+
+    <p>\[Q = H * H + H * V\]</p>
+    <ul>
+      <li>Where
+        <ul>
+          <li>Q is the computational cost</li>
+          <li>H is the size of hidden layer</li>
+          <li>V is the size of the vocabulary and output layer.</li>
+        </ul>
+      </li>
+      <li>Word representations D have the same dimensionality as the hidden layer H.</li>
+      <li>Again, \(H * V\) will be reduced to \(H * log_2(V)\) using Hierarchical softmax.</li>
+      <li>So, the major complexity is dominated by \(H * H\)</li>
+    </ul>
+  </li>
+  <li>It’s observed that most complexity is contributed by the non-linearity of the hidden layer in the networks.</li>
+</ul>
+
+<h3 id="continuous-bag-of-words-model-cbow">Continuous Bag-of-Words Model (CBOW)</h3>
+
+<ul>
+  <li>
+    <p>Similar to feedforward NNLM, but the non-linear hidden layer is removed.</p>
+  </li>
+  <li>
+    <p>Projection layer is shared for all the words. So all words are projected into the same position and their vectors are averaged.</p>
+  </li>
+  <li>
+    <p>Model is called bag-of-words model because the order of words in the history or future does not influence the projections.</p>
+  </li>
+  <li>
+    <p>Unlike NNLM, words from future are used to with the best result found with 4 history and 4 future words in context.</p>
+  </li>
+  <li>
+    <p>Training criterion is the correct classification of the current(middle) word.</p>
+  </li>
+  <li>
+    <p>Training complexity is given by</p>
+  </li>
+</ul>
+
+<p>\[Q = N * D + D * log_2(V)\]</p>
+
+<ul>
+  <li>
+    <p>Model is continuous bag-of-words because unlike standard bag-of-words it uses continuous distributed representations of the context.</p>
+  </li>
+  <li>
+    <p>Weights between the input and the projection layer is shared for all words positions in the same way as in NNLM.</p>
+  </li>
+</ul>
+
+<h3 id="continuous-skip-gram-model">Continuous Skip-Gram Model</h3>
+
+<ul>
+  <li>
+    <p>Similar to CBOW but slight changes in training criterion.</p>
+  </li>
+  <li>
+    <p>Instead of predicting current word from the surrounding words in the window, current word is used to predict the words surrounding the current word.</p>
+  </li>
+  <li>
+    <p>Accuracy and quality of vector is found to increase as the number of context words predicted is increased, but that increased the computational complexity as well.</p>
+  </li>
+  <li>
+    <p>Training complexity is given by</p>
+  </li>
+</ul>
+
+<p>\[Q = C * (D + D * log_2(V))\]</p>
+
+<ul>
+  <li>Where
+    <ul>
+      <li>C is the maximum distance of the words. Say, C=5 is chosen then a number \(R \in [1, C]\) is selected randomly and then R words from history and R from future are correct labels of the current word.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="model-architectures">Model Architectures</h3>
+
+<p><img src="/assets/2017-07-11-word-to-vector-word-representations/fig-1-model-architectures.png?raw=true" alt="CBOW and Skip-Gram Model Architectures" /></p>
+
+<h3 id="results">Results</h3>
+
+<ul>
+  <li><strong>Algebraic operations</strong> on the vector representations actually give meaningful results like cosine similary of \(vector(X)\) is closest to \(vector(‘smallest’)\) where</li>
+</ul>
+
+<p>\[vector(X) = vector(‘biggest’)  - vector(‘big’) + vector(‘small’)\]</p>
+
+<ul>
+  <li>
+    <p><strong>Subtle relationships</strong> are learnt when accurate data is used. For example, France is to Paris as Germany is to Berlin.</p>
+  </li>
+  <li>
+    <p>After a certain point adding more dimensionality to the word vectors or adding more training data provides <strong>diminishing improvements</strong>.</p>
+  </li>
+  <li>
+    <p>NNLM vectors work better than RNNLM because word vectors in RNNLM are directly connected to non-linear hidden layer.</p>
+  </li>
+  <li>
+    <p>CBOW is better than NNLM on syntactic tasks and about the same on semantic tasks.</p>
+  </li>
+  <li>
+    <p>Skip-Gram works slightly worse than CBOW but better than NNLM on syntactic tasks and much better on semantic tasks.</p>
+  </li>
+  <li>
+    <p><strong>Training time</strong> for Skip-Gram model is greater than CBOW model.</p>
+  </li>
+</ul>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://arxiv.org/pdf/1301.3781.pdf" target="_blank">Efficient Estimation of Word Representations in Vector Space</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/nlp" class='category-links'><h1>NLP</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Word2Vec&url=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/&title=Word2Vec&summary=A language modeling or feature learning technique mapping words to vector representations.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Word2Vec&amp;body=Check out this site http://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-07-11 00:00">11 Jul 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="http://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'shams-sam'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+
+  </body>
+</html>

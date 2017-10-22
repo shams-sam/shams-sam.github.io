@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+{% include header.html %}
+
+<main class="content" role="main">
+
+    <h5 class="index-headline normal"><span>Tagged In: {{page.autopages.display_name}}</span></h5>
+    <div class="cf frame column-fit">
+
+      {% for post in paginator.posts %}
+        <article class="post column-post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+          <a href="{{ post.url | prepend: site.baseurl }}" itemprop="url">
+          <div class="featuredimage">
+            <div class="featuredimage-image pushup-image" {% if post.cover %}style="background-image: url({{ post.cover | prepend: site.baseurl }})" {% else %} style="background-image: url({{ site.cover | prepend: site.baseurl }})" {% endif %}>
+            </div>
+            <div class="featured-header">
+              <div class="table-cell">
+                <h1 class="featured-title">{{ post.title }}</h1>
+                {% if post.description %}
+                <h2 class="featured-description">{{ post.description }}</h2>
+                {% else %}
+                <h2 class="featured-description">{{ post.content | strip_html | truncatewords: 20 }}</h2>
+                {% endif %}
+              </div>
+              <div class="wrap">
+                {% for tag in post.tags %}
+                  <div class="tile">
+                    <div class="text">
+                    <a href="{{ site.baseurl }}/tag/{{ tag | slugify }}" class='category-links'><h1>{{ tag }}</h1></a>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          </a>
+        </article>
+      {% endfor %}
+    </div>
+
+    <nav class="pagination" role="navigation">
+      {% if paginator.next_page %}
+        <a class="newer-posts" href={{ paginator.next_page_path | prepend: site.baseurl | remove: 'index.html' }}>&larr; Older posts</a>
+      {% endif %}
+      <span class="page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+      {% if paginator.previous_page %}
+        <a class="older-posts" href={{ paginator.previous_page_path | prepend: site.baseurl | remove: 'index.html' }}>Newer posts &rarr;</a>
+      {% endif %}
+    </nav>
+
+</main>
