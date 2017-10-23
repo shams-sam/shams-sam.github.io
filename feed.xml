@@ -5,9 +5,161 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 23 Oct 2017 16:35:02 +0530</pubDate>
-    <lastBuildDate>Mon, 23 Oct 2017 16:35:02 +0530</lastBuildDate>
+    <pubDate>Mon, 23 Oct 2017 16:48:15 +0530</pubDate>
+    <lastBuildDate>Mon, 23 Oct 2017 16:48:15 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>Neural Networks: Cost Function and Backpropagation</title>
+        <description>&lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;\({(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots , (x^{(m)}, y^{(m)})}\) are the \(m\) training examples&lt;/li&gt;
+  &lt;li&gt;L is the &lt;strong&gt;total number of the layers&lt;/strong&gt; in the network&lt;/li&gt;
+  &lt;li&gt;\(s_l\) is the &lt;strong&gt;number of units (not counting the bias unit)&lt;/strong&gt; in the layer l&lt;/li&gt;
+  &lt;li&gt;K is the &lt;strong&gt;number of units in the output layer&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-10-03-neural-networks-cost-function-and-back-propagation/fig-1-neural-network-notations.png?raw=true&quot; alt=&quot;Neural Network Notations&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For example in the network shown above,
+    &lt;ul&gt;
+      &lt;li&gt;L = 4&lt;/li&gt;
+      &lt;li&gt;\(s_1 = 3,\, s_2 = 3,\, s_3 = 2,\, s_4 = 2\)&lt;/li&gt;
+      &lt;li&gt;K = 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;One vs All method is only needed if number of classes is greater than 2, i.e. if \(K \gt 2\), otherwise only one output unit is sufficient to build the model.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;cost-function-of-neural-networks&quot;&gt;Cost Function of Neural Networks&lt;/h3&gt;
+&lt;p&gt;Cost function of a neural network is a &lt;strong&gt;generalization of the cost function of the logistic regression&lt;/strong&gt;. The &lt;strong&gt;L2-Regularized&lt;/strong&gt; cost function of logistic regression from the post &lt;a href=&quot;/2017/09/15/regularized-logistic-regression/&quot; target=&quot;_blank&quot;&gt;Regularized Logistic Regression&lt;/a&gt;  is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)})) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\({\lambda \over 2m } \sum_{j=1}^n \theta_j^2\) is the &lt;strong&gt;regularization term&lt;/strong&gt;&lt;/li&gt;
+      &lt;li&gt;\(\lambda\) is the &lt;strong&gt;regularization factor&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Extending (1) to then neural networks which can have K units in the output layer the cost function is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \left[ \sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}\,log(h_\theta(x^{(i)}))_k + (1-y_k^{(i)})\,log(1 - (h_\theta(x^{(i)}))_k) \right] + {\lambda \over 2m } \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} (\theta_{ji}^{(l)})^2 \tag{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(h_\Theta(x) \in \mathbb{R}^K \)&lt;/li&gt;
+      &lt;li&gt;\((h_\theta(x))_i\) is the \(i^{th}\) output&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Here the summation term \(\sum_{k=1}^K\) is to &lt;strong&gt;generalize over the K output units&lt;/strong&gt; of the neural network by calculating the cost function and summing over all the output units in the network. Also following the convention in regularization, the &lt;strong&gt;bias term in skipped from the regularization penalty&lt;/strong&gt; in the cost function defination. Even if one includes the index 0, it would not effect the process in practice.&lt;/p&gt;
+
+&lt;h3 id=&quot;backpropagation-algorithm&quot;&gt;Backpropagation Algorithm&lt;/h3&gt;
+&lt;p&gt;Backpropagation algorithm is based on the &lt;strong&gt;repeated application of the error calculation&lt;/strong&gt; used for gradient descent similar to the regression techniques, and since it is repeatedly applied in the &lt;strong&gt;reverse order starting from output layer and continuing towards input layer&lt;/strong&gt; it is termed as backpropagation.&lt;/p&gt;
+
+&lt;p&gt;For a network with L layers the computation during &lt;strong&gt;foward propagation&lt;/strong&gt;, for an input \((x, y)\) would be as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+    a^{(1)} &amp;= x \\
+    z^{(2)} &amp;= \Theta^{(1)}\,a^{(1)} \\
+    a^{(2)} &amp;= g(z^{(2)}) \\
+    &amp; \vdots \\
+    a^{(L-1)} &amp;= g(z^{(L-1)}) \\
+    z^{(L)} &amp;= \Theta^{(L-1)}\,a^{(L-1)} \\
+    a^{(L)} &amp;= h_\Theta(x) = g(z^{(L)})
+  \end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;The \(h_\Theta(x)\) is the prediction. In order to reduce the error between the prediction and the actual value backpropagation is used. Say, \(\delta_j^{(l)}\) is the &lt;strong&gt;error of node j in the layer l&lt;/strong&gt; is associated with the prediction made at that node given by \(a_j^{(l)}\), then backpropagation aims to calculate this error term propating backwards starting from the output unit in the last layer (layer L in the example above).&lt;/p&gt;
+
+&lt;p&gt;So for each output unit in layer L, the error term is given by, \(\delta_j^{(L)} = a_j^{(L)} - y_j\) which can be vectorized and written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(L)} = a^{(L)} - y&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where \(a^{(L)}\) is \(h_\Theta(x)\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now the error terms for the previous layers are calculated as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(l)} = (\Theta^{(l)})^T\,\delta^{(l+1)} .* g'(z^{(l)})&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where
+    &lt;ul&gt;
+      &lt;li&gt;\(g’(z^{(l)}) = a^{(l)} .* (1 - a^{(l)}) \)&lt;/li&gt;
+      &lt;li&gt;.* is the element-wise multiplication.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This backward propagation stops at l = 2 because l = 1 correponds to the input layer and no weights needs to be calculated there.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Now the the gradient for the cost function which is needed for the minimization of the cost function is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {\partial} {\partial \Theta_{ij}^{(l)} } = a_j^{(l)}\, \delta_i^{(l+1)}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where regularization is ignored for the simplicity of expression.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Summarizing&lt;/strong&gt; backpropagation:&lt;/p&gt;
+
+&lt;p&gt;Given training set \({(x^{(1)}, y^{(1)}), \cdots, (x^{(m)}, y^{(m)})}\)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set \(\Delta_{ij}^{l} = 0\) for all (i, j, l)&lt;/li&gt;
+  &lt;li&gt;For i = 1 to m:
+    &lt;ul&gt;
+      &lt;li&gt;Set \(a^{(1)} = x^{(i)} \)&lt;/li&gt;
+      &lt;li&gt;Perform forward propagation to compute \(a^{(l)}\) for l = 1, …, L&lt;/li&gt;
+      &lt;li&gt;Using \(y^{(i)}\) compute \( \delta^{(L)} = a^{(L)} - y^{(i)} \)&lt;/li&gt;
+      &lt;li&gt;Compute \(\delta^{(L-1)}, \cdots, \delta^{(2)}\) using backpropagation&lt;/li&gt;
+      &lt;li&gt;\(\Delta_{ij}^{(l)} := \Delta_{ij}^{(l)} + a_j^{(l)} \delta_i^{(l+1)} \)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Vectorized implementation of the equation above is given by,&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}\,a^{(l)}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} + \lambda \, \Theta_{ij}^{(l)} \) if \(j \ne 0\)&lt;/li&gt;
+  &lt;li&gt;\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} \) if \(j = 0\)&lt;/li&gt;
+  &lt;li&gt;And finally, \( \frac {\partial} {\partial \Theta_{ij}^{(l)} } = D_{ij}^{(l)} \)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Formally, the &lt;strong&gt;\(\delta\) terms are the partial derivatives of the cost function&lt;/strong&gt; given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta_j^{(l)} = \frac {\partial} {\partial z_j^{(l)}} cost(t)&lt;/script&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/na28E/cost-function&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Cost Function&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 03 Oct 2017 00:00:00 +0530</pubDate>
+        <link>http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/</guid>
+        
+        <category>machine learning</category>
+        
+        <category>andrew ng</category>
+        
+        <category>featured</category>
+        
+        
+      </item>
     
       <item>
         <title>Neural Networks Intuition</title>
@@ -1745,158 +1897,6 @@ Cost(h_\theta(x), y) =
         <pubDate>Sat, 02 Sep 2017 00:00:00 +0530</pubDate>
         <link>http://localhost:4000/2017/09/02/logistic-regression-model/</link>
         <guid isPermaLink="true">http://localhost:4000/2017/09/02/logistic-regression-model/</guid>
-        
-        <category>machine learning</category>
-        
-        <category>andrew ng</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Classification and Logistic Regression</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;Classification is a supervised learning problem wherein the target variable is categorical unlike regression where the target variable is continuous. Classification can be binary i.e. only two possible values of the target variable or multi-class i.e. more than two categories.&lt;/p&gt;
-
-&lt;p&gt;The most basic step would be to try and fit regression curve to see if one can achieve classification using the same approach. Below is a plot attempting the same.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-08-31-classification-and-representation/fig-1-regression-for-classification.png?raw=true&quot; alt=&quot;Regression Fit for Classification&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;It can be seen below that the attempt to achieve classification using &lt;strong&gt;regression curve and thresholding&lt;/strong&gt; will not always yield conclusive results.
-In first case say only red data points are in the dataset, then fitting the curve and setting the threshold at 0.5 would work, but say an outlier is present like the blue data point then the same decision boundary D1 would shift to D2 if the threshold is kept constant and the boundary would not be perfect. Hence there is a need of &lt;strong&gt;Decision Boundary&lt;/strong&gt; instead of predictive curve.&lt;/p&gt;
-
-&lt;p&gt;Applying linear regression to classification problem might work in some cases but is not advisable as it would not scale with complexity.&lt;/p&gt;
-
-&lt;p&gt;Another issue with application of linear regession to classification would be that even know the categorical variables are discreet say 1s and 0s, the hypothesis would give continuous values which maybe much greater that 1 or much lesser than 0. This issue can be solved by using &lt;strong&gt;logistic regression&lt;/strong&gt; where&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;0 \leq h_\theta(x) \leq 1 \tag{1}&lt;/script&gt;
-
-&lt;h3 id=&quot;logistic-regression&quot;&gt;Logistic Regression&lt;/h3&gt;
-
-&lt;p&gt;Since (1) is to be true, the hypothesis from linear regression given by \(h_\theta(x) = \theta^T\,x\) will not work for logistic regression. Hence there is a need of &lt;strong&gt;squashing function&lt;/strong&gt; i.e. a function which limits the output of hypothesis between given range. For logistic regression &lt;strong&gt;sigmoid function is used as the squashing function&lt;/strong&gt;. The hypothesis for logistic regression is give by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(\theta^T\,x) = {1 \over 1 + e^{-\theta^Tx}} \tag{2}&lt;/script&gt;
-
-&lt;p&gt;Where \(g(z) = {1 \over 1 + e^{-z}}\) and is called &lt;strong&gt;sigmoid function or logistic function&lt;/strong&gt;. Plot of the sigmoid function is given below which shows no matter what the value of x, the function returns a value between 0 and 1 consistent with (1).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-08-31-classification-and-representation/fig-2-sigmoid-plot.png?raw=true&quot; alt=&quot;Sigmoid Plot&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The value of hypothesis is interpretted as the probability that the input x belongs to class y=1. i.e. probability that y=1, given x, parametrized by \(\theta\).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It can be mathematically represented as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = P(y=1|x;\theta) \tag{3}&lt;/script&gt;
-
-&lt;p&gt;The fundamental properties of probability holds here, i.e.,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(y=0|x;\theta) + P(y=1|x;\theta) = 1 \tag{4}&lt;/script&gt;
-
-&lt;h3 id=&quot;decision-boundary&quot;&gt;Decision Boundary&lt;/h3&gt;
-
-&lt;p&gt;for the given hypothesis of logistic regression in (2), say \(\delta=0.5\) is chosen as the &lt;strong&gt;threshold for the binary classification&lt;/strong&gt;, i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \text{predict } y &amp;= 1 \text{, if } h_\theta(x) \geq 0.5 \\
-    \text{predict } y &amp;= 0 \text{, if } h_\theta(x) \lt 0.5 \\
-  \end{align}
-  \tag{5} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;From the plot of sigmoid function, it is seen that&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
-    g(z) \geq 0.5 \text{, if } z \geq 0 \\
-    g(z) \lt 0.5 \text{, if } z \lt 0 \\
-  \end{align}
-  \tag{6}&lt;/script&gt;
-
-&lt;p&gt;Using (6), (5) can be rewritten as,
-&lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \text{predict } y &amp;= 1 \text{, if } \theta^T\,x \geq 0 \\
-    \text{predict } y &amp;= 0 \text{, if } \theta^T\,x \lt 0 \\
-  \end{align}
-  \tag{7} %]]&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-08-31-classification-and-representation/fig-3-decision-boundary.png?raw=true&quot; alt=&quot;Decision Boundary&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Suppose the training data is as show in the plot above where dots and Xs are the two different classes. Let the hypothesis \(h_\theta(x)\) and the optimal value of \(\theta\) be given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2)\tag{8}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta = 
-  \begin{bmatrix}
-    -12 \\ 1 \\ 1 \\
-  \end{bmatrix}
-  \tag{9}&lt;/script&gt;
-
-&lt;p&gt;Using the \(\theta\) from (9) and hypothesis from (8) , (7) can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \text{predict } y &amp;= 1 \text{, if } -12 + x_1 + x_2 \geq 0 \text{ or } x_1 + x_2 \geq 12 \\
-    \text{predict } y &amp;= 0 \text{, if } -12 + x_1 + x_2 \lt 0 \text{ or } x_1 + x_2 \lt 12 \\
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;If the line \(x_1 + x_2 = 12\) is plotted as shown in the plot above then the region below i.e. the yellow region is where \(x_1 + x_2 \lt 12\) and predicted 0 and similarly the white region above the line \(x_1 + x_2 = 12\) is where \(x_1 + x_2 \geq 12\) and hence predicted 1. &lt;strong&gt;The line here is called the decision boundary.&lt;/strong&gt; As the name suggests this line seperates the region with prediction 0 from region with prediction 1. &lt;strong&gt;Decision boundary and prediction regions are the property of the hypothesis and not of the dataset&lt;/strong&gt;. Dataset is only used to fit the parameters, but once the parameters are determined they solely define the decision boundary&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;It is possible to achieve non-linear decision boundaries by using the higher order polynomial terms and can be encorporated in a way similar to how multivariate linear regression handles polynomial regression.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-08-31-classification-and-representation/fig-4-non-linear-decision-boundary.png?raw=true&quot; alt=&quot;Non-Linear Decision Boundary&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The plot above is an example of &lt;strong&gt;non-linear decision boundary&lt;/strong&gt; using higher order polynomial logistic regression.&lt;/p&gt;
-
-&lt;p&gt;Say, the hypothesis of the logistic regression has higher order polynomial terms, and is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \theta_3\,x_1^2 + \theta_4\,x_2^2) \tag{10}&lt;/script&gt;
-
-&lt;p&gt;The, \(\theta\) given below would form an apt decision boundary,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta = 
-  \begin{bmatrix}
-    -1 \\ 0 \\ 0 \\ 1 \\ 1 \\
-  \end{bmatrix} \tag{11}&lt;/script&gt;
-
-&lt;p&gt;Substituting (12) in (11),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^T x = -1 + x_1^2 + x_2^2&lt;/script&gt;
-
-&lt;p&gt;So, from (7), the decision boundary is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    -1 + x_1^2 + x_2^2 &amp;= 0 \\
-    x_1^2 + x_2^2 &amp;= 1
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Which the equation of a circle at origin with radius 0, as can be seen in the plot above. And, using the \(\theta\) from (12) and hypothesis from (11) , (7) can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \text{predict } y &amp;= 1 \text{, if } -1 + x_1^2 + x_2^2 \geq 0 \text{ or } x_1^2 + x_2^2 \geq 1 \\
-    \text{predict } y &amp;= 0 \text{, if } -1 + x_1^2 + x_2^2 \lt 0 \text{ or } x_1^2 + x_2^2 \lt 1 \\
-  \end{align}
-  \tag{12} %]]&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;As the order of features is increased more and more complex decision boundaries can be achieved by logistic regression.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;Gradient Descent is used to fit the parameter values \(\theta\) in (9) and (12).&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/wlPeP/classification&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Classification&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/RJXfB/hypothesis-representation&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Hypothesis Representation&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/WuL1H/decision-boundary&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Decision Boundary&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 31 Aug 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/08/31/classification-and-representation/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/08/31/classification-and-representation/</guid>
         
         <category>machine learning</category>
         

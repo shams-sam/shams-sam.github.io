@@ -2,10 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://localhost:4000</loc>
-    <lastmod>2017-10-23T16:35:02+05:30</lastmod>
+    <lastmod>2017-10-23T16:48:15+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+    <url>
+      <loc>http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/</loc>
+      
+        <lastmod>2017-10-03T00:00:00+05:30</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+    </url>
   
     <url>
       <loc>http://localhost:4000/2017/09/27/neural-network-intuition/</loc>
@@ -813,6 +822,32 @@
   
   <url>
     <loc>http://localhost:4000/tag/andrew-ng/2/index.html</loc>
+    
+      <lastmod>2017-10-23</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/tag/andrew-ng/3/index.html</loc>
+    
+      <lastmod>2017-10-23</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>http://localhost:4000/tag/featured/index.html</loc>
     
       <lastmod>2017-10-23</lastmod>
     
