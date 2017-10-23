@@ -4,157 +4,13 @@
  <title>Machine Learning Medium</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2017-10-23T02:51:35+05:30</updated>
+ <updated>2017-10-23T16:35:02+05:30</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
- 
- <entry>
-   <title>Neural Networks: Cost Function and Backpropagation</title>
-   <link href="http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
-   <updated>2017-10-03T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation</id>
-   <content type="html">&lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;\({(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots , (x^{(m)}, y^{(m)})}\) are the \(m\) training examples&lt;/li&gt;
-  &lt;li&gt;L is the &lt;strong&gt;total number of the layers&lt;/strong&gt; in the network&lt;/li&gt;
-  &lt;li&gt;\(s_l\) is the &lt;strong&gt;number of units (not counting the bias unit)&lt;/strong&gt; in the layer l&lt;/li&gt;
-  &lt;li&gt;K is the &lt;strong&gt;number of units in the output layer&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-10-03-neural-networks-cost-function-and-back-propagation/fig-1-neural-network-notations.png?raw=true&quot; alt=&quot;Neural Network Notations&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;For example in the network shown above,
-    &lt;ul&gt;
-      &lt;li&gt;L = 4&lt;/li&gt;
-      &lt;li&gt;\(s_1 = 3,\, s_2 = 3,\, s_3 = 2,\, s_4 = 2\)&lt;/li&gt;
-      &lt;li&gt;K = 2&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;One vs All method is only needed if number of classes is greater than 2, i.e. if \(K \gt 2\), otherwise only one output unit is sufficient to build the model.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;cost-function-of-neural-networks&quot;&gt;Cost Function of Neural Networks&lt;/h3&gt;
-&lt;p&gt;Cost function of a neural network is a &lt;strong&gt;generalization of the cost function of the logistic regression&lt;/strong&gt;. The &lt;strong&gt;L2-Regularized&lt;/strong&gt; cost function of logistic regression from the post &lt;a href=&quot;/2017/09/15/regularized-logistic-regression/&quot; target=&quot;_blank&quot;&gt;Regularized Logistic Regression&lt;/a&gt;  is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)})) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{1}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\({\lambda \over 2m } \sum_{j=1}^n \theta_j^2\) is the &lt;strong&gt;regularization term&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;\(\lambda\) is the &lt;strong&gt;regularization factor&lt;/strong&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Extending (1) to then neural networks which can have K units in the output layer the cost function is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \left[ \sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}\,log(h_\theta(x^{(i)}))_k + (1-y_k^{(i)})\,log(1 - (h_\theta(x^{(i)}))_k) \right] + {\lambda \over 2m } \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} (\theta_{ji}^{(l)})^2 \tag{1}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(h_\Theta(x) \in \mathbb{R}^K \)&lt;/li&gt;
-      &lt;li&gt;\((h_\theta(x))_i\) is the \(i^{th}\) output&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Here the summation term \(\sum_{k=1}^K\) is to &lt;strong&gt;generalize over the K output units&lt;/strong&gt; of the neural network by calculating the cost function and summing over all the output units in the network. Also following the convention in regularization, the &lt;strong&gt;bias term in skipped from the regularization penalty&lt;/strong&gt; in the cost function defination. Even if one includes the index 0, it would not effect the process in practice.&lt;/p&gt;
-
-&lt;h3 id=&quot;backpropagation-algorithm&quot;&gt;Backpropagation Algorithm&lt;/h3&gt;
-&lt;p&gt;Backpropagation algorithm is based on the &lt;strong&gt;repeated application of the error calculation&lt;/strong&gt; used for gradient descent similar to the regression techniques, and since it is repeatedly applied in the &lt;strong&gt;reverse order starting from output layer and continuing towards input layer&lt;/strong&gt; it is termed as backpropagation.&lt;/p&gt;
-
-&lt;p&gt;For a network with L layers the computation during &lt;strong&gt;foward propagation&lt;/strong&gt;, for an input \((x, y)\) would be as follows,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    a^{(1)} &amp;= x \\
-    z^{(2)} &amp;= \Theta^{(1)}\,a^{(1)} \\
-    a^{(2)} &amp;= g(z^{(2)}) \\
-    &amp; \vdots \\
-    a^{(L-1)} &amp;= g(z^{(L-1)}) \\
-    z^{(L)} &amp;= \Theta^{(L-1)}\,a^{(L-1)} \\
-    a^{(L)} &amp;= h_\Theta(x) = g(z^{(L)})
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;The \(h_\Theta(x)\) is the prediction. In order to reduce the error between the prediction and the actual value backpropagation is used. Say, \(\delta_j^{(l)}\) is the &lt;strong&gt;error of node j in the layer l&lt;/strong&gt; is associated with the prediction made at that node given by \(a_j^{(l)}\), then backpropagation aims to calculate this error term propating backwards starting from the output unit in the last layer (layer L in the example above).&lt;/p&gt;
-
-&lt;p&gt;So for each output unit in layer L, the error term is given by, \(\delta_j^{(L)} = a_j^{(L)} - y_j\) which can be vectorized and written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(L)} = a^{(L)} - y&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where \(a^{(L)}\) is \(h_\Theta(x)\).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now the error terms for the previous layers are calculated as follows,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(l)} = (\Theta^{(l)})^T\,\delta^{(l+1)} .* g'(z^{(l)})&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(g’(z^{(l)}) = a^{(l)} .* (1 - a^{(l)}) \)&lt;/li&gt;
-      &lt;li&gt;.* is the element-wise multiplication.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;This backward propagation stops at l = 2 because l = 1 correponds to the input layer and no weights needs to be calculated there.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Now the the gradient for the cost function which is needed for the minimization of the cost function is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {\partial} {\partial \Theta_{ij}^{(l)} } = a_j^{(l)}\, \delta_i^{(l+1)}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where regularization is ignored for the simplicity of expression.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Summarizing&lt;/strong&gt; backpropagation:&lt;/p&gt;
-
-&lt;p&gt;Given training set \({(x^{(1)}, y^{(1)}), \cdots, (x^{(m)}, y^{(m)})}\)&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Set \(\Delta_{ij}^{l} = 0\) for all (i, j, l)&lt;/li&gt;
-  &lt;li&gt;For i = 1 to m:
-    &lt;ul&gt;
-      &lt;li&gt;Set \(a^{(1)} = x^{(i)} \)&lt;/li&gt;
-      &lt;li&gt;Perform forward propagation to compute \(a^{(l)}\) for l = 1, …, L&lt;/li&gt;
-      &lt;li&gt;Using \(y^{(i)}\) compute \( \delta^{(L)} = a^{(L)} - y^{(i)} \)&lt;/li&gt;
-      &lt;li&gt;Compute \(\delta^{(L-1)}, \cdots, \delta^{(2)}\) using backpropagation&lt;/li&gt;
-      &lt;li&gt;\(\Delta_{ij}^{(l)} := \Delta_{ij}^{(l)} + a_j^{(l)} \delta_i^{(l+1)} \)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Vectorized implementation of the equation above is given by,&lt;/strong&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}\,a^{(l)}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} + \lambda \, \Theta_{ij}^{(l)} \) if \(j \ne 0\)&lt;/li&gt;
-  &lt;li&gt;\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} \) if \(j = 0\)&lt;/li&gt;
-  &lt;li&gt;And finally, \( \frac {\partial} {\partial \Theta_{ij}^{(l)} } = D_{ij}^{(l)} \)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Formally, the &lt;strong&gt;\(\delta\) terms are the partial derivatives of the cost function&lt;/strong&gt; given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta_j^{(l)} = \frac {\partial} {\partial z_j^{(l)}} cost(t)&lt;/script&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/na28E/cost-function&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Cost Function&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</content>
- </entry>
  
  <entry>
    <title>Neural Networks Intuition</title>
@@ -752,7 +608,7 @@ Simultaneous update
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;Link to &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/LogisticRegressionHigherOrder.ipynb&quot; target=&quot;_blank&quot;&gt;Rough Working Code&lt;/a&gt;. Change the value of lamda in the code to get various decision boundaries for the &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/logistic_regression_data_2.csv&quot; target=&quot;_blank&quot;&gt;data&lt;/a&gt; as shown below.&lt;/p&gt;
+&lt;p&gt;Link to &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/LogisticRegressionHigherOrder.ipynb&quot; target=&quot;_blank&quot;&gt;Rough Working Code&lt;/a&gt;. Change the value of lamda in the code to get different decision boundaries for the &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/logistic_regression_data_2.csv&quot; target=&quot;_blank&quot;&gt;data&lt;/a&gt; as shown below.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-1-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 0.01\)&quot; /&gt;
 &lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-2-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 0.1\)&quot; /&gt;
