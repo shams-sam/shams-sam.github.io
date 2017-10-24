@@ -3,10 +3,10 @@
   <channel>
     <title>Machine Learning Medium</title>
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 23 Oct 2017 16:48:15 +0530</pubDate>
-    <lastBuildDate>Mon, 23 Oct 2017 16:48:15 +0530</lastBuildDate>
+    <link>https://machinelearningmedium.com/</link>
+    <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Wed, 25 Oct 2017 01:34:03 +0530</pubDate>
+    <lastBuildDate>Wed, 25 Oct 2017 01:34:03 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -149,8 +149,8 @@
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/na28E/cost-function&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Cost Function&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 03 Oct 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/</guid>
+        <link>https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/</guid>
         
         <category>machine learning</category>
         
@@ -479,8 +479,8 @@
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/solUx/examples-and-intuitions-ii&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Examples and Intutions II&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 27 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/27/neural-network-intuition/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/27/neural-network-intuition/</guid>
+        <link>https://machinelearningmedium.com/2017/09/27/neural-network-intuition/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/27/neural-network-intuition/</guid>
         
         <category>machine learning</category>
         
@@ -609,8 +609,8 @@
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Hw3VK/model-representation-ii&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Model Representation II&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 21 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/21/neural-networks/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/21/neural-networks/</guid>
+        <link>https://machinelearningmedium.com/2017/09/21/neural-networks/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/21/neural-networks/</guid>
         
         <category>machine learning</category>
         
@@ -646,8 +646,8 @@
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/IPmzw/neurons-and-the-brain&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Neurons and the Brain&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 20 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/20/non-linear-hypotheses/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/20/non-linear-hypotheses/</guid>
+        <link>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</guid>
         
         <category>machine learning</category>
         
@@ -785,8 +785,8 @@ Simultaneous update
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/4BHEy/regularized-logistic-regression&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Logistic Regression Model&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 15 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/15/regularized-logistic-regression/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/15/regularized-logistic-regression/</guid>
+        <link>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</guid>
         
         <category>machine learning</category>
         
@@ -1172,8 +1172,8 @@ q_{BO}(w|v) =
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/lm.pdf&quot; target=&quot;_blank&quot;&gt;Language Modeling - Michael Collins&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 12 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/12/basics-of-language-modeling/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/12/basics-of-language-modeling/</guid>
+        <link>https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</guid>
         
         <category>NLP</category>
         
@@ -1347,8 +1347,8 @@ Regularized Version
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/QrMXd/regularized-linear-regression&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Regularized Linear Regression&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 11 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/11/regularized-linear-regression/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/11/regularized-linear-regression/</guid>
+        <link>https://machinelearningmedium.com/2017/09/11/regularized-linear-regression/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/11/regularized-linear-regression/</guid>
         
         <category>machine learning</category>
         
@@ -1429,8 +1429,8 @@ Regularized Version
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/supplement/1tJlY/cost-function&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Cost Function&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 08 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/08/overfitting-and-regularization/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/08/overfitting-and-regularization/</guid>
+        <link>https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/</guid>
         
         <category>machine learning</category>
         
@@ -1533,8 +1533,8 @@ Regularized Version
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/68Pol/multiclass-classification-one-vs-all&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Multiclass Classification: One-vs-All&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 06 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/06/multiclass-logistic-regression/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/06/multiclass-logistic-regression/</guid>
+        <link>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</guid>
         
         <category>machine learning</category>
         
@@ -1895,8 +1895,8 @@ Cost(h_\theta(x), y) =
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/licwf/advanced-optimization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Advanced Optimization&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Sat, 02 Sep 2017 00:00:00 +0530</pubDate>
-        <link>http://localhost:4000/2017/09/02/logistic-regression-model/</link>
-        <guid isPermaLink="true">http://localhost:4000/2017/09/02/logistic-regression-model/</guid>
+        <link>https://machinelearningmedium.com/2017/09/02/logistic-regression-model/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/02/logistic-regression-model/</guid>
         
         <category>machine learning</category>
         

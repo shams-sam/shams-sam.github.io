@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
  <title>Machine Learning Medium</title>
- <link href="http://localhost:4000/atom.xml" rel="self"/>
- <link href="http://localhost:4000/"/>
- <updated>2017-10-23T16:48:15+05:30</updated>
- <id>http://localhost:4000</id>
+ <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
+ <link href="https://machinelearningmedium.com/"/>
+ <updated>2017-10-25T01:34:03+05:30</updated>
+ <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>Neural Networks: Cost Function and Backpropagation</title>
-   <link href="http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
+   <link href="https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
    <updated>2017-10-03T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/10/03/neural-networks-cost-function-and-back-propagation</id>
+   <id>https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation</id>
    <content type="html">&lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;\({(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots , (x^{(m)}, y^{(m)})}\) are the \(m\) training examples&lt;/li&gt;
@@ -158,9 +158,9 @@
  
  <entry>
    <title>Neural Networks Intuition</title>
-   <link href="http://localhost:4000/2017/09/27/neural-network-intuition/"/>
+   <link href="https://machinelearningmedium.com/2017/09/27/neural-network-intuition/"/>
    <updated>2017-09-27T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/27/neural-network-intuition</id>
+   <id>https://machinelearningmedium.com/2017/09/27/neural-network-intuition</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Neural networks can be used to build all types of function. This post tries to &lt;strong&gt;map functions of logical operations using the network&lt;/strong&gt;. How the parameters are derived in explained in the later posts.&lt;/p&gt;
 
@@ -480,9 +480,9 @@
  
  <entry>
    <title>Neural Networks Theory</title>
-   <link href="http://localhost:4000/2017/09/21/neural-networks/"/>
+   <link href="https://machinelearningmedium.com/2017/09/21/neural-networks/"/>
    <updated>2017-09-21T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/21/neural-networks</id>
+   <id>https://machinelearningmedium.com/2017/09/21/neural-networks</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Neural networks were developed to &lt;strong&gt;mimic the way neurons in a brain work&lt;/strong&gt;. Typically, a neuron has input connections and output connections. So basically, &lt;strong&gt;neuron is a computational unit&lt;/strong&gt; which takes a set of inputs and produces output. So the basic functionality of neurons is tried to be replicated in these computational units. For example, neurons in brain interact with each other using electrical signals and are selectively activated based on certain parameters. This behaviour is transferred to a unit in neural networks using &lt;strong&gt;activation function&lt;/strong&gt; which would be explained later in the post.&lt;/p&gt;
 
@@ -604,9 +604,9 @@
  
  <entry>
    <title>Non-linear Hypotheses</title>
-   <link href="http://localhost:4000/2017/09/20/non-linear-hypotheses/"/>
+   <link href="https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/"/>
    <updated>2017-09-20T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/20/non-linear-hypotheses</id>
+   <id>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses</id>
    <content type="html">&lt;h3 id=&quot;drawbacks-of-logistic-regression&quot;&gt;Drawbacks of Logistic Regression&lt;/h3&gt;
 &lt;p&gt;Consider a highly &lt;strong&gt;non-linear classification&lt;/strong&gt; task, say something similar to the one shown in the plot below. In order to achieve a decision boundary like the one plotted, one needs to introduce &lt;strong&gt;non-linear features&lt;/strong&gt; in the form of quadratic and other higher order terms, similar to the equation below.&lt;/p&gt;
 
@@ -635,9 +635,9 @@
  
  <entry>
    <title>Regularized Logistic Regression</title>
-   <link href="http://localhost:4000/2017/09/15/regularized-logistic-regression/"/>
+   <link href="https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/"/>
    <updated>2017-09-15T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/15/regularized-logistic-regression</id>
+   <id>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;The intuition and implementation of logistic regression is implemented in &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;&lt;/p&gt;
 
@@ -768,9 +768,9 @@ Simultaneous update
  
  <entry>
    <title>Basics of Language Model</title>
-   <link href="http://localhost:4000/2017/09/12/basics-of-language-modeling/"/>
+   <link href="https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/"/>
    <updated>2017-09-12T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/12/basics-of-language-modeling</id>
+   <id>https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Given the &lt;strong&gt;finite set of all the words&lt;/strong&gt; in a language, \(\nu\), a sentence in the language is the &lt;strong&gt;sequence of words&lt;/strong&gt;&lt;/p&gt;
 
@@ -1149,9 +1149,9 @@ q_{BO}(w|v) =
  
  <entry>
    <title>Regularized Linear Regression</title>
-   <link href="http://localhost:4000/2017/09/11/regularized-linear-regression/"/>
+   <link href="https://machinelearningmedium.com/2017/09/11/regularized-linear-regression/"/>
    <updated>2017-09-11T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/11/regularized-linear-regression</id>
+   <id>https://machinelearningmedium.com/2017/09/11/regularized-linear-regression</id>
    <content type="html">&lt;p&gt;The intuition of regularization are explained in the previous post: &lt;a href=&quot;/2017/09/08/overfitting-and-regularization/&quot; target=&quot;_blank&quot;&gt;Overfitting and Regularization&lt;/a&gt;. The cost function for a regularized linear equation is given by,&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = {1 \over 2m} \left[ \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 + \lambda \sum_{j=1}^n \theta_j^2 \right] \tag{1}&lt;/script&gt;
@@ -1318,9 +1318,9 @@ Regularized Version
  
  <entry>
    <title>Overfitting and Regularization</title>
-   <link href="http://localhost:4000/2017/09/08/overfitting-and-regularization/"/>
+   <link href="https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/"/>
    <updated>2017-09-08T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/08/overfitting-and-regularization</id>
+   <id>https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization</id>
    <content type="html">&lt;h3 id=&quot;overfitting&quot;&gt;Overfitting&lt;/h3&gt;
 &lt;p&gt;If the number of features is very high, then there is a probability that the hypothesis fill fit all the points in the training data. It might seem like a good thing to happen but has a contradictory results. Suppose a hypothesis of high degree is fit to a set of points such that all the points lie of the hypothesis. Plot below shows a case of overfitting with a regression of order 100.&lt;/p&gt;
 
@@ -1394,9 +1394,9 @@ Regularized Version
  
  <entry>
    <title>Multiclass Logistic Regression</title>
-   <link href="http://localhost:4000/2017/09/06/multiclass-logistic-regression/"/>
+   <link href="https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/"/>
    <updated>2017-09-06T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/06/multiclass-logistic-regression</id>
+   <id>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;For intuition and implementation of Binary Logistic Regression refer &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;.&lt;/p&gt;
 
@@ -1492,9 +1492,9 @@ Regularized Version
  
  <entry>
    <title>Logistic Regression Model</title>
-   <link href="http://localhost:4000/2017/09/02/logistic-regression-model/"/>
+   <link href="https://machinelearningmedium.com/2017/09/02/logistic-regression-model/"/>
    <updated>2017-09-02T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/09/02/logistic-regression-model</id>
+   <id>https://machinelearningmedium.com/2017/09/02/logistic-regression-model</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; explains why logistic regression and intuition behind it. This post is about how the model works and some intuitions behind it.&lt;/p&gt;
 
@@ -1848,9 +1848,9 @@ Cost(h_\theta(x), y) =
  
  <entry>
    <title>Classification and Logistic Regression</title>
-   <link href="http://localhost:4000/2017/08/31/classification-and-representation/"/>
+   <link href="https://machinelearningmedium.com/2017/08/31/classification-and-representation/"/>
    <updated>2017-08-31T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/31/classification-and-representation</id>
+   <id>https://machinelearningmedium.com/2017/08/31/classification-and-representation</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Classification is a supervised learning problem wherein the target variable is categorical unlike regression where the target variable is continuous. Classification can be binary i.e. only two possible values of the target variable or multi-class i.e. more than two categories.&lt;/p&gt;
 
@@ -1994,9 +1994,9 @@ In first case say only red data points are in the dataset, then fitting the curv
  
  <entry>
    <title>Normal Equation</title>
-   <link href="http://localhost:4000/2017/08/28/normal-equation/"/>
+   <link href="https://machinelearningmedium.com/2017/08/28/normal-equation/"/>
    <updated>2017-08-28T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/28/normal-equation</id>
+   <id>https://machinelearningmedium.com/2017/08/28/normal-equation</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Gradient descent is an algorithm which is used to reach an optimal solution iteratively using the gradient of the loss function or the cost function. In contrast, normal equation is a method that helps &lt;strong&gt;solve for the parameters analytically&lt;/strong&gt; i.e. instead of reaching the solution iteratively, solution for the parameter \(\theta\) is reached at directly by solving the normal equation.&lt;/p&gt;
 
@@ -2314,9 +2314,9 @@ Plot Graph
  
  <entry>
    <title>Multivariate Linear Regression</title>
-   <link href="http://localhost:4000/2017/08/23/multivariate-linear-regression/"/>
+   <link href="https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression/"/>
    <updated>2017-08-23T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/23/multivariate-linear-regression</id>
+   <id>https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Multivariate linear regression is the generalization of the univariate linear regression seen earlier i.e. &lt;a href=&quot;/2017/08/11/cost-function-of-linear-regression/&quot; target=&quot;_blank&quot;&gt;Cost Function of Linear Regression&lt;/a&gt;. As the name suggests, there are more than one independent variables, \(x_1, x_2 \cdots, x_n\) and a dependent variable \(y\).&lt;/p&gt;
 
@@ -2603,9 +2603,9 @@ Gradient Descent For Multivariate Regression
  
  <entry>
    <title>Linear Algebra Review</title>
-   <link href="http://localhost:4000/2017/08/20/linear-algebra/"/>
+   <link href="https://machinelearningmedium.com/2017/08/20/linear-algebra/"/>
    <updated>2017-08-20T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/20/linear-algebra</id>
+   <id>https://machinelearningmedium.com/2017/08/20/linear-algebra</id>
    <content type="html">&lt;h3 id=&quot;matrices&quot;&gt;Matrices&lt;/h3&gt;
 &lt;p&gt;In mathematics, a matrix is a &lt;strong&gt;rectangular array&lt;/strong&gt; of numbers, symbols, or expressions, arranged in rows and columns. For example, A is a matrix below,&lt;/p&gt;
 
@@ -2866,9 +2866,9 @@ Consider three hypothesis as follows,&lt;/p&gt;
  
  <entry>
    <title>Gradient Descent for Linear Regression</title>
-   <link href="http://localhost:4000/2017/08/17/gradient-descent-for-linear-regression/"/>
+   <link href="https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression/"/>
    <updated>2017-08-17T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/17/gradient-descent-for-linear-regression</id>
+   <id>https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;The posts &lt;a href=&quot;/2017/08/11/cost-function-of-linear-regression/&quot; target=&quot;_blank&quot;&gt;Cost Function of Linear Regression&lt;/a&gt; and &lt;a href=&quot;/2017/08/15/gradient-descent/&quot;&gt;Gradient Descent&lt;/a&gt; introduced the linear regression cost function and the gradient descent algorithm individually. If the gradient descent is applied to the linear regression cost function would help reach an optimal solution without much manual intervention.&lt;/p&gt;
 
@@ -3041,9 +3041,9 @@ Gradient Descent For Linear Regression
  
  <entry>
    <title>Gradient Descent</title>
-   <link href="http://localhost:4000/2017/08/15/gradient-descent/"/>
+   <link href="https://machinelearningmedium.com/2017/08/15/gradient-descent/"/>
    <updated>2017-08-15T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/15/gradient-descent</id>
+   <id>https://machinelearningmedium.com/2017/08/15/gradient-descent</id>
    <content type="html">&lt;h3 id=&quot;gradient-descent&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Gradient_descent&quot; target=&quot;_blank&quot;&gt;Gradient Descent&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Gradient descent is a &lt;strong&gt;first-order iterative optimization algorithm&lt;/strong&gt; for finding the minimum of a function. To find a local minimum of a function using gradient descent, one takes &lt;strong&gt;steps proportional to the negative of the gradient&lt;/strong&gt; (or of the approximate gradient) of the function at the current point. If instead one takes steps proportional to the positive of the gradient, one approaches a local maximum of that function; the procedure is then known as &lt;strong&gt;gradient ascent&lt;/strong&gt;. Gradient descent is also known as &lt;strong&gt;steepest descent&lt;/strong&gt;.&lt;/p&gt;
 
@@ -3146,9 +3146,9 @@ Gradient Descent For Linear Regression
  
  <entry>
    <title>Cost Function of Linear Regression</title>
-   <link href="http://localhost:4000/2017/08/11/cost-function-of-linear-regression/"/>
+   <link href="https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"/>
    <updated>2017-08-11T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/11/cost-function-of-linear-regression</id>
+   <id>https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h3&gt;
 &lt;p&gt;Linear regression is an approach for modeling the relationship between a &lt;strong&gt;scalar dependent variable&lt;/strong&gt; y and one or more &lt;strong&gt;explanatory variables&lt;/strong&gt; (or &lt;strong&gt;independent variables&lt;/strong&gt;) denoted X. The case of one explanatory variable is called &lt;strong&gt;simple linear regression&lt;/strong&gt; or &lt;strong&gt;univariate linear regression&lt;/strong&gt;. For more than one explanatory variable, the process is called &lt;strong&gt;multiple linear regression&lt;/strong&gt;.
 In linear regression, the relationships are modeled using &lt;strong&gt;linear predictor functions&lt;/strong&gt; whose unknown model parameters are estimated from the data. Such models are called linear models.&lt;/p&gt;
@@ -3273,9 +3273,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Model Representation And Hypothesis</title>
-   <link href="http://localhost:4000/2017/08/10/model-representation-and-hypothesis/"/>
+   <link href="https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis/"/>
    <updated>2017-08-10T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/10/model-representation-and-hypothesis</id>
+   <id>https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis</id>
    <content type="html">&lt;h3 id=&quot;notations&quot;&gt;Notations&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;\(m\): Number of training examples&lt;/li&gt;
@@ -3318,9 +3318,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Supervised and Unsupervised Learning</title>
-   <link href="http://localhost:4000/2017/08/09/supervised-learning/"/>
+   <link href="https://machinelearningmedium.com/2017/08/09/supervised-learning/"/>
    <updated>2017-08-09T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/09/supervised-learning</id>
+   <id>https://machinelearningmedium.com/2017/08/09/supervised-learning</id>
    <content type="html">&lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
 &lt;p&gt;Supervised learning is the machine learning task of &lt;strong&gt;inferring a function from labeled training data&lt;/strong&gt;. The training data consist of a set of training examples. In supervised learning, each example is a pair consisting of an input object (typically a vector) and a desired output value (also called the supervisory signal).&lt;/p&gt;
 
@@ -3374,9 +3374,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Introduction to Machine Learning</title>
-   <link href="http://localhost:4000/2017/08/09/introduction-to-machine-learning/"/>
+   <link href="https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning/"/>
    <updated>2017-08-09T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/08/09/introduction-to-machine-learning</id>
+   <id>https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning</id>
    <content type="html">&lt;h3 id=&quot;what-is-machine-learning-&quot;&gt;What is Machine Learning ?&lt;/h3&gt;
 &lt;p&gt;Machine learning is the science of getting computers to learn, without explicitly being programmed. It has developed as a subset of the larger problem of building AI i.e. Artificially Intelligent systems.&lt;/p&gt;
 
@@ -3435,9 +3435,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>The Normal Distribution</title>
-   <link href="http://localhost:4000/2017/07/31/normal-distribution/"/>
+   <link href="https://machinelearningmedium.com/2017/07/31/normal-distribution/"/>
    <updated>2017-07-31T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/31/normal-distribution</id>
+   <id>https://machinelearningmedium.com/2017/07/31/normal-distribution</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;The concept of normal distribution as explained using the game of darts is easier to understand and explain. Consider a game of dart with aim of throwing the dart at the origin of a cartesian plane. The errors in throwing the dart at the origin will have random errors and produce varying results in different trials. Some of the assumptions one can make in this game are:&lt;/p&gt;
 
@@ -3651,9 +3651,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Random Projection in Dimensionality Reduction</title>
-   <link href="http://localhost:4000/2017/07/28/random-projection-in-dimensionality-reduction/"/>
+   <link href="https://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"/>
    <updated>2017-07-28T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/28/random-projection-in-dimensionality-reduction</id>
+   <id>https://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Random Projections have emerged as a powerful method for dimensionality reduction. Theoretical results indicate that it &lt;strong&gt;preserves distances&lt;/strong&gt; quite nicely but empirical results are &lt;strong&gt;sparse&lt;/strong&gt;. It is often employed in dimensionality reduction in both &lt;strong&gt;noisy and noiseless data&lt;/strong&gt; especially image and text data. Results of projecting on &lt;strong&gt;random lower-dimensional subspace&lt;/strong&gt; yields results comparable to conventional methods like PCA etc but using it is &lt;strong&gt;computationally less expensive&lt;/strong&gt; than the traditional alternatives.&lt;/p&gt;
 
@@ -3901,9 +3901,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Continuous Random Variables</title>
-   <link href="http://localhost:4000/2017/07/28/continuous-random-variable/"/>
+   <link href="https://machinelearningmedium.com/2017/07/28/continuous-random-variable/"/>
    <updated>2017-07-28T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/28/continuous-random-variable</id>
+   <id>https://machinelearningmedium.com/2017/07/28/continuous-random-variable</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -4114,9 +4114,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Distributed Representations of Sentences and Documents</title>
-   <link href="http://localhost:4000/2017/07/27/distributed-representation-of-sentences-and-documents/"/>
+   <link href="https://machinelearningmedium.com/2017/07/27/distributed-representation-of-sentences-and-documents/"/>
    <updated>2017-07-27T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/27/distributed-representation-of-sentences-and-documents</id>
+   <id>https://machinelearningmedium.com/2017/07/27/distributed-representation-of-sentences-and-documents</id>
    <content type="html">&lt;h3 id=&quot;drawbacks-of-bag-of-words-models&quot;&gt;Drawbacks of Bag-of-Words Models&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Loss of word order which may be of importance in infering the meaning of sentence.&lt;/li&gt;
@@ -4132,9 +4132,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Improvements on Word2Vec</title>
-   <link href="http://localhost:4000/2017/07/26/improvements-on-word2vec/"/>
+   <link href="https://machinelearningmedium.com/2017/07/26/improvements-on-word2vec/"/>
    <updated>2017-07-26T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/26/improvements-on-word2vec</id>
+   <id>https://machinelearningmedium.com/2017/07/26/improvements-on-word2vec</id>
    <content type="html">&lt;h3 id=&quot;distributed-vector-representation-series&quot;&gt;Distributed Vector Representation Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -4293,9 +4293,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Discounted Cumulative Gain</title>
-   <link href="http://localhost:4000/2017/07/24/discounted-cumulative-gain/"/>
+   <link href="https://machinelearningmedium.com/2017/07/24/discounted-cumulative-gain/"/>
    <updated>2017-07-24T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/24/discounted-cumulative-gain</id>
+   <id>https://machinelearningmedium.com/2017/07/24/discounted-cumulative-gain</id>
    <content type="html">&lt;h3 id=&quot;discounted-cumulative-gain&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Discounted_cumulative_gain&quot; target=&quot;_blank&quot;&gt;Discounted cumulative gain&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;DCG measures the usefulness, or &lt;strong&gt;gain&lt;/strong&gt;, of a document based on its position in the result list. The gain is accumulated from the top of the result list to the bottom, with the gain of each result discounted at lower ranks.&lt;/p&gt;
 
@@ -4563,9 +4563,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Merge Sort</title>
-   <link href="http://localhost:4000/2017/07/21/merge-sort/"/>
+   <link href="https://machinelearningmedium.com/2017/07/21/merge-sort/"/>
    <updated>2017-07-21T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/21/merge-sort</id>
+   <id>https://machinelearningmedium.com/2017/07/21/merge-sort</id>
    <content type="html">&lt;h3 id=&quot;merge-sort&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Merge_sort&quot; target=&quot;_blank&quot;&gt;Merge Sort&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Merge sort is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Merge sort is a &lt;strong&gt;divide and conquer&lt;/strong&gt; algorithm that was invented by John von Neumann in 1945.&lt;/p&gt;
 
@@ -4760,9 +4760,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>UMLS Knowledge Sources</title>
-   <link href="http://localhost:4000/2017/07/19/umls-knowledge-sources/"/>
+   <link href="https://machinelearningmedium.com/2017/07/19/umls-knowledge-sources/"/>
    <updated>2017-07-19T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/19/umls-knowledge-sources</id>
+   <id>https://machinelearningmedium.com/2017/07/19/umls-knowledge-sources</id>
    <content type="html">&lt;h3 id=&quot;umls&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Medical_Language_System&quot; target=&quot;_blank&quot;&gt;UMLS&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The Unified Medical Language System (UMLS) is a compendium of many controlled vocabularies in the biomedical sciences (created 1986). It provides a mapping structure among these vocabularies and thus allows one to translate among the various terminology systems. It may also be viewed as a comprehensive thesaurus and ontology of biomedical concepts. UMLS further provides facilities for natural language processing. It is intended to be used mainly by developers of systems in medical informatics.&lt;/p&gt;
 
@@ -4835,9 +4835,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Divide and Conquer</title>
-   <link href="http://localhost:4000/2017/07/18/recursion-and-divide-and-conquer/"/>
+   <link href="https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"/>
    <updated>2017-07-18T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/18/recursion-and-divide-and-conquer</id>
+   <id>https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer</id>
    <content type="html">&lt;h3 id=&quot;recursion&quot;&gt;Recursion&lt;/h3&gt;
 &lt;p&gt;The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as &lt;strong&gt;recursive function&lt;/strong&gt;.&lt;/p&gt;
 
@@ -4883,9 +4883,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Basics of Linguistics</title>
-   <link href="http://localhost:4000/2017/07/14/introduction-to-linguistics/"/>
+   <link href="https://machinelearningmedium.com/2017/07/14/introduction-to-linguistics/"/>
    <updated>2017-07-14T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/14/introduction-to-linguistics</id>
+   <id>https://machinelearningmedium.com/2017/07/14/introduction-to-linguistics</id>
    <content type="html">&lt;h3 id=&quot;dimensions-of-human-language&quot;&gt;Dimensions of human language:&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Discrete infinity&lt;/strong&gt;: A discrete set, a set with finite number of elements which can be used to make infinitely many combinations is called a discrete infinity. For example, the alphabets in english are 26 and form a discrete set but can be combined to form infinitely many sentences and hence is a discrete infinity.&lt;/li&gt;
@@ -4952,9 +4952,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Pseudocode</title>
-   <link href="http://localhost:4000/2017/07/13/pseudocode/"/>
+   <link href="https://machinelearningmedium.com/2017/07/13/pseudocode/"/>
    <updated>2017-07-13T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/13/pseudocode</id>
+   <id>https://machinelearningmedium.com/2017/07/13/pseudocode</id>
    <content type="html">&lt;h3 id=&quot;pseudocode&quot;&gt;Pseudocode&lt;/h3&gt;
 &lt;p&gt;Logic of algorithms is often expressed as pseudocode which is similar in many respects to languages like C, C++, Java etc. Major difference lies in that pseudocode uses the most &lt;strong&gt;concise and meaningful&lt;/strong&gt; way of expressing the algorithm which can be sometimes as simple as plain english.&lt;/p&gt;
 
@@ -5012,9 +5012,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Insertion Sort</title>
-   <link href="http://localhost:4000/2017/07/13/insertion-sort/"/>
+   <link href="https://machinelearningmedium.com/2017/07/13/insertion-sort/"/>
    <updated>2017-07-13T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/13/insertion-sort</id>
+   <id>https://machinelearningmedium.com/2017/07/13/insertion-sort</id>
    <content type="html">&lt;h3 id=&quot;insertion-sort&quot;&gt;Insertion Sort&lt;/h3&gt;
 &lt;p&gt;Given an array A[1…n] of length n to be sorted. The algorithm sorts the list &lt;strong&gt;inplace&lt;/strong&gt;. It picks an element i as &lt;strong&gt;key&lt;/strong&gt; and places it in the correct position in the sorted A[1..(i-1)].&lt;/p&gt;
 
@@ -5088,9 +5088,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Algorithms and Data Structures</title>
-   <link href="http://localhost:4000/2017/07/12/algorithms-in-computing/"/>
+   <link href="https://machinelearningmedium.com/2017/07/12/algorithms-in-computing/"/>
    <updated>2017-07-12T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/12/algorithms-in-computing</id>
+   <id>https://machinelearningmedium.com/2017/07/12/algorithms-in-computing</id>
    <content type="html">&lt;h3 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h3&gt;
 &lt;p&gt;Any well-defined computational procedure that takes some value, or set of values, as &lt;strong&gt;input&lt;/strong&gt; and produces some value, or set of values, as &lt;strong&gt;output&lt;/strong&gt;. So, algorithm is a sequence of computational steps that transform the input into the output. An algorithm is correct if, for every input instance of a problem, it halts with the correct output.&lt;/p&gt;
 
@@ -5132,9 +5132,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Word2Vec</title>
-   <link href="http://localhost:4000/2017/07/11/word-to-vector-word-representations/"/>
+   <link href="https://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"/>
    <updated>2017-07-11T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/11/word-to-vector-word-representations</id>
+   <id>https://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations</id>
    <content type="html">&lt;h3 id=&quot;distributed-vector-representation-series&quot;&gt;Distributed Vector Representation Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -5317,9 +5317,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Building Stopword List for Information Retrieval System</title>
-   <link href="http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system/"/>
+   <link href="https://machinelearningmedium.com/2017/07/04/building-stopword-list-for-information-retrieval-system/"/>
    <updated>2017-07-04T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/04/building-stopword-list-for-information-retrieval-system</id>
+   <id>https://machinelearningmedium.com/2017/07/04/building-stopword-list-for-information-retrieval-system</id>
    <content type="html">&lt;h3 id=&quot;what-are-stopwords-&quot;&gt;What are stopwords ?&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Words in a document that are &lt;strong&gt;frequently occuring but meaningless&lt;/strong&gt; in terms of Information Retrieval (IR) are called &lt;strong&gt;stopwords&lt;/strong&gt;.&lt;/li&gt;
@@ -5578,9 +5578,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Zero Sum Subarrays</title>
-   <link href="http://localhost:4000/2017/07/03/zero-sum-subarray/"/>
+   <link href="https://machinelearningmedium.com/2017/07/03/zero-sum-subarray/"/>
    <updated>2017-07-03T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/03/zero-sum-subarray</id>
+   <id>https://machinelearningmedium.com/2017/07/03/zero-sum-subarray</id>
    <content type="html">&lt;h3 id=&quot;q-given-an-array-find-all-sub-arrays-that-have-sum-0&quot;&gt;Q: Given an array find all sub arrays that have sum 0.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -5641,9 +5641,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Sort Binary Array</title>
-   <link href="http://localhost:4000/2017/07/03/sort-binary-array/"/>
+   <link href="https://machinelearningmedium.com/2017/07/03/sort-binary-array/"/>
    <updated>2017-07-03T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/03/sort-binary-array</id>
+   <id>https://machinelearningmedium.com/2017/07/03/sort-binary-array</id>
    <content type="html">&lt;h3 id=&quot;q-sort-a-given-binary-array&quot;&gt;Q: Sort a given binary array.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -5728,9 +5728,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Pair Sums In An Array</title>
-   <link href="http://localhost:4000/2017/07/03/pair-sums-in-an-array/"/>
+   <link href="https://machinelearningmedium.com/2017/07/03/pair-sums-in-an-array/"/>
    <updated>2017-07-03T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/03/pair-sums-in-an-array</id>
+   <id>https://machinelearningmedium.com/2017/07/03/pair-sums-in-an-array</id>
    <content type="html">&lt;h3 id=&quot;q-given-an-array-find-a-pair-of-element-with-the-given-sum&quot;&gt;Q: Given an array find a pair of element with the given sum.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -5816,9 +5816,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Duplicate In Limited Range Array (XOR)</title>
-   <link href="http://localhost:4000/2017/07/03/duplicate-in-limited-range-array-using-xor/"/>
+   <link href="https://machinelearningmedium.com/2017/07/03/duplicate-in-limited-range-array-using-xor/"/>
    <updated>2017-07-03T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/03/duplicate-in-limited-range-array-using-xor</id>
+   <id>https://machinelearningmedium.com/2017/07/03/duplicate-in-limited-range-array-using-xor</id>
    <content type="html">&lt;h3 id=&quot;q-find-duplicate-in-limited-range-1-to-n-1-array-of-size-n-using-xor-operation&quot;&gt;Q: Find duplicate in limited range (1 to n-1) array of size n using XOR operation.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -5874,9 +5874,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Blockchain</title>
-   <link href="http://localhost:4000/2017/07/02/blockchain/"/>
+   <link href="https://machinelearningmedium.com/2017/07/02/blockchain/"/>
    <updated>2017-07-02T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/07/02/blockchain</id>
+   <id>https://machinelearningmedium.com/2017/07/02/blockchain</id>
    <content type="html">&lt;h3 id=&quot;what-is-blockchain-&quot;&gt;What is &lt;strong&gt;blockchain&lt;/strong&gt; ?&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Originally developed as a part of digital currency &lt;a href=&quot;https://bitcoin.org/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Bitcoin&lt;/strong&gt;&lt;/a&gt;.&lt;/li&gt;
@@ -5995,9 +5995,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Discrete Random Variables</title>
-   <link href="http://localhost:4000/2017/06/23/discrete-random-variables/"/>
+   <link href="https://machinelearningmedium.com/2017/06/23/discrete-random-variables/"/>
    <updated>2017-06-23T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/06/23/discrete-random-variables</id>
+   <id>https://machinelearningmedium.com/2017/06/23/discrete-random-variables</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -6251,9 +6251,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Conditional Probability and Bayes' Rule</title>
-   <link href="http://localhost:4000/2017/06/22/bayes-rule-conditional-probability-chain-rule/"/>
+   <link href="https://machinelearningmedium.com/2017/06/22/bayes-rule-conditional-probability-chain-rule/"/>
    <updated>2017-06-22T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/06/22/bayes-rule-conditional-probability-chain-rule</id>
+   <id>https://machinelearningmedium.com/2017/06/22/bayes-rule-conditional-probability-chain-rule</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -6365,9 +6365,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>The One With Github Pages</title>
-   <link href="http://localhost:4000/2017/06/16/initial-site-setup/"/>
+   <link href="https://machinelearningmedium.com/2017/06/16/initial-site-setup/"/>
    <updated>2017-06-16T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/06/16/initial-site-setup</id>
+   <id>https://machinelearningmedium.com/2017/06/16/initial-site-setup</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot;&gt;GitHub Pages&lt;/a&gt; is a web hosting service offered by &lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt; for hosting &lt;strong&gt;static web pages&lt;/strong&gt; for GitHub users, user blogs, project documentation, or even whole books.
 It is integrated with the &lt;a href=&quot;https://jekyllrb.com/&quot; target=&quot;_blank&quot;&gt;Jekyll&lt;/a&gt; software for static web site and blog generation. The Jekyll source pages for a web site can be stored on GitHub as a Git repository, and when the repository is updated, github servers will automatically regenerate the site.
 GitHub Pages was launched in late 2008. As with the rest of GitHub, it includes both free and paid tiers of service, instead of being supported by web advertising. Web sites generated through this service are hosted either as subdomains of the github.io domain, or as &lt;strong&gt;custom domains&lt;/strong&gt; bought through a third-party domain name registrars.&lt;/p&gt;
@@ -6405,9 +6405,9 @@ Head over to the post &lt;a href=&quot;http://patricksteadman.ca/2014/08/04/lany
  
  <entry>
    <title>Basic Probability Concepts</title>
-   <link href="http://localhost:4000/2017/06/16/basic-probability-models-and-rules/"/>
+   <link href="https://machinelearningmedium.com/2017/06/16/basic-probability-models-and-rules/"/>
    <updated>2017-06-16T00:00:00+05:30</updated>
-   <id>http://localhost:4000/2017/06/16/basic-probability-models-and-rules</id>
+   <id>https://machinelearningmedium.com/2017/06/16/basic-probability-models-and-rules</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
