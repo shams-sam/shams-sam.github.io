@@ -5,9 +5,458 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 25 Oct 2017 02:02:19 +0530</pubDate>
-    <lastBuildDate>Wed, 25 Oct 2017 02:02:19 +0530</lastBuildDate>
+    <pubDate>Fri, 27 Oct 2017 02:21:59 +0530</pubDate>
+    <lastBuildDate>Fri, 27 Oct 2017 02:21:59 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>What is Number System ?</title>
+        <description>&lt;h3 id=&quot;the-natural-numbers&quot;&gt;The Natural Numbers&lt;/h3&gt;
+
+&lt;p&gt;The natural numbers were created by the human mind out of the necessity to count the objects around us. Most basics of mathematics are associated with association of numbers with tangible objects. But advanced mathematics is built on top of the &lt;strong&gt;abstract concept of number system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;God created natural numbers; everything else is man’s handiwork.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;laws-of-arithmetic&quot;&gt;Laws of Arithmetic&lt;/h3&gt;
+
+&lt;p&gt;Natural numbers have only &lt;strong&gt;two basic operations&lt;/strong&gt;, namely, addition and multiplication. The mathematical theory of the natural numbers or positive integers is known as &lt;strong&gt;arithmetic&lt;/strong&gt;. Arithmetic is based on the fact that operations on numbers are governed by certain laws.&lt;/p&gt;
+
+&lt;p&gt;(a, b, c … symbolically denote integers)&lt;/p&gt;
+
+&lt;p&gt;The fundamental laws of arithmetic are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Commutative&lt;/strong&gt; law, i.e. \(a+b = b+a\) and \(ab = ba\)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Associative&lt;/strong&gt; law, i.e. \(a + (b + c) = (a + b) + c\) and \(a(bc) = (ab)c\)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Distributive&lt;/strong&gt; law, i.e. \(a(b+c) = ab + ac\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Addition and subtraction are &lt;strong&gt;inverse operations&lt;/strong&gt; because, \((a+d)-d = a\). Similarly, multiplication and division are inverse because \({a \over d} \cdot d = a\). Also, &lt;strong&gt;0 and 1 are the identities of operations addition and multiplication respectively&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;representation-of-integers&quot;&gt;Representation of Integers&lt;/h3&gt;
+
+&lt;p&gt;A number system has a set of &lt;strong&gt;digit symbols and numbers&lt;/strong&gt; where digit symbols are used to denote the larger numbers not available directly in the set of digit symbols. Modern number systems are associated with the place values of individual digits in the number, such as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;372 = 3 \cdot 10^2 + 7 \cdot 10^1 + 2 \cdot 10^0&lt;/script&gt;
+
+&lt;p&gt;These are called &lt;strong&gt;positional notations&lt;/strong&gt;. Here, a large number can also be represented using the basic symbols from the set of digit symbols. It is useful to have a way of indicating the result in a general form using a uniform logic, i.e. a general method for representing an integer, \(z\) in the decimal system is to express it as follows&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \cdots + a_1 \cdot 10 + a_0&lt;/script&gt;
+
+&lt;p&gt;which would be represented by the symbol \(a_na_{n-1}\cdots a_1a_0\)&lt;/p&gt;
+
+&lt;p&gt;Specifically, in case of decimal system the base is 10 as can be seen in the equations above. But, in general, for a number system &lt;strong&gt;any number greater than 1 can serve as the base&lt;/strong&gt; of the system. E.g. a &lt;strong&gt;septimal&lt;/strong&gt; system has base 7 and an integer is expressed as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b_n \cdot 7^n + b_{n-1} \cdot 7^{n-1} + \cdots + b_1 \cdot 7 + b_0&lt;/script&gt;
+
+&lt;p&gt;and it would be represented by the symbol \(b_nb_{n-1}\cdots b_1b_0\)&lt;/p&gt;
+
+&lt;p&gt;As a result 109 in decimal system is represented by 214 in septimal system for the reason shown below&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;2 \cdot 7^2 + 1 \cdot 7 + 4 = 109&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As a general rule, in order to convert from base 10 to base B, perform successive divisions of number z by B; the remainders in reverse order would be the number representation in the system with base B.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Too small a base base has disadvantages (even &lt;strong&gt;a small number like 72 has a lengthy representation 1,001,111 in the dyadic system i.e. the binary system&lt;/strong&gt;), while a large base requires learning many digit symbols, and an extended multiplication table.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The duodecimal system, i.e., choice of base 12 is advocated in many places, because it is exactly divisible by two, three, four, and six. Due to this property, works involving division and fraction are simplified.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Early systems of numerations were not positional in nature, but were based on purely additive principle. E.g. in roman symbolism,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;CXVIII = \text{one hundred} + \text{ten} + \text{five} + \text{one} + \text{one} + \text{one}&lt;/script&gt;
+
+&lt;p&gt;i.e., the symbol \(CXVIII\) represents 118. Same was true about other early number systems like the Egyptian, Hebrew, Greek systems of numeration.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Disadvantage of any purely additive notation is that it requires more and more number of new symbols as the number to be represented gets larger. Also, the computation with additive systems is so difficult to perform, that computation was confined to a few adepts in the ancient times.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The positional system has the property that all numbers, however large or small, can be represented by the use of a small set of different digit symbols. Also, the major advantage lies in the &lt;strong&gt;ease of computation&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;computation-in-other-number-systems&quot;&gt;Computation in Other Number Systems&lt;/h3&gt;
+
+&lt;p&gt;A very curious property of the decimal number system that points to usage of other number systems in the past is the number words used. E.g. the words for 11 and 12 are not constructed as the other teens are, suggesting a linguistic independence from words used for 10. Such peculiarities suggest remnants of use of other bases, notably 12 and 20.&lt;/p&gt;
+
+&lt;p&gt;Words vingt and quartevingt used for 20 and 80 respectively in French suggest a possibility of number with &lt;strong&gt;base 20&lt;/strong&gt;. There are traces of Babylonian astronomers using a number system called &lt;strong&gt;sexagesimal&lt;/strong&gt; (base 60).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The tables for addition and multiplication change with number system while the rules of arithmetic remain the same.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Below is the &lt;strong&gt;table for addition&lt;/strong&gt; followed by &lt;strong&gt;table for multiplication&lt;/strong&gt; in duodecimal number system. (&lt;strong&gt;10 and 11 in the duodecimal representation below are represented using A and B respectively.&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;+&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;.&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;41&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;54&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;69&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;84&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;101&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers &lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 27 Oct 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/10/27/number-system/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/27/number-system/</guid>
+        
+        <category>mathematics</category>
+        
+        <category>number system</category>
+        
+        <category>what is mathematics</category>
+        
+        
+      </item>
     
       <item>
         <title>Neural Networks: Cost Function and Backpropagation</title>
@@ -155,8 +604,6 @@
         <category>machine learning</category>
         
         <category>andrew ng</category>
-        
-        <category>featured</category>
         
         
       </item>
@@ -1535,368 +1982,6 @@ Regularized Version
         <pubDate>Wed, 06 Sep 2017 00:00:00 +0530</pubDate>
         <link>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</guid>
-        
-        <category>machine learning</category>
-        
-        <category>andrew ng</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Logistic Regression Model</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; explains why logistic regression and intuition behind it. This post is about how the model works and some intuitions behind it.&lt;/p&gt;
-
-&lt;p&gt;Consider a training set having m examples,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\{ (x^{(1)}, y^{(1)}),\, (x^{(2)}, y^{(2)}),\, \cdots ,\, (x^{(m)}, y^{(m)}) \}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(x \in 
-  \begin{bmatrix}
-    x_0 \\ x_1 \\ \vdots \\ x_m&lt;br /&gt;
-  \end{bmatrix} \in \mathbb{R}^{n+1}
-\)&lt;/li&gt;
-      &lt;li&gt;\(x_0 = 1\)&lt;/li&gt;
-      &lt;li&gt;\(y \in {0, 1}\)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And hypothesis is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = {1 \over 1 + e^{-\theta^Tx}} \tag{1}&lt;/script&gt;
-
-&lt;h3 id=&quot;cost-function&quot;&gt;Cost Function&lt;/h3&gt;
-&lt;p&gt;It can be seen in &lt;a href=&quot;/2017/08/23/multivariate-linear-regression/&quot; target=&quot;_blank&quot;&gt;Mulivariate Linear Regression&lt;/a&gt; that the cost function for the linear regression is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    J(\theta) &amp;= {1 \over m} \sum_{i=1}^m {1 \over 2} \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \\
-    &amp;= {1 \over m} \sum_{i=1}^m Cost(h_\theta(x^{(i)}), y^{(i)})
-  \end{align}
-  \tag{2} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Where \(Cost(h_\theta(x), y) \) is the cost the learning algorithm has to pay if it makes an error in the prediction and from (2), it is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Cost(h_\theta(x), y) = {1 \over 2} \left( h_\theta(x) - y \right)^2 \tag{3}&lt;/script&gt;
-
-&lt;p&gt;In case of linear regression the value of cost depends on how off is the prediction of the regression from the expected value which works well for the optimization required in linear regression.&lt;/p&gt;
-
-&lt;p&gt;But this cost function would not work well for the logistic regression because the hypothesis for logistic regression is the complex sigmoid term shown in (1), gives &lt;strong&gt;non-convex&lt;/strong&gt; curve with many local minima as shown in the plot below. So gradient descent will not work properly for such a case and therefore it would be very difficult to minimize this function.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-02-logistic-regression-model/fig-1-non-convex-cost.png?raw=true&quot; alt=&quot;Non Convex Cost&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;\
-    &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cost&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;So, &lt;strong&gt;cost function for logistic regression&lt;/strong&gt; is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-Cost(h_\theta(x), y) = 
-  \begin{cases}
-    \begin{align}
-      -log(h_\theta(x))\text{ if } y &amp;= 1 \\
-      -log(1-h_\theta(x))\text{ if } y &amp;= 0 \\
-    \end{align}
-  \end{cases}
-  \tag{4} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;The plots of the functions above can be seen below. It is clear that new cost function can be minimized because its convex.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-02-logistic-regression-model/fig-2-plot-of-cost-functions.png?raw=true&quot; alt=&quot;Plot of Log Fucntions&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Other useful &lt;strong&gt;properties&lt;/strong&gt; of the chosen cost function are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;if y = 1 and
-    &lt;ul&gt;
-      &lt;li&gt;h(x) = 1, then Cost = 0&lt;/li&gt;
-      &lt;li&gt;h(x) \(\to\)  0, then Cost \(\to \infty\)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;if y = 0 and
-    &lt;ul&gt;
-      &lt;li&gt;h(x) = 0, then Cost = 0&lt;/li&gt;
-      &lt;li&gt;h(x) \(\to\)  1, then Cost \(\to \infty\)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Since \(y \in \{0, 1\} \), (4) can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Cost(h_\theta(x), y) = -y\,log(h_\theta(x) - (1-y)\,log(1 - h_\theta(x)) \tag{5}&lt;/script&gt;
-
-&lt;p&gt;So, adding to (2),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    J(\theta) &amp;= {1 \over m} \sum_{i=1}^m {1 \over 2} \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 \\
-    &amp;= {1 \over m} \sum_{i=1}^m Cost(h_\theta(x^{(i)}), y^{(i)}) \\
-    &amp;= -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)}) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right)
-  \end{align}
-  \tag{6} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;This cost function is reached at using the &lt;strong&gt;principle of maximum likelyhood expectation&lt;/strong&gt;. So now to get optimal \(\theta\),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;minimize_\theta J(\theta) \tag{7}&lt;/script&gt;
-
-&lt;p&gt;Which is done using gradient descent given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
-    \text{repeat until convergence}
-    \begin{cases}
-      \theta_j := \theta_j - \alpha {\partial \over \partial \theta_j} J(\theta) \\
-    \end{cases}
-  \end{align}
-  \tag{7}&lt;/script&gt;
-
-&lt;p&gt;And the differential term is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \frac {\partial} {\partial \theta} J(\theta) &amp;= - \frac {\partial} {\partial \theta} {1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)})) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) \\
-    &amp;= - {1 \over m} \sum_{i=1}^m \left( y^{(i)}\, \frac {\partial} {\partial \theta}log(h_\theta(x^{(i)})) + (1-y^{(i)})\,\frac {\partial} {\partial \theta} log(1 - h_\theta(x^{(i)})) \right) \\
-  \end{align}
-  \tag{8} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Differential of log is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{d \over dz} log(z) = {1 \over z} \tag{9}&lt;/script&gt;
-
-&lt;p&gt;And differential of sigmoid function is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    {d \over dz} h(z) &amp;= {d \over dz} {1 \over 1 + e^{-z}} \\
-    &amp;= {e^{-z} \over (1 + e^{-z})^2} \\
-    &amp;= { 1 + e^{-z}  - 1 \over (1 + e^{-z})^2} \\
-    &amp;= { 1 \over 1 + e^{-z}}   - {1 \over (1 + e^{-z})^2 } \\
-    &amp;= h(z)(1-h(z))
-  \end{align} 
-  \tag{10} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Using (9) and (10) in (8),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    {\partial \over \partial \theta_j} J(\theta) &amp;= - {1 \over m} \sum_{i=1}^m y^{(i)}\, {x_j^{(i)} \over h(x^{(i)})} h(x^{(i)})(1-h(x^{(i)})) + (1-y^{(i)}) {x_j^{(i)} \over 1 - h(x^{(i)})} (-h(x^{(i)})(1-h(x^{(i)}))) \\
-    &amp;= - {1 \over m} \sum_{i=1}^m ( y^{(i)}\,(1-h(x^{(i)})) - (1-y^{(i)}) h(x^{(i)}) ) x_j^{(i)} \\
-    &amp;= - {1 \over m} \sum_{i=1}^m \left( y^{(i)} - y^{(i)} h(x^{(i)}) - h(x^{(i)}) + y^{(i)} h(x^{(i)}) \right) x_j^{(i)} \\
-    &amp;= {1 \over m} \sum_{i=1}^m \left(h(x^{(i)}) - y^{(i)} \right) x_j^{(i)}
-  \end{align}
-  \tag{11} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Using (11) in (7),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
-    \text{repeat until convergence}
-    \begin{cases}
-      \theta_j := \theta_j - \alpha {1 \over m} \sum_{i=1}^m \left(h(x^{(i)}) - y^{(i)} \right) x_j^{(i)}
-    \end{cases}
-  \end{align}
-  \tag{12}&lt;/script&gt;
-
-&lt;p&gt;Which looks same as the result of gradient descent of linear regression in &lt;a href=&quot;/2017/08/23/multivariate-linear-regression/&quot; target=&quot;_blank&quot;&gt;Mulivariate Linear Regression&lt;/a&gt;. But there is a difference which can be seen in the defination of the hypothesis of linear regression and logistic regression.&lt;/p&gt;
-
-&lt;p&gt;Vectorizing (12),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta := \theta - \alpha {1 \over m} \sum_{i=1}^m [(h_\theta(x^{(i)}) - y^{(i)}).x^{(i)}]&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta := \theta - \alpha {1 \over m} X^T (g(X\theta) - y)&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where X is the &lt;strong&gt;design matrix&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Note: Feature Scaling is as important for logistic regression as it is for linear regression as it helps the process of gradient descent.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;advanced-optimization&quot;&gt;Advanced Optimization&lt;/h3&gt;
-
-&lt;p&gt;Given the functions for calculation of \(J(\theta)\) and \(\frac {\partial} {\partial \theta} J(\theta)\) one can apply one of the many &lt;strong&gt;optimization techniques other than gradient descent&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Conjugate Descent&lt;/li&gt;
-  &lt;li&gt;BFGS&lt;/li&gt;
-  &lt;li&gt;L-BFGS&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Advantage&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Disadvantages&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;No need to manually pick \(\alpha\)&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;More complex&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Often faster than gradient descent&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Harder to debug&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Most of these algorithms have a clever inner loop like line search algorithm which automatically finds out the best \(\alpha\) value.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
-
-&lt;p&gt;Below is an implementation for linear decision boundary,&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rand&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000000&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.000001&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;theta_history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cost_history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta_history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cost_history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-02-logistic-regression-model/fig-3-linear-decision-boundary.gif?raw=true&quot; alt=&quot;Linear Decision Boundary&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Plot above shows how the &lt;strong&gt;linear decision boundary&lt;/strong&gt; fits the data over the iterations. The plot below is the &lt;strong&gt;contour plot&lt;/strong&gt; of the cost function.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-02-logistic-regression-model/fig-4-contour-plot.png?raw=true&quot; alt=&quot;Contour Plot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Following is an implementation of non-linear decision boundary. The code is similar to the previous implementation but the &lt;strong&gt;data and the dimensions of the design matrix vary&lt;/strong&gt; because of higher number of features.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.000001&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;theta_history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;cost_history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta_history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cost_history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Regression stopped with error: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%.2&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1534&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1535&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'equal'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Non-Linear Decision Boundary'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;The following plot shows the &lt;strong&gt;circular decision boundary&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-02-logistic-regression-model/fig-5-non-linear-decision-boundary.png?raw=true&quot; alt=&quot;Non-Linear Decision Boundary&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;A rough implementation of all these plots and some more can be found &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/LogisticRegression.ipynb&quot; target=&quot;_blank&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/1XG8G/cost-function&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Logistic Regression Model&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/MtEaZ/simplified-cost-function-and-gradient-descent&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Simplified Cost Function and Gradient Descent&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/licwf/advanced-optimization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Advanced Optimization&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sat, 02 Sep 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/09/02/logistic-regression-model/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/02/logistic-regression-model/</guid>
         
         <category>machine learning</category>
         

@@ -4,13 +4,454 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2017-10-25T02:02:19+05:30</updated>
+ <updated>2017-10-27T02:21:59+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>What is Number System ?</title>
+   <link href="https://machinelearningmedium.com/2017/10/27/number-system/"/>
+   <updated>2017-10-27T00:00:00+05:30</updated>
+   <id>https://machinelearningmedium.com/2017/10/27/number-system</id>
+   <content type="html">&lt;h3 id=&quot;the-natural-numbers&quot;&gt;The Natural Numbers&lt;/h3&gt;
+
+&lt;p&gt;The natural numbers were created by the human mind out of the necessity to count the objects around us. Most basics of mathematics are associated with association of numbers with tangible objects. But advanced mathematics is built on top of the &lt;strong&gt;abstract concept of number system&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;God created natural numbers; everything else is man’s handiwork.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;laws-of-arithmetic&quot;&gt;Laws of Arithmetic&lt;/h3&gt;
+
+&lt;p&gt;Natural numbers have only &lt;strong&gt;two basic operations&lt;/strong&gt;, namely, addition and multiplication. The mathematical theory of the natural numbers or positive integers is known as &lt;strong&gt;arithmetic&lt;/strong&gt;. Arithmetic is based on the fact that operations on numbers are governed by certain laws.&lt;/p&gt;
+
+&lt;p&gt;(a, b, c … symbolically denote integers)&lt;/p&gt;
+
+&lt;p&gt;The fundamental laws of arithmetic are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Commutative&lt;/strong&gt; law, i.e. \(a+b = b+a\) and \(ab = ba\)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Associative&lt;/strong&gt; law, i.e. \(a + (b + c) = (a + b) + c\) and \(a(bc) = (ab)c\)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Distributive&lt;/strong&gt; law, i.e. \(a(b+c) = ab + ac\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Addition and subtraction are &lt;strong&gt;inverse operations&lt;/strong&gt; because, \((a+d)-d = a\). Similarly, multiplication and division are inverse because \({a \over d} \cdot d = a\). Also, &lt;strong&gt;0 and 1 are the identities of operations addition and multiplication respectively&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;representation-of-integers&quot;&gt;Representation of Integers&lt;/h3&gt;
+
+&lt;p&gt;A number system has a set of &lt;strong&gt;digit symbols and numbers&lt;/strong&gt; where digit symbols are used to denote the larger numbers not available directly in the set of digit symbols. Modern number systems are associated with the place values of individual digits in the number, such as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;372 = 3 \cdot 10^2 + 7 \cdot 10^1 + 2 \cdot 10^0&lt;/script&gt;
+
+&lt;p&gt;These are called &lt;strong&gt;positional notations&lt;/strong&gt;. Here, a large number can also be represented using the basic symbols from the set of digit symbols. It is useful to have a way of indicating the result in a general form using a uniform logic, i.e. a general method for representing an integer, \(z\) in the decimal system is to express it as follows&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \cdots + a_1 \cdot 10 + a_0&lt;/script&gt;
+
+&lt;p&gt;which would be represented by the symbol \(a_na_{n-1}\cdots a_1a_0\)&lt;/p&gt;
+
+&lt;p&gt;Specifically, in case of decimal system the base is 10 as can be seen in the equations above. But, in general, for a number system &lt;strong&gt;any number greater than 1 can serve as the base&lt;/strong&gt; of the system. E.g. a &lt;strong&gt;septimal&lt;/strong&gt; system has base 7 and an integer is expressed as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b_n \cdot 7^n + b_{n-1} \cdot 7^{n-1} + \cdots + b_1 \cdot 7 + b_0&lt;/script&gt;
+
+&lt;p&gt;and it would be represented by the symbol \(b_nb_{n-1}\cdots b_1b_0\)&lt;/p&gt;
+
+&lt;p&gt;As a result 109 in decimal system is represented by 214 in septimal system for the reason shown below&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;2 \cdot 7^2 + 1 \cdot 7 + 4 = 109&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;As a general rule, in order to convert from base 10 to base B, perform successive divisions of number z by B; the remainders in reverse order would be the number representation in the system with base B.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Too small a base base has disadvantages (even &lt;strong&gt;a small number like 72 has a lengthy representation 1,001,111 in the dyadic system i.e. the binary system&lt;/strong&gt;), while a large base requires learning many digit symbols, and an extended multiplication table.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The duodecimal system, i.e., choice of base 12 is advocated in many places, because it is exactly divisible by two, three, four, and six. Due to this property, works involving division and fraction are simplified.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Early systems of numerations were not positional in nature, but were based on purely additive principle. E.g. in roman symbolism,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;CXVIII = \text{one hundred} + \text{ten} + \text{five} + \text{one} + \text{one} + \text{one}&lt;/script&gt;
+
+&lt;p&gt;i.e., the symbol \(CXVIII\) represents 118. Same was true about other early number systems like the Egyptian, Hebrew, Greek systems of numeration.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Disadvantage of any purely additive notation is that it requires more and more number of new symbols as the number to be represented gets larger. Also, the computation with additive systems is so difficult to perform, that computation was confined to a few adepts in the ancient times.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The positional system has the property that all numbers, however large or small, can be represented by the use of a small set of different digit symbols. Also, the major advantage lies in the &lt;strong&gt;ease of computation&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;computation-in-other-number-systems&quot;&gt;Computation in Other Number Systems&lt;/h3&gt;
+
+&lt;p&gt;A very curious property of the decimal number system that points to usage of other number systems in the past is the number words used. E.g. the words for 11 and 12 are not constructed as the other teens are, suggesting a linguistic independence from words used for 10. Such peculiarities suggest remnants of use of other bases, notably 12 and 20.&lt;/p&gt;
+
+&lt;p&gt;Words vingt and quartevingt used for 20 and 80 respectively in French suggest a possibility of number with &lt;strong&gt;base 20&lt;/strong&gt;. There are traces of Babylonian astronomers using a number system called &lt;strong&gt;sexagesimal&lt;/strong&gt; (base 60).&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The tables for addition and multiplication change with number system while the rules of arithmetic remain the same.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Below is the &lt;strong&gt;table for addition&lt;/strong&gt; followed by &lt;strong&gt;table for multiplication&lt;/strong&gt; in duodecimal number system. (&lt;strong&gt;10 and 11 in the duodecimal representation below are represented using A and B respectively.&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;+&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;.&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;41&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;54&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;69&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;84&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;101&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers &lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Neural Networks: Cost Function and Backpropagation</title>
