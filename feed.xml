@@ -5,13 +5,318 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 27 Oct 2017 02:21:59 +0530</pubDate>
-    <lastBuildDate>Fri, 27 Oct 2017 02:21:59 +0530</lastBuildDate>
+    <pubDate>Sun, 29 Oct 2017 01:17:12 +0530</pubDate>
+    <lastBuildDate>Sun, 29 Oct 2017 01:17:12 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
+        <title>Mathematical Induction</title>
+        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;why-mathematical-induction&quot;&gt;Why Mathematical Induction?&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There are infinitely many integers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The step-by-step procedure of passing from \(n\) to \(n+1\) which generates the infinite sequence of integers forms the basis of one of the most fundamental patterns of mathematical reasoning, the principle of mathematical induction.&lt;/p&gt;
+
+&lt;p&gt;Mathematical Induction is used to establish the truth of a mathematical theorem for an infinite sequence of cases.&lt;/p&gt;
+
+&lt;p&gt;There are two steps in proving a theorem, \(A\) by mathematical induction:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The first statement \(A_1\) must be true.&lt;/li&gt;
+  &lt;li&gt;If a statement \(A_r\) is true then the statement \(A_{r+1}\) should be true too.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That these two conditions are sufficient to establish the truth of all the statements, \(A_1, A_2, \cdots \) is a logical principle which is as fundamental to mathematics as are the classical rules of Aristotelian logic.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Suppose that a) by some mathematical argument it is shown that if \(r\) is any integer and if assertion \(A_r\) is known to be true then the truth of assertion \(A_{r+1}\) will follow, and that b) the first proposition \(A_1\) is known to be true. Then all the propositions of the sequence must be true, and A is proved.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The principle of mathematical induction rests on the fact that after any integer \(r\) there is a next, \(r+1\), and that any desired integer \(n\) may be reached by a finite number of such steps, starting from the integer 1.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Although the principle of mathematical induction suffices to prove a theorem or formula once it is expressed, the proof gives no indication of how this formula was arrived at in the first place. So, it should be more fittingly called a verification.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proof-for-arithmetic-progression&quot;&gt;Proof for Arithmetic Progression&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;For every value of n, the sum \(1 + 2 + \cdots + n\) of the first n integers is equal to \(\frac {n(n+1)} {2} \)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For any \(r\) is given by assertion \(A_r\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 + 2 + 3 + \cdots + r = \frac {r(r+1)} {2} \label{1} \tag{1}&lt;/script&gt;
+
+&lt;p&gt;Adding \((r+1)\) to both LHS and RHS of \eqref{1},&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+1 + 2 + 3 + \cdots + r + (r+1) &amp;= \frac {r(r+1)} {2} + (r+1) \\
+                               &amp;= \frac {r(r+1) + 2(r+1)} {2} \\
+                               &amp;= \frac {(r+1)((r+1) + 1)} {2}
+                               \label{2} \tag{2}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;\eqref{2} is nothing but assertion, \(A_{r+1}\).&lt;/p&gt;
+
+&lt;p&gt;Also for \(r=1\), assertion \(A_1\) is true because, from \eqref{1},&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 = \frac {1(1+1)} {2} \tag{3} \label{3}&lt;/script&gt;
+
+&lt;p&gt;So, using \eqref{2} and \eqref{3}, mathematical induction proves that the assertion in \eqref{1} holds for all positive integers, \(n\).&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-geometric-progression&quot;&gt;Proof for Geometric Progression&lt;/h3&gt;
+
+&lt;p&gt;The theorem states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G_n = a + aq + aq^2 + \cdots + aq^n = a \frac{1 - q^{n+1}} {1-q} \label{4} \tag{4}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+G_1 = a + aq &amp;= a \frac{1 - q^{2}} {1-q} \\
+             &amp;= a \frac{(1-q) (1+q)} {1-q} \\
+             &amp;= a (1+q)  \\
+    \tag{5} \label{5}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(G_r\) is true, i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;G_r = a + aq + aq^2 + \cdots + aq^r = a \frac{1 - q^{r+1}} {1-q} \label{6} \tag{6}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+G_{r+1} &amp;= (a + aq + aq^2 + \cdots + aq^r) + aq^{r+1} \\
+        &amp;= a \frac{1 - q^{r+1}} {1-q} + aq^{r+1} \\
+        &amp;= \frac{a - aq^{r+1} + aq^{r+1} - aq^{r+2}} {1-q} \\
+        &amp;= a \frac{1 - q^{(r+1) + 1}} {1-q} \\
+        \label{7} \tag{7}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;But \eqref{7} is precisely the assertion \eqref{4} for the case \(n=r+1\). Hence, using \eqref{5} and \eqref{7} the assertion \eqref{4} is proved by mathematical induction.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-sum-of-first-n-squares&quot;&gt;Proof for Sum of First n Squares&lt;/h3&gt;
+
+&lt;p&gt;The theorem states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_n = 1^2 + 2^2 + \cdots + n^2 = \frac {n(n+1)(2n+1)} {6} \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_1 = 1^2 = \frac{1(1+1)(2(1)+1)} {6} = 1 \tag{9} \label{9}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_r = 1^2 + 2^2 + \cdots + r^2 = \frac {r(r+1)(2r+1)} {6} \tag{10} \label{10}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+A_{r+1} = (1^2 + 2^2 + \cdots + r^2) + (r+1)^2 &amp;= \frac {r(r+1)(2r+1)} {6} + (r+1)^2 \\
+&amp;= (r+1)\frac{r(2r+1) + 6(r+1)} {6} \\
+&amp;= (r+1) \frac {2r^2 + 7r + 6} {6} \\
+&amp;= \frac{(r+1) (r+2) (2r+3)} {6} \\
+\label{11} \tag{11}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{8} for \(n = r+1\). So, using \eqref{9} and \eqref{11}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-sum-of-first-n-cubes&quot;&gt;Proof for Sum of First n Cubes&lt;/h3&gt;
+
+&lt;p&gt;The theorem states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_n = 1^3 + 2^3 + \cdots + n^3 = \left[\frac {n(n+1)} {2}\right]^2 \tag{12} \label{12}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_1 = 1^3 = \left[\frac {1(1+1)} {2}\right]^2 = 1^2 \tag{13} \label{13}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;A_r = 1^3 + 2^3 + \cdots + r^3 = \left[\frac {r(r+1)} {2}\right]^2 \tag{14} \label{14}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+A_{r+1} = (1^3 + 2^3 + \cdots + r^3 ) + (r+1)^3 &amp;= \left[\frac {r(r+1)} {2}\right]^2 + (r+1)^3 \\
+&amp;= (r+1)^2\frac{r^2 + 4r + 4} {4} \\
+&amp;= (r+1)^2 \frac {(r+2)^2} {2^2} \\
+&amp;= \left[\frac {(r+1)(r+2)} {2}\right]^2
+\label{15} \tag{15}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{12} for \(n = r+1\). So, using \eqref{13} and \eqref{15}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-bernoullis-inequality&quot;&gt;Proof for Bernoulli’s Inequality&lt;/h3&gt;
+
+&lt;p&gt;The assertion, \(A_n \) states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^n \geq 1+np \text{, where } p&gt;-1\tag{16} \label{16}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^1 \geq 1+p \tag{17} \label{17}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^r \geq 1+rp \tag{18} \label{18}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+(1+p)^{r+1} = (1+p)^r \cdot (1+p) &amp;\geq (1+rp)(1+p) \\
+&amp;\geq 1 + rp + p + rp^2 \\
+&amp;\geq 1+(r+1)p \text{, because } rp^2 \gt 0 \\
+\label{19} \tag{19}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{16} for \(n = r+1\). So, using \eqref{17} and \eqref{19}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;p&gt;If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-of-binomial-theorem&quot;&gt;Proof of Binomial Theorem&lt;/h3&gt;
+
+&lt;p&gt;The assertion, \(C_i^n \) states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_i^n = \frac{n(n-1) \cdots (n-i+1) } {1 \cdot 2 \cdots i} = \frac {n!} {i!(n-i)!} \text{, for } i \in \{0, 1, \cdots, n\} \tag{20} \label{20}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=1\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_i^1 = \frac{1!} {i!(1-i)!} = 1 \text{, for } i \in \{0, 1\} \tag{21} \label{21}&lt;/script&gt;
+
+&lt;p&gt;which is exactly the value for \(C_0^1 = C_1^1 = 1\) in Pascal’s Triangle.&lt;/p&gt;
+
+&lt;p&gt;Let’s assume \(C_i^r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C_i^r = \frac {r!} {i!(r-i)!} \text{, for } i \in \{0, 1, \cdots, r\} \tag{22} \label{22}&lt;/script&gt;
+
+&lt;p&gt;Then using the relation, \(C_i^{r+1} = C_{i-1}^{r} + C_i^{r} \text{, } C_i^{r+1}\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+C_i^{r+1} &amp;= C_{i-1}^{r} + C_i^{r} \\
+&amp;= \frac{r!}{(i-1)!(r - i + 1)!} + \frac{r!}{i!(r-i)!} \\
+&amp;= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{1}{r-i+1} + \frac{1}{i} \right] \\
+&amp;= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{r+1}{i(r-i+1)} \right] \\
+&amp;= \frac{(r+1)!}{(i)!((r+1)-i)!} \\
+\tag{23} \label{23}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{20} for \(n = r+1\). So, using \eqref{21} and \eqref{23}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;h3 id=&quot;generalized-mathematical-induction&quot;&gt;Generalized Mathematical Induction&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If a sequence of statements \(A_s, A_{s+1}, \cdots\) is given where \(s\) is a some positive integer, and if &lt;br /&gt;
+a) For every value \(r \geq s\), the truth of \(A_{r+1}\) will follow from the truth of \(A_r\),&lt;br /&gt;
+b) \(A_s\) is known to be true, &lt;br /&gt;
+then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true for all \(n \geq s\)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proof-for-bernoullis-inequality-strict-version&quot;&gt;Proof for Bernoulli’s Inequality (Strict version)&lt;/h3&gt;
+
+&lt;p&gt;The assertion, \(A_n \) states that, for every value of \(n\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^n \gt 1+np \text{, for } p&gt;-1 \text{ and } p\ne0 \text{ and } n \geq 2\tag{24} \label{24}&lt;/script&gt;
+
+&lt;p&gt;The assertion holds true for \(n=s=2\), because,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^2 = 1 + 2p + p^2 \gt 1+2p \text{, because } p \ne 0 \text{, so } p^2 \gt 0   \tag{25} \label{25}&lt;/script&gt;
+
+&lt;p&gt;Let’s assume \(A_r\) is true, i.e.,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(1+p)^r \gt 1+rp \tag{26} \label{26}&lt;/script&gt;
+
+&lt;p&gt;Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+(1+p)^{r+1} = (1+p)^r \cdot (1+p) &amp;\gt (1+rp)(1+p) \\
+&amp;\gt 1 + rp + p + rp^2 \\
+&amp;\gt 1+(r+1)p \text{, because } rp^2 \gt 0 \\
+\label{27} \tag{27}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is precisely the assertion \eqref{24} for \(n = r+1\). So, using \eqref{25} and \eqref{27}, mathematical induction proves the assertion.&lt;/p&gt;
+
+&lt;p&gt;If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.&lt;/p&gt;
+
+&lt;h3 id=&quot;principle-of-smallest-integer&quot;&gt;Principle of Smallest Integer&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Every non-empty set \(C\) of positive integers has a smallest number. (Set may be finite or infinite.)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;At first it seems like a trivial principle but it actually does not apply to many sets that are not integers, e.g. the set of positive fractions \(1, {1 \over 2} {1 \over 3} \cdots \) does not contain a smallest number.&lt;/p&gt;
+
+&lt;h3 id=&quot;proof-for-mathematical-induction&quot;&gt;Proof for Mathematical Induction&lt;/h3&gt;
+
+&lt;p&gt;The principle of smallest integer can be used to prove the principle of mathematical induction as a theorem.&lt;/p&gt;
+
+&lt;p&gt;Let us consider any sequence of statements \(A_1, A_2, \cdots \) such that,&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;For any integer \(r\) the truth of \(A_{r+1}\) will follow from that of \(A_r\)&lt;/li&gt;
+  &lt;li&gt;\(A_1\) is known to be true.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;if 1 of the \(A’s\) were false, the set \(C\) of all positive integers \(n\) for which \(A_n\) is false would be non-empty. By the principle of smallest integer, \(C\) would have a smallest integer \(p\), which must be greater than 1 because of condition (2) in the theorem. Hence, \(A_p\) would be false, but \(A_{p-1}\) true, which contradicts condition (1) of the theorem. So, the assumption in the first place, that any one of the \(A’s\) is false is untenable.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Mathematical Induction must be applied very carefully to prove an assertion because, it is often fallacious because of a misleading base case. A popular example of this is “All number are equal fallacy”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sat, 28 Oct 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/10/28/mathematical-induction/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/28/mathematical-induction/</guid>
+        
+        <category>mathematics</category>
+        
+        <category>number system</category>
+        
+        <category>what is mathematics</category>
+        
+        <category>theorems</category>
+        
+        
+      </item>
+    
+      <item>
         <title>What is Number System ?</title>
-        <description>&lt;h3 id=&quot;the-natural-numbers&quot;&gt;The Natural Numbers&lt;/h3&gt;
+        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;the-natural-numbers&quot;&gt;The Natural Numbers&lt;/h3&gt;
 
 &lt;p&gt;The natural numbers were created by the human mind out of the necessity to count the objects around us. Most basics of mathematics are associated with association of numbers with tangible objects. But advanced mathematics is built on top of the &lt;strong&gt;abstract concept of number system&lt;/strong&gt;.&lt;/p&gt;
 
@@ -443,7 +748,7 @@
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
-&lt;p&gt;&lt;small&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers &lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 27 Oct 2017 00:00:00 +0530</pubDate>
         <link>https://machinelearningmedium.com/2017/10/27/number-system/</link>
@@ -1878,110 +2183,6 @@ Regularized Version
         <pubDate>Fri, 08 Sep 2017 00:00:00 +0530</pubDate>
         <link>https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/</guid>
-        
-        <category>machine learning</category>
-        
-        <category>andrew ng</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Multiclass Logistic Regression</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;For intuition and implementation of Binary Logistic Regression refer &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Multiclass logistic regression is a extension of the binary classification making use of the &lt;strong&gt;one-vs-all&lt;/strong&gt; or &lt;strong&gt;one-vs-rest&lt;/strong&gt; classification strategy.&lt;/p&gt;
-
-&lt;h3 id=&quot;intuition&quot;&gt;Intuition&lt;/h3&gt;
-&lt;p&gt;Given a classification problem with &lt;strong&gt;n&lt;/strong&gt; distinct classes, train n classifiers, where each classifier draws a decision boundary for one class vs all the other classes. Mathematically,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta^{(i)}(x) = P(y=i|x; \theta) \tag{1}&lt;/script&gt;
-
-&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
-
-&lt;p&gt;Below is an implementation for &lt;strong&gt;multiclass logistic regression with linear decision boundary&lt;/strong&gt;, where number of classes is 3 and one-vs-all strategy is used.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x_orig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y_orig&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;theta_all&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.6&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;idx_0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;idx_1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.000001&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta_history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;cost_history&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tolerance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;theta_history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;prev_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cost_history&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta_all&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;classifier &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;d stopping with loss: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;%.5&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;f&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;theta_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x_range&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplots&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_xlim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;set_ylim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;where&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta_all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Multiclass Logistic Regression'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Below is the plot of all the decision boundaries found by the logistic regression.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-06-multiclass-logistic-regression/fig-1-decision-boundaries.png?raw=true&quot; alt=&quot;Decision Boundaries&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Value of \(h_\theta^{(i)}(x)\) is the probability of data point belonging to \(i^{th}\) class&lt;/strong&gt; as seen in (1). Keeping this is mind one can decide the precedence of the class based on the values of its corresponding prediction on that data point. So, &lt;strong&gt;the predicted class is the one with maximum value of corresponding hypothesis&lt;/strong&gt;. It shown in the plot below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-09-06-multiclass-logistic-regression/fig-2-decision-regions.png?raw=true&quot; alt=&quot;Decision Regions&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Similar to the above implementation the classificaiton can be extented to many more classes.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/68Pol/multiclass-classification-one-vs-all&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Multiclass Classification: One-vs-All&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 06 Sep 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</guid>
         
         <category>machine learning</category>
         

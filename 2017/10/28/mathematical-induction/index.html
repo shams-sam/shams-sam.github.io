@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Mathematical Induction | Machine Learning Medium</title>
+  <meta name="description" content="Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Mathematical Induction"/>
+  
+  <meta property="og:description" content="Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/domino.jpg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2017/10/28/mathematical-induction/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2017-10-28T00:00:00+05:30">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2017/10/28/mathematical-induction/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person">Shams S</h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2017-10-28T00:00:00+05:30">Oct 28</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/domino.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: http://fungyung.com/data/out/34/62844389-domino-wallpapers.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Mathematical Induction</h1>
+            <h2 class="post-description">Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set.</h1>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="what-is-mathematics-series">What is Mathematics Series</h3>
+
+<blockquote>
+  <p><a href="/2017/10/27/number-system/">What is Number System ?</a></p>
+
+  <p><a href="/2017/10/28/mathematical-induction/">Mathematical Induction</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="why-mathematical-induction">Why Mathematical Induction?</h3>
+
+<blockquote>
+  <p>There are infinitely many integers.</p>
+</blockquote>
+
+<p>The step-by-step procedure of passing from \(n\) to \(n+1\) which generates the infinite sequence of integers forms the basis of one of the most fundamental patterns of mathematical reasoning, the principle of mathematical induction.</p>
+
+<p>Mathematical Induction is used to establish the truth of a mathematical theorem for an infinite sequence of cases.</p>
+
+<p>There are two steps in proving a theorem, \(A\) by mathematical induction:</p>
+
+<ul>
+  <li>The first statement \(A_1\) must be true.</li>
+  <li>If a statement \(A_r\) is true then the statement \(A_{r+1}\) should be true too.</li>
+</ul>
+
+<p>That these two conditions are sufficient to establish the truth of all the statements, \(A_1, A_2, \cdots \) is a logical principle which is as fundamental to mathematics as are the classical rules of Aristotelian logic.</p>
+
+<blockquote>
+  <p>Suppose that a) by some mathematical argument it is shown that if \(r\) is any integer and if assertion \(A_r\) is known to be true then the truth of assertion \(A_{r+1}\) will follow, and that b) the first proposition \(A_1\) is known to be true. Then all the propositions of the sequence must be true, and A is proved.</p>
+</blockquote>
+
+<p>The principle of mathematical induction rests on the fact that after any integer \(r\) there is a next, \(r+1\), and that any desired integer \(n\) may be reached by a finite number of such steps, starting from the integer 1.</p>
+
+<blockquote>
+  <p>Although the principle of mathematical induction suffices to prove a theorem or formula once it is expressed, the proof gives no indication of how this formula was arrived at in the first place. So, it should be more fittingly called a verification.</p>
+</blockquote>
+
+<h3 id="proof-for-arithmetic-progression">Proof for Arithmetic Progression</h3>
+
+<blockquote>
+  <p>For every value of n, the sum \(1 + 2 + \cdots + n\) of the first n integers is equal to \(\frac {n(n+1)} {2} \)</p>
+</blockquote>
+
+<p>For any \(r\) is given by assertion \(A_r\) is given by,</p>
+
+<script type="math/tex; mode=display">1 + 2 + 3 + \cdots + r = \frac {r(r+1)} {2} \label{1} \tag{1}</script>
+
+<p>Adding \((r+1)\) to both LHS and RHS of \eqref{1},</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+1 + 2 + 3 + \cdots + r + (r+1) &= \frac {r(r+1)} {2} + (r+1) \\
+                               &= \frac {r(r+1) + 2(r+1)} {2} \\
+                               &= \frac {(r+1)((r+1) + 1)} {2}
+                               \label{2} \tag{2}
+\end{align} %]]></script>
+
+<p>\eqref{2} is nothing but assertion, \(A_{r+1}\).</p>
+
+<p>Also for \(r=1\), assertion \(A_1\) is true because, from \eqref{1},</p>
+
+<script type="math/tex; mode=display">1 = \frac {1(1+1)} {2} \tag{3} \label{3}</script>
+
+<p>So, using \eqref{2} and \eqref{3}, mathematical induction proves that the assertion in \eqref{1} holds for all positive integers, \(n\).</p>
+
+<h3 id="proof-for-geometric-progression">Proof for Geometric Progression</h3>
+
+<p>The theorem states that, for every value of \(n\),</p>
+
+<script type="math/tex; mode=display">G_n = a + aq + aq^2 + \cdots + aq^n = a \frac{1 - q^{n+1}} {1-q} \label{4} \tag{4}</script>
+
+<p>The assertion holds true for \(n=1\), because,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+G_1 = a + aq &= a \frac{1 - q^{2}} {1-q} \\
+             &= a \frac{(1-q) (1+q)} {1-q} \\
+             &= a (1+q)  \\
+    \tag{5} \label{5}
+\end{align} %]]></script>
+
+<p>Let’s assume \(G_r\) is true, i.e.</p>
+
+<script type="math/tex; mode=display">G_r = a + aq + aq^2 + \cdots + aq^r = a \frac{1 - q^{r+1}} {1-q} \label{6} \tag{6}</script>
+
+<p>Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+G_{r+1} &= (a + aq + aq^2 + \cdots + aq^r) + aq^{r+1} \\
+        &= a \frac{1 - q^{r+1}} {1-q} + aq^{r+1} \\
+        &= \frac{a - aq^{r+1} + aq^{r+1} - aq^{r+2}} {1-q} \\
+        &= a \frac{1 - q^{(r+1) + 1}} {1-q} \\
+        \label{7} \tag{7}
+\end{align} %]]></script>
+
+<p>But \eqref{7} is precisely the assertion \eqref{4} for the case \(n=r+1\). Hence, using \eqref{5} and \eqref{7} the assertion \eqref{4} is proved by mathematical induction.</p>
+
+<h3 id="proof-for-sum-of-first-n-squares">Proof for Sum of First n Squares</h3>
+
+<p>The theorem states that, for every value of \(n\),</p>
+
+<script type="math/tex; mode=display">A_n = 1^2 + 2^2 + \cdots + n^2 = \frac {n(n+1)(2n+1)} {6} \tag{8} \label{8}</script>
+
+<p>The assertion holds true for \(n=1\), because,</p>
+
+<script type="math/tex; mode=display">A_1 = 1^2 = \frac{1(1+1)(2(1)+1)} {6} = 1 \tag{9} \label{9}</script>
+
+<p>Let’s assume \(A_r\) is true, i.e.,</p>
+
+<script type="math/tex; mode=display">A_r = 1^2 + 2^2 + \cdots + r^2 = \frac {r(r+1)(2r+1)} {6} \tag{10} \label{10}</script>
+
+<p>Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+A_{r+1} = (1^2 + 2^2 + \cdots + r^2) + (r+1)^2 &= \frac {r(r+1)(2r+1)} {6} + (r+1)^2 \\
+&= (r+1)\frac{r(2r+1) + 6(r+1)} {6} \\
+&= (r+1) \frac {2r^2 + 7r + 6} {6} \\
+&= \frac{(r+1) (r+2) (2r+3)} {6} \\
+\label{11} \tag{11}
+\end{align} %]]></script>
+
+<p>which is precisely the assertion \eqref{8} for \(n = r+1\). So, using \eqref{9} and \eqref{11}, mathematical induction proves the assertion.</p>
+
+<h3 id="proof-for-sum-of-first-n-cubes">Proof for Sum of First n Cubes</h3>
+
+<p>The theorem states that, for every value of \(n\),</p>
+
+<script type="math/tex; mode=display">A_n = 1^3 + 2^3 + \cdots + n^3 = \left[\frac {n(n+1)} {2}\right]^2 \tag{12} \label{12}</script>
+
+<p>The assertion holds true for \(n=1\), because,</p>
+
+<script type="math/tex; mode=display">A_1 = 1^3 = \left[\frac {1(1+1)} {2}\right]^2 = 1^2 \tag{13} \label{13}</script>
+
+<p>Let’s assume \(A_r\) is true, i.e.,</p>
+
+<script type="math/tex; mode=display">A_r = 1^3 + 2^3 + \cdots + r^3 = \left[\frac {r(r+1)} {2}\right]^2 \tag{14} \label{14}</script>
+
+<p>Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+A_{r+1} = (1^3 + 2^3 + \cdots + r^3 ) + (r+1)^3 &= \left[\frac {r(r+1)} {2}\right]^2 + (r+1)^3 \\
+&= (r+1)^2\frac{r^2 + 4r + 4} {4} \\
+&= (r+1)^2 \frac {(r+2)^2} {2^2} \\
+&= \left[\frac {(r+1)(r+2)} {2}\right]^2
+\label{15} \tag{15}
+\end{align} %]]></script>
+
+<p>which is precisely the assertion \eqref{12} for \(n = r+1\). So, using \eqref{13} and \eqref{15}, mathematical induction proves the assertion.</p>
+
+<h3 id="proof-for-bernoullis-inequality">Proof for Bernoulli’s Inequality</h3>
+
+<p>The assertion, \(A_n \) states that, for every value of \(n\),</p>
+
+<script type="math/tex; mode=display">(1+p)^n \geq 1+np \text{, where } p>-1\tag{16} \label{16}</script>
+
+<p>The assertion holds true for \(n=1\), because,</p>
+
+<script type="math/tex; mode=display">(1+p)^1 \geq 1+p \tag{17} \label{17}</script>
+
+<p>Let’s assume \(A_r\) is true, i.e.,</p>
+
+<script type="math/tex; mode=display">(1+p)^r \geq 1+rp \tag{18} \label{18}</script>
+
+<p>Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+(1+p)^{r+1} = (1+p)^r \cdot (1+p) &\geq (1+rp)(1+p) \\
+&\geq 1 + rp + p + rp^2 \\
+&\geq 1+(r+1)p \text{, because } rp^2 \gt 0 \\
+\label{19} \tag{19}
+\end{align} %]]></script>
+
+<p>which is precisely the assertion \eqref{16} for \(n = r+1\). So, using \eqref{17} and \eqref{19}, mathematical induction proves the assertion.</p>
+
+<p>If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.</p>
+
+<h3 id="proof-of-binomial-theorem">Proof of Binomial Theorem</h3>
+
+<p>The assertion, \(C_i^n \) states that, for every value of \(n\),</p>
+
+<script type="math/tex; mode=display">C_i^n = \frac{n(n-1) \cdots (n-i+1) } {1 \cdot 2 \cdots i} = \frac {n!} {i!(n-i)!} \text{, for } i \in \{0, 1, \cdots, n\} \tag{20} \label{20}</script>
+
+<p>The assertion holds true for \(n=1\), because,</p>
+
+<script type="math/tex; mode=display">C_i^1 = \frac{1!} {i!(1-i)!} = 1 \text{, for } i \in \{0, 1\} \tag{21} \label{21}</script>
+
+<p>which is exactly the value for \(C_0^1 = C_1^1 = 1\) in Pascal’s Triangle.</p>
+
+<p>Let’s assume \(C_i^r\) is true, i.e.,</p>
+
+<script type="math/tex; mode=display">C_i^r = \frac {r!} {i!(r-i)!} \text{, for } i \in \{0, 1, \cdots, r\} \tag{22} \label{22}</script>
+
+<p>Then using the relation, \(C_i^{r+1} = C_{i-1}^{r} + C_i^{r} \text{, } C_i^{r+1}\) is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+C_i^{r+1} &= C_{i-1}^{r} + C_i^{r} \\
+&= \frac{r!}{(i-1)!(r - i + 1)!} + \frac{r!}{i!(r-i)!} \\
+&= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{1}{r-i+1} + \frac{1}{i} \right] \\
+&= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{r+1}{i(r-i+1)} \right] \\
+&= \frac{(r+1)!}{(i)!((r+1)-i)!} \\
+\tag{23} \label{23}
+\end{align} %]]></script>
+
+<p>which is precisely the assertion \eqref{20} for \(n = r+1\). So, using \eqref{21} and \eqref{23}, mathematical induction proves the assertion.</p>
+
+<h3 id="generalized-mathematical-induction">Generalized Mathematical Induction</h3>
+
+<blockquote>
+  <p>If a sequence of statements \(A_s, A_{s+1}, \cdots\) is given where \(s\) is a some positive integer, and if <br />
+a) For every value \(r \geq s\), the truth of \(A_{r+1}\) will follow from the truth of \(A_r\),<br />
+b) \(A_s\) is known to be true, <br />
+then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true for all \(n \geq s\)</p>
+</blockquote>
+
+<h3 id="proof-for-bernoullis-inequality-strict-version">Proof for Bernoulli’s Inequality (Strict version)</h3>
+
+<p>The assertion, \(A_n \) states that, for every value of \(n\),</p>
+
+<script type="math/tex; mode=display">(1+p)^n \gt 1+np \text{, for } p>-1 \text{ and } p\ne0 \text{ and } n \geq 2\tag{24} \label{24}</script>
+
+<p>The assertion holds true for \(n=s=2\), because,</p>
+
+<script type="math/tex; mode=display">(1+p)^2 = 1 + 2p + p^2 \gt 1+2p \text{, because } p \ne 0 \text{, so } p^2 \gt 0   \tag{25} \label{25}</script>
+
+<p>Let’s assume \(A_r\) is true, i.e.,</p>
+
+<script type="math/tex; mode=display">(1+p)^r \gt 1+rp \tag{26} \label{26}</script>
+
+<p>Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+(1+p)^{r+1} = (1+p)^r \cdot (1+p) &\gt (1+rp)(1+p) \\
+&\gt 1 + rp + p + rp^2 \\
+&\gt 1+(r+1)p \text{, because } rp^2 \gt 0 \\
+\label{27} \tag{27}
+\end{align} %]]></script>
+
+<p>which is precisely the assertion \eqref{24} for \(n = r+1\). So, using \eqref{25} and \eqref{27}, mathematical induction proves the assertion.</p>
+
+<p>If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.</p>
+
+<h3 id="principle-of-smallest-integer">Principle of Smallest Integer</h3>
+
+<blockquote>
+  <p>Every non-empty set \(C\) of positive integers has a smallest number. (Set may be finite or infinite.)</p>
+</blockquote>
+
+<p>At first it seems like a trivial principle but it actually does not apply to many sets that are not integers, e.g. the set of positive fractions \(1, {1 \over 2} {1 \over 3} \cdots \) does not contain a smallest number.</p>
+
+<h3 id="proof-for-mathematical-induction">Proof for Mathematical Induction</h3>
+
+<p>The principle of smallest integer can be used to prove the principle of mathematical induction as a theorem.</p>
+
+<p>Let us consider any sequence of statements \(A_1, A_2, \cdots \) such that,</p>
+
+<ol>
+  <li>For any integer \(r\) the truth of \(A_{r+1}\) will follow from that of \(A_r\)</li>
+  <li>\(A_1\) is known to be true.</li>
+</ol>
+
+<p>if 1 of the \(A’s\) were false, the set \(C\) of all positive integers \(n\) for which \(A_n\) is false would be non-empty. By the principle of smallest integer, \(C\) would have a smallest integer \(p\), which must be greater than 1 because of condition (2) in the theorem. Hence, \(A_p\) would be false, but \(A_{p-1}\) true, which contradicts condition (1) of the theorem. So, the assumption in the first place, that any one of the \(A’s\) is false is untenable.</p>
+
+<blockquote>
+  <p>Mathematical Induction must be applied very carefully to prove an assertion because, it is often fallacious because of a misleading base case. A popular example of this is “All number are equal fallacy”.</p>
+</blockquote>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM" target="_blank">What is Mathematics? Second Edition - Chapter I: Natural Numbers</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/number-system" class='category-links'><h1>number system</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/what-is-mathematics" class='category-links'><h1>what is mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/theorems" class='category-links'><h1>theorems</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Mathematical Induction&url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/&title=Mathematical Induction&summary=Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Mathematical Induction&amp;body=Check out this site https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2017-10-28 00:00">28 Oct 2017</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2017<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2017 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/ class="btn">Home</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>
