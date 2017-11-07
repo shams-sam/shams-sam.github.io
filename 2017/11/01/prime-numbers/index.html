@@ -7,8 +7,8 @@
   <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Mathematical Induction | Machine Learning Medium</title>
-  <meta name="description" content="Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set." />
+  <title>The Mysterious Primes | Machine Learning Medium</title>
+  <meta name="description" content="Mathematicians have tried in vain to this day to discover some order in the sequence of prime numbers, a mystery into which the human mind will possibly never penetrate." />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -17,16 +17,16 @@
   
   
   <meta property="og:site_name" content="Machine Learning Medium" />
-  <meta property="og:title" content="Mathematical Induction"/>
+  <meta property="og:title" content="The Mysterious Primes"/>
   
-  <meta property="og:description" content="Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set." />
+  <meta property="og:description" content="Mathematicians have tried in vain to this day to discover some order in the sequence of prime numbers, a mystery into which the human mind will possibly never penetrate." />
   
-  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/domino.jpg" />
-  <meta property="og:url" content="https://machinelearningmedium.com/2017/10/28/mathematical-induction/" >
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/primes.png" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2017/11/01/prime-numbers/" >
   <meta property="og:type" content="blog" />
-  <meta property="article:published_time" content="2017-10-28T00:00:00+05:30">
+  <meta property="article:published_time" content="2017-11-01T00:00:00+05:30">
 
-  <link rel="canonical" href="https://machinelearningmedium.com/2017/10/28/mathematical-induction/"/>
+  <link rel="canonical" href="https://machinelearningmedium.com/2017/11/01/prime-numbers/"/>
   <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -135,7 +135,7 @@
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
           <h5 class="author-name"> Data Scientist @ Practo </h5>
-          <time datetime="2017-10-28T00:00:00+05:30">Oct 28</time>
+          <time datetime="2017-11-01T00:00:00+05:30">Nov 1</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
             <span class="post-reading-time"></span> read
@@ -146,19 +146,19 @@
     
     <div class="postcover">
     <div class="postimage">
-        <div class="postimage-image"  style="background-image: url(/assets/images/domino.jpg) ">
+        <div class="postimage-image"  style="background-image: url(/assets/images/primes.png) ">
         </div>
     </div>
     
-    <figcaption>Image Source: http://fungyung.com/data/out/34/62844389-domino-wallpapers.jpg</figcaption>
+    <figcaption>Image Source: https://cdn.kastatic.org/KA-youtube-converted/9YRw0Yk7N8c.mp4/9YRw0Yk7N8c.png</figcaption>
     
     </div>
     <main class="content post-content" role="main">
       <article class="post">
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Mathematical Induction</h1>
-            <h2 class="post-description">Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set.</h2>
+            <h1 class="post-title">The Mysterious Primes</h1>
+            <h2 class="post-description">Mathematicians have tried in vain to this day to discover some order in the sequence of prime numbers, a mystery into which the human mind will possibly never penetrate.</h2>
           </div>
         </div>
         <div class="horizontal-divider">&#183; &#183; &#183;</div>
@@ -176,269 +176,205 @@
 
 <div class="horizontal-divider">· · ·</div>
 
-<h3 id="why-mathematical-induction">Why Mathematical Induction?</h3>
+<h3 id="introduction">Introduction</h3>
+
+<p>In mathematics, most statements in number theory are concerned not with a single object, but with a whole class of objects that have a common property, such as the class of all even integers etc.</p>
 
 <blockquote>
-  <p>There are infinitely many integers.</p>
+  <p>Mathematics is the queen of sciences and the theory of numbers is the queen of the mathematics.</p>
 </blockquote>
 
-<p>The step-by-step procedure of passing from \(n\) to \(n+1\) which generates the infinite sequence of integers forms the basis of one of the most fundamental patterns of mathematical reasoning, the principle of mathematical induction.</p>
+<p>One such class of number, called the <strong>prime numbers (or primes)</strong> are of fundamental importance.</p>
 
-<p>Mathematical Induction is used to establish the truth of a mathematical theorem for an infinite sequence of cases.</p>
+<h3 id="the-prime-numbers">The Prime Numbers</h3>
 
-<p>There are two steps in proving a theorem, \(A\) by mathematical induction:</p>
+<p>Most numbers can be resolved into smaller factors, but the ones that cannot be resolved are known as prime numbers or primes.</p>
+
+<blockquote>
+  <p>A prime is an integer \(p\), greater than one, which has no factors other than itself and one.</p>
+</blockquote>
+
+<p>A integer \(a\) is a factor or divisor of integer \(b\), if there exists an integer \(c\) such that \(b=ac\). The numbers \(2, 3, 5, 7, \cdots \) are primes.</p>
+
+<p>So effectively, every integer can be expressed as a product of primes. And a number which not prime (other than 0 and 1) is called <strong>composite</strong>.</p>
+
+<blockquote>
+  <p>The set of all primes is a infinite set.</p>
+</blockquote>
+
+<p>The infinitude of primes is proved by contradiction. Say there exists only a finite number of primes, \(n\) and represented by set \({p_1, p_2, \cdots p_n}\). Then according to the assumption any number greater than numbers in the finite set must be composite. But it is possible to come up with a number, \(A\) greater than all these \(n\) primes given by,</p>
+
+<script type="math/tex; mode=display">A = p_1p_2\cdots p_n + 1 \tag{1}</script>
+
+<p>This contracdicts the assumption of finite set of primes and hence its proved that there is a infinite set of primes.</p>
+
+<blockquote>
+  <p>Every integer N greater than 1 can be factored into a product of primes in only one way.</p>
+</blockquote>
+
+<p>The proof of this can be achieved by contradiction once again. If there exists a positive prime integer capable of decomposition into two essentially different products of primes, there will be a smallest such integer (using the principle of smallest integer), given by,</p>
+
+<script type="math/tex; mode=display">m = p_1p_2 \cdots p_r = q_1q_2 \cdots q_s \tag{2} \label{2}</script>
+
+<p>where \(p’s\) and \(q’s\) are primes. By rearranging if necessary, its possible to get the following order,</p>
+
+<script type="math/tex; mode=display">p_1 \leq p_2 \leq \cdots \leq p_r \text{, and } q_1 \leq q_2 \leq \cdots \leq q_s \tag{3} \label{3}</script>
+
+<p>Where, \(p_1 \ne q_1\) because then one could cancel them in \eqref{2} and come up with another number smaller than \(m\) with two distinct prime factorization which would contradict the priniciple of smallest integer.</p>
+
+<p>So, either \(p_1 \lt q_1\) or \(q_1 \lt p_1\).</p>
+
+<p>Let, \(p_1 \lt q_1\) (if \(q_1 \lt p_1\), interchange the sequences in the analysis presented). Let \(m’\) be an integer given by,</p>
+
+<script type="math/tex; mode=display">m' = m - (p_1q_2\cdots q_s) \tag{4} \label{4}</script>
+
+<p>Substituting, for \(m\) in \eqref{4} using \eqref{2},</p>
+
+<script type="math/tex; mode=display">m' = (p_1p_2 \cdots p_r) - (p_1q_2\cdots q_s) = p_1(p_2 \cdots p_r - q_2\cdots q_s) \tag{5} \label{5}</script>
+
+<script type="math/tex; mode=display">m' = (q_1q_2 \cdots q_s) - (p_1q_2\cdots q_s) = (q_1 - p_1)(q_2 \cdots q_s) \tag{6} \label{6}</script>
+
+<p>Since \(q_1 \gt p_1\), it follows from \eqref{6} that \(m’\) is a positive integer, while from \eqref{4} it follows that \(m’ \lt m\). Hence the prime factorization of \(m’\) must be unique.</p>
+
+<p>From \eqref{5} \(p_1\) is a factor of \(m’\), so in \eqref{6}, \(p_1\) must be a factor of either \((q_1 - p_1)\) or \(q_2 \cdots q_s\). Since \(p_1 \lt q_1\) and \eqref{3}, \(p_1\) cannot be a factor of any of the \(q’s\) nor equal to them. So, \(p_1\) must be a factor of \(q_1 - p_1\). So there exists an integer \(h\), such that,</p>
+
+<script type="math/tex; mode=display">q_1 - p_1 = p_1 \cdot h \text{ or } q_1 = p_1(h+1) \tag{7} \label{7}</script>
+
+<p>But, \eqref{7} is a contradicts the fact that \(q_1\) is a prime number. This points to the fact that the initial assumption of a number having two distinct prime factorizations must be wrong.</p>
+
+<blockquote>
+  <p>If a prime \(p\), is a factor of the product \(ab\), then \(p\) must be a factor of either \(a\) or \(b\).</p>
+</blockquote>
+
+<p>Also, if prime factorization of \(a\) can be expressed as,</p>
+
+<script type="math/tex; mode=display">a = p_1^{\alpha_1} p_2^{\alpha_2} \cdots p_r^{\alpha_r} \tag{8} \label{8}</script>
+
+<p>where \(p’s\) are distinct primes, each raised to a certain power. The number of different divisors of \(a\) (including \(a\) and 1) is given by</p>
+
+<script type="math/tex; mode=display">(\alpha_1 + 1)(\alpha_2 + 1) \cdots (\alpha_r + 1) \tag{9} \label{9}</script>
+
+<p>and all the divisors of the number \(a\) are given by,</p>
+
+<script type="math/tex; mode=display">b = p_1^{\beta_1} p_2^{\beta_2} \cdots p_r^{\beta_r} \tag{10} \label{10}</script>
+
+<p>where \(\beta’s\) are integers satisfying inequalities,</p>
+
+<script type="math/tex; mode=display">0 \leq \beta_1 \leq \alpha_1,\,0 \leq \beta_2 \leq \alpha_2,\, \cdots 0 \leq \beta_r \leq \alpha_r</script>
+
+<h3 id="distribution-of-primes">Distribution of Primes</h3>
+
+<blockquote>
+  <p>In mathematics, the sieve of Eratosthenes is a simple, ancient algorithm for finding all prime numbers up to any given limit.</p>
+</blockquote>
+
+<p>Attempts have been made at finding simple arithmetic formulas that yield only primes, even though they may not give all of them.</p>
 
 <ul>
-  <li>The first statement \(A_1\) must be true.</li>
-  <li>If a statement \(A_r\) is true then the statement \(A_{r+1}\) should be true too.</li>
+  <li><strong>Fermat’s Conjecture</strong> : All number of the form \(F(n) = 2^{2^n} +1\) are primes, but was proved incorrect by Euler who discovered that \(2^{2^5} + = 641 \cdot 6700417\) meaning \(F(5)\) is not a prime.</li>
 </ul>
 
-<p>That these two conditions are sufficient to establish the truth of all the statements, \(A_1, A_2, \cdots \) is a logical principle which is as fundamental to mathematics as are the classical rules of Aristotelian logic.</p>
-
 <blockquote>
-  <p>Suppose that a) by some mathematical argument it is shown that if \(r\) is any integer and if assertion \(A_r\) is known to be true then the truth of assertion \(A_{r+1}\) will follow, and that b) the first proposition \(A_1\) is known to be true. Then all the propositions of the sequence must be true, and A is proved.</p>
+  <p>Any of the numbers \(F(n)\) are not prime for \(n&gt;4\).</p>
 </blockquote>
 
-<p>The principle of mathematical induction rests on the fact that after any integer \(r\) there is a next, \(r+1\), and that any desired integer \(n\) may be reached by a finite number of such steps, starting from the integer 1.</p>
+<p>There are various other similar expressions which produce primes until a certain limit.</p>
+
+<ul>
+  <li>
+    <p>\(f(n) = n^2 - n + 41\): For limit \(n &lt; 41\).</p>
+  </li>
+  <li>
+    <p>\(f(n) = n^2 - 79n + 1601\): For limit \(n &lt; 80\)</p>
+  </li>
+</ul>
 
 <blockquote>
-  <p>Although the principle of mathematical induction suffices to prove a theorem or formula once it is expressed, the proof gives no indication of how this formula was arrived at in the first place. So, it should be more fittingly called a verification.</p>
+  <p>It’s been a futile effort to seek equation of a simple type which produces only primes. Even less promising is the attempt to find an algebraic formula that yields all the primes.</p>
 </blockquote>
 
-<h3 id="proof-for-arithmetic-progression">Proof for Arithmetic Progression</h3>
+<h3 id="primes-in-arithmetic-progression">Primes in Arithmetic Progression</h3>
 
 <blockquote>
-  <p>For every value of n, the sum \(1 + 2 + \cdots + n\) of the first n integers is equal to \(\frac {n(n+1)} {2} \)</p>
+  <p>In each arithmetic progression, \(a,\, a+d,\, a+2d,\, \cdots a+nd,\, \cdots\), where \(a\) and \(d\) have no common factors, there are infinitely many primes.</p>
 </blockquote>
 
-<p>For any \(r\) is given by assertion \(A_r\) is given by,</p>
+<p>The proof to this theorem could not be cracked for several years until finally it was presented by Lejeune Dirichlet and even after a hundred years it’s not been simplified any further and would be a series of posts in itself if presented here.</p>
 
-<script type="math/tex; mode=display">1 + 2 + 3 + \cdots + r = \frac {r(r+1)} {2} \label{1} \tag{1}</script>
+<p>Though a generalized Euclid’s proof of infinitude of primes can be used to cover some special arithmetic progression such as \(4n+3\) and \(6n + 5\).</p>
 
-<p>Adding \((r+1)\) to both LHS and RHS of \eqref{1},</p>
+<h3 id="proof-of-infinitude-of-arithmetic-progressions-4n3">Proof of Infinitude of Arithmetic Progressions: \(4n+3\)</h3>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-1 + 2 + 3 + \cdots + r + (r+1) &= \frac {r(r+1)} {2} + (r+1) \\
-                               &= \frac {r(r+1) + 2(r+1)} {2} \\
-                               &= \frac {(r+1)((r+1) + 1)} {2}
-                               \label{2} \tag{2}
-\end{align} %]]></script>
+<p>Any prime greater than 2 must be a odd prime and hence must be of the form \(4n+1\) or \(4n+3\) for some integer \(n\).</p>
 
-<p>\eqref{2} is nothing but assertion, \(A_{r+1}\).</p>
+<p>Also, the product of two numbers of the form \(4n+1\) is again of the same form, since</p>
 
-<p>Also for \(r=1\), assertion \(A_1\) is true because, from \eqref{1},</p>
+<script type="math/tex; mode=display">(4a+1)(4b+1) = 16ab + 4a + 4b + 1 = 4(4ab + a + b) + 1 \tag{11} \label{11}</script>
 
-<script type="math/tex; mode=display">1 = \frac {1(1+1)} {2} \tag{3} \label{3}</script>
+<p>Let there be a finite number of primes in this arithmetic progression given by, \(p_1,\, p_2,\, \cdots p_n\) of the form \(4n+3\).</p>
 
-<p>So, using \eqref{2} and \eqref{3}, mathematical induction proves that the assertion in \eqref{1} holds for all positive integers, \(n\).</p>
+<p>Consider the number,</p>
 
-<h3 id="proof-for-geometric-progression">Proof for Geometric Progression</h3>
+<script type="math/tex; mode=display">N = 4(p_1p_2 \cdots p_n) - 1 = 4(p_1 \cdots p_n - 1) + 3 \tag{12} \label{12}</script>
 
-<p>The theorem states that, for every value of \(n\),</p>
+<p>From \eqref{12}, either N has to be a prime or it can be decomposed into a product of primes, none of which can be \(p_1,\, p_2,\, \cdots p_n\) because they leave a remainder \(-1\) on dividing \(N\).</p>
 
-<script type="math/tex; mode=display">G_n = a + aq + aq^2 + \cdots + aq^n = a \frac{1 - q^{n+1}} {1-q} \label{4} \tag{4}</script>
+<p>Also, all of the primes must not be of the form \(4n+1\) because the form of \(N\) is \(4n+3\) and \eqref{11}.</p>
 
-<p>The assertion holds true for \(n=1\), because,</p>
+<p>Hence, one of the factors must of the form \(4n+3\), which is impossible, since none of the \(p’s\), which was assumed to be the finite set of primes of the form \(4n+3\), can be a factor of \(N\) (using \eqref{12}).</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-G_1 = a + aq &= a \frac{1 - q^{2}} {1-q} \\
-             &= a \frac{(1-q) (1+q)} {1-q} \\
-             &= a (1+q)  \\
-    \tag{5} \label{5}
-\end{align} %]]></script>
+<p>So, the initial assumption that number of primes in arithmetic progression of the form \(4n+3\) is finite is incorrect because of the contradiction encountered.</p>
 
-<p>Let’s assume \(G_r\) is true, i.e.</p>
+<h3 id="proof-of-infinitude-of-arithmetic-progressions-6n5">Proof of Infinitude of Arithmetic Progressions: \(6n+5\)</h3>
 
-<script type="math/tex; mode=display">G_r = a + aq + aq^2 + \cdots + aq^r = a \frac{1 - q^{r+1}} {1-q} \label{6} \tag{6}</script>
+<p>Any prime greater than 2 must be a odd prime and hence must be of the form \(6n+1\) or \(6n+3\) or \(6n+5\) for some integer \(n\).</p>
 
-<p>Then,</p>
+<p>Let there be a finite number of primes in this arithmetic progression given by, \(p_1,\, p_2,\, \cdots p_n\) of the form \(6n+5\).</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-G_{r+1} &= (a + aq + aq^2 + \cdots + aq^r) + aq^{r+1} \\
-        &= a \frac{1 - q^{r+1}} {1-q} + aq^{r+1} \\
-        &= \frac{a - aq^{r+1} + aq^{r+1} - aq^{r+2}} {1-q} \\
-        &= a \frac{1 - q^{(r+1) + 1}} {1-q} \\
-        \label{7} \tag{7}
-\end{align} %]]></script>
+<script type="math/tex; mode=display">(6a+1)(6b+1) = 36ab + 6a + 6b + 1 = 6(6ab + a + b) + 1 \tag{13} \label{13}</script>
 
-<p>But \eqref{7} is precisely the assertion \eqref{4} for the case \(n=r+1\). Hence, using \eqref{5} and \eqref{7} the assertion \eqref{4} is proved by mathematical induction.</p>
+<script type="math/tex; mode=display">(6a+3)(6b+3) = 36ab + 18a + 18b + 9 = 6(6ab + 3a + 3b + 1) + 3 \tag{14} \label{14}</script>
 
-<h3 id="proof-for-sum-of-first-n-squares">Proof for Sum of First n Squares</h3>
+<script type="math/tex; mode=display">(6a+3)(6b+1) = 36ab + 6a + 18b + 3 = 6(6ab + a + 3b) + 3 \tag{15} \label{15}</script>
 
-<p>The theorem states that, for every value of \(n\),</p>
+<p>From \eqref{13}, \eqref{14} and \eqref{15}, a number of the form \(6n+5\) cannot be achieved using only primes of the form \(6n+1\) and \(6n+3\).</p>
 
-<script type="math/tex; mode=display">A_n = 1^2 + 2^2 + \cdots + n^2 = \frac {n(n+1)(2n+1)} {6} \tag{8} \label{8}</script>
+<p>Consider the number,</p>
 
-<p>The assertion holds true for \(n=1\), because,</p>
+<script type="math/tex; mode=display">N = 6(p_1p_2 \cdots p_n) - 1 = 6(p_1 \cdots p_n - 1) + 5 \tag{16} \label{16}</script>
 
-<script type="math/tex; mode=display">A_1 = 1^2 = \frac{1(1+1)(2(1)+1)} {6} = 1 \tag{9} \label{9}</script>
+<p>From \eqref{16}, either N has to be a prime or it can be decomposed into a product of primes, none of which can be \(p_1,\, p_2,\, \cdots p_n\) because they leave a remainder \(-1\) on dividing \(N\).</p>
 
-<p>Let’s assume \(A_r\) is true, i.e.,</p>
+<p>Also, all of the primes must not be only of the form \(6n+1\) and \(6n+3\) because the form of \(N\) is \(6n+5\) and \eqref{13}, \eqref{14} and \eqref{15} show it cannot be achieved otherwise.</p>
 
-<script type="math/tex; mode=display">A_r = 1^2 + 2^2 + \cdots + r^2 = \frac {r(r+1)(2r+1)} {6} \tag{10} \label{10}</script>
+<p>Hence, one of the factors must of the form \(6n+5\), which is impossible, since none of the \(p’s\), which was assumed to be the finite set of primes of the form \(6n+5\), can be a factor of \(N\) (using \eqref{16}).</p>
 
-<p>Then,</p>
+<p>So, the initial assumption that number of primes in arithmetic progression of the form \(6n+5\) is finite is incorrect because of the contradiction encountered.</p>
 
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-A_{r+1} = (1^2 + 2^2 + \cdots + r^2) + (r+1)^2 &= \frac {r(r+1)(2r+1)} {6} + (r+1)^2 \\
-&= (r+1)\frac{r(2r+1) + 6(r+1)} {6} \\
-&= (r+1) \frac {2r^2 + 7r + 6} {6} \\
-&= \frac{(r+1) (r+2) (2r+3)} {6} \\
-\label{11} \tag{11}
-\end{align} %]]></script>
+<h3 id="the-prime-number-theorem">The Prime Number Theorem</h3>
 
-<p>which is precisely the assertion \eqref{8} for \(n = r+1\). So, using \eqref{9} and \eqref{11}, mathematical induction proves the assertion.</p>
-
-<h3 id="proof-for-sum-of-first-n-cubes">Proof for Sum of First n Cubes</h3>
-
-<p>The theorem states that, for every value of \(n\),</p>
-
-<script type="math/tex; mode=display">A_n = 1^3 + 2^3 + \cdots + n^3 = \left[\frac {n(n+1)} {2}\right]^2 \tag{12} \label{12}</script>
-
-<p>The assertion holds true for \(n=1\), because,</p>
-
-<script type="math/tex; mode=display">A_1 = 1^3 = \left[\frac {1(1+1)} {2}\right]^2 = 1^2 \tag{13} \label{13}</script>
-
-<p>Let’s assume \(A_r\) is true, i.e.,</p>
-
-<script type="math/tex; mode=display">A_r = 1^3 + 2^3 + \cdots + r^3 = \left[\frac {r(r+1)} {2}\right]^2 \tag{14} \label{14}</script>
-
-<p>Then,</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-A_{r+1} = (1^3 + 2^3 + \cdots + r^3 ) + (r+1)^3 &= \left[\frac {r(r+1)} {2}\right]^2 + (r+1)^3 \\
-&= (r+1)^2\frac{r^2 + 4r + 4} {4} \\
-&= (r+1)^2 \frac {(r+2)^2} {2^2} \\
-&= \left[\frac {(r+1)(r+2)} {2}\right]^2
-\label{15} \tag{15}
-\end{align} %]]></script>
-
-<p>which is precisely the assertion \eqref{12} for \(n = r+1\). So, using \eqref{13} and \eqref{15}, mathematical induction proves the assertion.</p>
-
-<h3 id="proof-for-bernoullis-inequality">Proof for Bernoulli’s Inequality</h3>
-
-<p>The assertion, \(A_n \) states that, for every value of \(n\),</p>
-
-<script type="math/tex; mode=display">(1+p)^n \geq 1+np \text{, where } p>-1\tag{16} \label{16}</script>
-
-<p>The assertion holds true for \(n=1\), because,</p>
-
-<script type="math/tex; mode=display">(1+p)^1 \geq 1+p \tag{17} \label{17}</script>
-
-<p>Let’s assume \(A_r\) is true, i.e.,</p>
-
-<script type="math/tex; mode=display">(1+p)^r \geq 1+rp \tag{18} \label{18}</script>
-
-<p>Then,</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-(1+p)^{r+1} = (1+p)^r \cdot (1+p) &\geq (1+rp)(1+p) \\
-&\geq 1 + rp + p + rp^2 \\
-&\geq 1+(r+1)p \text{, because } rp^2 \gt 0 \\
-\label{19} \tag{19}
-\end{align} %]]></script>
-
-<p>which is precisely the assertion \eqref{16} for \(n = r+1\). So, using \eqref{17} and \eqref{19}, mathematical induction proves the assertion.</p>
-
-<p>If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.</p>
-
-<h3 id="proof-of-binomial-theorem">Proof of Binomial Theorem</h3>
-
-<p>The assertion, \(C_i^n \) states that, for every value of \(n\),</p>
-
-<script type="math/tex; mode=display">C_i^n = \frac{n(n-1) \cdots (n-i+1) } {1 \cdot 2 \cdots i} = \frac {n!} {i!(n-i)!} \text{, for } i \in \{0, 1, \cdots, n\} \tag{20} \label{20}</script>
-
-<p>The assertion holds true for \(n=1\), because,</p>
-
-<script type="math/tex; mode=display">C_i^1 = \frac{1!} {i!(1-i)!} = 1 \text{, for } i \in \{0, 1\} \tag{21} \label{21}</script>
-
-<p>which is exactly the value for \(C_0^1 = C_1^1 = 1\) in Pascal’s Triangle.</p>
-
-<p>Let’s assume \(C_i^r\) is true, i.e.,</p>
-
-<script type="math/tex; mode=display">C_i^r = \frac {r!} {i!(r-i)!} \text{, for } i \in \{0, 1, \cdots, r\} \tag{22} \label{22}</script>
-
-<p>Then using the relation, \(C_i^{r+1} = C_{i-1}^{r} + C_i^{r} \text{, } C_i^{r+1}\) is given by,</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-C_i^{r+1} &= C_{i-1}^{r} + C_i^{r} \\
-&= \frac{r!}{(i-1)!(r - i + 1)!} + \frac{r!}{i!(r-i)!} \\
-&= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{1}{r-i+1} + \frac{1}{i} \right] \\
-&= \frac{r!}{(i-1)!(r-i)!} \left[ \frac{r+1}{i(r-i+1)} \right] \\
-&= \frac{(r+1)!}{(i)!((r+1)-i)!} \\
-\tag{23} \label{23}
-\end{align} %]]></script>
-
-<p>which is precisely the assertion \eqref{20} for \(n = r+1\). So, using \eqref{21} and \eqref{23}, mathematical induction proves the assertion.</p>
-
-<h3 id="generalized-mathematical-induction">Generalized Mathematical Induction</h3>
+<p>Let \(A_n\) denote the number of primes among the integers \(1, 2, 3, \cdots , n\).</p>
 
 <blockquote>
-  <p>If a sequence of statements \(A_s, A_{s+1}, \cdots\) is given where \(s\) is a some positive integer, and if <br />
-a) For every value \(r \geq s\), the truth of \(A_{r+1}\) will follow from the truth of \(A_r\),<br />
-b) \(A_s\) is known to be true, <br />
-then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true for all \(n \geq s\)</p>
+  <p>The density of primes among first n integers is given by the ratio \({A_n \over n} \).</p>
 </blockquote>
 
-<h3 id="proof-for-bernoullis-inequality-strict-version">Proof for Bernoulli’s Inequality (Strict version)</h3>
+<p>Prime number theorem describes the asymptotic distribution of the primes among positive integers. It states that,</p>
 
-<p>The assertion, \(A_n \) states that, for every value of \(n\),</p>
+<script type="math/tex; mode=display">\lim_{n \to \infty} {A_n/n \over 1 / log\,n} = 1 \tag{17}</script>
 
-<script type="math/tex; mode=display">(1+p)^n \gt 1+np \text{, for } p>-1 \text{ and } p\ne0 \text{ and } n \geq 2\tag{24} \label{24}</script>
+<h3 id="unsolved-problems-concerning-primes">Unsolved Problems Concerning Primes</h3>
 
-<p>The assertion holds true for \(n=s=2\), because,</p>
+<ul>
+  <li>
+    <p><strong>Goldbach Conjecture:</strong> Goldbach’s conjecture is one of the oldest and best-known unsolved problems in number theory and all of mathematics. It states: Every even integer greater than 2 can be expressed as the sum of two primes.</p>
+  </li>
+  <li>
+    <p><strong>Polignac’s conjecture</strong>: Twin prime conjecture, also known as Polignac’s conjecture, in number theory, assertion that there are infinitely many twin primes, or pairs of primes that differ by 2.</p>
+  </li>
+</ul>
 
-<script type="math/tex; mode=display">(1+p)^2 = 1 + 2p + p^2 \gt 1+2p \text{, because } p \ne 0 \text{, so } p^2 \gt 0   \tag{25} \label{25}</script>
-
-<p>Let’s assume \(A_r\) is true, i.e.,</p>
-
-<script type="math/tex; mode=display">(1+p)^r \gt 1+rp \tag{26} \label{26}</script>
-
-<p>Then,</p>
-
-<script type="math/tex; mode=display">% <![CDATA[
-\begin{align}
-(1+p)^{r+1} = (1+p)^r \cdot (1+p) &\gt (1+rp)(1+p) \\
-&\gt 1 + rp + p + rp^2 \\
-&\gt 1+(r+1)p \text{, because } rp^2 \gt 0 \\
-\label{27} \tag{27}
-\end{align} %]]></script>
-
-<p>which is precisely the assertion \eqref{24} for \(n = r+1\). So, using \eqref{25} and \eqref{27}, mathematical induction proves the assertion.</p>
-
-<p>If \(p \lt -1\), then \((1+p)\) is negative and the inequality in \eqref{19} would be reversed. So, the restriction introduced in \eqref{16} is essential.</p>
-
-<h3 id="principle-of-smallest-integer">Principle of Smallest Integer</h3>
-
-<blockquote>
-  <p>Every non-empty set \(C\) of positive integers has a smallest number. (Set may be finite or infinite.)</p>
-</blockquote>
-
-<p>At first it seems like a trivial principle but it actually does not apply to many sets that are not integers, e.g. the set of positive fractions \(1, {1 \over 2} {1 \over 3} \cdots \) does not contain a smallest number.</p>
-
-<h3 id="proof-for-mathematical-induction">Proof for Mathematical Induction</h3>
-
-<p>The principle of smallest integer can be used to prove the principle of mathematical induction as a theorem.</p>
-
-<p>Let us consider any sequence of statements \(A_1, A_2, \cdots \) such that,</p>
-
-<ol>
-  <li>For any integer \(r\) the truth of \(A_{r+1}\) will follow from that of \(A_r\)</li>
-  <li>\(A_1\) is known to be true.</li>
-</ol>
-
-<p>if 1 of the \(A’s\) were false, the set \(C\) of all positive integers \(n\) for which \(A_n\) is false would be non-empty. By the principle of smallest integer, \(C\) would have a smallest integer \(p\), which must be greater than 1 because of condition (2) in the theorem. Hence, \(A_p\) would be false, but \(A_{p-1}\) true, which contradicts condition (1) of the theorem. So, the assumption in the first place, that any one of the \(A’s\) is false is untenable.</p>
-
-<blockquote>
-  <p>Mathematical Induction must be applied very carefully to prove an assertion because, it is often fallacious because of a misleading base case. A popular example of this is “All number are equal fallacy”.</p>
-</blockquote>
+<p>These are simple to experiment with, but mathematically some of the most mysterious problems. These are the properties of the number system that shows that a lot is still left to be discovered about the number system.</p>
 
 <h2 id="references">REFERENCES:</h2>
 
@@ -467,12 +403,6 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
                 </div>
               </div>
             
-              <div class="tile">
-                <div class="text">
-                <a href="/tag/theorems" class='category-links'><h1>theorems</h1></a>
-                </div>
-              </div>
-            
           </div>
           <section class="share">
             <span id="share-bar">
@@ -481,56 +411,56 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
 
     <span class="share-buttons">
         <span>
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fa fa-facebook-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://twitter.com/intent/tweet?text=Mathematical Induction&url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="https://twitter.com/intent/tweet?text=The Mysterious Primes&url=https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fa fa-twitter-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fa fa-google-plus-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Pinterest" >
             <i class="fa fa-pinterest-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fa fa-tumblr-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fa fa-reddit-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2017/10/28/mathematical-induction/&title=Mathematical Induction&summary=Mathematical induction is a mathematical proof technique used to prove a given statement about any well-ordered set.&source=Machine Learning Medium"
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2017/11/01/prime-numbers/&title=The Mysterious Primes&summary=Mathematicians have tried in vain to this day to discover some order in the sequence of prime numbers, a mystery into which the human mind will possibly never penetrate.&source=Machine Learning Medium"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fa fa-linkedin-square"></i>
         </a>
         </span>
         <span>
-        <a  href="mailto:?subject=Mathematical Induction&amp;body=Check out this site https://machinelearningmedium.com/2017/10/28/mathematical-induction/"
+        <a  href="mailto:?subject=The Mysterious Primes&amp;body=Check out this site https://machinelearningmedium.com/2017/11/01/prime-numbers/"
             title="Share via Email" >
             <i class="fa fa-envelope-square"></i>
         </a>
@@ -548,7 +478,7 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
               <h4>Shams S</h4>
               <p class="bio">Data Scientist @ Practo</p>
               <hr>
-              <p class="published">Published on <time datetime="2017-10-28 00:00">28 Oct 2017</time></p>
+              <p class="published">Published on <time datetime="2017-11-01 00:00">01 Nov 2017</time></p>
             </section>
           </div>
           <div class="isRight">
