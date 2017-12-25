@@ -4,13 +4,354 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2017-11-08T01:12:11+05:30</updated>
+ <updated>2017-12-25T15:04:43+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Bitcoin</title>
+   <link href="https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/"/>
+   <updated>2017-12-21T00:00:00+05:30</updated>
+   <id>https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto</id>
+   <content type="html">&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Part solution to this task is given by digital signatures, but the other half of the solution posed a major question in developing such systems - the part that requires &lt;strong&gt;a system to prevent double spending&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the current centralized money tender distributed, this role of preventing the double spending is done by a centralized third-party authority. But in a peer-to-peer network this centralized server would not be available and thus would require a different methodology.&lt;/p&gt;
+
+&lt;p&gt;Bitcoin, proposed by &lt;strong&gt;Satoshi Nakamoto&lt;/strong&gt;, was to solve this very problem on the peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work.&lt;/p&gt;
+
+&lt;h3 id=&quot;current-system&quot;&gt;Current System&lt;/h3&gt;
+
+&lt;p&gt;Current economy is based on trusted third-parties to process electronic payments. These systems suffer from the inherent weaknesses of the trust based model. Completely non-reversible transactions are not possible because banks cannot avoid mediating disputes.&lt;/p&gt;
+
+&lt;p&gt;Because of cost of mediation, the transaction costs are high which inturn limit the minimum practical transaction size thus cutting off the possibility of small casual transaction.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;With the possibility of reversal, the need for trust spreads.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proposed-system&quot;&gt;Proposed System&lt;/h3&gt;
+
+&lt;p&gt;Bitcoin proposed a system where &lt;strong&gt;trust is replaced by cryptographic proof&lt;/strong&gt;, allowing any two willing parties to transact directly without the need of a supporting trusted third party.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Computationally irreversible transactions prevent frauds.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Bitcoin proposed to tackle the issue of double-spending, using a peer-to-peer distributed timestamp server to generate computational proof of the chronological order of transactions.&lt;/p&gt;
+
+&lt;p&gt;The system is secure as long as honest nodes collectively control more CPU power than any cooperating group of attacker nodes.&lt;/p&gt;
+
+&lt;h3 id=&quot;transactions&quot;&gt;Transactions&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Electronic coin is defined as a chain of digital signatures.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A coin is transferred by an owner signing a hash of previous transaction and the public key of the next owner and adding these to then end of the coin.&lt;/p&gt;
+
+&lt;p&gt;The signature can be verified by the payee to check the chain of ownership.&lt;/p&gt;
+
+&lt;p&gt;The payee can still however not check for double-spending.&lt;/p&gt;
+
+&lt;p&gt;Traditional solution of this involves introducing a trusted central authority, or mint, that checks every transaction for double-spending. In such a system, after every transaction the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. This still does not solve the basic problem of dependency on company running the mint, which is basically serving the same purpose as that of a bank in the current system.&lt;/p&gt;
+
+&lt;p&gt;The only way to confirm the absence of a transaction is to have a copy of all the transactions. To accomplish this in a decentralized system, the transactions must be publically announced and there is a need for a system for participants to agree on a single history of the order in which they were received. So, at the time of the transaction, the payee needs a proof that the majority of the nodes agreed it was the first received one.&lt;/p&gt;
+
+&lt;h3 id=&quot;timestamp-server&quot;&gt;Timestamp Server&lt;/h3&gt;
+
+&lt;p&gt;A timestamp server basically takes a hash of a block of items to be timestamped and widely publishes it, where the timestamp proves that the data must have existed at the time, in order to get the hash.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Each timestamp includes previous timestamp in its hash, forming a chain (blockchain), with each timestamp reinforcing the ones before it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;proof-of-work&quot;&gt;Proof-of-Work&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A system to deter denial of service attacks and other service abuses such as spam on a network by requiring some work from the service requester, usually meaning processing time by a computer.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In case of bitcoins, the proof-of-work involves scanning for a value that when hashed along with the contents of the transaction blocks using cryptographic hashes such as SHA-256, gives a hash that begins with a specific number of zero bits. &lt;strong&gt;The average work required is exponential in the number of zero bits.&lt;/strong&gt; Proof-of-Work is generally a problem that is fairly tough to solve but very easy to verify.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;hashlib&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;plt&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;'A paid B 25 A_public_key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;s&quot;&gt;'A paid C 50 A_public_key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+    &lt;span class=&quot;s&quot;&gt;'C paid B 10 C_public_key'&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_bits&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sha256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hexdigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Outputs
+-------
+cb87ca935b8b44e94f5c670ecd375ba88ab7616aeab4c4c4369fe79e9c153f95
+0
+0c1d9b1549d14612571040e8352af4175a41b84a805a08880d3acdd5aad998be
+5
+00a51beea09d1fae73f3e18682445a3eb9bffc2cabf17f87f90f193c9eca1af3
+396
+00010ff4f55c002484ee13841be9a3c46aba3038a1046d604ac8cee7349a2228
+514
+0000a3c456eff341c9988b194231b02eb547a36a8134d095a5e1c4efb05dc7e3
+22344
+000002128ccfc4d1e662a6ceb8053860b887929b691c2f8506b0843e9a57fe34
+3355879
+000000bfc98081b9aff064455708d2d8fcc2afeac81b5a0b03a6fd926db1ce36
+19659271
+0000000cbd6302c37b40102ef55040e4315b63b39640110b679e033c44a8b2b0
+310723836
+
+Time Taken
+----------
+[0.0003619194030761719,
+ 0.00020599365234375,
+ 0.0012040138244628906,
+ 0.0016019344329833984,
+ 0.07679605484008789,
+ 8.218470811843872,
+ 47.986721992492676,
+ 740.9898428916931]
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-1-proof-of-work.png&quot; alt=&quot;Proof-of-work plot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Basic needs of such system of proof-of-work are fulfilled by cryptographic hashes, that are often seen as one way functions, i.e. the only way to get the input given an output is to use the bruteforce approach and check all possible values of inputs and arriving at the correct candidate.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A nonce is an arbitrary number that can only be used once&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In the bitcoin’s timestamp network, the proof-of-work is implemented by incrementing a nonce in the block until a value is found that gives the block the required number of leading zero bits.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Once the CPU effort has been expended to satisfy the proof-of-work, the block cannot be changed without redoing the work.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;As the later blocks consume the hashes of previous blocks, changing a transaction in earlier block would require redoing the work for all the leading blocks.&lt;/p&gt;
+
+&lt;h3 id=&quot;majority-decision-making&quot;&gt;Majority Decision Making&lt;/h3&gt;
+
+&lt;p&gt;Proof-of-Work also gives a solution to determining representation in majority decision making. The majority decision is represented by the longest chain, i.e. the greatest proof-of-work. So if the majority CPU power is held by honest nodes, then the honest chain would grow faster and outpace any chain being proposed by a pool of attacking nodes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To compensate hardware power and varying number of nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour, i.e. if the blocks are generated too fast, the difficulty increases for subsequent blocks.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;network-protocols&quot;&gt;Network Protocols&lt;/h3&gt;
+
+&lt;p&gt;Steps to run the network are as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;New transactions are broadcast to all nodes.&lt;/li&gt;
+  &lt;li&gt;Each node collects new transaction into a block.&lt;/li&gt;
+  &lt;li&gt;Each node works on finding a difficult proof-of-work for its block.&lt;/li&gt;
+  &lt;li&gt;Upon finding the solution, it broadcasts the block to all nodes.&lt;/li&gt;
+  &lt;li&gt;Nodes accept a new block if all the transactions on it are valid and not already spent.&lt;/li&gt;
+  &lt;li&gt;Nodes express their acceptance of the block by working on creating next block in the chain, using the hash of the accepted block as the previous hash.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Nodes always consider the longest chain to be the correct one and keep on working to extend it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If a node does not receive a block, it will request it when it receives the next block and realizes that it missed one.&lt;/p&gt;
+
+&lt;h3 id=&quot;mining-incentive&quot;&gt;Mining Incentive&lt;/h3&gt;
+
+&lt;p&gt;By convention of the protocol, the first transaction of a block is a special transaction that starts a new coin owned by the creator of the block.&lt;/p&gt;
+
+&lt;p&gt;It is this, that acts as an incentive for the nodes to support the network, and provides a way to initially distribute coins into circulation.&lt;/p&gt;
+
+&lt;p&gt;Incentive can also be funded in the form of a transaction fees.&lt;/p&gt;
+
+&lt;p&gt;Incentive will also encourage nodes to stay honest. Because an attacker with more compute power would find it more favourable to play by rules and make more transaction fee, instead of competing with rest to fraud the system and invalidating his own wealth in the process by sabotaging the system.&lt;/p&gt;
+
+&lt;h3 id=&quot;memory-optimizations&quot;&gt;Memory Optimizations&lt;/h3&gt;
+
+&lt;p&gt;After the latest transaction is reinforced with several blocks stacking on top of it, the spent transactions can be discarded from the disk.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Transactions are hashed in a Merkle Tree, with only root included in the block’s hash.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A block header with no transaction is about 80 bytes, and blocks are generated every 10 minutes, then every hour about 6 blocks would be generated. So the total space required by blocks generated in a year would be about 4.2MB (i.e 80 bytes * 6 * 24 * 365). With the current capabilities of system memories, storage would not pose a problem to the system.&lt;/p&gt;
+
+&lt;h3 id=&quot;payment-verification&quot;&gt;Payment Verification&lt;/h3&gt;
+
+&lt;p&gt;The system makes it possible to verify payments without running the full network node.&lt;/p&gt;
+
+&lt;p&gt;Verification can be done by keeping a copy of the block headers of the longest proof-of-work chain, and obtaining the Merkle branch linking the transaction to the block it’s timestamped in.&lt;/p&gt;
+
+&lt;p&gt;By linking the transaction to a place in the chain, one can see if network nodes have accepted it by checking the proof-of-work, which would be further confirmed by blocks built on top of it in the chain.&lt;/p&gt;
+
+&lt;p&gt;Again, the verification is only reliable as long as honest nodes control the network. Because the simplified verification method can be fooled by an attacker’s fabricated transactions for as long as the attacker can overpower the compute resources of the unified honest nodes.&lt;/p&gt;
+
+&lt;h3 id=&quot;combining-and-splitting-value&quot;&gt;Combining and Splitting Value&lt;/h3&gt;
+
+&lt;p&gt;Even though it is possible to handle each coin individually, it would be unweildy to make a seperate transaction for every cent in a transfer.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To allow value to be split and combined, transactions contain multiple inputs and outputs.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Usually, there is a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: &lt;strong&gt;one for the payment, and one to return the change, if any, back to the sender&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;privacy&quot;&gt;Privacy&lt;/h3&gt;
+
+&lt;p&gt;Traditional banking models achieve privacy through limiting access to information to the parties involved and the trusted third party.&lt;/p&gt;
+
+&lt;p&gt;In the proposed system, it is achieved by anonymizing the public keys that are used to sign a transaction. So, the public ledger can see someone is sending an amount to someone else, but without information linking the transaction to anyone (similar to tape in a stock exchange).&lt;/p&gt;
+
+&lt;p&gt;Some linking is still unavoidable with multi-input transactions, which reveals that the inputs originated from the same owner. So if one owner’s key is revealed, linking will allow to discover other transactions associated with that owner.&lt;/p&gt;
+
+&lt;h3 id=&quot;mathematics-of-bitcoin&quot;&gt;Mathematics of Bitcoin&lt;/h3&gt;
+
+&lt;p&gt;If there were a scenario where an attacker is generating a alternate chain faster than the honest chain, it could still not generate value out of thin air or take someone else’s money because it will be rejected by the corresponding node which owns that token.&lt;/p&gt;
+
+&lt;p&gt;So all it is capable of doing is to double-spend its own money.&lt;/p&gt;
+
+&lt;p&gt;Basically the race between the honest chain and the alternate chain can be characterized as a &lt;strong&gt;Binomial Random Walk&lt;/strong&gt;, where success event is honest chain being extended by a block and failure event is the alternate chain extented by a block gaining a lead on the honest chain.&lt;/p&gt;
+
+&lt;p&gt;In such a case, the probability of an attacker catching up with the honest chain by making up for the deficit can be modeled similar to a &lt;strong&gt;Gambler’s Ruin Problem&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;probability that the attacker ever reaches a breakeven&lt;/strong&gt; is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+q_z = 
+\begin{cases}
+1 &amp; \text{ if } p \leq q \\
+(q/p)^z &amp; \text{ if } p \gt q
+\end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(p\) is the probability of an honest chain extending&lt;/li&gt;
+  &lt;li&gt;\(q\) is the probability of a attacker chain extending&lt;/li&gt;
+  &lt;li&gt;\(q_z\) is the probability of the attacker catching up with the honest chain from \(z\) blocks deficit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given the assumption that the pool of honest compute power is greater than that of attackers, it is safe to assume that \(p \gt q\). So the probability drops exponentially as the number of blocks of deficit for an attacker increases. So after a fair lead, the probability of attacker to catch up is vanishingly small.&lt;/p&gt;
+
+&lt;h3 id=&quot;time-for-establishing-trust&quot;&gt;Time for Establishing Trust&lt;/h3&gt;
+
+&lt;p&gt;Assume that the sender of a transaction is an attacker who wants to make the receiver believe that he paid him for a while, and switch it back to himself after sometime.&lt;/p&gt;
+
+&lt;p&gt;So initially the receiver will generate a new key pair and give the public key to the attacker for making the transfer. This prevents the attacker from preparing a chain of blocks in advance because of the dynamic nature of the public key generated.&lt;/p&gt;
+
+&lt;p&gt;So once the transaction is made, the attacker starts working on a alternate chain where the transactions are different.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile the receiver waits for the transaction to be added to a block and another \(z\) blocks to be chained on top of that block.&lt;/p&gt;
+
+&lt;p&gt;The receiver does not know the progress of the attacker, but assuming the honest nodes took the average time to build a block, the attacker’s progress will be a Poisson Distribution with the expected value,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda = z {q \over p}&lt;/script&gt;
+
+&lt;p&gt;Probability that the attacker could catch up can be calculated by mutliplying the Poisson density for each amount of progress by the probability that he could catch up from that point, given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\sum_{k=0}^\infty \frac{\lambda^k\,e^{-\lambda}}{k!} \cdot \begin{cases} (q/p)^{(z-k)} &amp; \text{ if } k \leq z \\ 1 &amp; \text{ if } k \gt z \end{cases} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Rearranging to avoid infinite summation of the distribution,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 - \sum_{k=0}^z \frac{\lambda^k\,e^{-\lambda}}{k!} (1 - (q/p)^{(z-k)})&lt;/script&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;=&amp;gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+Output
+------
+0   =&amp;gt;  1.0
+5   =&amp;gt;  0.17735231
+10  =&amp;gt;  0.04166048
+15  =&amp;gt;  0.01010076
+20  =&amp;gt;  0.0024804
+25  =&amp;gt;  0.00061323
+&quot;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Calculating the values, it is observed that the probability drops off exponentially with z.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Bitcoin does not need a third party to enforce trust.&lt;/li&gt;
+  &lt;li&gt;Coin framework is based on digital signatures.&lt;/li&gt;
+  &lt;li&gt;A peer-to-peer network using proof-of-work records a history of transaction.&lt;/li&gt;
+  &lt;li&gt;Nodes can leave or rejoin the system according to their wish.&lt;/li&gt;
+  &lt;li&gt;Any needed rules and incentives can be enforced with this consensus mechanism.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot; target=&quot;_blank&quot;&gt;Bitcoin: A Peer-to-Peer Electronic Cash System&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>The Mysterious Primes</title>
@@ -6840,7 +7181,17 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
    <link href="https://machinelearningmedium.com/2017/07/02/blockchain/"/>
    <updated>2017-07-02T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/07/02/blockchain</id>
-   <content type="html">&lt;h3 id=&quot;what-is-blockchain-&quot;&gt;What is &lt;strong&gt;blockchain&lt;/strong&gt; ?&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;what-is-blockchain-&quot;&gt;What is &lt;strong&gt;blockchain&lt;/strong&gt; ?&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Originally developed as a part of digital currency &lt;a href=&quot;https://bitcoin.org/&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Bitcoin&lt;/strong&gt;&lt;/a&gt;.&lt;/li&gt;
   &lt;li&gt;Blockchain can support a wide variety of applications such as peer-to-peer payment services, supply chain tracking etc.&lt;/li&gt;
