@@ -5,8 +5,8 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 25 Dec 2017 15:04:43 +0530</pubDate>
-    <lastBuildDate>Mon, 25 Dec 2017 15:04:43 +0530</lastBuildDate>
+    <pubDate>Tue, 26 Dec 2017 00:56:10 +0530</pubDate>
+    <lastBuildDate>Tue, 26 Dec 2017 00:56:10 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -69,11 +69,15 @@
 
 &lt;p&gt;Traditional solution of this involves introducing a trusted central authority, or mint, that checks every transaction for double-spending. In such a system, after every transaction the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. This still does not solve the basic problem of dependency on company running the mint, which is basically serving the same purpose as that of a bank in the current system.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-1-transaction.png&quot; alt=&quot;Flow of Transactions&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;The only way to confirm the absence of a transaction is to have a copy of all the transactions. To accomplish this in a decentralized system, the transactions must be publically announced and there is a need for a system for participants to agree on a single history of the order in which they were received. So, at the time of the transaction, the payee needs a proof that the majority of the nodes agreed it was the first received one.&lt;/p&gt;
 
 &lt;h3 id=&quot;timestamp-server&quot;&gt;Timestamp Server&lt;/h3&gt;
 
 &lt;p&gt;A timestamp server basically takes a hash of a block of items to be timestamped and widely publishes it, where the timestamp proves that the data must have existed at the time, in order to get the hash.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-2-blockchain.png&quot; alt=&quot;Timestamp Server&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Each timestamp includes previous timestamp in its hash, forming a chain (blockchain), with each timestamp reinforcing the ones before it.&lt;/p&gt;
@@ -152,7 +156,7 @@ Time Taken
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-1-proof-of-work.png&quot; alt=&quot;Proof-of-work plot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-8-proof-of-work-plot.png&quot; alt=&quot;Proof-of-work plot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Basic needs of such system of proof-of-work are fulfilled by cryptographic hashes, that are often seen as one way functions, i.e. the only way to get the input given an output is to use the bruteforce approach and check all possible values of inputs and arriving at the correct candidate.&lt;/p&gt;
 
@@ -161,6 +165,8 @@ Time Taken
 &lt;/blockquote&gt;
 
 &lt;p&gt;In the bitcoin’s timestamp network, the proof-of-work is implemented by incrementing a nonce in the block until a value is found that gives the block the required number of leading zero bits.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-3-proof-of-work.png&quot; alt=&quot;Proof-of-work Flow&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Once the CPU effort has been expended to satisfy the proof-of-work, the block cannot be changed without redoing the work.&lt;/p&gt;
@@ -213,6 +219,8 @@ Time Taken
   &lt;p&gt;Transactions are hashed in a Merkle Tree, with only root included in the block’s hash.&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-4-merkle-tree.png&quot; alt=&quot;Memory Optimizations&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;A block header with no transaction is about 80 bytes, and blocks are generated every 10 minutes, then every hour about 6 blocks would be generated. So the total space required by blocks generated in a year would be about 4.2MB (i.e 80 bytes * 6 * 24 * 365). With the current capabilities of system memories, storage would not pose a problem to the system.&lt;/p&gt;
 
 &lt;h3 id=&quot;payment-verification&quot;&gt;Payment Verification&lt;/h3&gt;
@@ -220,6 +228,8 @@ Time Taken
 &lt;p&gt;The system makes it possible to verify payments without running the full network node.&lt;/p&gt;
 
 &lt;p&gt;Verification can be done by keeping a copy of the block headers of the longest proof-of-work chain, and obtaining the Merkle branch linking the transaction to the block it’s timestamped in.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-5-validating-transaction.png&quot; alt=&quot;Payment Verification Process&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;By linking the transaction to a place in the chain, one can see if network nodes have accepted it by checking the proof-of-work, which would be further confirmed by blocks built on top of it in the chain.&lt;/p&gt;
 
@@ -233,11 +243,15 @@ Time Taken
   &lt;p&gt;To allow value to be split and combined, transactions contain multiple inputs and outputs.&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-6-splitting-and-joining.png&quot; alt=&quot;Value Handling Protocols&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Usually, there is a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: &lt;strong&gt;one for the payment, and one to return the change, if any, back to the sender&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;privacy&quot;&gt;Privacy&lt;/h3&gt;
 
 &lt;p&gt;Traditional banking models achieve privacy through limiting access to information to the parties involved and the trusted third party.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-7-privacy.png&quot; alt=&quot;Privacy Models&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the proposed system, it is achieved by anonymizing the public keys that are used to sign a transaction. So, the public ledger can see someone is sending an amount to someone else, but without information linking the transaction to anyone (similar to tape in a stock exchange).&lt;/p&gt;
 
