@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2017-12-29T13:12:07+05:30</updated>
+ <updated>2017-12-29T13:21:25+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -4832,9 +4832,7 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
 &lt;h3 id=&quot;types-of-machine-learning-algorithms&quot;&gt;Types of Machine Learning Algorithms&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Supervised Learning&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Unsupervised Learning&lt;/p&gt;
-  &lt;/li&gt;
+  &lt;li&gt;Unsupervised Learning&lt;/li&gt;
   &lt;li&gt;Others: Reinforcement Learning, Recommender Systems&lt;/li&gt;
 &lt;/ul&gt;
 

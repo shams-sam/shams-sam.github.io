@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://machinelearningmedium.com</loc>
-    <lastmod>2017-12-29T13:12:07+05:30</lastmod>
+    <lastmod>2017-12-29T13:21:25+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -736,19 +736,6 @@
   </url>
   
   <url>
-    <loc>https://machinelearningmedium.com/tag/featured/index.html</loc>
-    
-      <lastmod>2017-12-29</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  <url>
     <loc>https://machinelearningmedium.com/tag/concept/index.html</loc>
     
       <lastmod>2017-12-29</lastmod>
@@ -919,6 +906,19 @@
   
   <url>
     <loc>https://machinelearningmedium.com/tag/andrew-ng/3/index.html</loc>
+    
+      <lastmod>2017-12-29</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  <url>
+    <loc>https://machinelearningmedium.com/tag/featured/index.html</loc>
     
       <lastmod>2017-12-29</lastmod>
     
