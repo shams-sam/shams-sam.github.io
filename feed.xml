@@ -5,9 +5,107 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 26 Dec 2017 00:56:10 +0530</pubDate>
-    <lastBuildDate>Tue, 26 Dec 2017 00:56:10 +0530</lastBuildDate>
+    <pubDate>Fri, 29 Dec 2017 13:12:07 +0530</pubDate>
+    <lastBuildDate>Fri, 29 Dec 2017 13:12:07 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
+    
+      <item>
+        <title>B-Money</title>
+        <description>&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;B-Money, an early proposal by Wei Dai for an anonymous, distributed electronic cash system was referred by Satoshi Nakamoto for creating Bitcoin, the current cryptocurrency giant.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In the referred post, the author identified existing operational problems in an online community named Crypto-Anarchy. Crypto-Anarchy is explained as an online community where participants are identified with psuedonyms which are in no way associated with their true names or physical locations. Because of this seperation of true identity from community identity, the possibility of voilence is rendered impotent. Together these make the role of government permanently forbidden and unnecessary in such a community.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A community is defined by cooperation of its participants, and an efficient cooperation requires a medium of exchange (money) and a way to enforce contracts.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While traditionally these services were provided by the government or government sponsored institutions, it was not clear theoretically how to implement a similar system among decentralized nodes without using a trusted central authority.&lt;/p&gt;
+
+&lt;p&gt;Author proposed two different protocols which can solve these issues, first one is very similar to the current proof-of-work protocol and second is similar to proof-of-stake protocol.&lt;/p&gt;
+
+&lt;p&gt;Author poses that the implementation of the first system is impractical, because it makes heavy use of synchronous and unjammable anonymous broadcast channel.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Existence of untraceable network is assumed, where senders and receivers are identified only by their digital psuedonyms (i.e. public keys) and every message is signed by its sender and encrypted to its receiver.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;first-protocol&quot;&gt;First Protocol&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Analogous to &lt;strong&gt;proof-of-work&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;A seperate database is maintained by every participant with details of how much money belongs to which &lt;strong&gt;pseudonym&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The individual databases collectively define the ownership of the money. The accounts are update subject to the rules in this protocol listed below.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The creation of money:&lt;/strong&gt; Money is created by broadcasting the solution to a previously unsolved computational problem. Such solutions must be easy to determine how much computing effort it took to solve the problem and must not otherwise have any practical or intellectual value (similar to nonce in a proof of work). Upon broadcasting the solution and verifying it, everyone credits the amount to solver’s psuedonym, equivalent to the amount of units it would take to buy the electricity utilized by the most economical computer to solve the problem.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The transfer of money:&lt;/strong&gt; If owner of psuedonym pk_A (public key of A) sends X units of money to owner of psuedonym pk_B (public key of B), they have to broadcast a message signed with their public key. On receiving this broadcast, all the participants would debit amount X from psuedonym pk_A and credit it to psuedonym pk_B, unless this creates a negative balance in pk_A’s account in which case the broadcasted transaction is ignored.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The effecting of contracts:&lt;/strong&gt; A valid contract binds a &lt;strong&gt;maximum reperation&lt;/strong&gt; for each participating party in case of default. It also specifies a third party who will do the arbitration in case any dispute arises. In order for the contract to be effective, all the participating parties and the arbitrator must broadcast their public keys (i.e. psuedonyms). Upon the broadcast of contract and all the associated signatures, every participant debits the account of each party by the amount of his maximum reperation and credits a special account identified by secure has of the contract by the sum of the maximum reperations. The contract is a success if the debits succeed for every party without any negative balances, failing which the contract is ignored and the accounts are rolled back.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The conclusion of contracts:&lt;/strong&gt; If the contract concludes without any dispute, each party must broadcast a message stating the same, following which each participant credits the accounts of each party by the amount of their maximum reperation, removes the contract account, then credits or debits the account of each party according to the reparation schedule if there is one.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The enforcement of contract:&lt;/strong&gt; In case of dispute, which cannot be sorted by the arbitrator, each party broadcasts a suggested reparation/ fine schedule and arguments or evidence in his favor. Each participant makes a determination as to the actual reparations and/or fines, and modifies his accounts accordingly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;second-protocol&quot;&gt;Second Protocol&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Similar to &lt;strong&gt;proof-of-stake&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The accounts of every psuedonym is maintained by a &lt;strong&gt;subset of the participants (called servers)&lt;/strong&gt; instead of everyone as in the previous protocol. Servers are connected (using Usenet-style broadcast channel).&lt;/li&gt;
+  &lt;li&gt;Format of broadcasted transaction is same as first protocol, but &lt;strong&gt;affected participant of each transaction should verify the changes&lt;/strong&gt; on a randomly selected subset of the servers.&lt;/li&gt;
+  &lt;li&gt;In order to bring a degree of trust in the servers, &lt;strong&gt;each server is required to deposit a certain amount of money in a special account&lt;/strong&gt; to be &lt;strong&gt;used as potential fines or rewards&lt;/strong&gt; for proof of misconduct.&lt;/li&gt;
+  &lt;li&gt;Each server must &lt;strong&gt;periodically  publish and commit&lt;/strong&gt; to its current money creation and money ownership databases. Also they should verify that his own account balances are correct and that &lt;strong&gt;total sum of account balances in not greater than the total amount of money created&lt;/strong&gt;. This would prevent the servers, even in total collusion, from permanently and costlessly expanding the money supply.&lt;/li&gt;
+  &lt;li&gt;New servers synchronize with the existing servers to used the published databases.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;alternative-b-money-creation&quot;&gt;Alternative B-Money Creation&lt;/h3&gt;
+
+&lt;p&gt;One of the major problems faced in decentralized money network protocols is reaching a consensus for the cost of a computing effort. The rapid advances of computing technology, often in a private development makes it difficult to gather accurate information about these metrics while making sure they are not outdated.&lt;/p&gt;
+
+&lt;p&gt;Author proposes a subprotocol, in which the account keepers (i.e. the participants in first protocol or servers in second protocol) decide and agree on the amount of b-money to be create each period, where the &lt;strong&gt;cost of b-money is determined by an auction&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each money creation period is divided up into &lt;strong&gt;four phases&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Planning:&lt;/strong&gt; Account keepers compute and negotiate to determine an optimal increase in money supply for a given period. Whether or not  the participants reach a concensus, they broadcast their money creation quota and any macroeconomic calculations done to support the figures.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Bidding:&lt;/strong&gt; Anyone who wants to create the b-money makes a bid of the form &amp;lt;X, Y&amp;gt;, where X is the amount of b-money he wants to create and Y is an unsolved problem from a predetermined problem class (proof-of-work solution in case of bitcoin), where each problem has a nominal cost in MIPS-year publically agreed on.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Computation:&lt;/strong&gt; After bidding, the ones who placed the bids in bidding phase solve the problem in their bid and broadcast the solutions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Money Creation:&lt;/strong&gt; Each participant accepts the highest bids (among all those who broadcast solutions) in terms of nominal cost per unit of b-money created and credits the bidder’s account accordingly.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://www.weidai.com/bmoney.txt&quot; target=&quot;_blank&quot;&gt;B-Money by Wei Dai&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Thu, 28 Dec 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/</guid>
+        
+        <category>concept</category>
+        
+        <category>references</category>
+        
+        
+      </item>
     
       <item>
         <title>Bitcoin</title>
@@ -17,6 +115,8 @@
   &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2141,393 +2241,6 @@ Simultaneous update
         <category>machine learning</category>
         
         <category>andrew ng</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Basics of Language Model</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;Given the &lt;strong&gt;finite set of all the words&lt;/strong&gt; in a language, \(\nu\), a sentence in the language is the &lt;strong&gt;sequence of words&lt;/strong&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;x_1\,x_2\,\cdots\,x_n&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(n \ge 1\)&lt;/li&gt;
-      &lt;li&gt;\(x_1 \cdots x_{n-1} \in \nu\)&lt;/li&gt;
-      &lt;li&gt;\(x_n\) is a special symbol STOP \(\require{cancel}\cancel{\in} \nu \)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Set of all the words in a language are assumed to be finite.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Let \(\nu^{\dagger}\) be the &lt;strong&gt;infinite set of all sentences&lt;/strong&gt; with the vocabulary \(\nu\).&lt;/p&gt;
-
-&lt;p&gt;A &lt;strong&gt;language model&lt;/strong&gt; consists of a finite set \(\nu\) as a function \(p(x_1, x_2, \cdots, x_n)\), such that:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;For any \(⟨ x_1 \cdots x_n ⟩ \in  \nu^\dagger, \, p(x_1, x_2, \cdots, x_n) \ge 0\)&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;\(\sum_{⟨ x_1 \cdots x_n ⟩ \in  \nu^\dagger} p(x_1, x_2, \cdots, x_n) = 1\)&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So, \(p(x_1, x_2, \cdots, x_n)\) is basically a &lt;strong&gt;probability distribution&lt;/strong&gt; over the sentences \(\nu^\dagger\).&lt;/p&gt;
-
-&lt;h3 id=&quot;applications-of-language-modeling&quot;&gt;Applications of Language Modeling&lt;/h3&gt;
-&lt;p&gt;A distribution of \(p(x_1 \cdots x_n)\) signifies how probable a sentence is in a language. Such a distribution can prove useful in &lt;strong&gt;speech recognition&lt;/strong&gt; or &lt;strong&gt;machine translation&lt;/strong&gt;. Candidates generated by these algorithms can be run against the language model to check how probable the sentences are.&lt;/p&gt;
-
-&lt;h3 id=&quot;frequency-based-modeling&quot;&gt;Frequency Based Modeling&lt;/h3&gt;
-&lt;p&gt;Frequency based modeling is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x_1 \cdots x_n) = \frac {c(x_1 \cdots x_n)} {N}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(c(x_1 \cdots x_n)\) is the number of times \(x_1 \cdots x_n\) occurs in the training corpus&lt;/li&gt;
-      &lt;li&gt;N is the total number of sentences in the corpus.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One major drawback of such a model is that it would &lt;strong&gt;assign probability 0 to any sentence not seen in the training corpus&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;markov-models-for-fixed-length-sequences&quot;&gt;Markov Models for Fixed Length Sequences&lt;/h3&gt;
-&lt;p&gt;Consider a sequence of random variables, \(X_1, X_2, \cdots, X_n\), where each random variable can take any value in a finite set \(\nu\). &lt;strong&gt;n is assumed to be a fixed number.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Language model aims to find the probability of \(x_1 \cdots x_n\), where \(n\ge1\) and \(x_i \in \nu\) for \(i = 1 \cdots n\), i.e. to model the join probability,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X_1 = x_1, X_2 = x_2, \cdots , X_n = x_n)&lt;/script&gt;
-
-&lt;p&gt;If n is a fixed number there are \(|\nu|^n\) possible sequences of the form \(x_1 \cdots x_n\), which makes it impossible to list all the possible sequences for a large value of n and \(|\nu|\). This is where markov models help to build a more compact model.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;First-Order Markov Process&lt;/strong&gt; make the assumption that identity of an element in a sequence depends only on the identity of previous element in the sequence, i.e. \(X_i\) is &lt;strong&gt;conditionally independent&lt;/strong&gt; of \( X_1 \cdots X_{i-2} \), given the value of \(X_{i-1}\).&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    P(X_1 = x_1, \cdots , X_n = x_n) &amp;= P(X_1 = x_1) \prod_{i=2}^n P(X_i = x_i | X_1=x_1 \cdots X_{i-1}=x_{i-1}) \\
-    &amp;= P(X_1 = x_1) \prod_{i=2}^n P(X_i=x_i|X_{i-1} = x_{i-1})
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;The first step of the equation above is &lt;strong&gt;exact&lt;/strong&gt; using the chain rule of probability. The second step is a result of &lt;strong&gt;first-order markov model assumption&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Similarly, &lt;strong&gt;second-order Markov models&lt;/strong&gt; assume that identity of an element in a sequence depends only on the identity of previous two elements in the sequence, i.e. \(X_i\) is &lt;strong&gt;conditionally independent&lt;/strong&gt; of \(X_1 \cdots X_{i-3}\), given the value of \(X_{i-1}\) and \(X_{i-2}\).&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    P(X_1 = x_1, \cdots , X_n = x_n) &amp;= \prod_{i=1}^n P(X_i = x_i | X_1=x_1 \cdots X_{i-1}=x_{i-1}) \\
-    &amp;= \prod_{i=1}^n P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;It is assumed that \(x_0,\, x_{-1} = *\), where  * is the special start symbol.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;markov-sequences-for-variable-length-sentences&quot;&gt;Markov Sequences for Variable-length Sentences&lt;/h3&gt;
-&lt;p&gt;The value n, assumed to be fixed number in previous section, is considered to be a random variable itself and the nth word is always equal to the special symbol STOP.&lt;/p&gt;
-
-&lt;p&gt;Using the &lt;strong&gt;second-order markov assumption&lt;/strong&gt;,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X_1 = x_1, \cdots , X_n = x_n) = \prod_{i=1}^n P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(n \ge 1\)&lt;/li&gt;
-      &lt;li&gt;\(x_n =\) STOP&lt;/li&gt;
-      &lt;li&gt;\(x_i \in \nu\) for \(i=1 \cdots (n-1)\)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Process of generating a sequence using the above distribution would be as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Initialize \(i=1\), and \(x_0, x_{-1} = *\)&lt;/li&gt;
-  &lt;li&gt;Generate \(x_i\) from the distribution,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(X_i=x_i|X_{i-2} = x_{i-2}, X_{i-1} = x_{i-1})&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If \(x_i = \) STOP then return the sequence \(x_1 \cdots x_i\), else set i = i+1 and repeat previous step.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;trigram-language-models&quot;&gt;Trigram Language Models&lt;/h3&gt;
-&lt;p&gt;Trigram language models are direct application of second-order markov models to the language modeling problem. Each sentence is modeled as a sequence of n random variables, \(X_1, \cdots, X_n\) where n is itself a random variable.&lt;/p&gt;
-
-&lt;p&gt;A trigram model consists of finite set \(\nu\), and a parameter,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u,v)&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;u, v, w is a &lt;strong&gt;trigram&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;\(w \in \nu \cup \{STOP\}\)&lt;/li&gt;
-      &lt;li&gt;\(u, v \in \nu \cup \{*\}\)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;The value of \(q(w| u, v)\) can be interpreted as the &lt;strong&gt;probability of seeing the word w immediately after bigram u, v.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;So, for any sequence \(x_1 \cdots x_n\) where \(x_i \in \nu\) for \(i = 1 \cdots (n-1)\) and \(x_n = \) STOP, the probability of the sentence under trigram language model is&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x_1 \cdots x_n) = \prod_{i=1}^n q(x_i|x_{i-2}, x_{i-1}) \tag{1}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where \(x_0 = x_{-1} = *\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Trigram assumption: Each word depends on the previous two.&lt;/strong&gt; This is essentially the second-order markov assumption used over sentences.&lt;/p&gt;
-
-&lt;p&gt;The only step remaining in the trigram language model is the &lt;strong&gt;estimation of language parameters&lt;/strong&gt;, i.e., \(q(w|u,v)\). Since the total number of words are \(| \nu |\) the total number of possible parameters would be \(| \nu |^3\). It is a very big number and hence needs some kind of &lt;strong&gt;indirect estimation process&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;maximum-likelyhood-estimates&quot;&gt;Maximum Likelyhood Estimates&lt;/h3&gt;
-&lt;p&gt;This is the most generic solution to the estimation problem shown above.&lt;/p&gt;
-
-&lt;p&gt;For any w, u, v,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u,v) = \frac {c(u,v,w)} {c(u, v)}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;c(u,v,w) is the number of times the trigram is seen in corpus&lt;/li&gt;
-      &lt;li&gt;c(u, v) is the number of times the bigram is seen in the corpus&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Many of the frequencies c(u,v,w) and c(u,v) would be 0. This would effect the estimation and present the following flaws:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(q(w|u,v) = 0\) because c(u,v,w) is 0 which would underestimate many trigram probabilities which is unreasonable&lt;/li&gt;
-  &lt;li&gt;If the denominator is 0, then \(q(w|u,v)\) would be undefined.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;perplexity&quot;&gt;Perplexity&lt;/h3&gt;
-&lt;p&gt;It is one of the &lt;strong&gt;evaluation metrics for the language models&lt;/strong&gt; and is calculated on a held-out data after the model is trained on some corpus. The &lt;strong&gt;held-out data is not used for parameter estimation&lt;/strong&gt; of the language model.&lt;/p&gt;
-
-&lt;p&gt;Consider a test dataset consisting of sentences, \(s_1, \cdots, s_m\), then \(p(s_i)\) gives probability for sentence \(s_i\) in the language model.&lt;/p&gt;
-
-&lt;p&gt;A basic measure of quality of language model would be the probability it assigns to the entire test set, give by&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\prod_{i=1}^m p(s_i)&lt;/script&gt;
-
-&lt;p&gt;So, higher the quantity is, the better the language model is at modeling unseen sentences.&lt;/p&gt;
-
-&lt;p&gt;Perplexity is a direct transformation of this basic defination. Let M be the total number of words in the corpus, then &lt;strong&gt;average log probability&lt;/strong&gt; under the model is&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{1 \over M} log \prod_{i=1}^m p(s_i) = {1 \over M} \sum_{i=1}^m log \,p(s_i)&lt;/script&gt;
-
-&lt;p&gt;which is the log probability of the entire corpus, divided by the total number of words in the corpus. Again the higher the value of this, the better the language model.&lt;/p&gt;
-
-&lt;p&gt;Then, &lt;strong&gt;Perplexity&lt;/strong&gt; is defined as&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;2^{-l} \tag{2}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;l = {1 \over M} \sum_{i=1}^m log_2\, p(s_i) \tag{3}&lt;/script&gt;
-
-&lt;p&gt;The perplexity is a positive number. The smaller the value of perplexity, the better the language model is at modeling unseen data. Perplexity becomes a minimization parameter because of the negative power that is applied to the defination.&lt;/p&gt;
-
-&lt;h3 id=&quot;intuition-for-perplexity&quot;&gt;Intuition for Perplexity&lt;/h3&gt;
-&lt;p&gt;Let the vocabulary, \(\nu\) have N words, and the model predicts uniform distribution over the vocabulary, i.e.,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u,v) = {1 \over N}&lt;/script&gt;
-
-&lt;p&gt;Then evaluating (3) using (1),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    l  &amp;= {1 \over M} \sum_{i=1}^m log_2\, p(s_i) \\
-    &amp;= {1 \over M} \left[log_2\,  \left({1 \over N}\right)^{n_1} + \cdots +  log_2\, \left({1 \over N}\right)^{n_m} \right] \\
-    &amp;= - {1 \over M} * log_2\,N * (n_1 + n_2 + \cdots + n_m) \\
-    &amp;= - log_2\, N \tag{4}
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where \(n_1, n_2, \cdots, n_m\) are the number of words in each sentence in the test sample and,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;n_1, n_2, \cdots, n_m = M&lt;/script&gt;
-
-&lt;p&gt;Using (4) in (2),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Perplexity = 2^{-l} = 2^{-(-log_2\,N)} = N \tag{5}&lt;/script&gt;
-
-&lt;p&gt;So, &lt;strong&gt;under a uniform distribution model, the perplexity is equal to the vocabulary size&lt;/strong&gt;. Perplexity can be considered the effective vocabulary size under the model.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Properties of perplexity&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;If for any trigram u, v, w, the estimated probability \(q(w|u, v) = 0\) then the &lt;strong&gt;perplexity will be \(\infty\)&lt;/strong&gt; which is consistent with the rule stating that a good model should not predict probability zero for an unseen dataset and perplexity is low for good models.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;If perplexity is the measure of language model, then &lt;strong&gt;0 estimates should be avoided&lt;/strong&gt; at all costs.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;linear-interpolation&quot;&gt;Linear Interpolation&lt;/h3&gt;
-&lt;p&gt;The following &lt;strong&gt;trigram, bigram and unigram maximum-likelihood estimates&lt;/strong&gt; are defined,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    q_{ML}(w|u, v) &amp;= {c(u,v,w) \over c(u,v)} \\
-    q_{ML}(w|v) &amp;= {c(v,w) \over c(v)} \\
-    q_{ML}(w) &amp;= {c(w) \over c()} \\
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(c(u,v,w)\) is the number of times trigram u, v, w occurs&lt;/li&gt;
-      &lt;li&gt;\(c(v,w)\) is the number of times bigram v, w occurs&lt;/li&gt;
-      &lt;li&gt;\(c(w)\) is the number of times unigram w occurs&lt;/li&gt;
-      &lt;li&gt;\(c()\) is the total number of words seen in the training&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Properties&lt;/strong&gt; of these models:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The &lt;strong&gt;unigram model&lt;/strong&gt; will never face the issue of number or denominator being 0, so the estimate is always well defined and greater than 0. But it completely ignores the context and hence discards valuable information.&lt;/li&gt;
-  &lt;li&gt;The &lt;strong&gt;trigram model&lt;/strong&gt; use the context better than the unigram model, but has the problem of many of its counts being 0 rendering estimate value 0 or undefined.&lt;/li&gt;
-  &lt;li&gt;The &lt;strong&gt;bigram model&lt;/strong&gt; falls between the two extremes.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Linear Interpolation&lt;/strong&gt; uses all three of these estimates to define the trigram estimate as follows,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|u, v) = \lambda_1 * q_{ML}(w|u, v) + \lambda_2 * q_{ML}(w|v) + \lambda_3 * q_{ML}(w) \tag{6}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_1 \ge 0,\,\lambda_2 \ge 0,\,\lambda_3 \ge 0&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda_1 + \lambda_2 + \lambda_3 = 1&lt;/script&gt;
-
-&lt;p&gt;i.e. (6) is a &lt;strong&gt;weighted average&lt;/strong&gt; of the three estimates.&lt;/p&gt;
-
-&lt;h3 id=&quot;discounting-methods-and-katz-back-off&quot;&gt;Discounting Methods and Katz Back-off&lt;/h3&gt;
-&lt;p&gt;An alternative estimation method commonly used in practice.&lt;/p&gt;
-
-&lt;p&gt;Consider a bigram language model where the following parameter is to be found,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|v) \tag{7}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(w \in \nu \cup \) {STOP}&lt;/li&gt;
-      &lt;li&gt;\(v \in \nu \cup\) {*}&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Discounted Counts&lt;/strong&gt; are used to reflect the intuition that if the counts are taken from the training corpus, there would be a systematic over-estimation of probability of bigrams seen in the corpus and hence underestimate the bigrams not seen in the corpus. So, discounted count is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;c^*(v, w) = c(v,w) - 0.5&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\(c^*(v, w)\) is the discounted count&lt;/li&gt;
-      &lt;li&gt;\(c(v,w)\) is the count of bigrams, such that, \(c(v,w) \gt 0\)&lt;/li&gt;
-      &lt;li&gt;0.5 is the discount value&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Using the discounted count, (7) can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;q(w|v) = {c^*(v, w) \over c(v)}&lt;/script&gt;
-
-&lt;p&gt;i.e., use the discounted count in the numberator and regular count in the denominator.&lt;/p&gt;
-
-&lt;p&gt;For any context \(v\), there is a &lt;strong&gt;missing mass&lt;/strong&gt;, defined as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha(v) = 1 - \sum_w {c^*(v, w) \over c(v)}&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The intuition behind discounted methods is to divide the missing mass among words \(w\), such that \(c(v,w) = 0\).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Formally, for any \(v\), there exist sets&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    A(v) &amp;= {w: c(v,w) &gt; 0} \\
-    B(v) &amp;= {w: c(v,w) = 0}
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Then the estimate is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-q_{BO}(w|v) = 
-  \begin{cases}
-    {c^*(v, w) \over c(v)} &amp; If w \in A(v)\\
-    \alpha(v) * {q_{ML}(w) \over \sum_{w \in B(v)} q_{ML}(w)} &amp; If w \in B(v)
-  \end{cases}
-  \tag{8} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;i.e if \(c(v,w) \gt 0\) return \({c^*(v, w) \over c(v)}\) else divide the remaining probability mass \(\alpha(v)\) in proportion to the unigram estimates \(q_{ML}(w)\).&lt;/p&gt;
-
-&lt;p&gt;This method can be generalized to &lt;strong&gt;trigram language model&lt;/strong&gt; in a recursive way, i.e., for any bigram (u, v) define,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    A(u,v) &amp;= {w: c(u,v,w) &gt; 0} \\
-    B(u,v) &amp;= {w: c(u,v,w) = 0}
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where 0.5 is the discount value and hence discounted count is given by,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;c^*(u, v, w) = c(u,v,w) - 0.5&lt;/script&gt;
-
-&lt;p&gt;Then the trigram model is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-q_{BO}(w|v) = 
-  \begin{cases}
-    {c^*(u, v, w) \over c(u, v)} &amp; If w \in A(u, v)\\
-    \alpha(u, v) * {q_{BO}(w|v) \over \sum_{w \in B(u,v)} q_{BO}(w|v)} &amp; If w \in B(u,v)
-  \end{cases} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;where&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\alpha(u, v) = 1 - \sum_{w \in A(u,v)} {c^*(u, v, w) \over c(u, v)}&lt;/script&gt;
-
-&lt;p&gt;\(\alpha(u, v)\) is the missing probability mass of the bigram. It can be noted that the missing probability is distributed in proportion to the bigram estimaes \(q_{BO}(w|v)\) given in (8).&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://www.cs.columbia.edu/~mcollins/courses/nlp2011/notes/lm.pdf&quot; target=&quot;_blank&quot;&gt;Language Modeling - Michael Collins&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 12 Sep 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</guid>
-        
-        <category>NLP</category>
-        
-        <category>machine learning</category>
         
         
       </item>

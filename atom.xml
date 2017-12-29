@@ -4,13 +4,105 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2017-12-26T00:56:10+05:30</updated>
+ <updated>2017-12-29T13:12:07+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>B-Money</title>
+   <link href="https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/"/>
+   <updated>2017-12-28T00:00:00+05:30</updated>
+   <id>https://machinelearningmedium.com/2017/12/28/b-money-wei-dai</id>
+   <content type="html">&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;B-Money, an early proposal by Wei Dai for an anonymous, distributed electronic cash system was referred by Satoshi Nakamoto for creating Bitcoin, the current cryptocurrency giant.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In the referred post, the author identified existing operational problems in an online community named Crypto-Anarchy. Crypto-Anarchy is explained as an online community where participants are identified with psuedonyms which are in no way associated with their true names or physical locations. Because of this seperation of true identity from community identity, the possibility of voilence is rendered impotent. Together these make the role of government permanently forbidden and unnecessary in such a community.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A community is defined by cooperation of its participants, and an efficient cooperation requires a medium of exchange (money) and a way to enforce contracts.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;While traditionally these services were provided by the government or government sponsored institutions, it was not clear theoretically how to implement a similar system among decentralized nodes without using a trusted central authority.&lt;/p&gt;
+
+&lt;p&gt;Author proposed two different protocols which can solve these issues, first one is very similar to the current proof-of-work protocol and second is similar to proof-of-stake protocol.&lt;/p&gt;
+
+&lt;p&gt;Author poses that the implementation of the first system is impractical, because it makes heavy use of synchronous and unjammable anonymous broadcast channel.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Existence of untraceable network is assumed, where senders and receivers are identified only by their digital psuedonyms (i.e. public keys) and every message is signed by its sender and encrypted to its receiver.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;first-protocol&quot;&gt;First Protocol&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Analogous to &lt;strong&gt;proof-of-work&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;A seperate database is maintained by every participant with details of how much money belongs to which &lt;strong&gt;pseudonym&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The individual databases collectively define the ownership of the money. The accounts are update subject to the rules in this protocol listed below.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The creation of money:&lt;/strong&gt; Money is created by broadcasting the solution to a previously unsolved computational problem. Such solutions must be easy to determine how much computing effort it took to solve the problem and must not otherwise have any practical or intellectual value (similar to nonce in a proof of work). Upon broadcasting the solution and verifying it, everyone credits the amount to solver’s psuedonym, equivalent to the amount of units it would take to buy the electricity utilized by the most economical computer to solve the problem.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The transfer of money:&lt;/strong&gt; If owner of psuedonym pk_A (public key of A) sends X units of money to owner of psuedonym pk_B (public key of B), they have to broadcast a message signed with their public key. On receiving this broadcast, all the participants would debit amount X from psuedonym pk_A and credit it to psuedonym pk_B, unless this creates a negative balance in pk_A’s account in which case the broadcasted transaction is ignored.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The effecting of contracts:&lt;/strong&gt; A valid contract binds a &lt;strong&gt;maximum reperation&lt;/strong&gt; for each participating party in case of default. It also specifies a third party who will do the arbitration in case any dispute arises. In order for the contract to be effective, all the participating parties and the arbitrator must broadcast their public keys (i.e. psuedonyms). Upon the broadcast of contract and all the associated signatures, every participant debits the account of each party by the amount of his maximum reperation and credits a special account identified by secure has of the contract by the sum of the maximum reperations. The contract is a success if the debits succeed for every party without any negative balances, failing which the contract is ignored and the accounts are rolled back.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The conclusion of contracts:&lt;/strong&gt; If the contract concludes without any dispute, each party must broadcast a message stating the same, following which each participant credits the accounts of each party by the amount of their maximum reperation, removes the contract account, then credits or debits the account of each party according to the reparation schedule if there is one.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The enforcement of contract:&lt;/strong&gt; In case of dispute, which cannot be sorted by the arbitrator, each party broadcasts a suggested reparation/ fine schedule and arguments or evidence in his favor. Each participant makes a determination as to the actual reparations and/or fines, and modifies his accounts accordingly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;second-protocol&quot;&gt;Second Protocol&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Similar to &lt;strong&gt;proof-of-stake&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The accounts of every psuedonym is maintained by a &lt;strong&gt;subset of the participants (called servers)&lt;/strong&gt; instead of everyone as in the previous protocol. Servers are connected (using Usenet-style broadcast channel).&lt;/li&gt;
+  &lt;li&gt;Format of broadcasted transaction is same as first protocol, but &lt;strong&gt;affected participant of each transaction should verify the changes&lt;/strong&gt; on a randomly selected subset of the servers.&lt;/li&gt;
+  &lt;li&gt;In order to bring a degree of trust in the servers, &lt;strong&gt;each server is required to deposit a certain amount of money in a special account&lt;/strong&gt; to be &lt;strong&gt;used as potential fines or rewards&lt;/strong&gt; for proof of misconduct.&lt;/li&gt;
+  &lt;li&gt;Each server must &lt;strong&gt;periodically  publish and commit&lt;/strong&gt; to its current money creation and money ownership databases. Also they should verify that his own account balances are correct and that &lt;strong&gt;total sum of account balances in not greater than the total amount of money created&lt;/strong&gt;. This would prevent the servers, even in total collusion, from permanently and costlessly expanding the money supply.&lt;/li&gt;
+  &lt;li&gt;New servers synchronize with the existing servers to used the published databases.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;alternative-b-money-creation&quot;&gt;Alternative B-Money Creation&lt;/h3&gt;
+
+&lt;p&gt;One of the major problems faced in decentralized money network protocols is reaching a consensus for the cost of a computing effort. The rapid advances of computing technology, often in a private development makes it difficult to gather accurate information about these metrics while making sure they are not outdated.&lt;/p&gt;
+
+&lt;p&gt;Author proposes a subprotocol, in which the account keepers (i.e. the participants in first protocol or servers in second protocol) decide and agree on the amount of b-money to be create each period, where the &lt;strong&gt;cost of b-money is determined by an auction&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Each money creation period is divided up into &lt;strong&gt;four phases&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Planning:&lt;/strong&gt; Account keepers compute and negotiate to determine an optimal increase in money supply for a given period. Whether or not  the participants reach a concensus, they broadcast their money creation quota and any macroeconomic calculations done to support the figures.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Bidding:&lt;/strong&gt; Anyone who wants to create the b-money makes a bid of the form &amp;lt;X, Y&amp;gt;, where X is the amount of b-money he wants to create and Y is an unsolved problem from a predetermined problem class (proof-of-work solution in case of bitcoin), where each problem has a nominal cost in MIPS-year publically agreed on.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Computation:&lt;/strong&gt; After bidding, the ones who placed the bids in bidding phase solve the problem in their bid and broadcast the solutions.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Money Creation:&lt;/strong&gt; Each participant accepts the highest bids (among all those who broadcast solutions) in terms of nominal cost per unit of b-money created and credits the bidder’s account accordingly.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://www.weidai.com/bmoney.txt&quot; target=&quot;_blank&quot;&gt;B-Money by Wei Dai&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Bitcoin</title>
@@ -23,6 +115,8 @@
   &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -7201,6 +7295,8 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
   &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
