@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-01-22T17:10:31+05:30</updated>
+ <updated>2018-01-24T01:10:39+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -462,6 +462,156 @@ Output
  </entry>
  
  <entry>
+   <title>Congruence and Modular Arithmetic</title>
+   <link href="https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/"/>
+   <updated>2017-12-20T00:00:00+05:30</updated>
+   <id>https://machinelearningmedium.com/2017/12/20/congruence-and-modulo</id>
+   <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;congruence&quot;&gt;Congruence&lt;/h3&gt;
+
+&lt;p&gt;Two integers \(a\) and \(b\) are &lt;strong&gt;congruent modulo \(d\)&lt;/strong&gt;, where \(d\) is a fixed integer, if \(a\) and \(b\) leave same remainder on division by \(d\), i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a-b = nd \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;It is denoted by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a\equiv b\pmod d \tag{2} \label{2}&lt;/script&gt;
+
+&lt;p&gt;Following defination of congruences are equivalent:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(a\) is congruent to \(b\) modulo \(d\).&lt;/li&gt;
+  &lt;li&gt;\(a = b + nd\) for some integer n.&lt;/li&gt;
+  &lt;li&gt;\(d\) divides \(a-b\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;properties-and-proof&quot;&gt;Properties and Proof&lt;/h3&gt;
+
+&lt;p&gt;Congruence with respect to a fixed modulus has many of the formal properties of ordinary equality.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(a\equiv a\pmod d\)&lt;/li&gt;
+  &lt;li&gt;If \(a\equiv b\pmod d\), then \(b\equiv a\pmod d\)&lt;/li&gt;
+  &lt;li&gt;If \(a\equiv b\pmod d\) and \(b\equiv c\pmod d\), then \(a\equiv c\pmod d\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If \(a\equiv a’\pmod d\) and \(b\equiv b’\pmod d\), then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a + b\equiv a' + b'\pmod d \tag{3} \label{3}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a - b\equiv a' - b'\pmod d \tag{4} \label{4}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;ab\equiv a'b'\pmod d \tag{5} \label{5}&lt;/script&gt;
+
+&lt;p&gt;Say,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a = a' + rd&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b = b' + sd&lt;/script&gt;
+
+&lt;p&gt;then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a + b = a' + b' + (r+s)d&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a - b = a' - b' + (r-s)d&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;ab = a'b' + (a's + b'r +rsd)d&lt;/script&gt;
+
+&lt;h3 id=&quot;geometric-interpretation&quot;&gt;Geometric Interpretation&lt;/h3&gt;
+
+&lt;p&gt;Generally, integers are represented geometrically using a number line, where a segment of unit length is chosen and multiplied in either directions to represent negative or positive integers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-20-congruence-and-modulo/fig-1-geometric-representation.svg?raw=true&quot; alt=&quot;Geometric Representation of Congruence&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But, when an integer modulo \(d\) is considered, the magnitude is insignificant as long as the behavior on division by \(d\) is same (i.e. they leave the same remainder on division by \(d\)). This is geometrically represented using a circle divided into d equal parts. This is because any integer divided by \(d\) leaves as remainder one of the \(d\) numbers \(0, 1, \cdots, d-1\) which are placed at equal distances on the circumference of the circle. Every integer is congruent modulo \(d\) to one of these numbers and hence can be represented by one of these points. (&lt;strong&gt;Two numbers are congruent if they occur at the same point the circle.&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;application-of-congruence-properties&quot;&gt;Application of Congruence Properties&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The test for divisibility, generally taught in elementary school, is a direct result of the properties of congruence operation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For example,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10 \equiv -1 \pmod{11}&lt;/script&gt;
+
+&lt;p&gt;since \(10 = -1 + 11\). Successively multiplying this congruence, using \eqref{5}, we obtain,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv (-1)(-1) = 1 \pmod{11}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv = -1 \pmod{11}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv = 1 \pmod{11}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\vdots&lt;/script&gt;
+
+&lt;p&gt;So using \eqref{3} and \eqref{5}, it can be shown that any two number, z and t of the form shown below will leave the same remainder when divided by 11.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_0 + a_1\cdot 10 + a_2 \cdot 10^2 + \cdots + a_n \cdot 10^n \tag{6} \label{6}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;t = a_0 - a_1 + a_2 - \cdots + (-1)^n \cdot a_n \tag{7} \label{7}&lt;/script&gt;
+
+&lt;p&gt;Here, \(z\) is the format of any integer to the base 10. Hence, a number is divisible by 11 (i.e. leaves a remainder 0), if and only if \(t\) is divisible by 11 (which in \eqref{7} basically means that &lt;strong&gt;the difference of the sum of all the odd digits and even digits together should be divisible by 11&lt;/strong&gt;, including 0.)&lt;/p&gt;
+
+&lt;p&gt;It can be observed that while such patterns  are easier for numbers like 3, 9, 11, they are not easy to remember for other numbers like 7 and 11, as shown below.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 \equiv 1 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10 \equiv -3 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv -4 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv -1 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv 3 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^5 \equiv 4 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^6 \equiv 1 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;t = a_0 - 3 \cdot a_1 - 4 \cdot a_2 - a_3 + 3 \cdot a_4 + 4 \cdot a_5 + a_6 - \cdots \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;From above we reach the result that any number \(z\) in \eqref{6} is divisible by 13 if and only if \(t\) of the form \eqref{8} is divisible by 13 (&lt;strong&gt;clearly not an easy one to remember :P&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Using a similar approach one can deduce the divisibility rule for any other integer.&lt;/p&gt;
+
+&lt;h3 id=&quot;other-properties&quot;&gt;Other Properties&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(ab\equiv 0 \pmod d\) only if either \(a\equiv 0 \pmod d\) or \(b\equiv 0 \pmod d\). Property only holds if \(d\) is a prime number. If \(d\) was a composite, there exist numbers \(a \lt d\) and \(b \lt d\), such that,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d = a\cdot b&lt;/script&gt;
+
+&lt;p&gt;Where,
+&lt;script type=&quot;math/tex&quot;&gt;\require{cancel}&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a \cancel{\equiv} 0 \pmod d \text{ and } b \cancel{\equiv} 0 \pmod d&lt;/script&gt;
+
+&lt;p&gt;But,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a \cdot b = d \equiv 0 \pmod d&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Law of Cancellation&lt;/strong&gt;: With respect to a prime modulus, if \(ab \equiv ac\) and \(a \cancel{\equiv} 0\), then \(b \equiv c\).&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>The Mysterious Primes</title>
    <link href="https://machinelearningmedium.com/2017/11/01/prime-numbers/"/>
    <updated>2017-11-01T00:00:00+05:30</updated>
@@ -474,6 +624,8 @@ Output
   &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -697,6 +849,8 @@ Output
   &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -984,6 +1138,8 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
   &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;

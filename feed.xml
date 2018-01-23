@@ -5,8 +5,8 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 22 Jan 2018 17:10:31 +0530</pubDate>
-    <lastBuildDate>Mon, 22 Jan 2018 17:10:31 +0530</lastBuildDate>
+    <pubDate>Wed, 24 Jan 2018 01:10:39 +0530</pubDate>
+    <lastBuildDate>Wed, 24 Jan 2018 01:10:39 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -473,6 +473,164 @@ Output
       </item>
     
       <item>
+        <title>Congruence and Modular Arithmetic</title>
+        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System ?&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;congruence&quot;&gt;Congruence&lt;/h3&gt;
+
+&lt;p&gt;Two integers \(a\) and \(b\) are &lt;strong&gt;congruent modulo \(d\)&lt;/strong&gt;, where \(d\) is a fixed integer, if \(a\) and \(b\) leave same remainder on division by \(d\), i.e.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a-b = nd \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;It is denoted by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a\equiv b\pmod d \tag{2} \label{2}&lt;/script&gt;
+
+&lt;p&gt;Following defination of congruences are equivalent:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(a\) is congruent to \(b\) modulo \(d\).&lt;/li&gt;
+  &lt;li&gt;\(a = b + nd\) for some integer n.&lt;/li&gt;
+  &lt;li&gt;\(d\) divides \(a-b\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;properties-and-proof&quot;&gt;Properties and Proof&lt;/h3&gt;
+
+&lt;p&gt;Congruence with respect to a fixed modulus has many of the formal properties of ordinary equality.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(a\equiv a\pmod d\)&lt;/li&gt;
+  &lt;li&gt;If \(a\equiv b\pmod d\), then \(b\equiv a\pmod d\)&lt;/li&gt;
+  &lt;li&gt;If \(a\equiv b\pmod d\) and \(b\equiv c\pmod d\), then \(a\equiv c\pmod d\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If \(a\equiv a’\pmod d\) and \(b\equiv b’\pmod d\), then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a + b\equiv a' + b'\pmod d \tag{3} \label{3}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a - b\equiv a' - b'\pmod d \tag{4} \label{4}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;ab\equiv a'b'\pmod d \tag{5} \label{5}&lt;/script&gt;
+
+&lt;p&gt;Say,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a = a' + rd&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b = b' + sd&lt;/script&gt;
+
+&lt;p&gt;then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a + b = a' + b' + (r+s)d&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a - b = a' - b' + (r-s)d&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;ab = a'b' + (a's + b'r +rsd)d&lt;/script&gt;
+
+&lt;h3 id=&quot;geometric-interpretation&quot;&gt;Geometric Interpretation&lt;/h3&gt;
+
+&lt;p&gt;Generally, integers are represented geometrically using a number line, where a segment of unit length is chosen and multiplied in either directions to represent negative or positive integers.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2017-12-20-congruence-and-modulo/fig-1-geometric-representation.svg?raw=true&quot; alt=&quot;Geometric Representation of Congruence&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But, when an integer modulo \(d\) is considered, the magnitude is insignificant as long as the behavior on division by \(d\) is same (i.e. they leave the same remainder on division by \(d\)). This is geometrically represented using a circle divided into d equal parts. This is because any integer divided by \(d\) leaves as remainder one of the \(d\) numbers \(0, 1, \cdots, d-1\) which are placed at equal distances on the circumference of the circle. Every integer is congruent modulo \(d\) to one of these numbers and hence can be represented by one of these points. (&lt;strong&gt;Two numbers are congruent if they occur at the same point the circle.&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;h3 id=&quot;application-of-congruence-properties&quot;&gt;Application of Congruence Properties&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The test for divisibility, generally taught in elementary school, is a direct result of the properties of congruence operation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;For example,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10 \equiv -1 \pmod{11}&lt;/script&gt;
+
+&lt;p&gt;since \(10 = -1 + 11\). Successively multiplying this congruence, using \eqref{5}, we obtain,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv (-1)(-1) = 1 \pmod{11}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv = -1 \pmod{11}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv = 1 \pmod{11}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\vdots&lt;/script&gt;
+
+&lt;p&gt;So using \eqref{3} and \eqref{5}, it can be shown that any two number, z and t of the form shown below will leave the same remainder when divided by 11.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_0 + a_1\cdot 10 + a_2 \cdot 10^2 + \cdots + a_n \cdot 10^n \tag{6} \label{6}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;t = a_0 - a_1 + a_2 - \cdots + (-1)^n \cdot a_n \tag{7} \label{7}&lt;/script&gt;
+
+&lt;p&gt;Here, \(z\) is the format of any integer to the base 10. Hence, a number is divisible by 11 (i.e. leaves a remainder 0), if and only if \(t\) is divisible by 11 (which in \eqref{7} basically means that &lt;strong&gt;the difference of the sum of all the odd digits and even digits together should be divisible by 11&lt;/strong&gt;, including 0.)&lt;/p&gt;
+
+&lt;p&gt;It can be observed that while such patterns  are easier for numbers like 3, 9, 11, they are not easy to remember for other numbers like 7 and 11, as shown below.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 \equiv 1 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10 \equiv -3 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv -4 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv -1 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv 3 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^5 \equiv 4 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^6 \equiv 1 \pmod{13}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;t = a_0 - 3 \cdot a_1 - 4 \cdot a_2 - a_3 + 3 \cdot a_4 + 4 \cdot a_5 + a_6 - \cdots \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;From above we reach the result that any number \(z\) in \eqref{6} is divisible by 13 if and only if \(t\) of the form \eqref{8} is divisible by 13 (&lt;strong&gt;clearly not an easy one to remember :P&lt;/strong&gt;).&lt;/p&gt;
+
+&lt;p&gt;Using a similar approach one can deduce the divisibility rule for any other integer.&lt;/p&gt;
+
+&lt;h3 id=&quot;other-properties&quot;&gt;Other Properties&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(ab\equiv 0 \pmod d\) only if either \(a\equiv 0 \pmod d\) or \(b\equiv 0 \pmod d\). Property only holds if \(d\) is a prime number. If \(d\) was a composite, there exist numbers \(a \lt d\) and \(b \lt d\), such that,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d = a\cdot b&lt;/script&gt;
+
+&lt;p&gt;Where,
+&lt;script type=&quot;math/tex&quot;&gt;\require{cancel}&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a \cancel{\equiv} 0 \pmod d \text{ and } b \cancel{\equiv} 0 \pmod d&lt;/script&gt;
+
+&lt;p&gt;But,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;a \cdot b = d \equiv 0 \pmod d&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Law of Cancellation&lt;/strong&gt;: With respect to a prime modulus, if \(ab \equiv ac\) and \(a \cancel{\equiv} 0\), then \(b \equiv c\).&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 20 Dec 2017 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/</guid>
+        
+        <category>mathematics</category>
+        
+        <category>number system</category>
+        
+        <category>what is mathematics</category>
+        
+        
+      </item>
+    
+      <item>
         <title>The Mysterious Primes</title>
         <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
@@ -482,6 +640,8 @@ Output
   &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -713,6 +873,8 @@ Output
   &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -1010,6 +1172,8 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
   &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
 
   &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
+
+  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2098,145 +2262,6 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
         <pubDate>Wed, 20 Sep 2017 00:00:00 +0530</pubDate>
         <link>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</guid>
-        
-        <category>machine learning</category>
-        
-        <category>andrew ng</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Regularized Logistic Regression</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-&lt;p&gt;The intuition and implementation of logistic regression is implemented in &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Similar to the linear regression, even logistic regression is prone to overfitting if there are large number of features. If the decision boundary is overfit, the shape might be highly contorted to fit only the training data while failing to generalise for the unseen data.&lt;/p&gt;
-
-&lt;p&gt;So, the cost function of the logistic regression is updated to penalize high values of the parameters and is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)}) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{1}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where
-    &lt;ul&gt;
-      &lt;li&gt;\({\lambda \over 2m } \sum_{j=1}^n \theta_j^2\) is the &lt;strong&gt;regularization term&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;\(\lambda\) is the &lt;strong&gt;regularization factor&lt;/strong&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;matmul&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-X is the design matrix
-y is the target vector
-theta is the parameter vector
-lamda is the regularization parameter
-&quot;&quot;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sigmoid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;power&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-hypothesis function
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sigmoid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-regularized cost function
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                          &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; 
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; \
-                     &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;regularization-for-gradient-descent&quot;&gt;Regularization for Gradient Descent&lt;/h3&gt;
-
-&lt;p&gt;Previously, the &lt;strong&gt;gradient descent for logistic regression without regularization&lt;/strong&gt; was given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
-    \text{repeat until convergence}
-    \begin{cases}
-      \theta_j := \theta_j - \alpha {1 \over m} \sum_{i=1}^m \left(h(x^{(i)}) - y^{(i)} \right) x_j^{(i)}
-    \end{cases}
-  \end{align}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where \(j \in \{0, 1, \cdots, n\} \)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;But since the equation for cost function has changed in (1) to include the regularization term, there will be a &lt;strong&gt;change in the derivative of cost function&lt;/strong&gt; that was plugged in the gradient descent algorithm,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \frac {\partial} {\partial \theta_j} J(\theta) &amp;= \frac {\partial} {\partial \theta_j} \left[-{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)}) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \right] \\
-    &amp;= {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_j^{(i)} + \frac {\lambda} {m} \theta_j \\
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Because the first term of cost fuction remains the same, so does the first term of the derivative. So taking &lt;strong&gt;derivative of second term&lt;/strong&gt; gives \(\frac {\lambda} {m} \theta_j\) as seen above.&lt;/p&gt;
-
-&lt;p&gt;So, (2) can be updated as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-    \text{repeat until convergence}
-    \begin{cases}
-      \theta_0 &amp;:= \theta_0 - \alpha \left[ {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_0^{(i)} \right] \\
-      \theta_j &amp;:= \theta_j - \alpha \left[ {1 \over m} \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right) x_j^{(i)} + \frac {\lambda} {m} \theta_j \right] \\
-    \end{cases}
-  \end{align} %]]&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Where \(j \in \{1, 2, \cdots, n\} \) and h is the &lt;strong&gt;sigmoid function&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It can be noticed that, &lt;strong&gt;for case j=0, there is no regularization term&lt;/strong&gt; included which is consistent with the convention followed for 
-regularization.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-regularized cost gradient
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;j_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; 
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mul&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; 
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-Simultaneous update
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update_theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j_prime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;Link to &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/LogisticRegressionHigherOrder.ipynb&quot; target=&quot;_blank&quot;&gt;Rough Working Code&lt;/a&gt;. Change the value of lamda in the code to get different decision boundaries for the &lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/logistic_regression_data_2.csv&quot; target=&quot;_blank&quot;&gt;data&lt;/a&gt; as shown below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-1-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 0.01\)&quot; /&gt;
-&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-2-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 0.1\)&quot; /&gt;
-&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-3-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 1\)&quot; /&gt;
-&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-4-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 10\)&quot; /&gt;
-&lt;img src=&quot;\assets\2017-09-15-regularized-logistic-regression\fig-5-regularization.png?raw=true&quot; alt=&quot;Regularization with \(\lambda = 100\)&quot; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/4BHEy/regularized-logistic-regression&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Logistic Regression Model&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 15 Sep 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</guid>
         
         <category>machine learning</category>
         
