@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-01-24T01:10:39+05:30</updated>
+ <updated>2018-01-24T12:24:40+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -608,6 +608,10 @@ Output
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Law of Cancellation&lt;/strong&gt;: With respect to a prime modulus, if \(ab \equiv ac\) and \(a \cancel{\equiv} 0\), then \(b \equiv c\).&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
  

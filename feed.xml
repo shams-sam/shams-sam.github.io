@@ -5,8 +5,8 @@
     <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 24 Jan 2018 01:10:39 +0530</pubDate>
-    <lastBuildDate>Wed, 24 Jan 2018 01:10:39 +0530</lastBuildDate>
+    <pubDate>Wed, 24 Jan 2018 12:24:40 +0530</pubDate>
+    <lastBuildDate>Wed, 24 Jan 2018 12:24:40 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -616,6 +616,10 @@ Output
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Law of Cancellation&lt;/strong&gt;: With respect to a prime modulus, if \(ab \equiv ac\) and \(a \cancel{\equiv} 0\), then \(b \equiv c\).&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 20 Dec 2017 00:00:00 +0530</pubDate>
         <link>https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/</link>
