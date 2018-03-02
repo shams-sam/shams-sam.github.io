@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Images, Noise and Filters | Machine Learning Medium</title>
+  <meta name="description" content="Though images are generally associated with vision and perception, it can also be understood as a function in the field of computer science." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Images, Noise and Filters"/>
+  
+  <meta property="og:description" content="Though images are generally associated with vision and perception, it can also be understood as a function in the field of computer science." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/computer-vision.jpg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2018-02-04T00:00:00+05:30">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <a href="/tag/dsa">DSA</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2018-02-04T00:00:00+05:30">Feb 4</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/computer-vision.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn.nanalyze.com/uploads/2016/04/Computer-Vision-Image-Understanding-teaser.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Images, Noise and Filters</h1>
+            <h2 class="post-description">Though images are generally associated with vision and perception, it can also be understood as a function in the field of computer science.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction-to-computer-vision">Introduction to Computer Vision</h3>
+
+<blockquote>
+  <p><a href="/2018/02/01/what-is-computer-vision/">What is Computer Vision?</a></p>
+
+  <p><a href="/2018/02/04/images-noise-and-filters/">Images, Noise and Filters</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="images-as-function">Images as Function</h3>
+
+<p>Images are generally associated with concepts of vision and perception. But in the field of computer vision it is important to understand that image can be represented as a function as well. An image can be represented as a function \(I(x, y)\) which gives the intensity represented by height of the bar for a given coordinate \(x\) and \(y\).</p>
+
+<p>So basically, an image can be thought of as one of the following:</p>
+
+<ul>
+  <li>a matrix of numbers</li>
+  <li>pixel intensity as a function of coordinates</li>
+  <li>output of a camera</li>
+</ul>
+
+<blockquote>
+  <p>Theoretically, an image can be modelled as a function \(f\) or \(I\) from \(\mathbb{R}^2 \to \mathbb{R}\) where \(f(x,y)\) gives the intensity or value at position \((x,y)\).</p>
+</blockquote>
+
+<p>Practically, an image can be modelled over a rectangle with a finite range, given by:</p>
+
+<script type="math/tex; mode=display">f: [a,b] x [c,d] \to [min, max] \label{1} \tag{1}</script>
+
+<p>Similarly, color images are three functions stacked together representing the three channels (i.e. often R, G and B), written as, vector-valued functions (i.e. every pixel is a vector of numbers),</p>
+
+<script type="math/tex; mode=display">f(x,y) = [r(x,y); g(x,y); b(x,y)] \label{2} \tag{2}</script>
+
+<p>Such as function can be generalized as,</p>
+
+<script type="math/tex; mode=display">f: \mathbb{R}^2 \to \mathbb{R}^3 \label{3} \tag{3}</script>
+
+<h3 id="digital-images">Digital Images</h3>
+
+<p>Another important realization in the computer vision is the fact that images in a computer system are discrete images and not continuous ones like human eyes see, i.e. images in computer have a matrix representation with non-continuous intensity values between two adjacent pixel which might not be the case for the actual ground truth image it is capturing.</p>
+
+<p>Discretization of the digital image is two fold:</p>
+
+<ul>
+  <li>Sample the actual image onto a 2D space of a regular matrix</li>
+  <li>Quantize the intensity values (as digital images do not take continuous values for intensities) to the nearest integer.</li>
+</ul>
+
+<p>Such operations often will lead to loss of some information but if often minimal and can be worked with.</p>
+
+<h3 id="loading-and-exploring-image">Loading and Exploring Image</h3>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% import image and display</span>
+<span class="n">img</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'tree.jpg'</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+
+<span class="c1">% load the image package</span>
+<span class="n">pkg</span> <span class="nb">load</span> <span class="nb">image</span><span class="p">;</span>
+
+<span class="c1">% size of 3 channel image</span>
+<span class="nb">disp</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img</span><span class="p">));</span>
+
+<span class="c1">% red channel extraction</span>
+<span class="n">img_red</span> <span class="o">=</span> <span class="n">img</span><span class="p">(:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_red</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">img_red</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="p">:));</span>
+
+<span class="c1">% convert to grayscale</span>
+<span class="n">gry</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+
+<span class="c1">% size and class of image</span>
+<span class="nb">disp</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img</span><span class="p">));</span>
+<span class="nb">disp</span><span class="p">(</span><span class="nb">class</span><span class="p">(</span><span class="n">img</span><span class="p">));</span>
+
+<span class="c1">% extract intensities from image</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">gry</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">gry</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">:));</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Slicing a matrix is same as cropping.</li>
+</ul>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% cropping image by slicing</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">gry</span><span class="p">(</span><span class="mi">101</span><span class="p">:</span><span class="mi">103</span><span class="p">,</span> <span class="mi">201</span><span class="p">:</span><span class="mi">203</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Multiplying a matrix with a scalar (i.e scaling an image) helps adjust the brightness, i.e. if scalar greater than 1, the image becomes brighter else it gets darker because pixel value 255 represents white and 0 represents black.</li>
+</ul>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% change brightness</span>
+<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="nb">image</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="nb">image</span> <span class="o">.*</span> <span class="n">value</span><span class="p">;</span>
+<span class="n">endfunction</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Since images can be treated as functions and are represented as matrices, they can undergo matrix operations such as addition substraction.</li>
+</ul>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% import test images</span>
+<span class="n">img_1</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'cycle.jpeg'</span><span class="p">);</span>
+<span class="n">img_2</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'tree.jpg'</span><span class="p">);</span>
+
+<span class="n">min_h</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img_1</span><span class="p">)(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">size</span><span class="p">(</span><span class="n">img_2</span><span class="p">)(</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">min_w</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img_1</span><span class="p">)(</span><span class="mi">2</span><span class="p">),</span> <span class="nb">size</span><span class="p">(</span><span class="n">img_2</span><span class="p">)(</span><span class="mi">2</span><span class="p">));</span>
+
+<span class="n">img_1</span> <span class="o">=</span> <span class="n">img_1</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">min_h</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">min_w</span><span class="p">,</span> <span class="p">:);</span>
+<span class="n">img_2</span> <span class="o">=</span> <span class="n">img_2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">min_h</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">min_w</span><span class="p">,</span> <span class="p">:);</span>
+
+<span class="c1">% add images</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">+</span> <span class="n">img_2</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="o">.</span><span class="p">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">img_2</span><span class="o">.</span><span class="p">/</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="c1">% difference of images</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">-</span> <span class="n">img_2</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_2</span> <span class="o">-</span> <span class="n">img_1</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">-</span> <span class="n">img_2</span> <span class="o">+</span> <span class="n">img_2</span> <span class="o">-</span> <span class="n">img_1</span><span class="p">);</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">imabsdiff</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>The default data type of image pixels in many environments (including octave and matlab) is 8-bit unsigned integer which has range [0, 255]. So special care must be taken during addition and subtraction because values can often go out of this range and be clipped at lower and higher limit.</p>
+</blockquote>
+
+<ul>
+  <li>Alpha blending has roots in weighted addition of two images to maintain pixel limits within the range.</li>
+</ul>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">image_1</span><span class="p">,</span> <span class="n">image_2</span><span class="p">,</span> <span class="nb">alpha</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="nb">alpha</span> <span class="o">.*</span> <span class="n">image_1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">alpha</span><span class="p">)</span> <span class="o">.*</span> <span class="n">image_2</span><span class="p">;</span>
+<span class="n">endfunction</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">));</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<blockquote>
+  <p>The value \(\alpha\) and \((1 - \alpha)\) ensure that the pixel values during alpha blending does not overflow the limits of pixel intensities.</p>
+</blockquote>
+
+<h3 id="noise-in-image">Noise in Image</h3>
+
+<p>Noise in an image can be represented with a function, i.e.</p>
+
+<script type="math/tex; mode=display">I'(x,y) = I(x,y) + \eta(x,y)</script>
+
+<p>where \(\eta\) is the noise.</p>
+
+<p>Common types of noise functions are:</p>
+
+<ul>
+  <li><strong>Salt and pepper noise</strong> is random occurences of white and black pixels.</li>
+</ul>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">imshow</span><span class="p">(</span><span class="n">imnoise</span><span class="p">(</span><span class="n">gry</span><span class="p">,</span> <span class="s1">'salt &amp; pepper'</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><strong>Impulse noise</strong> has random occurences of white pixels only.</li>
+  <li><strong>Guassian noise</strong> has variations in intensity drawn from a Guassian normal distribution.</li>
+</ul>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">imshow</span><span class="p">(</span><span class="n">imnoise</span><span class="p">(</span><span class="n">gry</span><span class="p">,</span> <span class="s1">'gaussian'</span><span class="p">));</span>
+
+<span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">gry</span><span class="p">))</span> <span class="o">.*</span> <span class="mi">200</span><span class="p">;</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">gry</span> <span class="o">+</span> <span class="n">noise</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>It is possible to check that the values produced by <code class="highlighter-rouge">randn</code> function follow a normal distribution by plotting the values produced by the function.</p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% plotting randn</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">]);</span>
+<span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">hist</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot of randn function'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'n'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-4-randn-plot.png?raw=true" alt="Fig. 1 - Plotting randn fuction" /></p>
+
+<h3 id="filtering">Filtering</h3>
+
+<blockquote>
+  <p>Noise filtering is the process of eliminating or reducing the effect of noise from an image.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Moving Average Filter</strong> or mean filter is one of the basic filtering techniques that tries to smooth a noisy image by means of averaging values over a window in the image. as the window size increases the smoothness of the curve will increase. This generally does not mean that the quality of the image will be improved as it can cause a blurring effect.</li>
+</ul>
+
+<p>This averaging is based on the following assumptions:</p>
+
+<ol>
+  <li>The value of a pixel at position must be similar to the ones nearby, surrounding it.</li>
+  <li>The noise added to each pixel is independent of other noise values and hence would average to zero.</li>
+</ol>
+
+<p>Since noise is basically an addition of a noise function to the image function, it can be argued that it is possible to remove noise by performing the additive inverse, i.e. subtract noise function and hence retrieve the original image. But the fallacy in such an argument lies in the fact that the noise functions are generally not reproducible and would not have a standard form associated with them. They might have a standard statistical form such as following a given probabilistic distribution.</p>
+
+<blockquote>
+  <p>Additive noise may also lead to loss of information if the value of pixels is scaled beyond the limits of the image pixel range.</p>
+</blockquote>
+
+<p>Effect of moving average filter can be seen on a noisy sine wave using basic octave operations,</p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% moving average filters </span>
+<span class="n">f_3</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">f_10</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">% adding noise to sine wave</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="n">sin_x</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">sin_x</span><span class="p">))</span> <span class="o">.*</span> <span class="mf">0.05</span><span class="p">;</span>
+<span class="n">sin_x_noisy</span> <span class="o">=</span> <span class="n">sin_x</span> <span class="o">+</span> <span class="n">noise</span><span class="p">;</span>
+
+<span class="c1">% moving average filter on sin wave</span>
+<span class="n">sin_x_filtered_10</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">sin_x_noisy</span><span class="p">,</span> <span class="n">f_10</span><span class="p">);</span>
+<span class="n">sin_x_filtered_3</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">sin_x_noisy</span><span class="p">,</span> <span class="n">f_3</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">sin_x_filtered_10</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">sin_x_filtered_3</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">,</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">sin_x_noisy</span><span class="p">,</span> <span class="s1">'b'</span>
+<span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'effect of moving average filter on noisy sine wave'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'sin(x)'</span><span class="p">);</span>
+<span class="nb">legend</span> <span class="p">(</span>
+  <span class="s1">'moving average with window size 10'</span><span class="p">,</span> 
+  <span class="s1">'moving average with window size 3'</span><span class="p">,</span>
+  <span class="s1">'noisy sin(x)'</span>
+<span class="p">);</span>
+
+</code></pre>
+</div>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-5-noisy-sine-wave.png?raw=true" alt="Fig. 2 - 1D Moving Average Filter" /></p>
+
+<p>Similarly it can be applied to an image,</p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% import library</span>
+<span class="n">pkg</span> <span class="nb">load</span> <span class="nb">image</span><span class="p">;</span>
+<span class="n">img</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'tree.jpg'</span><span class="p">);</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+
+<span class="c1">% adding noise to image</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img</span><span class="p">))</span> <span class="o">.*</span> <span class="n">sigma</span><span class="p">;</span>
+<span class="n">img_noisy</span> <span class="o">=</span> <span class="n">img</span> <span class="o">+</span> <span class="n">noise</span><span class="p">;</span>
+<span class="n">imshow</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">);</span>
+
+<span class="c1">% moving average filter on image</span>
+<span class="n">img_filtered_3</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="n">f_3</span><span class="p">);</span>
+<span class="n">img_filtered_10</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="n">f_10</span><span class="p">);</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">101</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">img_filtered_10</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">),</span> <span class="s1">'r'</span><span class="p">,</span> 
+  <span class="n">x</span><span class="p">,</span> <span class="n">img_filtered_3</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">),</span> <span class="s1">'g'</span><span class="p">,</span> 
+  <span class="n">x</span><span class="p">,</span> <span class="n">img_noisy</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">),</span> <span class="s1">'b'</span>
+<span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot over column range [100, 200] for row 10'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'column'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'pixel intensity'</span><span class="p">);</span>
+<span class="nb">legend</span> <span class="p">(</span>
+  <span class="s1">'moving average with window size 10'</span><span class="p">,</span> 
+  <span class="s1">'moving average with window size 3'</span><span class="p">,</span>
+  <span class="s1">'noisy image'</span>
+<span class="p">);</span>
+
+
+<span class="n">w</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">img</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">w</span><span class="p">);</span>
+<span class="nb">plot</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">img_filtered_10</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">:),</span> <span class="s1">'+'</span><span class="p">,</span> 
+  <span class="n">x</span><span class="p">,</span> <span class="n">img_filtered_3</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">:),</span> <span class="s1">'.'</span><span class="p">,</span> 
+  <span class="n">x</span><span class="p">,</span> <span class="n">img_noisy</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">:),</span> <span class="s1">'*'</span>
+<span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot for row 100'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'column'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'pixel intensity'</span><span class="p">);</span>
+<span class="nb">legend</span> <span class="p">(</span>
+  <span class="s1">'moving average with window size 10'</span><span class="p">,</span> 
+  <span class="s1">'moving average with window size 3'</span><span class="p">,</span>
+  <span class="s1">'noisy image'</span>
+<span class="p">);</span>
+</code></pre>
+</div>
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-6-moving-average-over-range.png?raw=true" alt="Fig. 3 - 2D Moving Average Filter over a Range" /></p>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-7-moving-average-over-row.png?raw=true" alt="Fig. 4 - 2D Moving Average Filter over a Row" /></p>
+
+<ul>
+  <li><strong>Weighted Moving Average</strong> takes the assumption a step further than the moving average, positing that if a pixel is similar to nearby pixels then it should be more dependent on the nearer ones than on the farther ones. This information is encoded as weighted average for such filtering.</li>
+</ul>
+
+<p>Effect of weighted moving average vs that of moving average can be seen below,</p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% weighted moving average for 1D</span>
+<span class="c1">% assuming weights to be an odd sized vector</span>
+<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">weighted_moving_average</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+  <span class="n">size_weights</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">weights</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">size_series</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">series</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">padding</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_weights</span><span class="p">/</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">size_padding</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">padding</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
+  <span class="n">series_padded</span> <span class="o">=</span> <span class="p">[</span><span class="n">padding</span><span class="p">,</span> <span class="n">series</span><span class="p">,</span> <span class="n">padding</span><span class="p">];</span>
+  <span class="k">for</span> <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">size_padding</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">size_series</span> <span class="o">+</span> <span class="n">size_padding</span><span class="p">)</span>
+    <span class="n">series</span><span class="p">(</span><span class="n">idx</span><span class="o">-</span><span class="n">size_padding</span><span class="p">)</span> <span class="o">=</span> <span class="nb">mean</span><span class="p">(</span>
+      <span class="n">series_padded</span><span class="p">(</span><span class="n">idx</span><span class="o">-</span><span class="n">size_padding</span><span class="p">:</span> <span class="n">idx</span><span class="o">-</span><span class="n">size_padding</span><span class="o">+</span><span class="n">size_weights</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="o">.</span><span class="p">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+        <span class="o">.*</span><span class="n">weights</span><span class="p">);</span>
+  <span class="n">endfor</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">series</span><span class="p">;</span>
+<span class="n">endfunction</span>
+
+<span class="c1">% weighted moving average over a random vector</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">sin_x</span> <span class="o">=</span> <span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span> <span class="o">.*</span> <span class="mf">0.1</span><span class="p">;</span>
+<span class="n">sin_x</span> <span class="o">=</span> <span class="n">noise</span> <span class="o">+</span> <span class="n">sin_x</span><span class="p">;</span>
+<span class="c1">% uniform weights</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">sin_x_mov_avg</span> <span class="o">=</span> <span class="n">weighted_moving_average</span><span class="p">(</span><span class="n">sin_x</span><span class="p">,</span> <span class="n">weights</span><span class="p">);</span>
+<span class="c1">% center biased weights</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">sin_x_wgt_avg</span> <span class="o">=</span> <span class="n">weighted_moving_average</span><span class="p">(</span><span class="n">sin_x</span><span class="p">,</span> <span class="n">weights</span><span class="p">);</span>
+
+<span class="nb">plot</span><span class="p">(</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">sin_x_mov_avg</span> <span class="o">.*</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">sin_x_wgt_avg</span> <span class="o">.*</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">,</span>
+  <span class="n">x</span><span class="p">,</span> <span class="n">sin_x</span><span class="p">,</span> <span class="s1">'g'</span>
+<span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'moving average vs weighted moving average'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'sin(x)'</span><span class="p">);</span>
+<span class="nb">legend</span><span class="p">(</span><span class="s1">'moving average'</span><span class="p">,</span> <span class="s1">'weighted moving average'</span><span class="p">,</span> <span class="s1">'noisy sin(x)'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-8-weighted-vs-moving-average.png?raw=true" alt="Fig. 5 - Moving average vs Weighted Moving Average in 1D" /></p>
+
+<blockquote>
+  <p>The weight masks generally used are odd sized, as this makes the mask centred around the central pixel. Also, the results are divided by the sum of the weights to scale the results back to one.</p>
+</blockquote>
+
+<p>The <strong>advantage of weighted moving average</strong> over normal moving average can be seen in Fig. 5. In region A and B it is clear that while the data (green plot) and weighted moving average (blue plot) are moving in one direction the normal moving average (red plot) is deviating in the other direction. This is usually becuase the normal moving average gives excessive importance to farther off pixels and hence would not catch sudden trend shifts accurately.</p>
+
+<h3 id="correlation-and-cross-correlation-filtering">Correlation and Cross Correlation Filtering</h3>
+
+<p>Filtering in 2D is very similar to the filtering explained in the section above for the 1D filters on noisy signals. The only point of difference lies in the dimensions of the filter kernel i.e. in 2D filtering the filters are 2D. But the octave code for 2D filtering remains the same as shown below using <code class="highlighter-rouge">fspecial</code> function.</p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% function to plot with labels</span>
+<span class="k">function</span> <span class="n">plot_with_labels</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
+  <span class="n">size_x</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+  <span class="n">size_y</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="nb">imagesc</span><span class="p">(</span><span class="n">matrix</span><span class="p">);</span>
+  <span class="nb">hold</span> <span class="n">on</span><span class="p">;</span>
+  <span class="p">[</span><span class="n">X</span> <span class="n">Y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">size_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">size_y</span><span class="p">);</span>
+  <span class="n">string</span> <span class="o">=</span> <span class="nb">mat2cell</span><span class="p">(</span><span class="nb">transpose</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="nb">ones</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_y</span><span class="p">));</span>
+  <span class="nb">text</span><span class="p">(</span>
+    <span class="n">Y</span><span class="p">(:)</span><span class="o">-.</span><span class="mi">45</span><span class="p">,</span><span class="n">X</span><span class="p">(:)</span><span class="o">+.</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">string</span><span class="p">,</span>
+    <span class="s1">'HorizontalAlignment'</span><span class="p">,</span><span class="s1">'left'</span><span class="p">,</span> 
+    <span class="s1">'VerticalAlignment'</span><span class="p">,</span> <span class="s1">'middle'</span><span class="p">,</span>
+    <span class="s1">'color'</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span>
+    <span class="s1">'fontsize'</span><span class="p">,</span> <span class="mi">12</span><span class="p">);</span>
+  <span class="n">grid_x</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">:(</span><span class="n">size_x</span> <span class="o">+</span> <span class="o">.</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">grid_y</span> <span class="o">=</span> <span class="o">.</span><span class="mi">5</span><span class="p">:</span><span class="mi">1</span><span class="p">:(</span><span class="n">size_y</span> <span class="o">+</span> <span class="o">.</span><span class="mi">5</span><span class="p">);</span>
+  <span class="n">grid1</span> <span class="o">=</span> <span class="p">[</span><span class="n">grid_x</span><span class="p">;</span><span class="n">grid_y</span><span class="p">];</span>
+  <span class="n">grid2</span> <span class="o">=</span> <span class="nb">repmat</span><span class="p">([</span><span class="o">.</span><span class="mi">5</span><span class="p">;</span><span class="n">size_x</span> <span class="o">+</span> <span class="o">.</span><span class="mi">5</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="nb">length</span><span class="p">(</span><span class="n">grid_x</span><span class="p">));</span>
+  <span class="nb">plot</span><span class="p">(</span><span class="n">grid1</span><span class="p">,</span><span class="n">grid2</span><span class="p">,</span><span class="s1">'k'</span><span class="p">);</span>
+  <span class="nb">plot</span><span class="p">(</span><span class="n">grid2</span><span class="p">,</span><span class="n">grid1</span><span class="p">,</span><span class="s1">'k'</span><span class="p">);</span>
+<span class="n">endfunction</span>
+
+<span class="c1">% moving average in 2D</span>
+<span class="n">img</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="n">img</span><span class="p">(</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="mi">8</span><span class="p">)</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+<span class="n">img</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">img</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+
+<span class="n">f_3</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">f_5</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">plot_with_labels</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'original noisy image'</span><span class="p">);</span>
+
+<span class="n">img_3</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">f_3</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">plot_with_labels</span><span class="p">(</span><span class="n">img_3</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'image after average filter with window size 3'</span><span class="p">);</span>
+
+<span class="n">img_5</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">f_5</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">plot_with_labels</span><span class="p">(</span><span class="n">img_5</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'image after average filter with window size 5'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-9-moving-average-in-2d.png?raw=true" alt="Fig. 6 - Moving average in 2D" /></p>
+
+<p>Mathematically, the operation performed in the above code is called <strong>correlation filtering</strong> with uniform weights. For an averaging window of size \((2k+1 * 2k+1)\) (odd sized window explained in last section), it is given by,</p>
+
+<script type="math/tex; mode=display">G[i,j] = {1 \over (2k+1)^2} \sum_{u=-k}^k \sum_{v=-k}^k F[i+u, j+v] \label{4} \tag{4}</script>
+
+<p>where \(F\) is the image we start with and \(G\) is the final after correlation filtering.</p>
+
+<p>Similarly, one can implement correlation filtering with non-uniform weights, called <strong>cross correlation filtering</strong>, given by,</p>
+
+<script type="math/tex; mode=display">G[i,j] = \sum_{u=-k}^k \sum_{v=-k}^k H[u, v] F[i+u, j+v] \label{5} \tag{5}</script>
+
+<p>where \(G\) is the cross-correlation of \(H\) with \(F\) denoted by</p>
+
+<script type="math/tex; mode=display">G=H \otimes F \label{6} \tag{6}</script>
+
+<p>where \(H\) is the matrix of linear weights, also called <strong>kernel</strong>, <strong>mask</strong>, or <strong>coefficient</strong>.</p>
+
+<blockquote>
+  <p>The kernel mentioned here have a slight relation with the machine learning kernels but are entirely different things and hence generally dealt with as seperate topics.</p>
+</blockquote>
+
+<p>Generally in image processing the average filtering is not used as they are not smooth in magnitude transitions and this is where cross cross-correlation filtering (eg. guassian filter) proves to be advantageuous.</p>
+
+<p>The smoothness of a given filter being applied to an image can be seen from the surface plots and the corresponding effect on the image of a dot as shown below,</p>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-10-smoothness-of-filter.png?raw=true" alt="Fig. 7 - Smoothness of Filters" /></p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% smoothness of filters</span>
+<span class="n">f_average</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">f_smooth</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">img</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
+<span class="n">img</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+<span class="n">img_average</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">f_average</span><span class="p">);</span>
+<span class="n">img_smooth</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">f_smooth</span><span class="p">);</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">surf</span><span class="p">(</span><span class="n">f_average</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'surface plot of average filter'</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nb">surf</span><span class="p">(</span><span class="n">f_smooth</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'surface plot of average filter'</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nb">imagesc</span><span class="p">(</span><span class="n">img_average</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'image after average filtering of a dot'</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="nb">imagesc</span><span class="p">(</span><span class="n">img_smooth</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'image after guassian filtering of a dot'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<h3 id="gaussian-filter">Gaussian Filter</h3>
+
+<p>The isotropic (i.e. circularly symmetrical) <strong>Guassian function</strong> given by,</p>
+
+<script type="math/tex; mode=display">h(u,v) = {1 \over 2 \pi \sigma^2} e^{-{u^2 + v^2 \over \sigma^2}} \label{7} \tag{7}</script>
+
+<p>where sigma is the <strong>standard deviation</strong> of the function determining the spread of the plot. The effect of \(\sigma\) on the plot can be seen in the plot below.</p>
+
+<p>For more on <strong>guassian or normal distribution</strong> read <a href="/2017/07/31/normal-distribution/"><strong>Normal Distribution</strong></a></p>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-11-effect-of-sigma.png?raw=true" alt="Fig. 8 - Effect of sigma" /></p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% comparison of sigma</span>
+<span class="n">f_gaussian_10</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="n">f_gaussian_20</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">surf</span><span class="p">(</span><span class="n">f_gaussian_10</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot with sigma = 10'</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nb">surf</span><span class="p">(</span><span class="n">f_gaussian_20</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot with sigma = 20'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>For a given filter size one can vary \(\sigma\) to change the mask or the kernel properties. The bigger the value of \(\sigma\) is the more the blur.</p>
+
+<p>It can be seen from \eqref{7} that the function sigma depends on a single parameter \(\sigma\) that determines the spread of the plot. But, in actual programming, the filter would be represented by a matrix and hence has two properties, namely, <strong>size of the matrix</strong> and the <strong>size of the \(\sigma\)</strong>.</p>
+
+<p>So one can have different \(\sigma\) within same size of matrix (filter size) as shown in fig 8. The variance (\(\sigma^2\)) or standard deviation (\(\sigma\)) determines the amount of smoothing. The two filters in Fig. 8 have <strong>same size but different variance</strong> and hence different amount of smoothing.</p>
+
+<p>Similarly, one can have different size matrices (<strong>filter size</strong>) for the same size of \(\sigma\) (<strong>kernel size</strong>) as in the plot below.</p>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-12-effect-of-filter-size.png?raw=true" alt="Fig. 9 - Effect of filter size" /></p>
+
+<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% same sigma in varying size matrix</span>
+<span class="n">f_gaussian_50</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="n">f_gaussian_20</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">surf</span><span class="p">(</span><span class="n">f_gaussian_10</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot with matrix side 50'</span><span class="p">);</span>
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nb">surf</span><span class="p">(</span><span class="n">f_gaussian_20</span><span class="p">);</span>
+<span class="nb">title</span><span class="p">(</span><span class="s1">'plot with matrix side 20'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>Among the two, filter of size 50 would work better because it is more smooth among the two.</p>
+
+<h3 id="the-two-sigmas">The Two Sigmas</h3>
+
+<p>There are two sigma’s discussed above. One is the <strong>intensity of noise</strong> and the other is <strong>standard deviation of the gaussian filter</strong>. The sigma in the intensity of the noise determines the amount of noise added to an image while the sigma of gaussian filter determines the amount of smoothing that occurs on applying the sigma. The two are different that should not be confused.</p>
+
+<blockquote>
+  <p>The reason they are both called sigma is because they both use the normal distribution. The plot of noise signals normal distribution can be seen in Fig. 1 (normal distribution over intensity) and similarly the plot of normal distribution of filtering kernel can be seen in Fig. 9 (isotropic normal distribution in space).</p>
+</blockquote>
+
+<p>The effect of both the sigmas can be seen in the plot below.</p>
+
+<p><img src="/assets/2018-02-04-images-noise-and-filters/fig-13-the-two-sigma.png?raw=true" alt="Fig. 10 - The two sigma" /></p>
+
+<p>Hence, it is important to understand the difference between the two sigma’s which are generally clear from the context but often create confusion.</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://classroom.udacity.com/courses/ud810" target="_blank">Introduction to Computer Vision - Udacity</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/computer-vision" class='category-links'><h1>computer vision</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/image-processing" class='category-links'><h1>image processing</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/udacity" class='category-links'><h1>udacity</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Images, Noise and Filters&url=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/&title=Images, Noise and Filters&summary=Though images are generally associated with vision and perception, it can also be understood as a function in the field of computer science.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Images, Noise and Filters&amp;body=Check out this site https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2018-02-04 00:00">04 Feb 2018</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2018<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2018 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Mathematics, Machine Learning, Natural Language Processing Etc.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Mathematics, Machine Learning, Natural Language Processing Etc.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>
