@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-03-13T13:36:35+05:30</updated>
+ <updated>2018-03-17T23:37:08+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -375,9 +375,7 @@
    <content type="html">&lt;h3 id=&quot;introduction-to-computer-vision&quot;&gt;Introduction to Computer Vision&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2018/02/01/what-is-computer-vision/&quot;&gt;What is Computer Vision?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2018/02/04/images-noise-and-filters/&quot;&gt;Images, Noise and Filters&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-computer-vision&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -915,9 +913,7 @@
    <content type="html">&lt;h3 id=&quot;introduction-to-computer-vision&quot;&gt;Introduction to Computer Vision&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2018/02/01/what-is-computer-vision/&quot;&gt;What is Computer Vision?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2018/02/04/images-noise-and-filters/&quot;&gt;Images, Noise and Filters&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-computer-vision&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2036,13 +2032,7 @@ Output
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2226,13 +2216,7 @@ Output
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2451,13 +2435,7 @@ Output
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2740,13 +2718,7 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -3192,7 +3164,15 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
    <link href="https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
    <updated>2017-10-03T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation</id>
-   <content type="html">&lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;\({(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots , (x^{(m)}, y^{(m)})}\) are the \(m\) training examples&lt;/li&gt;
   &lt;li&gt;L is the &lt;strong&gt;total number of the layers&lt;/strong&gt; in the network&lt;/li&gt;
@@ -3336,7 +3316,15 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
    <link href="https://machinelearningmedium.com/2017/09/27/neural-network-intuition/"/>
    <updated>2017-09-27T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/27/neural-network-intuition</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Neural networks can be used to build all types of function. This post tries to &lt;strong&gt;map functions of logical operations using the network&lt;/strong&gt;. How the parameters are derived in explained in the later posts.&lt;/p&gt;
 
 &lt;h3 id=&quot;and-gate&quot;&gt;AND Gate&lt;/h3&gt;
@@ -3658,7 +3646,15 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
    <link href="https://machinelearningmedium.com/2017/09/21/neural-networks/"/>
    <updated>2017-09-21T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/21/neural-networks</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Neural networks were developed to &lt;strong&gt;mimic the way neurons in a brain work&lt;/strong&gt;. Typically, a neuron has input connections and output connections. So basically, &lt;strong&gt;neuron is a computational unit&lt;/strong&gt; which takes a set of inputs and produces output. So the basic functionality of neurons is tried to be replicated in these computational units. For example, neurons in brain interact with each other using electrical signals and are selectively activated based on certain parameters. This behaviour is transferred to a unit in neural networks using &lt;strong&gt;activation function&lt;/strong&gt; which would be explained later in the post.&lt;/p&gt;
 
 &lt;h3 id=&quot;neuron-model-logistic-unit&quot;&gt;Neuron Model: Logistic Unit&lt;/h3&gt;
@@ -3782,7 +3778,15 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
    <link href="https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/"/>
    <updated>2017-09-20T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses</id>
-   <content type="html">&lt;h3 id=&quot;drawbacks-of-logistic-regression&quot;&gt;Drawbacks of Logistic Regression&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;drawbacks-of-logistic-regression&quot;&gt;Drawbacks of Logistic Regression&lt;/h3&gt;
 &lt;p&gt;Consider a highly &lt;strong&gt;non-linear classification&lt;/strong&gt; task, say something similar to the one shown in the plot below. In order to achieve a decision boundary like the one plotted, one needs to introduce &lt;strong&gt;non-linear features&lt;/strong&gt; in the form of quadratic and other higher order terms, similar to the equation below.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/2017-09-20-non-linear-hypotheses/fig-1-non-linear-classification.png?raw=true&quot; alt=&quot;Non-linear Classification&quot; /&gt;&lt;/p&gt;
@@ -3813,7 +3817,15 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
    <link href="https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/"/>
    <updated>2017-09-15T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;The intuition and implementation of logistic regression is implemented in &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Similar to the linear regression, even logistic regression is prone to overfitting if there are large number of features. If the decision boundary is overfit, the shape might be highly contorted to fit only the training data while failing to generalise for the unseen data.&lt;/p&gt;
@@ -4327,7 +4339,15 @@ q_{BO}(w|v) =
    <link href="https://machinelearningmedium.com/2017/09/11/regularized-linear-regression/"/>
    <updated>2017-09-11T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/11/regularized-linear-regression</id>
-   <content type="html">&lt;p&gt;The intuition of regularization are explained in the previous post: &lt;a href=&quot;/2017/09/08/overfitting-and-regularization/&quot; target=&quot;_blank&quot;&gt;Overfitting and Regularization&lt;/a&gt;. The cost function for a regularized linear equation is given by,&lt;/p&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;p&gt;The intuition of regularization are explained in the previous post: &lt;a href=&quot;/2017/09/08/overfitting-and-regularization/&quot; target=&quot;_blank&quot;&gt;Overfitting and Regularization&lt;/a&gt;. The cost function for a regularized linear equation is given by,&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = {1 \over 2m} \left[ \sum_{i=1}^m \left( h_\theta(x^{(i)}) - y^{(i)} \right)^2 + \lambda \sum_{j=1}^n \theta_j^2 \right] \tag{1}&lt;/script&gt;
 
@@ -4496,7 +4516,15 @@ Regularized Version
    <link href="https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/"/>
    <updated>2017-09-08T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization</id>
-   <content type="html">&lt;h3 id=&quot;overfitting&quot;&gt;Overfitting&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;overfitting&quot;&gt;Overfitting&lt;/h3&gt;
 &lt;p&gt;If the number of features is very high, then there is a probability that the hypothesis fill fit all the points in the training data. It might seem like a good thing to happen but has a contradictory results. Suppose a hypothesis of high degree is fit to a set of points such that all the points lie of the hypothesis. Plot below shows a case of overfitting with a regression of order 100.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/2017-09-08-overfitting-and-regularization/fig-1-overfitting-regression-of-order-100.gif?raw=true&quot; alt=&quot;Example of overfitting&quot; /&gt;&lt;/p&gt;
@@ -4572,7 +4600,15 @@ Regularized Version
    <link href="https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/"/>
    <updated>2017-09-06T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;For intuition and implementation of Binary Logistic Regression refer &lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; and &lt;a href=&quot;/2017/09/02/logistic-regression-model/&quot; target=&quot;_blank&quot;&gt;Logistic Regression Model&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Multiclass logistic regression is a extension of the binary classification making use of the &lt;strong&gt;one-vs-all&lt;/strong&gt; or &lt;strong&gt;one-vs-rest&lt;/strong&gt; classification strategy.&lt;/p&gt;
@@ -4670,7 +4706,15 @@ Regularized Version
    <link href="https://machinelearningmedium.com/2017/09/02/logistic-regression-model/"/>
    <updated>2017-09-02T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/09/02/logistic-regression-model</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;/2017/08/31/classification-and-representation/&quot; target=&quot;_blank&quot;&gt;Classifiction and Logistic Regression&lt;/a&gt; explains why logistic regression and intuition behind it. This post is about how the model works and some intuitions behind it.&lt;/p&gt;
 
 &lt;p&gt;Consider a training set having m examples,&lt;/p&gt;
@@ -5026,7 +5070,15 @@ Cost(h_\theta(x), y) =
    <link href="https://machinelearningmedium.com/2017/08/31/classification-and-representation/"/>
    <updated>2017-08-31T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/31/classification-and-representation</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Classification is a supervised learning problem wherein the target variable is categorical unlike regression where the target variable is continuous. Classification can be binary i.e. only two possible values of the target variable or multi-class i.e. more than two categories.&lt;/p&gt;
 
 &lt;p&gt;The most basic step would be to try and fit regression curve to see if one can achieve classification using the same approach. Below is a plot attempting the same.&lt;/p&gt;
@@ -5172,7 +5224,15 @@ In first case say only red data points are in the dataset, then fitting the curv
    <link href="https://machinelearningmedium.com/2017/08/28/normal-equation/"/>
    <updated>2017-08-28T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/28/normal-equation</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Gradient descent is an algorithm which is used to reach an optimal solution iteratively using the gradient of the loss function or the cost function. In contrast, normal equation is a method that helps &lt;strong&gt;solve for the parameters analytically&lt;/strong&gt; i.e. instead of reaching the solution iteratively, solution for the parameter \(\theta\) is reached at directly by solving the normal equation.&lt;/p&gt;
 
 &lt;h3 id=&quot;intuition&quot;&gt;Intuition&lt;/h3&gt;
@@ -5492,7 +5552,15 @@ Plot Graph
    <link href="https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression/"/>
    <updated>2017-08-23T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Multivariate linear regression is the generalization of the univariate linear regression seen earlier i.e. &lt;a href=&quot;/2017/08/11/cost-function-of-linear-regression/&quot; target=&quot;_blank&quot;&gt;Cost Function of Linear Regression&lt;/a&gt;. As the name suggests, there are more than one independent variables, \(x_1, x_2 \cdots, x_n\) and a dependent variable \(y\).&lt;/p&gt;
 
 &lt;h3 id=&quot;notation&quot;&gt;Notation&lt;/h3&gt;
@@ -5781,7 +5849,15 @@ Gradient Descent For Multivariate Regression
    <link href="https://machinelearningmedium.com/2017/08/20/linear-algebra/"/>
    <updated>2017-08-20T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/20/linear-algebra</id>
-   <content type="html">&lt;h3 id=&quot;matrices&quot;&gt;Matrices&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;matrices&quot;&gt;Matrices&lt;/h3&gt;
 &lt;p&gt;In mathematics, a matrix is a &lt;strong&gt;rectangular array&lt;/strong&gt; of numbers, symbols, or expressions, arranged in rows and columns. For example, A is a matrix below,&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
@@ -6044,7 +6120,15 @@ Consider three hypothesis as follows,&lt;/p&gt;
    <link href="https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression/"/>
    <updated>2017-08-17T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression</id>
-   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;The posts &lt;a href=&quot;/2017/08/11/cost-function-of-linear-regression/&quot; target=&quot;_blank&quot;&gt;Cost Function of Linear Regression&lt;/a&gt; and &lt;a href=&quot;/2017/08/15/gradient-descent/&quot;&gt;Gradient Descent&lt;/a&gt; introduced the linear regression cost function and the gradient descent algorithm individually. If the gradient descent is applied to the linear regression cost function would help reach an optimal solution without much manual intervention.&lt;/p&gt;
 
 &lt;h3 id=&quot;gradient-descent&quot;&gt;&lt;a href=&quot;/2017/08/15/gradient-descent/&quot; target=&quot;_blank&quot;&gt;Gradient Descent&lt;/a&gt;&lt;/h3&gt;
@@ -6219,7 +6303,15 @@ Gradient Descent For Linear Regression
    <link href="https://machinelearningmedium.com/2017/08/15/gradient-descent/"/>
    <updated>2017-08-15T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/15/gradient-descent</id>
-   <content type="html">&lt;h3 id=&quot;gradient-descent&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Gradient_descent&quot; target=&quot;_blank&quot;&gt;Gradient Descent&lt;/a&gt;&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;gradient-descent&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Gradient_descent&quot; target=&quot;_blank&quot;&gt;Gradient Descent&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Gradient descent is a &lt;strong&gt;first-order iterative optimization algorithm&lt;/strong&gt; for finding the minimum of a function. To find a local minimum of a function using gradient descent, one takes &lt;strong&gt;steps proportional to the negative of the gradient&lt;/strong&gt; (or of the approximate gradient) of the function at the current point. If instead one takes steps proportional to the positive of the gradient, one approaches a local maximum of that function; the procedure is then known as &lt;strong&gt;gradient ascent&lt;/strong&gt;. Gradient descent is also known as &lt;strong&gt;steepest descent&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;h3 id=&quot;what-and-how-&quot;&gt;What and How ?&lt;/h3&gt;
@@ -6324,7 +6416,15 @@ Gradient Descent For Linear Regression
    <link href="https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"/>
    <updated>2017-08-11T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression</id>
-   <content type="html">&lt;h3 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h3&gt;
 &lt;p&gt;Linear regression is an approach for modeling the relationship between a &lt;strong&gt;scalar dependent variable&lt;/strong&gt; y and one or more &lt;strong&gt;explanatory variables&lt;/strong&gt; (or &lt;strong&gt;independent variables&lt;/strong&gt;) denoted X. The case of one explanatory variable is called &lt;strong&gt;simple linear regression&lt;/strong&gt; or &lt;strong&gt;univariate linear regression&lt;/strong&gt;. For more than one explanatory variable, the process is called &lt;strong&gt;multiple linear regression&lt;/strong&gt;.
 In linear regression, the relationships are modeled using &lt;strong&gt;linear predictor functions&lt;/strong&gt; whose unknown model parameters are estimated from the data. Such models are called linear models.&lt;/p&gt;
 
@@ -6451,7 +6551,15 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
    <link href="https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis/"/>
    <updated>2017-08-10T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis</id>
-   <content type="html">&lt;h3 id=&quot;notations&quot;&gt;Notations&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;notations&quot;&gt;Notations&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;\(m\): Number of training examples&lt;/li&gt;
   &lt;li&gt;\(x\)’s: Input variables / features&lt;/li&gt;
@@ -6496,7 +6604,15 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
    <link href="https://machinelearningmedium.com/2017/08/09/supervised-learning/"/>
    <updated>2017-08-09T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/09/supervised-learning</id>
-   <content type="html">&lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;supervised-learning&quot;&gt;Supervised Learning&lt;/h3&gt;
 &lt;p&gt;Supervised learning is the machine learning task of &lt;strong&gt;inferring a function from labeled training data&lt;/strong&gt;. The training data consist of a set of training examples. In supervised learning, each example is a pair consisting of an input object (typically a vector) and a desired output value (also called the supervisory signal).&lt;/p&gt;
 
 &lt;ul&gt;
@@ -6552,7 +6668,15 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
    <link href="https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning/"/>
    <updated>2017-08-09T00:00:00+05:30</updated>
    <id>https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning</id>
-   <content type="html">&lt;h3 id=&quot;what-is-machine-learning-&quot;&gt;What is Machine Learning ?&lt;/h3&gt;
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;what-is-machine-learning-&quot;&gt;What is Machine Learning ?&lt;/h3&gt;
 &lt;p&gt;Machine learning is the science of getting computers to learn, without explicitly being programmed. It has developed as a subset of the larger problem of building AI i.e. Artificially Intelligent systems.&lt;/p&gt;
 
 &lt;p&gt;Machine learning aims at developing new capabilities for computers wherein they can learn the objective intelligently without persistent human intervention, trying to mimic the way human brain learns.&lt;/p&gt;

@@ -194,7 +194,9 @@ body {
     bottom: 0;
     z-index: 1;
     text-indent: -9999px; }
-
+@media(max-width: 700px) {
+  .teaserimage {
+    display: none; } }
 .featuredimage {
   height: 450px;
   position: relative;
@@ -232,7 +234,9 @@ body {
   text-align: center;
   padding: 5px;
   color: #b3b3b1; }
-
+@media(max-width: 700px) {
+  .postcover {
+    display: none; } }
 .metabar {
   height: 65px; }
 
@@ -292,7 +296,7 @@ body {
   height: 87px; }
 @media(max-width: 700px) {
   .sectionbar {
-    height: 180px; } }
+    height: 200px; } }
   .sectionbar .sectionbar-inner {
     max-width: 1040px;
     margin: auto;
@@ -1108,7 +1112,9 @@ article a {
       border-radius: 999em;
       line-height: 44px;
       padding: 0 18px; }
-
+@media(max-width: 700px) {
+  .bottom-closer {
+    display: none; } }
 #disqus_thread {
   margin-top: 50px; }
 

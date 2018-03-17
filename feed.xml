@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning Medium</title>
-    <description>Mathematics, Machine Learning, Natural Language Processing Etc.</description>
+    <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 13 Mar 2018 13:36:35 +0530</pubDate>
-    <lastBuildDate>Tue, 13 Mar 2018 13:36:35 +0530</lastBuildDate>
+    <pubDate>Sat, 17 Mar 2018 23:37:08 +0530</pubDate>
+    <lastBuildDate>Sat, 17 Mar 2018 23:37:08 +0530</lastBuildDate>
     <generator>Jekyll v3.5.2</generator>
     
       <item>
@@ -377,9 +377,7 @@
         <description>&lt;h3 id=&quot;introduction-to-computer-vision&quot;&gt;Introduction to Computer Vision&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2018/02/01/what-is-computer-vision/&quot;&gt;What is Computer Vision?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2018/02/04/images-noise-and-filters/&quot;&gt;Images, Noise and Filters&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-computer-vision&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -920,6 +918,8 @@
         <category>udacity</category>
         
         
+        <category>basics of computer vision</category>
+        
       </item>
     
       <item>
@@ -927,9 +927,7 @@
         <description>&lt;h3 id=&quot;introduction-to-computer-vision&quot;&gt;Introduction to Computer Vision&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2018/02/01/what-is-computer-vision/&quot;&gt;What is Computer Vision?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2018/02/04/images-noise-and-filters/&quot;&gt;Images, Noise and Filters&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-computer-vision&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -987,6 +985,8 @@
         
         <category>udacity</category>
         
+        
+        <category>basics of computer vision</category>
         
       </item>
     
@@ -2082,13 +2082,7 @@ Output
         <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2273,6 +2267,8 @@ Output
         <category>what is mathematics</category>
         
         
+        <category>what is mathematics</category>
+        
       </item>
     
       <item>
@@ -2280,13 +2276,7 @@ Output
         <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2506,6 +2496,8 @@ Output
         <category>what is mathematics</category>
         
         
+        <category>what is mathematics</category>
+        
       </item>
     
       <item>
@@ -2513,13 +2505,7 @@ Output
         <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -2805,6 +2791,8 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
         <category>theorems</category>
         
         
+        <category>what is mathematics</category>
+        
       </item>
     
       <item>
@@ -2812,13 +2800,7 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
         <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/10/27/number-system/&quot;&gt;What is Number System?&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/10/28/mathematical-induction/&quot;&gt;Mathematical Induction&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/11/01/prime-numbers/&quot;&gt;The Mysterious Primes&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/20/congruence-and-modulo/&quot;&gt;Congruence and Modular Arithmetic&lt;/a&gt;&lt;/p&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
@@ -3267,6 +3249,8 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
         
         <category>what is mathematics</category>
         
+        
+        <category>what is mathematics</category>
         
       </item>
     
