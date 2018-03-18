@@ -216,9 +216,9 @@
 
 <h3 id="loading-and-exploring-image">Loading and Exploring Image</h3>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% import image and display</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% import image and display</span>
 <span class="n">img</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'tree.jpg'</span><span class="p">);</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
 
 <span class="c1">% load the image package</span>
 <span class="n">pkg</span> <span class="nb">load</span> <span class="nb">image</span><span class="p">;</span>
@@ -228,11 +228,11 @@
 
 <span class="c1">% red channel extraction</span>
 <span class="n">img_red</span> <span class="o">=</span> <span class="n">img</span><span class="p">(:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_red</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_red</span><span class="p">);</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">img_red</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="p">:));</span>
 
 <span class="c1">% convert to grayscale</span>
-<span class="n">gry</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+<span class="n">gry</span> <span class="o">=</span> <span class="nb">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
 
 <span class="c1">% size and class of image</span>
 <span class="nb">disp</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img</span><span class="p">));</span>
@@ -241,37 +241,34 @@
 <span class="c1">% extract intensities from image</span>
 <span class="nb">disp</span><span class="p">(</span><span class="n">gry</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">));</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">gry</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="p">:));</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>Slicing a matrix is same as cropping.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% cropping image by slicing</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% cropping image by slicing</span>
 <span class="nb">disp</span><span class="p">(</span><span class="n">gry</span><span class="p">(</span><span class="mi">101</span><span class="p">:</span><span class="mi">103</span><span class="p">,</span> <span class="mi">201</span><span class="p">:</span><span class="mi">203</span><span class="p">));</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li>Multiplying a matrix with a scalar (i.e scaling an image) helps adjust the brightness, i.e. if scalar greater than 1, the image becomes brighter else it gets darker because pixel value 255 represents white and 0 represents black.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% change brightness</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% change brightness</span>
 <span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="nb">image</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
   <span class="n">result</span> <span class="o">=</span> <span class="nb">image</span> <span class="o">.*</span> <span class="n">value</span><span class="p">;</span>
 <span class="n">endfunction</span>
 
-<span class="n">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
-</code></pre>
-</div>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+</code></pre></div></div>
 
 <ul>
   <li>Since images can be treated as functions and are represented as matrices, they can undergo matrix operations such as addition substraction.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% import test images</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% import test images</span>
 <span class="n">img_1</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'cycle.jpeg'</span><span class="p">);</span>
 <span class="n">img_2</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'tree.jpg'</span><span class="p">);</span>
 
@@ -282,17 +279,16 @@
 <span class="n">img_2</span> <span class="o">=</span> <span class="n">img_2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">min_h</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">min_w</span><span class="p">,</span> <span class="p">:);</span>
 
 <span class="c1">% add images</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">+</span> <span class="n">img_2</span><span class="p">);</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="o">.</span><span class="p">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">img_2</span><span class="o">.</span><span class="p">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">+</span> <span class="n">img_2</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_1</span><span class="o">.</span><span class="p">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">img_2</span><span class="o">.</span><span class="p">/</span><span class="mi">2</span><span class="p">);</span>
 
 <span class="c1">% difference of images</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">-</span> <span class="n">img_2</span><span class="p">);</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_2</span> <span class="o">-</span> <span class="n">img_1</span><span class="p">);</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">-</span> <span class="n">img_2</span> <span class="o">+</span> <span class="n">img_2</span> <span class="o">-</span> <span class="n">img_1</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">-</span> <span class="n">img_2</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_2</span> <span class="o">-</span> <span class="n">img_1</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_1</span> <span class="o">-</span> <span class="n">img_2</span> <span class="o">+</span> <span class="n">img_2</span> <span class="o">-</span> <span class="n">img_1</span><span class="p">);</span>
 
-<span class="n">imshow</span><span class="p">(</span><span class="n">imabsdiff</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">));</span>
-</code></pre>
-</div>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">imabsdiff</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">));</span>
+</code></pre></div></div>
 
 <blockquote>
   <p>The default data type of image pixels in many environments (including octave and matlab) is 8-bit unsigned integer which has range [0, 255]. So special care must be taken during addition and subtraction because values can often go out of this range and be clipped at lower and higher limit.</p>
@@ -302,14 +298,13 @@
   <li>Alpha blending has roots in weighted addition of two images to maintain pixel limits within the range.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">image_1</span><span class="p">,</span> <span class="n">image_2</span><span class="p">,</span> <span class="nb">alpha</span><span class="p">)</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">image_1</span><span class="p">,</span> <span class="n">image_2</span><span class="p">,</span> <span class="nb">alpha</span><span class="p">)</span>
   <span class="n">result</span> <span class="o">=</span> <span class="nb">alpha</span> <span class="o">.*</span> <span class="n">image_1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">alpha</span><span class="p">)</span> <span class="o">.*</span> <span class="n">image_2</span><span class="p">;</span>
 <span class="n">endfunction</span>
 
-<span class="n">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">));</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">));</span>
-</code></pre>
-</div>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">));</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">));</span>
+</code></pre></div></div>
 
 <blockquote>
   <p>The value \(\alpha\) and \((1 - \alpha)\) ensure that the pixel values during alpha blending does not overflow the limits of pixel intensities.</p>
@@ -329,33 +324,30 @@
   <li><strong>Salt and pepper noise</strong> is random occurences of white and black pixels.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">imshow</span><span class="p">(</span><span class="n">imnoise</span><span class="p">(</span><span class="n">gry</span><span class="p">,</span> <span class="s1">'salt &amp; pepper'</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
-</code></pre>
-</div>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">imshow</span><span class="p">(</span><span class="n">imnoise</span><span class="p">(</span><span class="n">gry</span><span class="p">,</span> <span class="s1">'salt &amp; pepper'</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">));</span>
+</code></pre></div></div>
 
 <ul>
   <li><strong>Impulse noise</strong> has random occurences of white pixels only.</li>
   <li><strong>Guassian noise</strong> has variations in intensity drawn from a Guassian normal distribution.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="n">imshow</span><span class="p">(</span><span class="n">imnoise</span><span class="p">(</span><span class="n">gry</span><span class="p">,</span> <span class="s1">'gaussian'</span><span class="p">));</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">imshow</span><span class="p">(</span><span class="n">imnoise</span><span class="p">(</span><span class="n">gry</span><span class="p">,</span> <span class="s1">'gaussian'</span><span class="p">));</span>
 
 <span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">gry</span><span class="p">))</span> <span class="o">.*</span> <span class="mi">200</span><span class="p">;</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">gry</span> <span class="o">+</span> <span class="n">noise</span><span class="p">);</span>
-</code></pre>
-</div>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">gry</span> <span class="o">+</span> <span class="n">noise</span><span class="p">);</span>
+</code></pre></div></div>
 
 <p>It is possible to check that the values produced by <code class="highlighter-rouge">randn</code> function follow a normal distribution by plotting the values produced by the function.</p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% plotting randn</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% plotting randn</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">]);</span>
-<span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">hist</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
+<span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
 <span class="nb">title</span><span class="p">(</span><span class="s1">'plot of randn function'</span><span class="p">);</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'n'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-4-randn-plot.png?raw=true" alt="Fig. 1 - Plotting randn fuction" /></p>
 
@@ -384,7 +376,7 @@
 
 <p>Effect of moving average filter can be seen on a noisy sine wave using basic octave operations,</p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% moving average filters </span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% moving average filters </span>
 <span class="n">f_3</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="n">f_10</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 
@@ -411,24 +403,23 @@
   <span class="s1">'noisy sin(x)'</span>
 <span class="p">);</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-5-noisy-sine-wave.png?raw=true" alt="Fig. 2 - 1D Moving Average Filter" /></p>
 
 <p>Similarly it can be applied to an image,</p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% import library</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% import library</span>
 <span class="n">pkg</span> <span class="nb">load</span> <span class="nb">image</span><span class="p">;</span>
 <span class="n">img</span> <span class="o">=</span> <span class="nb">imread</span><span class="p">(</span><span class="s1">'tree.jpg'</span><span class="p">);</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+<span class="n">img</span> <span class="o">=</span> <span class="nb">rgb2gray</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">);</span>
 
 <span class="c1">% adding noise to image</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">img</span><span class="p">))</span> <span class="o">.*</span> <span class="n">sigma</span><span class="p">;</span>
 <span class="n">img_noisy</span> <span class="o">=</span> <span class="n">img</span> <span class="o">+</span> <span class="n">noise</span><span class="p">;</span>
-<span class="n">imshow</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">);</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">);</span>
 
 <span class="c1">% moving average filter on image</span>
 <span class="n">img_filtered_3</span> <span class="o">=</span> <span class="n">imfilter</span><span class="p">(</span><span class="n">img_noisy</span><span class="p">,</span> <span class="n">f_3</span><span class="p">);</span>
@@ -465,8 +456,7 @@
   <span class="s1">'moving average with window size 3'</span><span class="p">,</span>
   <span class="s1">'noisy image'</span>
 <span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-6-moving-average-over-range.png?raw=true" alt="Fig. 3 - 2D Moving Average Filter over a Range" /></p>
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-7-moving-average-over-row.png?raw=true" alt="Fig. 4 - 2D Moving Average Filter over a Row" /></p>
@@ -477,7 +467,7 @@
 
 <p>Effect of weighted moving average vs that of moving average can be seen below,</p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% weighted moving average for 1D</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% weighted moving average for 1D</span>
 <span class="c1">% assuming weights to be an odd sized vector</span>
 <span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">weighted_moving_average</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
   <span class="n">size_weights</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">weights</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
@@ -516,8 +506,7 @@
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span>
 <span class="nb">ylabel</span><span class="p">(</span><span class="s1">'sin(x)'</span><span class="p">);</span>
 <span class="nb">legend</span><span class="p">(</span><span class="s1">'moving average'</span><span class="p">,</span> <span class="s1">'weighted moving average'</span><span class="p">,</span> <span class="s1">'noisy sin(x)'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-8-weighted-vs-moving-average.png?raw=true" alt="Fig. 5 - Moving average vs Weighted Moving Average in 1D" /></p>
 
@@ -531,17 +520,17 @@
 
 <p>Filtering in 2D is very similar to the filtering explained in the section above for the 1D filters on noisy signals. The only point of difference lies in the dimensions of the filter kernel i.e. in 2D filtering the filters are 2D. But the octave code for 2D filtering remains the same as shown below using <code class="highlighter-rouge">fspecial</code> function.</p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% function to plot with labels</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% function to plot with labels</span>
 <span class="k">function</span> <span class="n">plot_with_labels</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'white'</span><span class="p">)</span>
   <span class="n">size_x</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
   <span class="n">size_y</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
   <span class="nb">imagesc</span><span class="p">(</span><span class="n">matrix</span><span class="p">);</span>
   <span class="nb">hold</span> <span class="n">on</span><span class="p">;</span>
   <span class="p">[</span><span class="n">X</span> <span class="n">Y</span><span class="p">]</span> <span class="o">=</span> <span class="nb">meshgrid</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">size_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="n">size_y</span><span class="p">);</span>
-  <span class="n">string</span> <span class="o">=</span> <span class="nb">mat2cell</span><span class="p">(</span><span class="nb">transpose</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="nb">ones</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_y</span><span class="p">));</span>
+  <span class="nb">string</span> <span class="o">=</span> <span class="nb">mat2cell</span><span class="p">(</span><span class="nb">transpose</span><span class="p">(</span><span class="n">matrix</span><span class="p">),</span> <span class="nb">ones</span><span class="p">(</span><span class="n">size_x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_y</span><span class="p">));</span>
   <span class="nb">text</span><span class="p">(</span>
     <span class="n">Y</span><span class="p">(:)</span><span class="o">-.</span><span class="mi">45</span><span class="p">,</span><span class="n">X</span><span class="p">(:)</span><span class="o">+.</span><span class="mi">15</span><span class="p">,</span>
-    <span class="n">string</span><span class="p">,</span>
+    <span class="nb">string</span><span class="p">,</span>
     <span class="s1">'HorizontalAlignment'</span><span class="p">,</span><span class="s1">'left'</span><span class="p">,</span> 
     <span class="s1">'VerticalAlignment'</span><span class="p">,</span> <span class="s1">'middle'</span><span class="p">,</span>
     <span class="s1">'color'</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span>
@@ -576,8 +565,7 @@
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="n">plot_with_labels</span><span class="p">(</span><span class="n">img_5</span><span class="p">);</span>
 <span class="nb">title</span><span class="p">(</span><span class="s1">'image after average filter with window size 5'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-9-moving-average-in-2d.png?raw=true" alt="Fig. 6 - Moving average in 2D" /></p>
 
@@ -607,7 +595,7 @@
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-10-smoothness-of-filter.png?raw=true" alt="Fig. 7 - Smoothness of Filters" /></p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% smoothness of filters</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% smoothness of filters</span>
 <span class="n">f_average</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="n">f_smooth</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="n">img</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">);</span>
@@ -627,8 +615,7 @@
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
 <span class="nb">imagesc</span><span class="p">(</span><span class="n">img_smooth</span><span class="p">);</span>
 <span class="nb">title</span><span class="p">(</span><span class="s1">'image after guassian filtering of a dot'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="gaussian-filter">Gaussian Filter</h3>
 
@@ -642,7 +629,7 @@
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-11-effect-of-sigma.png?raw=true" alt="Fig. 8 - Effect of sigma" /></p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% comparison of sigma</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% comparison of sigma</span>
 <span class="n">f_gaussian_10</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="n">f_gaussian_20</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -651,8 +638,7 @@
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="nb">surf</span><span class="p">(</span><span class="n">f_gaussian_20</span><span class="p">);</span>
 <span class="nb">title</span><span class="p">(</span><span class="s1">'plot with sigma = 20'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>For a given filter size one can vary \(\sigma\) to change the mask or the kernel properties. The bigger the value of \(\sigma\) is the more the blur.</p>
 
@@ -664,7 +650,7 @@
 
 <p><img src="/assets/2018-02-04-images-noise-and-filters/fig-12-effect-of-filter-size.png?raw=true" alt="Fig. 9 - Effect of filter size" /></p>
 
-<div class="language-matlab highlighter-rouge"><pre class="highlight"><code><span class="c1">% same sigma in varying size matrix</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% same sigma in varying size matrix</span>
 <span class="n">f_gaussian_50</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="n">f_gaussian_20</span> <span class="o">=</span> <span class="n">fspecial</span><span class="p">(</span><span class="s1">'gaussian'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
@@ -673,8 +659,7 @@
 <span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="nb">surf</span><span class="p">(</span><span class="n">f_gaussian_20</span><span class="p">);</span>
 <span class="nb">title</span><span class="p">(</span><span class="s1">'plot with matrix side 20'</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Among the two, filter of size 50 would work better because it is more smooth among the two.</p>
 
@@ -703,19 +688,19 @@
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
                 </div>
               </div>
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/computer-vision" class='category-links'><h1>computer vision</h1></a>
+                <a href="/tag/computer-vision" class='category-links'><h1>computer-vision</h1></a>
                 </div>
               </div>
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/image-processing" class='category-links'><h1>image processing</h1></a>
+                <a href="/tag/image-processing" class='category-links'><h1>image-processing</h1></a>
                 </div>
               </div>
             

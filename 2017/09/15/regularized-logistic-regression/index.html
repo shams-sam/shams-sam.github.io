@@ -191,7 +191,7 @@
   </li>
 </ul>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="n">mul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span>
 
 <span class="s">"""
@@ -222,8 +222,7 @@ regularized cost function
                 <span class="p">(</span><span class="n">lamda</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">))</span><span class="o">*</span><span class="n">mul</span><span class="p">(</span><span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">theta</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> 
     <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">h</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">)))</span> <span class="o">+</span> \
                      <span class="n">mul</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">h</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">))))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="regularization-for-gradient-descent">Regularization for Gradient Descent</h3>
 
@@ -268,7 +267,7 @@ regularized cost function
 <p>It can be noticed that, <strong>for case j=0, there is no regularization term</strong> included which is consistent with the convention followed for 
 regularization.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="s">"""
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
 regularized cost gradient
 """</span>
 <span class="k">def</span> <span class="nf">j_prime</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lamda</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
@@ -284,8 +283,7 @@ Simultaneous update
 <span class="k">def</span> <span class="nf">update_theta</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lamda</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">j_prime</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lamda</span><span class="p">)</span>
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Link to <a href="https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/LogisticRegressionHigherOrder.ipynb" target="_blank">Rough Working Code</a>. Change the value of lamda in the code to get different decision boundaries for the <a href="https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/logistic_regression_data_2.csv" target="_blank">data</a> as shown below.</p>
 
@@ -306,13 +304,13 @@ Simultaneous update
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
                 </div>
               </div>
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
                 </div>
               </div>
             

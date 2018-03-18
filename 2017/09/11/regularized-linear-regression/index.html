@@ -240,7 +240,7 @@ regularization.</p>
 
 <p>The <strong>implementation</strong> from <a href="/2017/08/23/multivariate-linear-regression/" target="_blank">Mulivariate Linear Regression</a> can be updated with the following <strong>updated regularized functions for cost function, its derivative, and updates</strong>. One, can notice that \(theta_0\) has not been handled seperately in the code. And as expected it <strong>does not affect the regularization</strong> much. It can be implemented in the conventional way by adding a couple of logical expressions to the function</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="s">"""
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""
 Regularized Version
 """</span>
 <span class="k">def</span> <span class="nf">reg_j_prime_theta</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
@@ -295,8 +295,7 @@ Regularized Version
     <span class="k">print</span><span class="p">(</span><span class="s">"Stopped with Error at </span><span class="si">%.5</span><span class="s">f"</span> <span class="o">%</span> <span class="n">prev_j</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">theta</span><span class="p">,</span> <span class="n">cost_history</span><span class="p">,</span> <span class="n">theta_history</span>
 <span class="n">reg_theta</span><span class="p">,</span> <span class="n">reg_cost_history</span><span class="p">,</span> <span class="n">reg_theta_history</span> <span class="o">=</span> <span class="n">reg_gradient_descent</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">order_of_regression</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The following plot is obtained on running a random experiment with <strong>regression of order 150</strong>, which clearly shows how the regularized hypothesis is much better fit to the data.</p>
 
@@ -342,13 +341,13 @@ Regularized Version
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/machine-learning" class='category-links'><h1>machine learning</h1></a>
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
                 </div>
               </div>
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/andrew-ng" class='category-links'><h1>andrew ng</h1></a>
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
                 </div>
               </div>
             

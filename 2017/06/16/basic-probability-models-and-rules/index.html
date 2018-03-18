@@ -251,13 +251,12 @@
   <li>What is the probability \(p_{rs}\) that M and A meet each other only (should not meet in bus or train) on a lake in rain ?</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">p_mb</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="c"># P(M taking Bus)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p_mb</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="c"># P(M taking Bus)</span>
 <span class="n">p_ab</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="c"># P(A taking Bus)</span>
 <span class="n">p_1</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">())</span> <span class="c"># P(Rain)</span>
 <span class="n">p_rs</span> <span class="o">=</span> <span class="n">p_1</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_ab</span><span class="o">*</span><span class="n">p_mb</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p_ab</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p_mb</span><span class="p">))</span> <span class="c"># P(Meet at lake only)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="si">%.6</span><span class="s">f"</span> <span class="o">%</span> <span class="n">p_rs</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h2 id="references">REFERENCES:</h2>
 

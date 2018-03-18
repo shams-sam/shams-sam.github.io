@@ -247,10 +247,10 @@
 
 <p>In case of bitcoins, the proof-of-work involves scanning for a value that when hashed along with the contents of the transaction blocks using cryptographic hashes such as SHA-256, gives a hash that begins with a specific number of zero bits. <strong>The average work required is exponential in the number of zero bits.</strong> Proof-of-Work is generally a problem that is fairly tough to solve but very easy to verify.</p>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
 <span class="n">transaction</span> <span class="o">=</span> <span class="p">[</span>
     <span class="s">'A paid B 25 A_public_key'</span><span class="p">,</span> 
@@ -309,8 +309,7 @@ Time Taken
  47.986721992492676,
  740.9898428916931]
 """</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-8-proof-of-work-plot.png" alt="Proof-of-work plot" /></p>
 
@@ -465,7 +464,7 @@ q_z =
 
 <script type="math/tex; mode=display">1 - \sum_{k=0}^z \frac{\lambda^k\,e^{-\lambda}}{k!} (1 - (q/p)^{(z-k)})</script>
 
-<div class="language-python highlighter-rouge"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
 
 <span class="n">q</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span><span class="n">q</span>
@@ -496,8 +495,7 @@ Output
 20  =&gt;  0.0024804
 25  =&gt;  0.00061323
 """</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>Calculating the values, it is observed that the probability drops off exponentially with z.</strong></p>
 
