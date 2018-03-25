@@ -9,8 +9,8 @@
 
   
 
-  <title>Neural Networks: Cost Function and Backpropagation | Machine Learning Medium</title>
-  <meta name="description" content="Intuition behind the idea of backpropagation and its extension to calculate cost function" />
+  <title>Backpropagation Derivation | Machine Learning Medium</title>
+  <meta name="description" content="The post delves into the mathematics of how backpropagation is defined. It has its roots in partial derivatives and is easily understandable" />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -19,16 +19,16 @@
   
   
   <meta property="og:site_name" content="Machine Learning Medium" />
-  <meta property="og:title" content="Neural Networks: Cost Function and Backpropagation"/>
+  <meta property="og:title" content="Backpropagation Derivation"/>
   
-  <meta property="og:description" content="Intuition behind the idea of backpropagation and its extension to calculate cost function" />
+  <meta property="og:description" content="The post delves into the mathematics of how backpropagation is defined. It has its roots in partial derivatives and is easily understandable" />
   
-  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/neural-network.png" />
-  <meta property="og:url" content="https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/" >
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/backpropagation.jpg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/" >
   <meta property="og:type" content="blog" />
-  <meta property="article:published_time" content="2017-10-03T00:00:00+05:30">
+  <meta property="article:published_time" content="2018-03-20T00:00:00+05:30">
 
-  <link rel="canonical" href="https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"/>
   <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -136,7 +136,7 @@
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
           <h5 class="author-name"> Data Scientist @ Practo </h5>
-          <time datetime="2017-10-03T00:00:00+05:30">Oct 3</time>
+          <time datetime="2018-03-20T00:00:00+05:30">Mar 20</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
             <span class="post-reading-time"></span> read
@@ -147,19 +147,19 @@
     
     <div class="postcover">
     <div class="postimage">
-        <div class="postimage-image"  style="background-image: url(/assets/images/neural-network.png) ">
+        <div class="postimage-image"  style="background-image: url(/assets/images/backpropagation.jpg) ">
         </div>
     </div>
     
-    <figcaption>Image Source: https://s3.amazonaws.com/f6s-public/media/480903.png</figcaption>
+    <figcaption>Image Source: http://4.bp.blogspot.com/-IzAlHMEgdxc/VSfHprh1ksI/AAAAAAAAAF0/z0RVFZxAZHw/s1600/IMG_20150410_132508~2~2~2.jpg</figcaption>
     
     </div>
     <main class="content post-content" role="main">
       <article class="post">
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Neural Networks: Cost Function and Backpropagation</h1>
-            <h2 class="post-description">Intuition behind the idea of backpropagation and its extension to calculate cost function</h2>
+            <h1 class="post-title">Backpropagation Derivation</h1>
+            <h2 class="post-description">The post delves into the mathematics of how backpropagation is defined. It has its roots in partial derivatives and is easily understandable</h2>
           </div>
         </div>
         <div class="horizontal-divider">&#183; &#183; &#183;</div>
@@ -173,173 +173,176 @@
 
 <div class="horizontal-divider">· · ·</div>
 
-<h3 id="notation">Notation</h3>
-<ul>
-  <li>\({(x^{(1)}, y^{(1)}), (x^{(2)}, y^{(2)}), \cdots , (x^{(m)}, y^{(m)})}\) are the \(m\) training examples</li>
-  <li>L is the <strong>total number of the layers</strong> in the network</li>
-  <li>\(s_l\) is the <strong>number of units (not counting the bias unit)</strong> in the layer l</li>
-  <li>K is the <strong>number of units in the output layer</strong></li>
-</ul>
+<h3 id="derivative-of-sigmoid">Derivative of Sigmoid</h3>
 
-<p><img src="/assets/2017-10-03-neural-networks-cost-function-and-back-propagation/fig-1-neural-network-notations.png?raw=true" alt="Neural Network Notations" width="50%" /></p>
+<p>The sigmoid function, represented by \(\sigma\) is defined as,</p>
 
-<ul>
-  <li>For example in the network shown above,
-    <ul>
-      <li>L = 4</li>
-      <li>\(s_1 = 3,\, s_2 = 3,\, s_3 = 2,\, s_4 = 2\)</li>
-      <li>K = 2</li>
-    </ul>
-  </li>
-</ul>
+<script type="math/tex; mode=display">\sigma(x)  = {1 \over 1 + e^{-x}} \tag{1} \label{1}</script>
 
-<p><strong>One vs All method is only needed if number of classes is greater than 2, i.e. if \(K \gt 2\), otherwise only one output unit is sufficient to build the model.</strong></p>
+<p>So, the derivative of \eqref{1}, denoted by \(\sigma’\) can be derived using the quotient rule of differentiation, i.e., if \(f\) and \(g\) are functions, then,</p>
 
-<h3 id="cost-function-of-neural-networks">Cost Function of Neural Networks</h3>
-<p>Cost function of a neural network is a <strong>generalization of the cost function of the logistic regression</strong>. The <strong>L2-Regularized</strong> cost function of logistic regression from the post <a href="/2017/09/15/regularized-logistic-regression/" target="_blank">Regularized Logistic Regression</a>  is given by,</p>
+<script type="math/tex; mode=display">\left({f \over g} \right)' = {f'g - g'f \over g^2} \tag{2} \label{2}</script>
 
-<script type="math/tex; mode=display">J(\theta) = -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)})) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{1} \label{1}</script>
+<p>Since \(f\) is a constant (i.e. 1) in this case, \eqref{2} reduces to,</p>
 
-<ul>
-  <li>Where
-    <ul>
-      <li>\({\lambda \over 2m } \sum_{j=1}^n \theta_j^2\) is the <strong>regularization term</strong></li>
-      <li>\(\lambda\) is the <strong>regularization factor</strong></li>
-    </ul>
-  </li>
-</ul>
+<script type="math/tex; mode=display">\left({1 \over g} \right)' = {- g' \over g^2} \tag{3} \label{3}</script>
 
-<p>Extending (1) to then neural networks which can have K units in the output layer the cost function is given by,</p>
+<p>Also, by the chain rule of differentiation, if \(h(x) = f(g(x))\), then,</p>
 
-<script type="math/tex; mode=display">J(\theta) = -{1 \over m} \left[ \sum_{i=1}^m \sum_{k=1}^K y_k^{(i)}\,log(h_\theta(x^{(i)}))_k + (1-y_k^{(i)})\,log(1 - (h_\theta(x^{(i)}))_k) \right] + {\lambda \over 2m } \sum_{l=1}^{L-1} \sum_{i=1}^{s_l} \sum_{j=1}^{s_{l+1}} (\theta_{ji}^{(l)})^2 \tag{2} \label{2}</script>
+<script type="math/tex; mode=display">h'(x) = f'(g(x)) \cdot g'(x) \tag{4} \label{4}</script>
 
-<ul>
-  <li>Where
-    <ul>
-      <li>\(h_\Theta(x) \in \mathbb{R}^K \)</li>
-      <li>\((h_\theta(x))_i\) is the \(i^{th}\) output</li>
-    </ul>
-  </li>
-</ul>
-
-<p>Here the summation term \(\sum_{k=1}^K\) is to <strong>generalize over the K output units</strong> of the neural network by calculating the cost function and summing over all the output units in the network. Also following the convention in regularization, the <strong>bias term in skipped from the regularization penalty</strong> in the cost function defination. Even if one includes the index 0, it would not effect the process in practice.</p>
-
-<h3 id="backpropagation-algorithm">Backpropagation Algorithm</h3>
-<p>Backpropagation algorithm is based on the <strong>repeated application of the error calculation</strong> used for gradient descent similar to the regression techniques, and since it is repeatedly applied in the <strong>reverse order starting from output layer and continuing towards input layer</strong> it is termed as backpropagation.</p>
-
-<p>For a network with L layers the computation during <strong>foward propagation</strong>, for an input \((x, y)\) would be as follows,</p>
+<p>Applying \eqref{3} and \eqref{4} to \eqref{1}, \(\sigma’(x)\) is given by,</p>
 
 <script type="math/tex; mode=display">% <![CDATA[
 \begin{align}
-    a^{(1)} &= x \\
-    z^{(2)} &= \Theta^{(1)}\,a^{(1)} \\
-    a^{(2)} &= g(z^{(2)}) \qquad (add\, a_0^{(2)})\\
-    & \vdots \\
-    a^{(L-1)} &= g(z^{(L-1)}) \qquad (add\, a_0^{(L-1)})\\
-    z^{(L)} &= \Theta^{(L-1)}\,a^{(L-1)} \\
-    a^{(L)} &= h_\Theta(x) = g(z^{(L)})
-  \end{align} %]]></script>
+\sigma'(x) &= -\frac{e^{-x}} {(1+e^{-x})^2} \cdot -1 \\
+    &= \frac{e^{-x}} {(1+e^{-x})^2} \\
+    &= {1 \over 1 + e^{-x}} \cdot \frac{1 + e^{-x} - 1} {1+e^{-x}} \\
+    &= \sigma(x) \cdot \left(\frac{1 + e^{-x}} {1+e^{-x}} - \frac{1} {1+e^{-x}} \right) \\
+\sigma'(x) &= \sigma(x) \cdot (1 - \sigma(x)) \tag{5} \label{5}
+\end{align} %]]></script>
 
-<p>The \(h_\Theta(x)\) is the prediction. In order to reduce the error between the prediction and the actual value backpropagation is used. Say, \(\delta_j^{(l)}\) is the <strong>error of node j in the layer l</strong> is associated with the prediction made at that node given by \(a_j^{(l)}\), then backpropagation aims to calculate this error term propating backwards starting from the output unit in the last layer (layer L in the example above).</p>
+<h3 id="mathematics-of-backpropagation">Mathematics of Backpropagation</h3>
 
-<p>So for each output unit in layer L, the error term is given by, \(\delta_j^{(L)} = a_j^{(L)} - y_j\) which can be vectorized and written as,</p>
+<p>(* all the derivations are based scalar calculus and not the matrix calculus for simplicity of calculations)</p>
 
-<script type="math/tex; mode=display">\delta^{(L)} = a^{(L)} - y \tag{3} \label{3}</script>
+<p>In most of the cases of algorithms like <strong>logistic regression, linear regression, there is no hidden layer</strong>, which basically zeroes down to the fact that there is no <strong>concept of error propagation in backward direction</strong> because there is a direct dependence of model cost function on the single layer of model parameters.</p>
 
-<ul>
-  <li>Where \(a^{(L)}\) is \(h_\Theta(x)\).</li>
-</ul>
+<p>Backpropagation tries to do the similar exercise using the partial derivatives of model output with respect to the individual parameters. It so happens that there is a trend that can be observed when such derivatives are calculated and <strong>backpropagation tries to exploit the patterns</strong> and hence minimizes the overall computation by reusing the terms already calculated.</p>
 
-<p>Now the error terms for the previous layers are calculated as follows,</p>
+<p>Consider a simple <strong>neural network with a single path</strong> (following the notation from <a href="/2017/10/03/neural-networks-cost-function-and-back-propagation/">Neural Networks: Cost Function and Backpropagation</a>) as shown below,</p>
 
-<script type="math/tex; mode=display">\delta^{(l)} = (\Theta^{(l)})^T\,\delta^{(l+1)} .* g'(z^{(l)}) \tag{4} \label{4}</script>
-
-<ul>
-  <li>Where
-    <ul>
-      <li>\(g’(z^{(l)}) = a^{(l)} .* (1 - a^{(l)}) \)</li>
-      <li>.* is the element-wise multiplication.</li>
-    </ul>
-  </li>
-</ul>
-
-<blockquote>
-  <p>This backward propagation stops at l = 2 because l = 1 correponds to the input layer and no weights needs to be calculated there.</p>
-</blockquote>
-
-<p>Now the the gradient for the cost function which is needed for the minimization of the cost function is given by,</p>
-
-<script type="math/tex; mode=display">\frac {\partial J} {\partial \Theta_{ij}^{(l)} } = a_j^{(l)}\, \delta_i^{(l+1)}  \tag{5} \label{5}</script>
-
-<ul>
-  <li>Where regularization is ignored for the simplicity of expression.</li>
-</ul>
-
-<p><strong>Summarizing</strong> backpropagation:</p>
-
-<p>Given training set \({(x^{(1)}, y^{(1)}), \cdots, (x^{(m)}, y^{(m)})}\)</p>
-
-<ul>
-  <li>Set \(\Delta_{ij}^{l} = 0\) for all (i, j, l)</li>
-  <li>For i = 1 to m:
-    <ul>
-      <li>Set \(a^{(1)} = x^{(i)} \)</li>
-      <li>Perform forward propagation to compute \(a^{(l)}\) for l = 1, …, L</li>
-      <li>Using \(y^{(i)}\) compute \( \delta^{(L)} = a^{(L)} - y^{(i)} \)</li>
-      <li>Compute \(\delta^{(L-1)}, \cdots, \delta^{(2)}\) using backpropagation</li>
-      <li>\(\Delta_{ij}^{(l)} := \Delta_{ij}^{(l)} + a_j^{(l)} \delta_i^{(l+1)} \)</li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Vectorized implementation of the equation above is given by,</strong></p>
-
-<script type="math/tex; mode=display">\Delta^{(l)} := \Delta^{(l)} + \delta^{(l+1)}\,(a^{(l)})^T \tag{6} \label{6}</script>
-
-<ul>
-  <li>\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} + \lambda \, \Theta_{ij}^{(l)} \) if \(j \ne 0\)</li>
-  <li>\(D_{ij}^{(l)} := {1 \over m} \Delta_{ij}^{(l)} \) if \(j = 0\)</li>
-  <li>And finally, \( \frac {\partial} {\partial \Theta_{ij}^{(l)} } = D_{ij}^{(l)} \)</li>
-</ul>
-
-<p>The capital delta matrix \(D\), is used as an <strong>accumulator</strong> to add up the values as backpropagation proceeds and finally compute the partial derivatives.</p>
-
-<h3 id="backpropagation-intuition">Backpropagation Intuition</h3>
-
-<p>Say \((x^{(i)}, y^{(i)})\) is a training sample from a set of training examples that the neural network is trying to learn from. If the cost function is applied to this single training sample while setting \(\lambda = 0\) for simplicity, then \eqref{2} can be reduced to,</p>
-
-<script type="math/tex; mode=display">J(\Theta) = - {1 \over m} \left [  \sum_{i=1}^m y^{(i)} log(h_\Theta(x^{(i)})) + (1-y^{(i)}) log(1-h(_\Theta(x^{(i)}))) \right ]</script>
+<p><img src="/assets/2018-03-20-backpropagation-derivation/fig-1-single-path-neural-network.png?raw=true" alt="Fig-1. Single-Path Neural Network" /></p>
 
 <p>where,</p>
 
-<script type="math/tex; mode=display">cost(i) = y^{(i)} log(h_\Theta(x^{(i)})) + (1-y^{(i)}) log(1-h(_\Theta(x^{(i)}))) \tag{7} \label{7}</script>
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+a^{(1)} &= x^{(i)} \\ \\
 
-<p>which is very similar to the cost for a logistic regression, which can also be seen analogous to the cost for a linear regression (<strong>mean-squared error</strong>), i.e.</p>
+z^{(2)} &= \theta^{(1)} a^{(1)} \\
+a^{(2)} &= \sigma(z^{(2)}) \\ \\
 
-<script type="math/tex; mode=display">cost(i) \approx (h_\Theta(x^{(i)}) - y^{(i)})^2</script>
+z^{(3)} &= \theta^{(2)} a^{(2)} \\
+a^{(3)} &= \sigma(z^{(3)}) \\ \\
 
-<p>This basically gives a magnitude of how well the network is doing in prediction of the output for a single training sample.</p>
+z^{(4)} &= \theta^{(3)} a^{(3)} \\
+a^{(4)} &= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)} 
+\end{align}
+\tag{6} \label{6} %]]></script>
 
-<p>Formally, the <strong>\(\delta\) terms are the partial derivatives of the cost function</strong> given by,</p>
+<p>where \(g\) is a linear function defined as \(g(x) = x\), and hence \(g’(x) = 1\). \(\sigma\) represents the sigmoid function.</p>
 
-<script type="math/tex; mode=display">\delta_j^{(l)} = \frac {\partial} {\partial z_j^{(l)}} cost(i) \tag{8} \label{8}</script>
+<p>For the simplicity of derivation, let the cost function, \(J\) be defined as,</p>
 
-<p>where \(cost(i)\) is given by \eqref{7}.</p>
+<script type="math/tex; mode=display">J = {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \tag{7} \label{7}</script>
 
-<p>So, \eqref{8} conveys mathematically the intent to change the cost function (by changing the network parameters), in order to effect the intermediate values calculated in \(z’s\), so as to minimize the differences in the final output of the network.</p>
+<p>where,</p>
 
-<p>The basis of backpropagation is benched on the propagating the error term calculated for the final layer using \eqref{3} and \eqref{4} backwards to the preceding layers.</p>
+<script type="math/tex; mode=display">\delta^{(4)} = \hat{y}^{(i)} - y^{(i)} \tag{8} \label{8}</script>
 
-<p>For more on mathematics of backpropagation, refer <a href="/2018/03/20/backpropagation-derivation/">Mathematics of Backpropagation</a>.</p>
+<p>Now, in order to find the changes that should be made in the parameters (i.e. weights), partial derivatives of the cost function is calculated w.r.t. individual \(\theta’s\),</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\frac {\partial J} {\partial \theta^{(3)}} &= \frac {\partial} {\partial \theta^{(3)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial \theta^{(3)}} (g(\theta^{(3)} a^{(3)}) - y^{(i)}) \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \cdot a^{(3)} \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \cdot a^{(3)} \tag{9} \label{9} \\ \\
+
+\frac {\partial J} {\partial \theta^{(2)}} &= \frac {\partial} {\partial \theta^{(2)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial \theta^{(2)}} (g(\theta^{(3)} \sigma(\theta^{(2)} a^{(2)})) - y^{(i)}) \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot a^{(2)} \tag{10} \label{10}\\ \\
+
+\frac {\partial J} {\partial \theta^{(1)}} &= \frac {\partial} {\partial \theta^{(1)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial \theta^{(1)}} (g(\theta^{(3)} \sigma(\theta^{(2)} \sigma(\theta^{(1)} a^{(1)}))) - y^{(i)}) \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \cdot a^{(1)} \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \cdot x^{(i)} \tag{11} \label{11}
+\end{align} %]]></script>
+
+<p>One can see a pattern emerging among the partial derivatives of the cost function with respect to the individual parameters matrices. The expressions in \eqref{9}, \eqref{10} and \eqref{11} show that each term consists of <strong>the derivative of the network error</strong>, <strong>the weighted derivative of the node output with respect to the node input</strong> leading upto that node.</p>
+
+<p>So, for this network the updates for the matrices are given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\Delta \theta^{(1)} &= - \eta [(\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \cdot x^{(i)}] \\
+\Delta \theta^{(2)} &= - \eta [(\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot a^{(2)}] \\
+\Delta \theta^{(3)} &= - \eta [(\hat{y}^{(i)} - y^{(i)}) \cdot a^{(3)}]
+\end{align}
+\tag{12} \label{12} %]]></script>
+
+<blockquote>
+  <p>Forward propagation is a recursive algorithm takes an input, weighs it along the edges and then applies the activation function in a node and repeats this process until the output node. Similarly, backpropagation is a recursive algorithm performing the inverse of the forward propagation, i.e. it takes the error signal from the output layer, weighs it along the edges and performs derivative of activation in an encountered node until it reaches the input. This brings in the concept of backward error propagation.</p>
+</blockquote>
+
+<h3 id="error-signal">Error Signal</h3>
+
+<p>Following the concept of backward error propagation, error signal is defined as the accumulated error at each layer. The recursive error signal at a layer l is defined as,</p>
+
+<script type="math/tex; mode=display">\delta^{(l)} = \frac {\partial J} {\partial z^{(l)}} \tag{13} \label{13}</script>
+
+<p>Intuitively, it can be understood as the measure of how the network error changes with respect to the change in input to unit \(l\).</p>
+
+<p>So, \(\delta^{(4)}\) in \eqref{8}, can be derived using \eqref{13},</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\delta^{(4)} &= \frac {\partial J} {\partial z^{(4)}} = \frac {\partial} {\partial z^{(4)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\\\
+    &= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial z^{(4)}} (\hat{y}^{(i)} - y^{(i)}) \\
+    &= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial z^{(4)}} (g(z^{(4)}) - y^{(i)}) \\ 
+    &= (\hat{y}^{(i)} - y^{(i)}) \tag{14} \label{14}
+\end{align} %]]></script>
+
+<p>Similary the error signal at previous layers can be derived and it can be seen how the error signal of the forward layers get transmitted to the backward layers</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\delta^{(3)} &= \frac {\partial J} {\partial z^{(3)}} \\
+    &= \frac {\partial} {\partial z^{(3)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &= \delta^{(4)} \frac {\partial} {\partial z^{(3)}} (g(\theta^{(3)} \sigma(z^{(3)}))) \\
+    &= \delta^{(4)} \theta^{(3)} \sigma'(z^{(3)}) \tag{15} \label{15} \\ \\ 
+
+\delta^{(2)} &= \frac {\partial J} {\partial z^{(2)}} \\
+    &= \frac {\partial} {\partial z^{(2)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &= \delta^{(4)} \frac {\partial} {\partial z^{(2)}} (g(\theta^{(3)} \sigma(\theta^{(2)} \sigma(z^{(2)})))) \\
+    &= \delta^{(4)} \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \\ 
+    &= \delta^{(3)} \theta^{(2)} \sigma'(z^{(2)}) \tag{16} \label{16} \\
+\end{align} %]]></script>
+
+<p>Using \eqref{14}, \eqref{15} and \eqref{16}, \eqref{12} can be written as,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+\Delta \theta^{(1)} &= - \eta \delta^{(2)} a^{(1)} \\
+\Delta \theta^{(2)} &= - \eta \delta^{(3)} a^{(2)} \\
+\Delta \theta^{(3)} &= - \eta \delta^{(4)} a^{(3)}
+\end{align}
+\tag{17} \label{17} %]]></script>
+
+<p>which is nothing but the updates to individual parameter matrices based on partial derivatives of cost w.r.t. individual matrices.</p>
+
+<h3 id="activation-function">Activation Function</h3>
+
+<p>Generally, the choice of activation function at the output layer is dependent on the type of cost function. This is mainly to simplify the process of differentiation. For example, as shown in the example above, if the cost function is mean-squared error then choice of linear function as activation for the output layer often helps simplify calculations. Similarly, the cross-entropy loss works well with sigmoid or softmax activation functions. But this is not a hard and fast rule. One is free to use any activation function with any cost function, although the equations for partial derivatives might not look as nice.</p>
+
+<p>Similarly, the choice of activation function in hidden layers are plenty. Although sigmoid functions are widely used, they suffer from vanishing gradient as the depth increases, hence other activations like ReLUs are recommended for deeper neural networks.</p>
 
 <h2 id="references">REFERENCES:</h2>
 
-<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/na28E/cost-function" target="_blank">Machine Learning: Coursera - Cost Function</a></small></p>
+<p><small><a href="http://briandolhansky.com/blog/2013/9/27/artificial-neural-networks-backpropagation-part-4" target="_blank">Artificial Neural Networks: Mathematics of Backpropagation (Part 4)</a></small><br />
+<small><a href="https://stats.stackexchange.com/questions/218542/which-activation-function-for-output-layer" target="_blank">Which activation function for output layer?</a></small></p>
 
         </section>
         <div class="horizontal-divider">· · ·</div>
         <footer class="post-footer">
           <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
+                </div>
+              </div>
             
               <div class="tile">
                 <div class="text">
@@ -349,7 +352,7 @@
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
                 </div>
               </div>
             
@@ -361,56 +364,56 @@
 
     <span class="share-buttons">
         <span>
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fa fa-facebook-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://twitter.com/intent/tweet?text=Neural Networks: Cost Function and Backpropagation&url=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="https://twitter.com/intent/tweet?text=Backpropagation Derivation&url=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fa fa-twitter-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fa fa-google-plus-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Pinterest" >
             <i class="fa fa-pinterest-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fa fa-tumblr-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fa fa-reddit-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/&title=Neural Networks: Cost Function and Backpropagation&summary=Intuition behind the idea of backpropagation and its extension to calculate cost function&source=Machine Learning Medium"
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/&title=Backpropagation Derivation&summary=The post delves into the mathematics of how backpropagation is defined. It has its roots in partial derivatives and is easily understandable&source=Machine Learning Medium"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fa fa-linkedin-square"></i>
         </a>
         </span>
         <span>
-        <a  href="mailto:?subject=Neural Networks: Cost Function and Backpropagation&amp;body=Check out this site https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"
+        <a  href="mailto:?subject=Backpropagation Derivation&amp;body=Check out this site https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"
             title="Share via Email" >
             <i class="fa fa-envelope-square"></i>
         </a>
@@ -428,7 +431,7 @@
               <h4>Shams S</h4>
               <p class="bio">Data Scientist @ Practo</p>
               <hr>
-              <p class="published">Published on <time datetime="2017-10-03 00:00">03 Oct 2017</time></p>
+              <p class="published">Published on <time datetime="2018-03-20 00:00">20 Mar 2018</time></p>
             </section>
           </div>
           <div class="isRight">

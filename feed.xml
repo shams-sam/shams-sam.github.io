@@ -5,9 +5,194 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 18 Mar 2018 23:52:08 +0530</pubDate>
-    <lastBuildDate>Sun, 18 Mar 2018 23:52:08 +0530</lastBuildDate>
+    <pubDate>Mon, 26 Mar 2018 03:20:24 +0530</pubDate>
+    <lastBuildDate>Mon, 26 Mar 2018 03:20:24 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Backpropagation Derivation</title>
+        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;derivative-of-sigmoid&quot;&gt;Derivative of Sigmoid&lt;/h3&gt;
+
+&lt;p&gt;The sigmoid function, represented by \(\sigma\) is defined as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sigma(x)  = {1 \over 1 + e^{-x}} \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;So, the derivative of \eqref{1}, denoted by \(\sigma’\) can be derived using the quotient rule of differentiation, i.e., if \(f\) and \(g\) are functions, then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left({f \over g} \right)' = {f'g - g'f \over g^2} \tag{2} \label{2}&lt;/script&gt;
+
+&lt;p&gt;Since \(f\) is a constant (i.e. 1) in this case, \eqref{2} reduces to,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left({1 \over g} \right)' = {- g' \over g^2} \tag{3} \label{3}&lt;/script&gt;
+
+&lt;p&gt;Also, by the chain rule of differentiation, if \(h(x) = f(g(x))\), then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h'(x) = f'(g(x)) \cdot g'(x) \tag{4} \label{4}&lt;/script&gt;
+
+&lt;p&gt;Applying \eqref{3} and \eqref{4} to \eqref{1}, \(\sigma’(x)\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\sigma'(x) &amp;= -\frac{e^{-x}} {(1+e^{-x})^2} \cdot -1 \\
+    &amp;= \frac{e^{-x}} {(1+e^{-x})^2} \\
+    &amp;= {1 \over 1 + e^{-x}} \cdot \frac{1 + e^{-x} - 1} {1+e^{-x}} \\
+    &amp;= \sigma(x) \cdot \left(\frac{1 + e^{-x}} {1+e^{-x}} - \frac{1} {1+e^{-x}} \right) \\
+\sigma'(x) &amp;= \sigma(x) \cdot (1 - \sigma(x)) \tag{5} \label{5}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;mathematics-of-backpropagation&quot;&gt;Mathematics of Backpropagation&lt;/h3&gt;
+
+&lt;p&gt;(* all the derivations are based scalar calculus and not the matrix calculus for simplicity of calculations)&lt;/p&gt;
+
+&lt;p&gt;In most of the cases of algorithms like &lt;strong&gt;logistic regression, linear regression, there is no hidden layer&lt;/strong&gt;, which basically zeroes down to the fact that there is no &lt;strong&gt;concept of error propagation in backward direction&lt;/strong&gt; because there is a direct dependence of model cost function on the single layer of model parameters.&lt;/p&gt;
+
+&lt;p&gt;Backpropagation tries to do the similar exercise using the partial derivatives of model output with respect to the individual parameters. It so happens that there is a trend that can be observed when such derivatives are calculated and &lt;strong&gt;backpropagation tries to exploit the patterns&lt;/strong&gt; and hence minimizes the overall computation by reusing the terms already calculated.&lt;/p&gt;
+
+&lt;p&gt;Consider a simple &lt;strong&gt;neural network with a single path&lt;/strong&gt; (following the notation from &lt;a href=&quot;/2017/10/03/neural-networks-cost-function-and-back-propagation/&quot;&gt;Neural Networks: Cost Function and Backpropagation&lt;/a&gt;) as shown below,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-03-20-backpropagation-derivation/fig-1-single-path-neural-network.png?raw=true&quot; alt=&quot;Fig-1. Single-Path Neural Network&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+a^{(1)} &amp;= x^{(i)} \\ \\
+
+z^{(2)} &amp;= \theta^{(1)} a^{(1)} \\
+a^{(2)} &amp;= \sigma(z^{(2)}) \\ \\
+
+z^{(3)} &amp;= \theta^{(2)} a^{(2)} \\
+a^{(3)} &amp;= \sigma(z^{(3)}) \\ \\
+
+z^{(4)} &amp;= \theta^{(3)} a^{(3)} \\
+a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)} 
+\end{align}
+\tag{6} \label{6} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where \(g\) is a linear function defined as \(g(x) = x\), and hence \(g’(x) = 1\). \(\sigma\) represents the sigmoid function.&lt;/p&gt;
+
+&lt;p&gt;For the simplicity of derivation, let the cost function, \(J\) be defined as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J = {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \tag{7} \label{7}&lt;/script&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(4)} = \hat{y}^{(i)} - y^{(i)} \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;Now, in order to find the changes that should be made in the parameters (i.e. weights), partial derivatives of the cost function is calculated w.r.t. individual \(\theta’s\),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\frac {\partial J} {\partial \theta^{(3)}} &amp;= \frac {\partial} {\partial \theta^{(3)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial \theta^{(3)}} (g(\theta^{(3)} a^{(3)}) - y^{(i)}) \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \cdot a^{(3)} \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \cdot a^{(3)} \tag{9} \label{9} \\ \\
+
+\frac {\partial J} {\partial \theta^{(2)}} &amp;= \frac {\partial} {\partial \theta^{(2)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial \theta^{(2)}} (g(\theta^{(3)} \sigma(\theta^{(2)} a^{(2)})) - y^{(i)}) \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot a^{(2)} \tag{10} \label{10}\\ \\
+
+\frac {\partial J} {\partial \theta^{(1)}} &amp;= \frac {\partial} {\partial \theta^{(1)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial \theta^{(1)}} (g(\theta^{(3)} \sigma(\theta^{(2)} \sigma(\theta^{(1)} a^{(1)}))) - y^{(i)}) \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \cdot a^{(1)} \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \cdot x^{(i)} \tag{11} \label{11}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;One can see a pattern emerging among the partial derivatives of the cost function with respect to the individual parameters matrices. The expressions in \eqref{9}, \eqref{10} and \eqref{11} show that each term consists of &lt;strong&gt;the derivative of the network error&lt;/strong&gt;, &lt;strong&gt;the weighted derivative of the node output with respect to the node input&lt;/strong&gt; leading upto that node.&lt;/p&gt;
+
+&lt;p&gt;So, for this network the updates for the matrices are given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\Delta \theta^{(1)} &amp;= - \eta [(\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \cdot x^{(i)}] \\
+\Delta \theta^{(2)} &amp;= - \eta [(\hat{y}^{(i)} - y^{(i)}) \cdot \theta^{(3)} \sigma'(z^{(3)}) \cdot a^{(2)}] \\
+\Delta \theta^{(3)} &amp;= - \eta [(\hat{y}^{(i)} - y^{(i)}) \cdot a^{(3)}]
+\end{align}
+\tag{12} \label{12} %]]&gt;&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Forward propagation is a recursive algorithm takes an input, weighs it along the edges and then applies the activation function in a node and repeats this process until the output node. Similarly, backpropagation is a recursive algorithm performing the inverse of the forward propagation, i.e. it takes the error signal from the output layer, weighs it along the edges and performs derivative of activation in an encountered node until it reaches the input. This brings in the concept of backward error propagation.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;error-signal&quot;&gt;Error Signal&lt;/h3&gt;
+
+&lt;p&gt;Following the concept of backward error propagation, error signal is defined as the accumulated error at each layer. The recursive error signal at a layer l is defined as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta^{(l)} = \frac {\partial J} {\partial z^{(l)}} \tag{13} \label{13}&lt;/script&gt;
+
+&lt;p&gt;Intuitively, it can be understood as the measure of how the network error changes with respect to the change in input to unit \(l\).&lt;/p&gt;
+
+&lt;p&gt;So, \(\delta^{(4)}\) in \eqref{8}, can be derived using \eqref{13},&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\delta^{(4)} &amp;= \frac {\partial J} {\partial z^{(4)}} = \frac {\partial} {\partial z^{(4)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\\\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial z^{(4)}} (\hat{y}^{(i)} - y^{(i)}) \\
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \frac {\partial} {\partial z^{(4)}} (g(z^{(4)}) - y^{(i)}) \\ 
+    &amp;= (\hat{y}^{(i)} - y^{(i)}) \tag{14} \label{14}
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Similary the error signal at previous layers can be derived and it can be seen how the error signal of the forward layers get transmitted to the backward layers&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\delta^{(3)} &amp;= \frac {\partial J} {\partial z^{(3)}} \\
+    &amp;= \frac {\partial} {\partial z^{(3)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &amp;= \delta^{(4)} \frac {\partial} {\partial z^{(3)}} (g(\theta^{(3)} \sigma(z^{(3)}))) \\
+    &amp;= \delta^{(4)} \theta^{(3)} \sigma'(z^{(3)}) \tag{15} \label{15} \\ \\ 
+
+\delta^{(2)} &amp;= \frac {\partial J} {\partial z^{(2)}} \\
+    &amp;= \frac {\partial} {\partial z^{(2)}} {1 \over 2} (\hat{y}^{(i)} - y^{(i)})^2 \\
+    &amp;= \delta^{(4)} \frac {\partial} {\partial z^{(2)}} (g(\theta^{(3)} \sigma(\theta^{(2)} \sigma(z^{(2)})))) \\
+    &amp;= \delta^{(4)} \theta^{(3)} \sigma'(z^{(3)}) \cdot \theta^{(2)} \sigma'(z^{(2)}) \\ 
+    &amp;= \delta^{(3)} \theta^{(2)} \sigma'(z^{(2)}) \tag{16} \label{16} \\
+\end{align} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Using \eqref{14}, \eqref{15} and \eqref{16}, \eqref{12} can be written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+\Delta \theta^{(1)} &amp;= - \eta \delta^{(2)} a^{(1)} \\
+\Delta \theta^{(2)} &amp;= - \eta \delta^{(3)} a^{(2)} \\
+\Delta \theta^{(3)} &amp;= - \eta \delta^{(4)} a^{(3)}
+\end{align}
+\tag{17} \label{17} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;which is nothing but the updates to individual parameter matrices based on partial derivatives of cost w.r.t. individual matrices.&lt;/p&gt;
+
+&lt;h3 id=&quot;activation-function&quot;&gt;Activation Function&lt;/h3&gt;
+
+&lt;p&gt;Generally, the choice of activation function at the output layer is dependent on the type of cost function. This is mainly to simplify the process of differentiation. For example, as shown in the example above, if the cost function is mean-squared error then choice of linear function as activation for the output layer often helps simplify calculations. Similarly, the cross-entropy loss works well with sigmoid or softmax activation functions. But this is not a hard and fast rule. One is free to use any activation function with any cost function, although the equations for partial derivatives might not look as nice.&lt;/p&gt;
+
+&lt;p&gt;Similarly, the choice of activation function in hidden layers are plenty. Although sigmoid functions are widely used, they suffer from vanishing gradient as the depth increases, hence other activations like ReLUs are recommended for deeper neural networks.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://briandolhansky.com/blog/2013/9/27/artificial-neural-networks-backpropagation-part-4&quot; target=&quot;_blank&quot;&gt;Artificial Neural Networks: Mathematics of Backpropagation (Part 4)&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://stats.stackexchange.com/questions/218542/which-activation-function-for-output-layer&quot; target=&quot;_blank&quot;&gt;Which activation function for output layer?&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 20 Mar 2018 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/</guid>
+        
+        <category>andrew-ng</category>
+        
+        <category>machine-learning</category>
+        
+        <category>mathematics</category>
+        
+        
+        <category>basics-of-machine-learning</category>
+        
+      </item>
     
       <item>
         <title>Program in PyTorch</title>
@@ -2730,465 +2915,6 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
         <category>what-is-mathematics</category>
         
         <category>theorems</category>
-        
-        
-        <category>what-is-mathematics</category>
-        
-      </item>
-    
-      <item>
-        <title>What is Number System ?</title>
-        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;the-natural-numbers&quot;&gt;The Natural Numbers&lt;/h3&gt;
-
-&lt;p&gt;The natural numbers were created by the human mind out of the necessity to count the objects around us. Most basics of mathematics are associated with association of numbers with tangible objects. But advanced mathematics is built on top of the &lt;strong&gt;abstract concept of number system&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;God created natural numbers; everything else is man’s handiwork.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;laws-of-arithmetic&quot;&gt;Laws of Arithmetic&lt;/h3&gt;
-
-&lt;p&gt;Natural numbers have only &lt;strong&gt;two basic operations&lt;/strong&gt;, namely, addition and multiplication. The mathematical theory of the natural numbers or positive integers is known as &lt;strong&gt;arithmetic&lt;/strong&gt;. Arithmetic is based on the fact that operations on numbers are governed by certain laws.&lt;/p&gt;
-
-&lt;p&gt;(a, b, c … symbolically denote integers)&lt;/p&gt;
-
-&lt;p&gt;The fundamental laws of arithmetic are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Commutative&lt;/strong&gt; law, i.e. \(a+b = b+a\) and \(ab = ba\)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Associative&lt;/strong&gt; law, i.e. \(a + (b + c) = (a + b) + c\) and \(a(bc) = (ab)c\)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Distributive&lt;/strong&gt; law, i.e. \(a(b+c) = ab + ac\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Addition and subtraction are &lt;strong&gt;inverse operations&lt;/strong&gt; because, \((a+d)-d = a\). Similarly, multiplication and division are inverse because \({a \over d} \cdot d = a\). Also, &lt;strong&gt;0 and 1 are the identities of operations addition and multiplication respectively&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;representation-of-integers&quot;&gt;Representation of Integers&lt;/h3&gt;
-
-&lt;p&gt;A number system has a set of &lt;strong&gt;digit symbols and numbers&lt;/strong&gt; where digit symbols are used to denote the larger numbers not available directly in the set of digit symbols. Modern number systems are associated with the place values of individual digits in the number, such as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;372 = 3 \cdot 10^2 + 7 \cdot 10^1 + 2 \cdot 10^0&lt;/script&gt;
-
-&lt;p&gt;These are called &lt;strong&gt;positional notations&lt;/strong&gt;. Here, a large number can also be represented using the basic symbols from the set of digit symbols. It is useful to have a way of indicating the result in a general form using a uniform logic, i.e. a general method for representing an integer, \(z\) in the decimal system is to express it as follows&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_n \cdot 10^n + a_{n-1} \cdot 10^{n-1} + \cdots + a_1 \cdot 10 + a_0&lt;/script&gt;
-
-&lt;p&gt;which would be represented by the symbol \(a_na_{n-1}\cdots a_1a_0\)&lt;/p&gt;
-
-&lt;p&gt;Specifically, in case of decimal system the base is 10 as can be seen in the equations above. But, in general, for a number system &lt;strong&gt;any number greater than 1 can serve as the base&lt;/strong&gt; of the system. E.g. a &lt;strong&gt;septimal&lt;/strong&gt; system has base 7 and an integer is expressed as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;b_n \cdot 7^n + b_{n-1} \cdot 7^{n-1} + \cdots + b_1 \cdot 7 + b_0&lt;/script&gt;
-
-&lt;p&gt;and it would be represented by the symbol \(b_nb_{n-1}\cdots b_1b_0\)&lt;/p&gt;
-
-&lt;p&gt;As a result 109 in decimal system is represented by 214 in septimal system for the reason shown below&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;2 \cdot 7^2 + 1 \cdot 7 + 4 = 109&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;As a general rule, in order to convert from base 10 to base B, perform successive divisions of number z by B; the remainders in reverse order would be the number representation in the system with base B.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Too small a base base has disadvantages (even &lt;strong&gt;a small number like 72 has a lengthy representation 1,001,111 in the dyadic system i.e. the binary system&lt;/strong&gt;), while a large base requires learning many digit symbols, and an extended multiplication table.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The duodecimal system, i.e., choice of base 12 is advocated in many places, because it is exactly divisible by two, three, four, and six. Due to this property, works involving division and fraction are simplified.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Early systems of numerations were not positional in nature, but were based on purely additive principle. E.g. in roman symbolism,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;CXVIII = \text{one hundred} + \text{ten} + \text{five} + \text{one} + \text{one} + \text{one}&lt;/script&gt;
-
-&lt;p&gt;i.e., the symbol \(CXVIII\) represents 118. Same was true about other early number systems like the Egyptian, Hebrew, Greek systems of numeration.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Disadvantage of any purely additive notation is that it requires more and more number of new symbols as the number to be represented gets larger. Also, the computation with additive systems is so difficult to perform, that computation was confined to a few adepts in the ancient times.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The positional system has the property that all numbers, however large or small, can be represented by the use of a small set of different digit symbols. Also, the major advantage lies in the &lt;strong&gt;ease of computation&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;computation-in-other-number-systems&quot;&gt;Computation in Other Number Systems&lt;/h3&gt;
-
-&lt;p&gt;A very curious property of the decimal number system that points to usage of other number systems in the past is the number words used. E.g. the words for 11 and 12 are not constructed as the other teens are, suggesting a linguistic independence from words used for 10. Such peculiarities suggest remnants of use of other bases, notably 12 and 20.&lt;/p&gt;
-
-&lt;p&gt;Words vingt and quartevingt used for 20 and 80 respectively in French suggest a possibility of number with &lt;strong&gt;base 20&lt;/strong&gt;. There are traces of Babylonian astronomers using a number system called &lt;strong&gt;sexagesimal&lt;/strong&gt; (base 60).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The tables for addition and multiplication change with number system while the rules of arithmetic remain the same.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Below is the &lt;strong&gt;table for addition&lt;/strong&gt; followed by &lt;strong&gt;table for multiplication&lt;/strong&gt; in duodecimal number system. (&lt;strong&gt;10 and 11 in the duodecimal representation below are represented using A and B respectively.&lt;/strong&gt;)&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;+&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;17&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;.&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;1&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;2&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;3&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;4&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;5&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;6&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;7&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;8&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;9&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;A&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;B&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;21&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;19&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;24&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;2B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;36&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;41&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;20&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;28&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;40&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;48&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;54&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;23&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;30&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;39&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;46&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;53&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;60&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;69&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;18&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;26&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;34&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;42&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;50&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;5A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;68&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;76&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;84&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;B&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;1A&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;29&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;38&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;47&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;56&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;65&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;74&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;83&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;92&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;101&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 27 Oct 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/10/27/number-system/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/10/27/number-system/</guid>
-        
-        <category>mathematics</category>
-        
-        <category>number-system</category>
-        
-        <category>what-is-mathematics</category>
         
         
         <category>what-is-mathematics</category>
