@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Mar 2018 18:14:34 +0530</pubDate>
-    <lastBuildDate>Thu, 29 Mar 2018 18:14:34 +0530</lastBuildDate>
+    <pubDate>Thu, 29 Mar 2018 18:31:00 +0530</pubDate>
+    <lastBuildDate>Thu, 29 Mar 2018 18:31:00 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -201,6 +201,14 @@ from grad check:
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Gradient from backpropagation is adjusted linearly by division with 2. Because of the approximate implementation of backpropagation there is a linear scaling in the derivatives given by the backpropagation function. This still works fine for the overall network because the application of &lt;strong&gt;learning rate nullifies the minor scaling error&lt;/strong&gt;. &lt;strong&gt;Let me know if anyone can point out the mistake.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;random-initialization&quot;&gt;Random Initialization&lt;/h3&gt;
+
+&lt;p&gt;Initializing all the weights with the same values does not work well because it would basically mean that all the neurons in the following layers will calculate the same functions of the previous layers neurons and hence would have the same updates and would fail to learn anything significant.&lt;/p&gt;
+
+&lt;p&gt;Because of this reason, the parameter initialization must be in such a way that it &lt;strong&gt;breaks the symmetry&lt;/strong&gt; and prevents the calculation of similar functions across neurons in the same layer.&lt;/p&gt;
+
+&lt;p&gt;Random initialization helps break this symmetry by picking random values between \([-\epsilon, +\epsilon]\)to fill the parameter matrices.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
