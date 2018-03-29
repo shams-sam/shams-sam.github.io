@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Mar 2018 18:07:48 +0530</pubDate>
-    <lastBuildDate>Thu, 29 Mar 2018 18:07:48 +0530</lastBuildDate>
+    <pubDate>Thu, 29 Mar 2018 18:14:34 +0530</pubDate>
+    <lastBuildDate>Thu, 29 Mar 2018 18:14:34 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -195,6 +195,10 @@ from grad check:
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;It can be seen that the two values are very similar and hence it proves that the back propagation is working well.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Once the gradient checking is done, it should be turned off before running the network for entire set of training epochs. This is because the numerical approximation of gradient as explained works well for checking the results of backpropagation, but in practice the calculations are much slower than backpropagation and would slow down the training process.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Gradient from backpropagation is adjusted linearly by division with 2. Because of the approximate implementation of backpropagation there is a linear scaling in the derivatives given by the backpropagation function. This still works fine for the overall network because the application of &lt;strong&gt;learning rate nullifies the minor scaling error&lt;/strong&gt;. &lt;strong&gt;Let me know if anyone can point out the mistake.&lt;/strong&gt;&lt;/p&gt;
 
