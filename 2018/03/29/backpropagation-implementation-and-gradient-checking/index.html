@@ -297,13 +297,17 @@
 
 <p>As visible in the plot above, the gradient approximation can be calculated using the <strong>centred difference formula</strong> as follows,</p>
 
-<script type="math/tex; mode=display">{d \over d \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta - \epsilon)} {2 \epsilon} \tag{1} \label{1}</script>
+<script type="math/tex; mode=display">{\partial \over \partial \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta - \epsilon)} {2 \epsilon} \tag{1} \label{1}</script>
 
 <p>The approximation in \eqref{1}, works better than the <strong>single sided difference</strong>, i.e.,</p>
 
-<script type="math/tex; mode=display">{d \over d \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta)} {\epsilon} \tag{2} \label{2}</script>
+<script type="math/tex; mode=display">{\partial \over \partial \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta)} {\epsilon} \tag{2} \label{2}</script>
 
 <p>This is basically because if the error is approximated for the terms using <strong>Taylor expansion</strong>, it is observed that \eqref{1} has error of order \(O(h)\) while \eqref{2} has error of order \(O(h^2)\), i.e. <strong>second order approximation</strong>.</p>
+
+<p>With multiple parameter matrices, using \eqref{1}, the derivative with respect to \(\Theta_j\) can be approximated as,</p>
+
+<script type="math/tex; mode=display">{\partial \over \partial \Theta_j} J(\Theta) \approx \frac{J(\Theta_1, \cdots, \Theta_j + \epsilon, \cdots \Theta_n) - J(\Theta_1, \cdots, \Theta_j - \epsilon, \cdots \Theta_n)} {2 \epsilon} \tag{3} \label{3}</script>
 
 <p>Using the NumPy example of backpropagation, gradient checking can be confirmed as follows:</p>
 

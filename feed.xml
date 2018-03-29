@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Mar 2018 17:05:14 +0530</pubDate>
-    <lastBuildDate>Thu, 29 Mar 2018 17:05:14 +0530</lastBuildDate>
+    <pubDate>Thu, 29 Mar 2018 18:07:48 +0530</pubDate>
+    <lastBuildDate>Thu, 29 Mar 2018 18:07:48 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -143,13 +143,17 @@
 
 &lt;p&gt;As visible in the plot above, the gradient approximation can be calculated using the &lt;strong&gt;centred difference formula&lt;/strong&gt; as follows,&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{d \over d \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta - \epsilon)} {2 \epsilon} \tag{1} \label{1}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\partial \over \partial \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta - \epsilon)} {2 \epsilon} \tag{1} \label{1}&lt;/script&gt;
 
 &lt;p&gt;The approximation in \eqref{1}, works better than the &lt;strong&gt;single sided difference&lt;/strong&gt;, i.e.,&lt;/p&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{d \over d \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta)} {\epsilon} \tag{2} \label{2}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\partial \over \partial \Theta} J(\Theta) \approx \frac{J(\Theta + \epsilon) - J(\Theta)} {\epsilon} \tag{2} \label{2}&lt;/script&gt;
 
 &lt;p&gt;This is basically because if the error is approximated for the terms using &lt;strong&gt;Taylor expansion&lt;/strong&gt;, it is observed that \eqref{1} has error of order \(O(h)\) while \eqref{2} has error of order \(O(h^2)\), i.e. &lt;strong&gt;second order approximation&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;With multiple parameter matrices, using \eqref{1}, the derivative with respect to \(\Theta_j\) can be approximated as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;{\partial \over \partial \Theta_j} J(\Theta) \approx \frac{J(\Theta_1, \cdots, \Theta_j + \epsilon, \cdots \Theta_n) - J(\Theta_1, \cdots, \Theta_j - \epsilon, \cdots \Theta_n)} {2 \epsilon} \tag{3} \label{3}&lt;/script&gt;
 
 &lt;p&gt;Using the NumPy example of backpropagation, gradient checking can be confirmed as follows:&lt;/p&gt;
 
