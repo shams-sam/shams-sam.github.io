@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 29 Mar 2018 17:00:31 +0530</pubDate>
-    <lastBuildDate>Thu, 29 Mar 2018 17:00:31 +0530</lastBuildDate>
+    <pubDate>Thu, 29 Mar 2018 17:05:14 +0530</pubDate>
+    <lastBuildDate>Thu, 29 Mar 2018 17:05:14 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -196,8 +196,8 @@ from grad check:
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Y3s6r/gradient-checking&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Gradient Checking&lt;/a&gt;&lt;/small&gt;&amp;lt;/br&amp;gt;
-&lt;small&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-3/#gradcheck&quot; target=&quot;_blank&quot;&gt;CS231n Gradient checks&lt;/a&gt;&lt;/small&gt;&amp;lt;/br&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Y3s6r/gradient-checking&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Gradient Checking&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-3/#gradcheck&quot; target=&quot;_blank&quot;&gt;CS231n Gradient checks&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Thu, 29 Mar 2018 00:00:00 +0530</pubDate>
         <link>https://machinelearningmedium.com/2018/03/29/backpropagation-implementation-and-gradient-checking/</link>

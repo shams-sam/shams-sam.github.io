@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-03-29T17:00:31+05:30</updated>
+ <updated>2018-03-29T17:05:14+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -202,8 +202,8 @@ from grad check:
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Y3s6r/gradient-checking&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Gradient Checking&lt;/a&gt;&lt;/small&gt;&amp;lt;/br&amp;gt;
-&lt;small&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-3/#gradcheck&quot; target=&quot;_blank&quot;&gt;CS231n Gradient checks&lt;/a&gt;&lt;/small&gt;&amp;lt;/br&amp;gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Y3s6r/gradient-checking&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Gradient Checking&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;http://cs231n.github.io/neural-networks-3/#gradcheck&quot; target=&quot;_blank&quot;&gt;CS231n Gradient checks&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
  
