@@ -224,6 +224,20 @@
 
 <p>Here the summation term \(\sum_{k=1}^K\) is to <strong>generalize over the K output units</strong> of the neural network by calculating the cost function and summing over all the output units in the network. Also following the convention in regularization, the <strong>bias term in skipped from the regularization penalty</strong> in the cost function defination. Even if one includes the index 0, it would not effect the process in practice.</p>
 
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% y_vec is the target vector in one-hot encoded matrix form</span>
+<span class="c1">% y_hat is the prediction from the network after forward propagation</span>
+<span class="n">J</span> <span class="o">=</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="o">-</span> <span class="p">(</span><span class="n">y_vec</span> <span class="o">.*</span> <span class="nb">log</span><span class="p">(</span><span class="n">y_hat</span><span class="p">))</span> <span class="o">-</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_vec</span><span class="p">)</span> <span class="o">.*</span> <span class="nb">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">y_hat</span><span class="p">)))</span> <span class="o">*</span> <span class="nb">ones</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="p">/</span> <span class="n">m</span><span class="p">;</span>
+
+<span class="c1">% vectorized implementation of regularization terms</span>
+<span class="c1">% note that (2:end) ensures that the biases are not regularized</span>
+<span class="c1">% which is also seen the equations (2) above</span>
+<span class="n">reg_Theta1</span> <span class="o">=</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">size</span><span class="p">(</span><span class="n">Theta1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="p">((</span><span class="n">Theta1</span> <span class="o">.*</span> <span class="n">Theta1</span><span class="p">)(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">*</span> <span class="nb">ones</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">Theta1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+<span class="n">reg_Theta2</span> <span class="o">=</span> <span class="nb">ones</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">size</span><span class="p">(</span><span class="n">Theta2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="p">((</span><span class="n">Theta2</span> <span class="o">.*</span> <span class="n">Theta2</span><span class="p">)(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">*</span> <span class="nb">ones</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">Theta2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+
+<span class="c1">% final cost with regularization</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">J</span> <span class="o">+</span> <span class="p">(</span><span class="n">lambda</span> <span class="p">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">reg_Theta1</span> <span class="o">+</span> <span class="n">reg_Theta2</span><span class="p">));</span>
+</code></pre></div></div>
+
 <h3 id="backpropagation-algorithm">Backpropagation Algorithm</h3>
 <p>Backpropagation algorithm is based on the <strong>repeated application of the error calculation</strong> used for gradient descent similar to the regression techniques, and since it is repeatedly applied in the <strong>reverse order starting from output layer and continuing towards input layer</strong> it is termed as backpropagation.</p>
 
@@ -302,7 +316,24 @@
   <li>And finally, \( \frac {\partial} {\partial \Theta_{ij}^{(l)} } = D_{ij}^{(l)} \)</li>
 </ul>
 
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% example of backward propgation of error signal</span>
+<span class="n">del_3</span> <span class="o">=</span> <span class="n">y_hat</span> <span class="o">-</span> <span class="n">y_vec</span><span class="p">;</span>
+<span class="n">del_2</span> <span class="o">=</span> <span class="p">(</span><span class="n">del_3</span> <span class="o">*</span> <span class="n">Theta2</span><span class="p">)(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">.*</span> <span class="n">sigmoidGradient</span><span class="p">(</span><span class="n">z2</span><span class="p">);</span>
+
+<span class="c1">% calculation of partial derivatives from the error signals</span>
+<span class="n">Theta2_grad</span> <span class="o">=</span> <span class="p">(</span><span class="n">del_3</span><span class="o">'</span> <span class="o">*</span> <span class="n">a2</span><span class="p">)</span> <span class="p">/</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">Theta1_grad</span> <span class="o">=</span> <span class="p">(</span><span class="n">del_2</span><span class="o">'</span> <span class="o">*</span> <span class="n">a1</span><span class="p">)</span> <span class="p">/</span> <span class="n">m</span><span class="p">;</span>
+
+<span class="c1">% calculation of regularization parameters</span>
+<span class="c1">% (2:end) ensures no regularization of biases</span>
+<span class="c1">% as seen in equation (6)</span>
+<span class="n">Theta2_grad</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">=</span> <span class="n">Theta2_grad</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">+</span> <span class="n">lambda</span> <span class="o">*</span> <span class="n">Theta2</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="p">/</span> <span class="n">m</span><span class="p">;</span>
+<span class="n">Theta1_grad</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">=</span> <span class="n">Theta1_grad</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="o">+</span> <span class="n">lambda</span> <span class="o">*</span> <span class="n">Theta1</span><span class="p">(:,</span> <span class="mi">2</span><span class="p">:</span><span class="k">end</span><span class="p">)</span> <span class="p">/</span> <span class="n">m</span><span class="p">;</span>
+</code></pre></div></div>
+
 <p>The capital delta matrix \(D\), is used as an <strong>accumulator</strong> to add up the values as backpropagation proceeds and finally compute the partial derivatives.</p>
+
+<p>The complete vectorized implementation for the MNIST dataset using vanilla neural network with a single hidden layer can be found <a href="https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex4" target="_blank"><strong>here</strong></a>.</p>
 
 <h3 id="backpropagation-intuition">Backpropagation Intuition</h3>
 
@@ -330,7 +361,7 @@
 
 <p>The basis of backpropagation is benched on the propagating the error term calculated for the final layer using \eqref{3} and \eqref{4} backwards to the preceding layers.</p>
 
-<p>For more on mathematics of backpropagation, refer <a href="/2018/03/20/backpropagation-derivation/">Mathematics of Backpropagation</a>. For an approximate implementation of backpropagation using NumPy and checking results using Gradient Checking technique refer <a href="/2018/03/29/backpropagation-implementation-and-gradient-checking/">Backpropagation Implementation and Gradient Checking</a></p>
+<p>For more on mathematics of backpropagation, refer <a href="/2018/03/20/backpropagation-derivation/"><strong>Mathematics of Backpropagation</strong></a>. For an approximate implementation of backpropagation using NumPy and checking results using Gradient Checking technique refer <a href="/2018/03/29/backpropagation-implementation-and-gradient-checking/"><strong>Backpropagation Implementation and Gradient Checking</strong></a>.</p>
 
 <h2 id="references">REFERENCES:</h2>
 
