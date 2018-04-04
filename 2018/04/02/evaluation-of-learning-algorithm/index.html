@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Evaluation of Learning Algorithm | Machine Learning Medium</title>
+  <meta name="description" content="Often it is hard to decide what is right and what is not in evaluating the effectiveness of an algorithm. Which step would should one try and evaluate among the heap of probable options that can help." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Evaluation of Learning Algorithm"/>
+  
+  <meta property="og:description" content="Often it is hard to decide what is right and what is not in evaluating the effectiveness of an algorithm. Which step would should one try and evaluate among the heap of probable options that can help." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/regression.jpeg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2018-04-02T00:00:00+05:30">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2018-04-02T00:00:00+05:30">Apr 2</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/regression.jpeg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn-images-1.medium.com/max/1440/1*VoNxmH8kRLKlNI_uuEoBvw.jpeg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Evaluation of Learning Algorithm</h1>
+            <h2 class="post-description">Often it is hard to decide what is right and what is not in evaluating the effectiveness of an algorithm. Which step would should one try and evaluate among the heap of probable options that can help.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="basics-of-machine-learning-series">Basics of Machine Learning Series</h3>
+
+<blockquote>
+  <p><a href="/collection/basics-of-machine-learning">Index</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="problem-statement">Problem Statement</h3>
+
+<p>It can so happen that, upon applying learning algorithm to a problem statement, there are unacceptably large errors in the predictions made by a model. There are various options that can possibly increase the performance of a model and in turn accuracy, such as,</p>
+
+<ul>
+  <li>Acquire more training data</li>
+  <li>Filter and reduce the number of features</li>
+  <li>Increase the number of features</li>
+  <li>Adding polynomial features</li>
+  <li>Decreasing the regularization parameter, \(\lambda\)</li>
+  <li>Increase the regularization parameter, \(\lambda\)</li>
+</ul>
+
+<p>Seeing the number of options it can often be cumbersome to decide which path should one follow. Because it can so happen that sometimes one or more of the listed techniques might not work in a given case and hence would lead to wasted resources. Hence, randomness and coin toss would not be the correct way of picking one of the options.</p>
+
+<blockquote>
+  <p>Machine Learning Diagnostics are tests that help gain insight about what would or would not work with a learning algorithm, and hence give guidance about how to improve the performance. These can take time to implement, but are still worth venturing into during the time of uncertainties.</p>
+</blockquote>
+
+<h3 id="overfitting-and-train-test-split">Overfitting and Train-Test Split</h3>
+
+<p>The case of overfitting in a linear regression is easily detectable by looking at the graph of the plot after determining the parameters as shown in <a href="/2017/09/08/overfitting-and-regularization/#overfitting">Overfitting and Regularization post</a>. But as the number of features increase it becomes increasingly tough to detect overfitting by plotting.</p>
+
+<p>This is where the standard technique of <strong>train-test split</strong> comes in handy. It takes care of the scenario where the hypothesis has a low error but still is inaccurate due to overfitting. In this method, given a training dataset, it is split into two sets: training set and test set. Typically, the training set has 70% of the data while test set has the remaining 30%.</p>
+
+<p>The training process is then defined as:</p>
+
+<ul>
+  <li>Learn \(\Theta\) and minimize \(J(\Theta)\) on the training set.</li>
+  <li>Compute the error, \(J_{test}(\Theta)\) on the test set.</li>
+</ul>
+
+<p>Test set error can be defined as follows:</p>
+
+<ul>
+  <li>For linear regression, mean-squared error (MSE), defined as,</li>
+</ul>
+
+<script type="math/tex; mode=display">J_{test}(\Theta) = {1 \over 2m_{test}} \sum_{i=1}^{m_{test}}(h_{\Theta}(x_{test}^{(i)}) - y_{test}^{(i)})^2 \tag{1} \label{1}</script>
+
+<ul>
+  <li>For logistic regression, the cross-entropy cost function, defined as,</li>
+</ul>
+
+<script type="math/tex; mode=display">J_{test}(\Theta) = {1 \over m_{test}} \sum_{i=1}^{m_{test}} y_{test}^{(i)} log\, h_{\Theta}(x_{test}^{(i)}) + (1 - y_{test}^{(i)}) log\, (1-h_{\Theta}(x_{test}^{(i)})) \tag{2} \label{2}</script>
+
+<ul>
+  <li>Alternative error function, called <strong>Misclassification error (0/1 misclassification error)</strong> gives the proportion of test data that was misclassified for the logistic regression,</li>
+</ul>
+
+<script type="math/tex; mode=display">Test\_Error = {1 \over m_{test}} \sum_{i=1}^{m_{test}} err(h_{\Theta}(x_{test}^{(i)}), y_{test}^{(i)}) \tag{3} \label{3}</script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">err(h_{\Theta}(x), y) = 
+\begin{cases}
+1 \text{, if } h_{\Theta}(x) \geq 0.5 \text{ and } y = 0 \text{ or } h_{\Theta}(x) \lt 0.5 \text{ and } y = 1 \\
+0 \text{, otherwise }
+\end{cases}
+ \tag{4} \label{4}</script>
+
+<h3 id="why-trainvalidationtest-splits">Why Train/Validation/Test Splits?</h3>
+
+<p>It is seen that the model error on the training data is generally lower than what error it would display for the unseen data. So it would be fair to say that the loss calculations on the training data are not a proper indicator of the accuracy of the model. For this reason the previous section presented the process of train/test split for checking the performance of the model.</p>
+
+<p>Following the similar argument, say we have \(n\) models, having varying candidate hyperparameters (like number of polynomial terms in regression, number of hidden layer and neurons in the neural network) and one is chosen based on the lowest test error it reports after training. Would it be correct to report this error as the indicator of the generalized performance of the selected model?</p>
+
+<p>In general, many practitioners do use the same metrics as model performance, but it is advised against. This is so because, the way the model parameters were fit to the train samples and hence would report lower error on train dataset, similarly the model hyperparameters are fit to the test set and would report a lower error.</p>
+
+<p>To overcome this issue, it is recommended to split the dataset into three parts, namely, train, cross-validation (or validation) and test. Now, train set is used to optimize the model parameters, then cross-validation set is used to select the best model among ones having varying hyperparameters. Finally the generalized performance can be calculated on test dataset which is not seen during training and model selection process. This would be the truly unbiased reporting of model performance metrics. This way the hyperparameters have not been trained using the test set.</p>
+
+<h3 id="bias-vs-variance">Bias vs Variance</h3>
+
+<p>Most of the times, if the learning algorithm is not performing well on a dataset, it must be because of a high bias or a high variance problem, which is also sometimes known as underfitting or overfitting problems respectively.</p>
+
+<p>Suppose there is training set for regression split into train, cross validation and test sets. The the training error, \(J_{train}(\Theta)\) and cross-validation error, \(J_{cv}(\Theta)\) can be defined as follows (based on \eqref{1}),</p>
+
+<script type="math/tex; mode=display">J_{train}(\Theta) = {1 \over 2m} \sum_{i=1}^{m}(h_{\Theta}(x^{(i)}) - y^{(i)})^2</script>
+
+<script type="math/tex; mode=display">J_{cv}(\Theta) = {1 \over 2m_{cv}} \sum_{i=1}^{m_{cv}}(h_{\Theta}(x_{cv}^{(i)}) - y_{cv}^{(i)})^2</script>
+
+<p>As, the degree of regression is increased the learnt parameters would fit the training data better and better and hence reduce the training error. But it would also lead to progressive overfitting after a certain point until when the cross-validation set also performs better, i.e. the error in cross-validation set would decrease initially until the parameters are fit to generalize, but would see a spike in error when the overfitting happens after a certain point. As a result, the plot of degree of regression vs the training and validation error would look as follows.</p>
+
+<p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/fig-1-bias-vs-variance.png?raw=true" alt="Fig-1 Bias vs Variance" width="50%" /></p>
+
+<p>So,</p>
+
+<ul>
+  <li><strong>High Bias (Underfitting):</strong> both \(J_{train}(\Theta)\) and \(J_{cv}(\Theta)\) are high and \(J_{train}(\Theta) \approx J_{cv}(\Theta)\).</li>
+  <li><strong>High Variance (Overfitting):</strong> \(J_{train}(\Theta)\) is low, but \(J_{cv}(\Theta)\) is much greater than \(J_{train}(\Theta)\).</li>
+</ul>
+
+<h3 id="effect-of-regularization-on-biasvariance">Effect of Regularization on Bias/Variance</h3>
+
+<p>Given a high order polynomial from previous section, if the regularization term, \(\lambda\) is small, its equivalent to having a regression without regularization which would have a small train error, \(J_{train}(\Theta)\) but would fail to generalize and hence have a high cross-validation error, \(J_{cv}(\Theta)\), i.e. a high variance.</p>
+
+<p>Similarly, for a very high value of \(\lambda\), since all the parameters would be almost zero, both the training and cross-validation errors would be high, i.e. high bias.</p>
+
+<p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/fig-2-regularization-vs-bias-variance.png?raw=true" alt="Fig-2 Regularization vs Bias/Variance" width="50%" /></p>
+
+<p>Therefore, an optimal value of regularization parameter would balance the tradeoff between the bias-variance and help achieve the ideal model settings.</p>
+
+<h3 id="learning-curves">Learning Curves</h3>
+
+<p>These are the plots of training error and cross-validation errors as a function of number of training data. These plots can give an insight about where the training is suffering from high bias or high variance issues. Fig-3 and Fig-4 show the learning curves for high bias and high variance settings respectively.</p>
+
+<p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/fig-3-high-bias-learning-curves.png?raw=true" alt="Fig-3. High Bias Learning Curves" width="50%" /></p>
+
+<p>In a high bias setting, as the number of training examples increase the training error would increase too since the model is not fitting the data with an appropriate curve. Also since the generalization is bad, after a certain point, the bias would lead to comparable errors in cross-validation and training. This setting suggests that <strong>procuring more data is not going to help</strong> improve the model because of the biased assumptions made by the model.</p>
+
+<p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/fig-4-high-variance-learning-curves.png?raw=true" alt="Fig-4. High Variance Learning Curves" width="50%" /></p>
+
+<p>In case of high variance, since the order of polynomial is high, the training error will grow slowly but would be well within the desired performance as in the plot above. But the high variance leads to overfitting and hence would cause high cross-validation errors. In this setting, <strong>getting more data would help</strong> because as the number of training data increases, the model would be forced to learn more generalized parameters that cannot be compensated by a overfit curve. As the plot shows as the number of training data increase, the gap between the training and cross-validation error would close down.</p>
+
+<h3 id="summarizing-bias-and-variance">Summarizing Bias and Variance</h3>
+
+<p>So, based on the study of bias and variance, the steps mentions in <a href="#problem-statement">Problem Statement</a> must be used under following settings:</p>
+
+<ul>
+  <li>Acquire more training data <strong>fixes high variance</strong></li>
+  <li>Filtering and reducing the number of features <strong>fixes high variance</strong></li>
+  <li>Increasing the number of features <strong>fixes high bias</strong></li>
+  <li>Adding polynomial features <strong>fixes high bias</strong></li>
+  <li>Decreasing the regularization parameter, \(\lambda\), <strong>fixes high bias</strong></li>
+  <li>Increasing the regularization parameter, \(\lambda\), <strong>fixes high variance</strong></li>
+</ul>
+
+<h3 id="back-to-neural-networks-nn">Back to Neural Networks (NN)</h3>
+
+<ul>
+  <li>NN with less hidden units is prone to <strong>underfitting or high bias</strong>, but is <strong>computationally efficient</strong>.</li>
+  <li>NN with more hidden layers or hidden units is more prone to <strong>overfitting or high variance</strong>. It is also <strong>computationally expensive</strong>.</li>
+</ul>
+
+<p>Generally larger nueral networks are used to solve the hard problems of machine learning and the issue of overfitting is solved by choosing and optimal value of regularization parameter, \(\lambda\).</p>
+
+<p><a href="/2018/03/31/how-to-train-your-neural-network/#pick-a-network-architecture">Earlier posts</a> suggested using a single hidden layer as the default. Reading this post, it can be seen that one can use the train-validation split to choose the best combination of number of hidden layers.</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/OVM4M/deciding-what-to-try-next" target="_blank">Machine Learning: Coursera - What to try next?</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/yfbJY/evaluating-a-hypothesis" target="_blank">Machine Learning: Coursera - Evaluating a Hypothesis</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/QGKbr/model-selection-and-train-validation-test-sets" target="_blank">Machine Learning: Coursera - Model Selection and Train/Validation/Test Splits</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/yCAup/diagnosing-bias-vs-variance" target="_blank">Machine Learning: Coursera - Diagnosing Bias and Variance</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/4VDlf/regularization-and-bias-variance" target="_blank">Machine Learning: Coursera - Regularization vs Bias Variance</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/Kont7/learning-curves" target="_blank">Machine Learning: Coursera - Learning Curves</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/zJTzp/deciding-what-to-do-next-revisited" target="_blank">Machine Learning: Coursera - What to Do Next?</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Evaluation of Learning Algorithm&url=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/&title=Evaluation of Learning Algorithm&summary=Often it is hard to decide what is right and what is not in evaluating the effectiveness of an algorithm. Which step would should one try and evaluate among the heap of probable options that can help.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Evaluation of Learning Algorithm&amp;body=Check out this site https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2018-04-02 00:00">02 Apr 2018</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2018<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2018 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>

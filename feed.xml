@@ -5,9 +5,180 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 31 Mar 2018 01:32:00 +0530</pubDate>
-    <lastBuildDate>Sat, 31 Mar 2018 01:32:00 +0530</lastBuildDate>
+    <pubDate>Thu, 05 Apr 2018 03:52:05 +0530</pubDate>
+    <lastBuildDate>Thu, 05 Apr 2018 03:52:05 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Evaluation of Learning Algorithm</title>
+        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;problem-statement&quot;&gt;Problem Statement&lt;/h3&gt;
+
+&lt;p&gt;It can so happen that, upon applying learning algorithm to a problem statement, there are unacceptably large errors in the predictions made by a model. There are various options that can possibly increase the performance of a model and in turn accuracy, such as,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Acquire more training data&lt;/li&gt;
+  &lt;li&gt;Filter and reduce the number of features&lt;/li&gt;
+  &lt;li&gt;Increase the number of features&lt;/li&gt;
+  &lt;li&gt;Adding polynomial features&lt;/li&gt;
+  &lt;li&gt;Decreasing the regularization parameter, \(\lambda\)&lt;/li&gt;
+  &lt;li&gt;Increase the regularization parameter, \(\lambda\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Seeing the number of options it can often be cumbersome to decide which path should one follow. Because it can so happen that sometimes one or more of the listed techniques might not work in a given case and hence would lead to wasted resources. Hence, randomness and coin toss would not be the correct way of picking one of the options.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Machine Learning Diagnostics are tests that help gain insight about what would or would not work with a learning algorithm, and hence give guidance about how to improve the performance. These can take time to implement, but are still worth venturing into during the time of uncertainties.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;overfitting-and-train-test-split&quot;&gt;Overfitting and Train-Test Split&lt;/h3&gt;
+
+&lt;p&gt;The case of overfitting in a linear regression is easily detectable by looking at the graph of the plot after determining the parameters as shown in &lt;a href=&quot;/2017/09/08/overfitting-and-regularization/#overfitting&quot;&gt;Overfitting and Regularization post&lt;/a&gt;. But as the number of features increase it becomes increasingly tough to detect overfitting by plotting.&lt;/p&gt;
+
+&lt;p&gt;This is where the standard technique of &lt;strong&gt;train-test split&lt;/strong&gt; comes in handy. It takes care of the scenario where the hypothesis has a low error but still is inaccurate due to overfitting. In this method, given a training dataset, it is split into two sets: training set and test set. Typically, the training set has 70% of the data while test set has the remaining 30%.&lt;/p&gt;
+
+&lt;p&gt;The training process is then defined as:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Learn \(\Theta\) and minimize \(J(\Theta)\) on the training set.&lt;/li&gt;
+  &lt;li&gt;Compute the error, \(J_{test}(\Theta)\) on the test set.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Test set error can be defined as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For linear regression, mean-squared error (MSE), defined as,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_{test}(\Theta) = {1 \over 2m_{test}} \sum_{i=1}^{m_{test}}(h_{\Theta}(x_{test}^{(i)}) - y_{test}^{(i)})^2 \tag{1} \label{1}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For logistic regression, the cross-entropy cost function, defined as,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_{test}(\Theta) = {1 \over m_{test}} \sum_{i=1}^{m_{test}} y_{test}^{(i)} log\, h_{\Theta}(x_{test}^{(i)}) + (1 - y_{test}^{(i)}) log\, (1-h_{\Theta}(x_{test}^{(i)})) \tag{2} \label{2}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Alternative error function, called &lt;strong&gt;Misclassification error (0/1 misclassification error)&lt;/strong&gt; gives the proportion of test data that was misclassified for the logistic regression,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Test\_Error = {1 \over m_{test}} \sum_{i=1}^{m_{test}} err(h_{\Theta}(x_{test}^{(i)}), y_{test}^{(i)}) \tag{3} \label{3}&lt;/script&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;err(h_{\Theta}(x), y) = 
+\begin{cases}
+1 \text{, if } h_{\Theta}(x) \geq 0.5 \text{ and } y = 0 \text{ or } h_{\Theta}(x) \lt 0.5 \text{ and } y = 1 \\
+0 \text{, otherwise }
+\end{cases}
+ \tag{4} \label{4}&lt;/script&gt;
+
+&lt;h3 id=&quot;why-trainvalidationtest-splits&quot;&gt;Why Train/Validation/Test Splits?&lt;/h3&gt;
+
+&lt;p&gt;It is seen that the model error on the training data is generally lower than what error it would display for the unseen data. So it would be fair to say that the loss calculations on the training data are not a proper indicator of the accuracy of the model. For this reason the previous section presented the process of train/test split for checking the performance of the model.&lt;/p&gt;
+
+&lt;p&gt;Following the similar argument, say we have \(n\) models, having varying candidate hyperparameters (like number of polynomial terms in regression, number of hidden layer and neurons in the neural network) and one is chosen based on the lowest test error it reports after training. Would it be correct to report this error as the indicator of the generalized performance of the selected model?&lt;/p&gt;
+
+&lt;p&gt;In general, many practitioners do use the same metrics as model performance, but it is advised against. This is so because, the way the model parameters were fit to the train samples and hence would report lower error on train dataset, similarly the model hyperparameters are fit to the test set and would report a lower error.&lt;/p&gt;
+
+&lt;p&gt;To overcome this issue, it is recommended to split the dataset into three parts, namely, train, cross-validation (or validation) and test. Now, train set is used to optimize the model parameters, then cross-validation set is used to select the best model among ones having varying hyperparameters. Finally the generalized performance can be calculated on test dataset which is not seen during training and model selection process. This would be the truly unbiased reporting of model performance metrics. This way the hyperparameters have not been trained using the test set.&lt;/p&gt;
+
+&lt;h3 id=&quot;bias-vs-variance&quot;&gt;Bias vs Variance&lt;/h3&gt;
+
+&lt;p&gt;Most of the times, if the learning algorithm is not performing well on a dataset, it must be because of a high bias or a high variance problem, which is also sometimes known as underfitting or overfitting problems respectively.&lt;/p&gt;
+
+&lt;p&gt;Suppose there is training set for regression split into train, cross validation and test sets. The the training error, \(J_{train}(\Theta)\) and cross-validation error, \(J_{cv}(\Theta)\) can be defined as follows (based on \eqref{1}),&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_{train}(\Theta) = {1 \over 2m} \sum_{i=1}^{m}(h_{\Theta}(x^{(i)}) - y^{(i)})^2&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J_{cv}(\Theta) = {1 \over 2m_{cv}} \sum_{i=1}^{m_{cv}}(h_{\Theta}(x_{cv}^{(i)}) - y_{cv}^{(i)})^2&lt;/script&gt;
+
+&lt;p&gt;As, the degree of regression is increased the learnt parameters would fit the training data better and better and hence reduce the training error. But it would also lead to progressive overfitting after a certain point until when the cross-validation set also performs better, i.e. the error in cross-validation set would decrease initially until the parameters are fit to generalize, but would see a spike in error when the overfitting happens after a certain point. As a result, the plot of degree of regression vs the training and validation error would look as follows.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-02-evaluation-of-learning-algorithm/fig-1-bias-vs-variance.png?raw=true&quot; alt=&quot;Fig-1 Bias vs Variance&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;High Bias (Underfitting):&lt;/strong&gt; both \(J_{train}(\Theta)\) and \(J_{cv}(\Theta)\) are high and \(J_{train}(\Theta) \approx J_{cv}(\Theta)\).&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;High Variance (Overfitting):&lt;/strong&gt; \(J_{train}(\Theta)\) is low, but \(J_{cv}(\Theta)\) is much greater than \(J_{train}(\Theta)\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;effect-of-regularization-on-biasvariance&quot;&gt;Effect of Regularization on Bias/Variance&lt;/h3&gt;
+
+&lt;p&gt;Given a high order polynomial from previous section, if the regularization term, \(\lambda\) is small, its equivalent to having a regression without regularization which would have a small train error, \(J_{train}(\Theta)\) but would fail to generalize and hence have a high cross-validation error, \(J_{cv}(\Theta)\), i.e. a high variance.&lt;/p&gt;
+
+&lt;p&gt;Similarly, for a very high value of \(\lambda\), since all the parameters would be almost zero, both the training and cross-validation errors would be high, i.e. high bias.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-02-evaluation-of-learning-algorithm/fig-2-regularization-vs-bias-variance.png?raw=true&quot; alt=&quot;Fig-2 Regularization vs Bias/Variance&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Therefore, an optimal value of regularization parameter would balance the tradeoff between the bias-variance and help achieve the ideal model settings.&lt;/p&gt;
+
+&lt;h3 id=&quot;learning-curves&quot;&gt;Learning Curves&lt;/h3&gt;
+
+&lt;p&gt;These are the plots of training error and cross-validation errors as a function of number of training data. These plots can give an insight about where the training is suffering from high bias or high variance issues. Fig-3 and Fig-4 show the learning curves for high bias and high variance settings respectively.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-02-evaluation-of-learning-algorithm/fig-3-high-bias-learning-curves.png?raw=true&quot; alt=&quot;Fig-3. High Bias Learning Curves&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In a high bias setting, as the number of training examples increase the training error would increase too since the model is not fitting the data with an appropriate curve. Also since the generalization is bad, after a certain point, the bias would lead to comparable errors in cross-validation and training. This setting suggests that &lt;strong&gt;procuring more data is not going to help&lt;/strong&gt; improve the model because of the biased assumptions made by the model.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-02-evaluation-of-learning-algorithm/fig-4-high-variance-learning-curves.png?raw=true&quot; alt=&quot;Fig-4. High Variance Learning Curves&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In case of high variance, since the order of polynomial is high, the training error will grow slowly but would be well within the desired performance as in the plot above. But the high variance leads to overfitting and hence would cause high cross-validation errors. In this setting, &lt;strong&gt;getting more data would help&lt;/strong&gt; because as the number of training data increases, the model would be forced to learn more generalized parameters that cannot be compensated by a overfit curve. As the plot shows as the number of training data increase, the gap between the training and cross-validation error would close down.&lt;/p&gt;
+
+&lt;h3 id=&quot;summarizing-bias-and-variance&quot;&gt;Summarizing Bias and Variance&lt;/h3&gt;
+
+&lt;p&gt;So, based on the study of bias and variance, the steps mentions in &lt;a href=&quot;#problem-statement&quot;&gt;Problem Statement&lt;/a&gt; must be used under following settings:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Acquire more training data &lt;strong&gt;fixes high variance&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Filtering and reducing the number of features &lt;strong&gt;fixes high variance&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Increasing the number of features &lt;strong&gt;fixes high bias&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Adding polynomial features &lt;strong&gt;fixes high bias&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Decreasing the regularization parameter, \(\lambda\), &lt;strong&gt;fixes high bias&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Increasing the regularization parameter, \(\lambda\), &lt;strong&gt;fixes high variance&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;back-to-neural-networks-nn&quot;&gt;Back to Neural Networks (NN)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;NN with less hidden units is prone to &lt;strong&gt;underfitting or high bias&lt;/strong&gt;, but is &lt;strong&gt;computationally efficient&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;NN with more hidden layers or hidden units is more prone to &lt;strong&gt;overfitting or high variance&lt;/strong&gt;. It is also &lt;strong&gt;computationally expensive&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Generally larger nueral networks are used to solve the hard problems of machine learning and the issue of overfitting is solved by choosing and optimal value of regularization parameter, \(\lambda\).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2018/03/31/how-to-train-your-neural-network/#pick-a-network-architecture&quot;&gt;Earlier posts&lt;/a&gt; suggested using a single hidden layer as the default. Reading this post, it can be seen that one can use the train-validation split to choose the best combination of number of hidden layers.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/OVM4M/deciding-what-to-try-next&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - What to try next?&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/yfbJY/evaluating-a-hypothesis&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Evaluating a Hypothesis&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/QGKbr/model-selection-and-train-validation-test-sets&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Model Selection and Train/Validation/Test Splits&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/yCAup/diagnosing-bias-vs-variance&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Diagnosing Bias and Variance&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/4VDlf/regularization-and-bias-variance&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Regularization vs Bias Variance&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Kont7/learning-curves&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Learning Curves&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/zJTzp/deciding-what-to-do-next-revisited&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - What to Do Next?&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 02 Apr 2018 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/</guid>
+        
+        <category>machine-learning</category>
+        
+        <category>andrew-ng</category>
+        
+        
+        <category>basics-of-machine-learning</category>
+        
+      </item>
     
       <item>
         <title>How to train your Neural Network?</title>
@@ -2475,200 +2646,6 @@ Output
         
         <category>papers</category>
         
-        
-      </item>
-    
-      <item>
-        <title>Congruence and Modular Arithmetic</title>
-        <description>&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/collection/what-is-mathematics&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;congruence&quot;&gt;Congruence&lt;/h3&gt;
-
-&lt;p&gt;Two integers \(a\) and \(b\) are &lt;strong&gt;congruent modulo \(d\)&lt;/strong&gt;, where \(d\) is a fixed integer, if \(a\) and \(b\) leave same remainder on division by \(d\), i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a-b = nd \tag{1} \label{1}&lt;/script&gt;
-
-&lt;p&gt;It is denoted by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a\equiv b\pmod d \tag{2} \label{2}&lt;/script&gt;
-
-&lt;p&gt;Following defination of congruences are equivalent:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(a\) is congruent to \(b\) modulo \(d\).&lt;/li&gt;
-  &lt;li&gt;\(a = b + nd\) for some integer n.&lt;/li&gt;
-  &lt;li&gt;\(d\) divides \(a-b\).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;properties-and-proof&quot;&gt;Properties and Proof&lt;/h3&gt;
-
-&lt;p&gt;Congruence with respect to a fixed modulus has many of the formal properties of ordinary equality.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(a\equiv a\pmod d\)&lt;/li&gt;
-  &lt;li&gt;If \(a\equiv b\pmod d\), then \(b\equiv a\pmod d\)&lt;/li&gt;
-  &lt;li&gt;If \(a\equiv b\pmod d\) and \(b\equiv c\pmod d\), then \(a\equiv c\pmod d\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;If \(a\equiv a’\pmod d\) and \(b\equiv b’\pmod d\), then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a + b\equiv a' + b'\pmod d \tag{3} \label{3}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a - b\equiv a' - b'\pmod d \tag{4} \label{4}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;ab\equiv a'b'\pmod d \tag{5} \label{5}&lt;/script&gt;
-
-&lt;p&gt;Say,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a = a' + rd&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;b = b' + sd&lt;/script&gt;
-
-&lt;p&gt;then,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a + b = a' + b' + (r+s)d&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a - b = a' - b' + (r-s)d&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;ab = a'b' + (a's + b'r +rsd)d&lt;/script&gt;
-
-&lt;h3 id=&quot;geometric-interpretation&quot;&gt;Geometric Interpretation&lt;/h3&gt;
-
-&lt;p&gt;Generally, integers are represented geometrically using a number line, where a segment of unit length is chosen and multiplied in either directions to represent negative or positive integers.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-20-congruence-and-modulo/fig-1-geometric-representation.svg?raw=true&quot; alt=&quot;Geometric Representation of Congruence&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;But, when an integer modulo \(d\) is considered, the magnitude is insignificant as long as the behavior on division by \(d\) is same (i.e. they leave the same remainder on division by \(d\)). This is geometrically represented using a circle divided into d equal parts. This is because any integer divided by \(d\) leaves as remainder one of the \(d\) numbers \(0, 1, \cdots, d-1\) which are placed at equal distances on the circumference of the circle. Every integer is congruent modulo \(d\) to one of these numbers and hence can be represented by one of these points. (&lt;strong&gt;Two numbers are congruent if they occur at the same point the circle.&lt;/strong&gt;)&lt;/p&gt;
-
-&lt;h3 id=&quot;application-of-congruence-properties&quot;&gt;Application of Congruence Properties&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The test for divisibility, generally taught in elementary school, is a direct result of the properties of congruence operation.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;For example,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10 \equiv -1 \pmod{11}&lt;/script&gt;
-
-&lt;p&gt;since \(10 = -1 + 11\). Successively multiplying this congruence, using \eqref{5}, we obtain,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv (-1)(-1) = 1 \pmod{11}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv = -1 \pmod{11}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv = 1 \pmod{11}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\vdots&lt;/script&gt;
-
-&lt;p&gt;So using \eqref{3} and \eqref{5}, it can be shown that any two number, z and t of the form shown below will leave the same remainder when divided by 11.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;z = a_0 + a_1\cdot 10 + a_2 \cdot 10^2 + \cdots + a_n \cdot 10^n \tag{6} \label{6}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;t = a_0 - a_1 + a_2 - \cdots + (-1)^n \cdot a_n \tag{7} \label{7}&lt;/script&gt;
-
-&lt;p&gt;Here, \(z\) is the format of any integer to the base 10. Hence, a number is divisible by 11 (i.e. leaves a remainder 0), if and only if \(t\) is divisible by 11 (which in \eqref{7} basically means that &lt;strong&gt;the difference of the sum of all the odd digits and even digits together should be divisible by 11&lt;/strong&gt;, including 0.)&lt;/p&gt;
-
-&lt;p&gt;It can be observed that while such patterns  are easier for numbers like 3, 9, 11, they are not easy to remember for other numbers like 7 and 11, as shown below.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 \equiv 1 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10 \equiv -3 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv -4 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv -1 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv 3 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^5 \equiv 4 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^6 \equiv 1 \pmod{13}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;t = a_0 - 3 \cdot a_1 - 4 \cdot a_2 - a_3 + 3 \cdot a_4 + 4 \cdot a_5 + a_6 - \cdots \tag{8} \label{8}&lt;/script&gt;
-
-&lt;p&gt;From above we reach the result that any number \(z\) in \eqref{6} is divisible by 13 if and only if \(t\) of the form \eqref{8} is divisible by 13 (&lt;strong&gt;clearly not an easy one to remember :P&lt;/strong&gt;).&lt;/p&gt;
-
-&lt;p&gt;Using a similar approach one can deduce the divisibility rule for any other integer.&lt;/p&gt;
-
-&lt;h3 id=&quot;other-properties&quot;&gt;Other Properties&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;script type=&quot;math/tex; mode=display&quot;&gt;ab\equiv 0 \pmod d \tag{9} \label{9}&lt;/script&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;only if either \(a\equiv 0 \pmod d\) or \(b\equiv 0 \pmod d\). Property only holds if \(d\) is a prime number. If \(d\) was a composite, there exist numbers \(a \lt d\) and \(b \lt d\), such that,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;d = a\cdot b&lt;/script&gt;
-
-&lt;p&gt;Where,
-&lt;script type=&quot;math/tex&quot;&gt;\require{cancel}&lt;/script&gt;&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a \cancel{\equiv} 0 \pmod d \text{ and } b \cancel{\equiv} 0 \pmod d&lt;/script&gt;
-
-&lt;p&gt;But,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a \cdot b = d \equiv 0 \pmod d&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Law of Cancellation&lt;/strong&gt;: With respect to a prime modulus, if \(ab \equiv ac\) and \(a \cancel{\equiv} 0\), then \(b \equiv c\).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;fermats-theorem&quot;&gt;Fermat’s Theorem&lt;/h3&gt;
-
-&lt;p&gt;If \(p\) is any prime which does not divide the integer \(a\), then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^{p-1} \equiv 1 \pmod p \tag{10} \label{10}&lt;/script&gt;
-
-&lt;p&gt;Consider multiples of \(a\),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;m_1 = a, m_2 = 2a, m_3 = 3a, \cdots m_{p-1} = (p-1)a \tag{11} \label{11}&lt;/script&gt;
-
-&lt;p&gt;Let two of these numbers, \(m_r\) and \(m_s\) be congruent modulo \(p\), then,&lt;/p&gt;
-
-&lt;p&gt;\(p\) must be a factor of \(m_r - m_s = (r-s)a\) for some \(r, s\) such that \(1 \leq r \lt s \leq (p-1)\).&lt;/p&gt;
-
-&lt;p&gt;But since it is assumed that \(p\) does not divide \(a\) and also \(p\) cannot be factor of \(r-s\) since it is less than \(p\).&lt;/p&gt;
-
-&lt;p&gt;From \eqref{9}, it can be concluded that two numbers from \eqref{11} cannot be congruent modulo \(p\).&lt;/p&gt;
-
-&lt;p&gt;So each of the numbers in \eqref{11} must be congruent to \(1, 2, 3, \cdots , (p-1)\) in some arrangement. So,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;m_1 m_2 \cdots m_{p-1} = 1 \cdot 2 \cdots (p-1) a^{p-1} \equiv 1 \cdot 2 \cdots (p-1) \pmod p \tag{12} \label{12}&lt;/script&gt;
-
-&lt;p&gt;For simplicity, let \(K = 1 \cdot 2 \cdots (p-1)\), then&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;K(a^{p-1}-1) \equiv 0 \pmod p \tag{13} \label{13}&lt;/script&gt;
-
-&lt;p&gt;where \(K\) is not divisible by \(p\), since none of its factors are, hence from \eqref{9}, \((a^{p-1} - 1)\) must be divisible by \(p\), i.e.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;a^{p-1} -1 \equiv 0 \pmod p \tag{14} \label{14}&lt;/script&gt;
-
-&lt;p&gt;Hence, proving \eqref{10}.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://drive.google.com/open?id=0BxedRvE84NXkSy1sdzJKNDlHZGM&quot; target=&quot;_blank&quot;&gt;What is Mathematics? Second Edition - Chapter I: Natural Numbers&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Wed, 20 Dec 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/</guid>
-        
-        <category>mathematics</category>
-        
-        <category>number-system</category>
-        
-        <category>what-is-mathematics</category>
-        
-        
-        <category>what-is-mathematics</category>
         
       </item>
     
