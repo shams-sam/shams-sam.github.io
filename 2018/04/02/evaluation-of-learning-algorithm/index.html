@@ -213,6 +213,11 @@
 
 <script type="math/tex; mode=display">J_{test}(\Theta) = {1 \over 2m_{test}} \sum_{i=1}^{m_{test}}(h_{\Theta}(x_{test}^{(i)}) - y_{test}^{(i)})^2 \tag{1} \label{1}</script>
 
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% vectorized implementation to calculate cost function</span>
+<span class="nb">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">y</span><span class="p">);</span>
+<span class="n">J</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">error</span><span class="o">'</span> <span class="o">*</span> <span class="nb">error</span><span class="p">)</span>
+</code></pre></div></div>
+
 <ul>
   <li>For logistic regression, the cross-entropy cost function, defined as,</li>
 </ul>
@@ -275,6 +280,22 @@
 
 <p>Therefore, an optimal value of regularization parameter would balance the tradeoff between the bias-variance and help achieve the ideal model settings.</p>
 
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% plot a validation curve that we can use to select lambda</span>
+<span class="n">lambda_vec</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mf">0.001</span> <span class="mf">0.003</span> <span class="mf">0.01</span> <span class="mf">0.03</span> <span class="mf">0.1</span> <span class="mf">0.3</span> <span class="mi">1</span> <span class="mi">3</span> <span class="mi">10</span><span class="p">]</span><span class="o">'</span><span class="p">;</span>
+
+<span class="n">error_train</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">error_val</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">),</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="nb">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">)</span>
+  <span class="n">lambda</span> <span class="o">=</span> <span class="n">lambda_vec</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+  <span class="p">[</span><span class="n">theta</span><span class="p">]</span> <span class="o">=</span> <span class="n">trainLinearReg</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lambda</span><span class="p">);</span>
+  <span class="n">error_train</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">linearRegCostFunction</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">error_val</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">linearRegCostFunction</span><span class="p">(</span><span class="n">Xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">endfor</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/effect-of-lambda-plot.png?raw=true" alt="Effect of Lambda" width="50%" /></p>
+
 <h3 id="learning-curves">Learning Curves</h3>
 
 <p>These are the plots of training error and cross-validation errors as a function of number of training data. These plots can give an insight about where the training is suffering from high bias or high variance issues. Fig-3 and Fig-4 show the learning curves for high bias and high variance settings respectively.</p>
@@ -286,6 +307,23 @@
 <p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/fig-4-high-variance-learning-curves.png?raw=true" alt="Fig-4. High Variance Learning Curves" width="50%" /></p>
 
 <p>In case of high variance, since the order of polynomial is high, the training error will grow slowly but would be well within the desired performance as in the plot above. But the high variance leads to overfitting and hence would cause high cross-validation errors. In this setting, <strong>getting more data would help</strong> because as the number of training data increases, the model would be forced to learn more generalized parameters that cannot be compensated by a overfit curve. As the plot shows as the number of training data increase, the gap between the training and cross-validation error would close down.</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% plot a learning curve</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="n">error_train</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">error_val</span>   <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="nb">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">:</span> <span class="n">m</span>
+  <span class="n">Xi</span> <span class="o">=</span> <span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">i</span><span class="p">,</span> <span class="p">:);</span>
+  <span class="n">yi</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="nb">i</span><span class="p">,</span> <span class="p">:);</span>
+  <span class="p">[</span><span class="n">theta</span><span class="p">]</span> <span class="o">=</span> <span class="n">trainLinearReg</span><span class="p">(</span><span class="n">Xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">lambda</span><span class="p">);</span>
+  <span class="n">error_train</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">linearRegCostFunction</span><span class="p">(</span><span class="n">Xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">error_val</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span> <span class="o">=</span> <span class="n">linearRegCostFunction</span><span class="p">(</span><span class="n">Xval</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="n">endfor</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2018-04-02-evaluation-of-learning-algorithm/learning-curve-plot.png?raw=true" alt="Learning Curves Plot" width="50%" /></p>
 
 <h3 id="summarizing-bias-and-variance">Summarizing Bias and Variance</h3>
 
@@ -310,6 +348,8 @@
 <p>Generally larger nueral networks are used to solve the hard problems of machine learning and the issue of overfitting is solved by choosing and optimal value of regularization parameter, \(\lambda\).</p>
 
 <p><a href="/2018/03/31/how-to-train-your-neural-network/#pick-a-network-architecture">Earlier posts</a> suggested using a single hidden layer as the default. Reading this post, it can be seen that one can use the train-validation split to choose the best combination of number of hidden layers.</p>
+
+<p><strong>Note:</strong><a href="https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5" target="_blank"><strong>Complete Code Sample</strong></a></p>
 
 <h2 id="references">REFERENCES:</h2>
 
