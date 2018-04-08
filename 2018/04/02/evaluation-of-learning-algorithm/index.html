@@ -218,6 +218,8 @@
 <span class="n">J</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">/</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="nb">error</span><span class="o">'</span> <span class="o">*</span> <span class="nb">error</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><strong>Note:</strong><a href="https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5" target="_blank"><strong>Complete Code Sample</strong></a></p>
+
 <ul>
   <li>For logistic regression, the cross-entropy cost function, defined as,</li>
 </ul>
@@ -349,7 +351,18 @@
 
 <p><a href="/2018/03/31/how-to-train-your-neural-network/#pick-a-network-architecture">Earlier posts</a> suggested using a single hidden layer as the default. Reading this post, it can be seen that one can use the train-validation split to choose the best combination of number of hidden layers.</p>
 
-<p><strong>Note:</strong><a href="https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5" target="_blank"><strong>Complete Code Sample</strong></a></p>
+<h3 id="recommendations-of-experiments">Recommendations of Experiments</h3>
+
+<ul>
+  <li>Implement a simple learning algorithm as the first draft to test it on the cross-validation data.</li>
+  <li>Plot the learning curves to see if there is a high bias or high variance problem and whether increasing training data or working on features is likely to help.</li>
+  <li>Manual examination of errors can help find the trends in frequent misclassifications.</li>
+  <li><strong>Error Analysis</strong>Get error results in terms of a single numerical value. Otherwise it would be difficult to assess the performance solely on intuition and would take longer time to analyze. For example, if one uses stemming and sees a rise in accuracy then adding the feature is a definite plus. Hence trying different options and strengthening the process by reinforced numerical estimates will speed up the process of keeping or rejecting features.</li>
+</ul>
+
+<blockquote>
+  <p>The error analysis should be done on cross-validation and not on the test dataset, because test set should be the bearer of actual performance of the model and not used to overfit the features being tested.</p>
+</blockquote>
 
 <h2 id="references">REFERENCES:</h2>
 

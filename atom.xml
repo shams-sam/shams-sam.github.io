@@ -4,13 +4,144 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-04-06T01:28:54+05:30</updated>
+ <updated>2018-04-09T02:19:18+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Error Metrics for Skewed Classes and Using Large Datasets</title>
+   <link href="https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/"/>
+   <updated>2018-04-08T00:00:00+05:30</updated>
+   <id>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets</id>
+   <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;what-are-skewed-classes&quot;&gt;What are Skewed Classes?&lt;/h3&gt;
+
+&lt;p&gt;Skewed classes basically refer to a dataset, wherein the number of training example belonging to one class out-numbers heavily the number of training examples beloning to the other.&lt;/p&gt;
+
+&lt;p&gt;Consider a binary classification, where a cancerous patient is to be detected based on some features. And say only \(1\ %\) of the data provided has cancer positive. In a setting where having cancer is labelled 1 and not cancer labelled 0, if a system naively gives the prediction as all 0’s, still the prediction accuracy will be 99%.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;naive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignoring&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_cancer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Therefore, it can be said with conviction that the accuracy metrics or mean-squared error for skewed classes, is not a proper indicator of model performance. Hence, there is a need for a different error metric for skewed classes.&lt;/p&gt;
+
+&lt;h3 id=&quot;precisionrecall&quot;&gt;Precision/Recall&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: \(y = 1\) is ther rarer class among the two.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In a binary classification, one of the following four scenarios may occur,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;True Positive (TP):&lt;/strong&gt; the model predicts 1 and the actual class is 1&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;True Negative (TN):&lt;/strong&gt; the model predicts 0 and the actual class is 0&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;False Positive (FP):&lt;/strong&gt; the model predicts 1 but the actual class is 0&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;False Negative (FN):&lt;/strong&gt; the model predicts 0 but the actual class is 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-08-error-metrics-for-skewed-data-and-large-datasets/fig-1-prediction-matrix.png?raw=true&quot; alt=&quot;Fig-1. Prediction Matrix&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then precision and recall can be defined as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Precision = \frac {TP} {TP + FP}&lt;/script&gt;
+
+&lt;p&gt;Precision defines of all the predictions \(y=1\), which ones are correct.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Recall = \frac {TP} {TP + FN}&lt;/script&gt;
+
+&lt;p&gt;Recall defines of all the actual \(y=1\), which ones did the model predict correctly.&lt;/p&gt;
+
+&lt;p&gt;Now, if we evaluate a scenario where the classifier predicts all 0’s then the recall of the model will be 0, which then points out the inability of the system.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In case of skewed classes, it’s not possible for the classifiers to cheat the evaluation metrics of recall and precision. Also, it is important to note that precision and recall metrics work better if \(y=1\), denotes the presence of the rarer class.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-tradeoff&quot;&gt;The Tradeoff&lt;/h3&gt;
+
+&lt;p&gt;By changing the threshold value for the classifier confidence, one can adjust the precision and recall for the model.&lt;/p&gt;
+
+&lt;p&gt;For example, in a logistic regression the threshold is generally at 0.5. If one increases it, we can be sure that of all the predictions made more will be correct, hence, high precision. But there are also higher chances of missing the positive cases, hence, the lower recall.&lt;/p&gt;
+
+&lt;p&gt;Similary, if one decreases the threshold, then the chances of false positives increases, hence low precision. Also, there is lesser probability of missing the actual cases, hence high recall.&lt;/p&gt;
+
+&lt;p&gt;A precision-recall tradeoff curve may look like one among the following,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-08-error-metrics-for-skewed-data-and-large-datasets/fig-2-precision-recall-curve.gif?raw=true&quot; alt=&quot;Fig-2. Precision Recall Curve&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;f-score&quot;&gt;F Score&lt;/h3&gt;
+
+&lt;p&gt;Given two pairs of precision and recall, how to choose the better pair. One of the options would be to choose the one which higher average. That is not the ideal solution as the pair with \((precision=0.02 and recall= 1)\) has a better mean than the pair \((precision=0.5 and recall= 0.4)\).&lt;/p&gt;
+
+&lt;p&gt;Enter \(F\,Score\) or \(F_1\,Score\), which is the &lt;strong&gt;harmonic mean of precision and recall&lt;/strong&gt;,  defined as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_1 = 2 \frac{P*R}{P+R}&lt;/script&gt;
+
+&lt;p&gt;The above formula has advantage over the average method because, if either precision or recall is small, the the numerator product \(P*R\) will weigh the F-Score low and consequently lead to choosing the better pair of precision and recall. So,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if \(P=0\) or \(R=0\), then \(F_1=0\)&lt;/li&gt;
+  &lt;li&gt;if \(P=1\) and \(R=1\), then \(F_1=1\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;One reasonable way of automatically choosing threshold for classifier is to try a range of them on the cross-validation set and pick the one that gives the highest F-Score.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;sensitivityspecifivity&quot;&gt;Sensitivity/Specifivity&lt;/h3&gt;
+
+&lt;p&gt;Apart from precision and recall, sensitivity and specifivity are among the most used error metrics in classfication.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Sensitivity or True Positive Rate (TPR)&lt;/strong&gt; is another name for &lt;strong&gt;recall&lt;/strong&gt; and is also called &lt;strong&gt;hit rate&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;TPR = \frac {TP} {TP + FN}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Specifivity (SPC) or True Negative Rate&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;SPC = \frac {TN} {TN + FP}&lt;/script&gt;
+
+&lt;h3 id=&quot;using-large-datasets&quot;&gt;Using Large Datasets&lt;/h3&gt;
+
+&lt;p&gt;Although, its been stated &lt;a href=&quot;/2018/04/02/evaluation-of-learning-algorithm/#learning-curves&quot;&gt;here&lt;/a&gt; that for a high bias problem in the model, gathering more and more data will not help the model improve.&lt;/p&gt;
+
+&lt;p&gt;But under certain conditions, getting a lot of data and training on a certain type of training algorithm can be an effective way to improve the learning algorithm’s performance.&lt;/p&gt;
+
+&lt;p&gt;The following are the conditions that should be met for the above statement to hold true,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The features, \(x\), must have sufficient information to predict \(y\) accurately. One way to test this would be to check if human expert can make a confident predition using the features.&lt;/li&gt;
+  &lt;li&gt;Using a learning algorithm with a large number of parameters to learn (e.g. logistic regression, linear regression, neural network with many hidden units etc.). What this truly accomplishes is that these algorithms are &lt;strong&gt;low bias algorithm&lt;/strong&gt; due to the large number of learnable parameters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In such settings, where the problem of high bias is removed by the virtue of highly parametrized learning algorithms, a large dataset ensures the &lt;strong&gt;low variance&lt;/strong&gt;. Hence, under the listed settings a large number of dataset is almost always going to help improve the model performance.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It’s not who has the best algorithm that wins, it’s who has the most data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/tKMWX/error-metrics-for-skewed-classes&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Error Metrics for Skewed Classes&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/CuONQ/trading-off-precision-and-recall&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Trading off Precision and Recall&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/XcNcz/data-for-machine-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Data for Machine Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Sensitivity_and_specificity&quot; target=&quot;_blank&quot;&gt;Sensitivity and Specifivity - Wikipedia&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Evaluation of Learning Algorithm</title>
@@ -69,6 +200,8 @@
 &lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;J&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Complete Code Sample&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;For logistic regression, the cross-entropy cost function, defined as,&lt;/li&gt;
@@ -201,7 +334,18 @@
 
 &lt;p&gt;&lt;a href=&quot;/2018/03/31/how-to-train-your-neural-network/#pick-a-network-architecture&quot;&gt;Earlier posts&lt;/a&gt; suggested using a single hidden layer as the default. Reading this post, it can be seen that one can use the train-validation split to choose the best combination of number of hidden layers.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Complete Code Sample&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;recommendations-of-experiments&quot;&gt;Recommendations of Experiments&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Implement a simple learning algorithm as the first draft to test it on the cross-validation data.&lt;/li&gt;
+  &lt;li&gt;Plot the learning curves to see if there is a high bias or high variance problem and whether increasing training data or working on features is likely to help.&lt;/li&gt;
+  &lt;li&gt;Manual examination of errors can help find the trends in frequent misclassifications.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Error Analysis&lt;/strong&gt;Get error results in terms of a single numerical value. Otherwise it would be difficult to assess the performance solely on intuition and would take longer time to analyze. For example, if one uses stemming and sees a rise in accuracy then adding the feature is a definite plus. Hence trying different options and strengthening the process by reinforced numerical estimates will speed up the process of keeping or rejecting features.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The error analysis should be done on cross-validation and not on the test dataset, because test set should be the bearer of actual performance of the model and not used to overfit the features being tested.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 

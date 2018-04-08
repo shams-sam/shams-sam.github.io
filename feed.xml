@@ -5,9 +5,148 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 06 Apr 2018 01:28:54 +0530</pubDate>
-    <lastBuildDate>Fri, 06 Apr 2018 01:28:54 +0530</lastBuildDate>
+    <pubDate>Mon, 09 Apr 2018 02:19:18 +0530</pubDate>
+    <lastBuildDate>Mon, 09 Apr 2018 02:19:18 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Error Metrics for Skewed Classes and Using Large Datasets</title>
+        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
+
+&lt;h3 id=&quot;what-are-skewed-classes&quot;&gt;What are Skewed Classes?&lt;/h3&gt;
+
+&lt;p&gt;Skewed classes basically refer to a dataset, wherein the number of training example belonging to one class out-numbers heavily the number of training examples beloning to the other.&lt;/p&gt;
+
+&lt;p&gt;Consider a binary classification, where a cancerous patient is to be detected based on some features. And say only \(1\ %\) of the data provided has cancer positive. In a setting where having cancer is labelled 1 and not cancer labelled 0, if a system naively gives the prediction as all 0’s, still the prediction accuracy will be 99%.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;naive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignoring&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_cancer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Therefore, it can be said with conviction that the accuracy metrics or mean-squared error for skewed classes, is not a proper indicator of model performance. Hence, there is a need for a different error metric for skewed classes.&lt;/p&gt;
+
+&lt;h3 id=&quot;precisionrecall&quot;&gt;Precision/Recall&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: \(y = 1\) is ther rarer class among the two.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In a binary classification, one of the following four scenarios may occur,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;True Positive (TP):&lt;/strong&gt; the model predicts 1 and the actual class is 1&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;True Negative (TN):&lt;/strong&gt; the model predicts 0 and the actual class is 0&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;False Positive (FP):&lt;/strong&gt; the model predicts 1 but the actual class is 0&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;False Negative (FN):&lt;/strong&gt; the model predicts 0 but the actual class is 1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-08-error-metrics-for-skewed-data-and-large-datasets/fig-1-prediction-matrix.png?raw=true&quot; alt=&quot;Fig-1. Prediction Matrix&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then precision and recall can be defined as follows,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Precision = \frac {TP} {TP + FP}&lt;/script&gt;
+
+&lt;p&gt;Precision defines of all the predictions \(y=1\), which ones are correct.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Recall = \frac {TP} {TP + FN}&lt;/script&gt;
+
+&lt;p&gt;Recall defines of all the actual \(y=1\), which ones did the model predict correctly.&lt;/p&gt;
+
+&lt;p&gt;Now, if we evaluate a scenario where the classifier predicts all 0’s then the recall of the model will be 0, which then points out the inability of the system.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In case of skewed classes, it’s not possible for the classifiers to cheat the evaluation metrics of recall and precision. Also, it is important to note that precision and recall metrics work better if \(y=1\), denotes the presence of the rarer class.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;the-tradeoff&quot;&gt;The Tradeoff&lt;/h3&gt;
+
+&lt;p&gt;By changing the threshold value for the classifier confidence, one can adjust the precision and recall for the model.&lt;/p&gt;
+
+&lt;p&gt;For example, in a logistic regression the threshold is generally at 0.5. If one increases it, we can be sure that of all the predictions made more will be correct, hence, high precision. But there are also higher chances of missing the positive cases, hence, the lower recall.&lt;/p&gt;
+
+&lt;p&gt;Similary, if one decreases the threshold, then the chances of false positives increases, hence low precision. Also, there is lesser probability of missing the actual cases, hence high recall.&lt;/p&gt;
+
+&lt;p&gt;A precision-recall tradeoff curve may look like one among the following,&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-04-08-error-metrics-for-skewed-data-and-large-datasets/fig-2-precision-recall-curve.gif?raw=true&quot; alt=&quot;Fig-2. Precision Recall Curve&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;f-score&quot;&gt;F Score&lt;/h3&gt;
+
+&lt;p&gt;Given two pairs of precision and recall, how to choose the better pair. One of the options would be to choose the one which higher average. That is not the ideal solution as the pair with \((precision=0.02 and recall= 1)\) has a better mean than the pair \((precision=0.5 and recall= 0.4)\).&lt;/p&gt;
+
+&lt;p&gt;Enter \(F\,Score\) or \(F_1\,Score\), which is the &lt;strong&gt;harmonic mean of precision and recall&lt;/strong&gt;,  defined as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_1 = 2 \frac{P*R}{P+R}&lt;/script&gt;
+
+&lt;p&gt;The above formula has advantage over the average method because, if either precision or recall is small, the the numerator product \(P*R\) will weigh the F-Score low and consequently lead to choosing the better pair of precision and recall. So,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;if \(P=0\) or \(R=0\), then \(F_1=0\)&lt;/li&gt;
+  &lt;li&gt;if \(P=1\) and \(R=1\), then \(F_1=1\)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;One reasonable way of automatically choosing threshold for classifier is to try a range of them on the cross-validation set and pick the one that gives the highest F-Score.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;sensitivityspecifivity&quot;&gt;Sensitivity/Specifivity&lt;/h3&gt;
+
+&lt;p&gt;Apart from precision and recall, sensitivity and specifivity are among the most used error metrics in classfication.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Sensitivity or True Positive Rate (TPR)&lt;/strong&gt; is another name for &lt;strong&gt;recall&lt;/strong&gt; and is also called &lt;strong&gt;hit rate&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;TPR = \frac {TP} {TP + FN}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Specifivity (SPC) or True Negative Rate&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;SPC = \frac {TN} {TN + FP}&lt;/script&gt;
+
+&lt;h3 id=&quot;using-large-datasets&quot;&gt;Using Large Datasets&lt;/h3&gt;
+
+&lt;p&gt;Although, its been stated &lt;a href=&quot;/2018/04/02/evaluation-of-learning-algorithm/#learning-curves&quot;&gt;here&lt;/a&gt; that for a high bias problem in the model, gathering more and more data will not help the model improve.&lt;/p&gt;
+
+&lt;p&gt;But under certain conditions, getting a lot of data and training on a certain type of training algorithm can be an effective way to improve the learning algorithm’s performance.&lt;/p&gt;
+
+&lt;p&gt;The following are the conditions that should be met for the above statement to hold true,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The features, \(x\), must have sufficient information to predict \(y\) accurately. One way to test this would be to check if human expert can make a confident predition using the features.&lt;/li&gt;
+  &lt;li&gt;Using a learning algorithm with a large number of parameters to learn (e.g. logistic regression, linear regression, neural network with many hidden units etc.). What this truly accomplishes is that these algorithms are &lt;strong&gt;low bias algorithm&lt;/strong&gt; due to the large number of learnable parameters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In such settings, where the problem of high bias is removed by the virtue of highly parametrized learning algorithms, a large dataset ensures the &lt;strong&gt;low variance&lt;/strong&gt;. Hence, under the listed settings a large number of dataset is almost always going to help improve the model performance.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It’s not who has the best algorithm that wins, it’s who has the most data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/tKMWX/error-metrics-for-skewed-classes&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Error Metrics for Skewed Classes&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/CuONQ/trading-off-precision-and-recall&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Trading off Precision and Recall&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/XcNcz/data-for-machine-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Data for Machine Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Sensitivity_and_specificity&quot; target=&quot;_blank&quot;&gt;Sensitivity and Specifivity - Wikipedia&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 08 Apr 2018 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</guid>
+        
+        <category>machine-learning</category>
+        
+        <category>andrew-ng</category>
+        
+        
+        <category>basics-of-machine-learning</category>
+        
+      </item>
     
       <item>
         <title>Evaluation of Learning Algorithm</title>
@@ -63,6 +202,8 @@
 &lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;theta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;n&quot;&gt;J&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Complete Code Sample&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;For logistic regression, the cross-entropy cost function, defined as,&lt;/li&gt;
@@ -195,7 +336,18 @@
 
 &lt;p&gt;&lt;a href=&quot;/2018/03/31/how-to-train-your-neural-network/#pick-a-network-architecture&quot;&gt;Earlier posts&lt;/a&gt; suggested using a single hidden layer as the default. Reading this post, it can be seen that one can use the train-validation split to choose the best combination of number of hidden layers.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Complete Code Sample&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;recommendations-of-experiments&quot;&gt;Recommendations of Experiments&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Implement a simple learning algorithm as the first draft to test it on the cross-validation data.&lt;/li&gt;
+  &lt;li&gt;Plot the learning curves to see if there is a high bias or high variance problem and whether increasing training data or working on features is likely to help.&lt;/li&gt;
+  &lt;li&gt;Manual examination of errors can help find the trends in frequent misclassifications.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Error Analysis&lt;/strong&gt;Get error results in terms of a single numerical value. Otherwise it would be difficult to assess the performance solely on intuition and would take longer time to analyze. For example, if one uses stemming and sees a rise in accuracy then adding the feature is a definite plus. Hence trying different options and strengthening the process by reinforced numerical estimates will speed up the process of keeping or rejecting features.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The error analysis should be done on cross-validation and not on the test dataset, because test set should be the bearer of actual performance of the model and not used to overfit the features being tested.&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
@@ -2322,369 +2474,6 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
         <category>concept</category>
         
         <category>references</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Bitcoin</title>
-        <description>&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Part solution to this task is given by digital signatures, but the other half of the solution posed a major question in developing such systems - the part that requires &lt;strong&gt;a system to prevent double spending&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the current centralized money tender distributed, this role of preventing the double spending is done by a centralized third-party authority. But in a peer-to-peer network this centralized server would not be available and thus would require a different methodology.&lt;/p&gt;
-
-&lt;p&gt;Bitcoin, proposed by &lt;strong&gt;Satoshi Nakamoto&lt;/strong&gt;, was to solve this very problem on the peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work.&lt;/p&gt;
-
-&lt;h3 id=&quot;current-system&quot;&gt;Current System&lt;/h3&gt;
-
-&lt;p&gt;Current economy is based on trusted third-parties to process electronic payments. These systems suffer from the inherent weaknesses of the trust based model. Completely non-reversible transactions are not possible because banks cannot avoid mediating disputes.&lt;/p&gt;
-
-&lt;p&gt;Because of cost of mediation, the transaction costs are high which inturn limit the minimum practical transaction size thus cutting off the possibility of small casual transaction.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;With the possibility of reversal, the need for trust spreads.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;proposed-system&quot;&gt;Proposed System&lt;/h3&gt;
-
-&lt;p&gt;Bitcoin proposed a system where &lt;strong&gt;trust is replaced by cryptographic proof&lt;/strong&gt;, allowing any two willing parties to transact directly without the need of a supporting trusted third party.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Computationally irreversible transactions prevent frauds.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Bitcoin proposed to tackle the issue of double-spending, using a peer-to-peer distributed timestamp server to generate computational proof of the chronological order of transactions.&lt;/p&gt;
-
-&lt;p&gt;The system is secure as long as honest nodes collectively control more CPU power than any cooperating group of attacker nodes.&lt;/p&gt;
-
-&lt;h3 id=&quot;transactions&quot;&gt;Transactions&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Electronic coin is defined as a chain of digital signatures.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;A coin is transferred by an owner signing a hash of previous transaction and the public key of the next owner and adding these to then end of the coin.&lt;/p&gt;
-
-&lt;p&gt;The signature can be verified by the payee to check the chain of ownership.&lt;/p&gt;
-
-&lt;p&gt;The payee can still however not check for double-spending.&lt;/p&gt;
-
-&lt;p&gt;Traditional solution of this involves introducing a trusted central authority, or mint, that checks every transaction for double-spending. In such a system, after every transaction the coin must be returned to the mint to issue a new coin, and only coins issued directly from the mint are trusted not to be double-spent. This still does not solve the basic problem of dependency on company running the mint, which is basically serving the same purpose as that of a bank in the current system.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-1-transaction.png&quot; alt=&quot;Flow of Transactions&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The only way to confirm the absence of a transaction is to have a copy of all the transactions. To accomplish this in a decentralized system, the transactions must be publically announced and there is a need for a system for participants to agree on a single history of the order in which they were received. So, at the time of the transaction, the payee needs a proof that the majority of the nodes agreed it was the first received one.&lt;/p&gt;
-
-&lt;h3 id=&quot;timestamp-server&quot;&gt;Timestamp Server&lt;/h3&gt;
-
-&lt;p&gt;A timestamp server basically takes a hash of a block of items to be timestamped and widely publishes it, where the timestamp proves that the data must have existed at the time, in order to get the hash.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-2-blockchain.png&quot; alt=&quot;Timestamp Server&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Each timestamp includes previous timestamp in its hash, forming a chain (blockchain), with each timestamp reinforcing the ones before it.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;proof-of-work&quot;&gt;Proof-of-Work&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A system to deter denial of service attacks and other service abuses such as spam on a network by requiring some work from the service requester, usually meaning processing time by a computer.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In case of bitcoins, the proof-of-work involves scanning for a value that when hashed along with the contents of the transaction blocks using cryptographic hashes such as SHA-256, gives a hash that begins with a specific number of zero bits. &lt;strong&gt;The average work required is exponential in the number of zero bits.&lt;/strong&gt; Proof-of-Work is generally a problem that is fairly tough to solve but very easy to verify.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;hashlib&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;'A paid B 25 A_public_key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;s&quot;&gt;'A paid C 50 A_public_key'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;s&quot;&gt;'C paid B 10 C_public_key'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dumps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num_bits&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;transaction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;encode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashlib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sha256&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hexdigest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;startswith&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'0'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;current_hash&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;proved&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;proof&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;difficulty_bits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time_taken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-Outputs
--------
-cb87ca935b8b44e94f5c670ecd375ba88ab7616aeab4c4c4369fe79e9c153f95
-0
-0c1d9b1549d14612571040e8352af4175a41b84a805a08880d3acdd5aad998be
-5
-00a51beea09d1fae73f3e18682445a3eb9bffc2cabf17f87f90f193c9eca1af3
-396
-00010ff4f55c002484ee13841be9a3c46aba3038a1046d604ac8cee7349a2228
-514
-0000a3c456eff341c9988b194231b02eb547a36a8134d095a5e1c4efb05dc7e3
-22344
-000002128ccfc4d1e662a6ceb8053860b887929b691c2f8506b0843e9a57fe34
-3355879
-000000bfc98081b9aff064455708d2d8fcc2afeac81b5a0b03a6fd926db1ce36
-19659271
-0000000cbd6302c37b40102ef55040e4315b63b39640110b679e033c44a8b2b0
-310723836
-
-Time Taken
-----------
-[0.0003619194030761719,
- 0.00020599365234375,
- 0.0012040138244628906,
- 0.0016019344329833984,
- 0.07679605484008789,
- 8.218470811843872,
- 47.986721992492676,
- 740.9898428916931]
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-8-proof-of-work-plot.png&quot; alt=&quot;Proof-of-work plot&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Basic needs of such system of proof-of-work are fulfilled by cryptographic hashes, that are often seen as one way functions, i.e. the only way to get the input given an output is to use the bruteforce approach and check all possible values of inputs and arriving at the correct candidate.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A nonce is an arbitrary number that can only be used once&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In the bitcoin’s timestamp network, the proof-of-work is implemented by incrementing a nonce in the block until a value is found that gives the block the required number of leading zero bits.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-3-proof-of-work.png&quot; alt=&quot;Proof-of-work Flow&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Once the CPU effort has been expended to satisfy the proof-of-work, the block cannot be changed without redoing the work.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;As the later blocks consume the hashes of previous blocks, changing a transaction in earlier block would require redoing the work for all the leading blocks.&lt;/p&gt;
-
-&lt;h3 id=&quot;majority-decision-making&quot;&gt;Majority Decision Making&lt;/h3&gt;
-
-&lt;p&gt;Proof-of-Work also gives a solution to determining representation in majority decision making. The majority decision is represented by the longest chain, i.e. the greatest proof-of-work. So if the majority CPU power is held by honest nodes, then the honest chain would grow faster and outpace any chain being proposed by a pool of attacking nodes.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;To compensate hardware power and varying number of nodes over time, the proof-of-work difficulty is determined by a moving average targeting an average number of blocks per hour, i.e. if the blocks are generated too fast, the difficulty increases for subsequent blocks.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;network-protocols&quot;&gt;Network Protocols&lt;/h3&gt;
-
-&lt;p&gt;Steps to run the network are as follows:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;New transactions are broadcast to all nodes.&lt;/li&gt;
-  &lt;li&gt;Each node collects new transaction into a block.&lt;/li&gt;
-  &lt;li&gt;Each node works on finding a difficult proof-of-work for its block.&lt;/li&gt;
-  &lt;li&gt;Upon finding the solution, it broadcasts the block to all nodes.&lt;/li&gt;
-  &lt;li&gt;Nodes accept a new block if all the transactions on it are valid and not already spent.&lt;/li&gt;
-  &lt;li&gt;Nodes express their acceptance of the block by working on creating next block in the chain, using the hash of the accepted block as the previous hash.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Nodes always consider the longest chain to be the correct one and keep on working to extend it.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;If a node does not receive a block, it will request it when it receives the next block and realizes that it missed one.&lt;/p&gt;
-
-&lt;h3 id=&quot;mining-incentive&quot;&gt;Mining Incentive&lt;/h3&gt;
-
-&lt;p&gt;By convention of the protocol, the first transaction of a block is a special transaction that starts a new coin owned by the creator of the block.&lt;/p&gt;
-
-&lt;p&gt;It is this, that acts as an incentive for the nodes to support the network, and provides a way to initially distribute coins into circulation.&lt;/p&gt;
-
-&lt;p&gt;Incentive can also be funded in the form of a transaction fees.&lt;/p&gt;
-
-&lt;p&gt;Incentive will also encourage nodes to stay honest. Because an attacker with more compute power would find it more favourable to play by rules and make more transaction fee, instead of competing with rest to fraud the system and invalidating his own wealth in the process by sabotaging the system.&lt;/p&gt;
-
-&lt;h3 id=&quot;memory-optimizations&quot;&gt;Memory Optimizations&lt;/h3&gt;
-
-&lt;p&gt;After the latest transaction is reinforced with several blocks stacking on top of it, the spent transactions can be discarded from the disk.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Transactions are hashed in a Merkle Tree, with only root included in the block’s hash.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-4-merkle-tree.png&quot; alt=&quot;Memory Optimizations&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;A block header with no transaction is about 80 bytes, and blocks are generated every 10 minutes, then every hour about 6 blocks would be generated. So the total space required by blocks generated in a year would be about 4.2MB (i.e 80 bytes * 6 * 24 * 365). With the current capabilities of system memories, storage would not pose a problem to the system.&lt;/p&gt;
-
-&lt;h3 id=&quot;payment-verification&quot;&gt;Payment Verification&lt;/h3&gt;
-
-&lt;p&gt;The system makes it possible to verify payments without running the full network node.&lt;/p&gt;
-
-&lt;p&gt;Verification can be done by keeping a copy of the block headers of the longest proof-of-work chain, and obtaining the Merkle branch linking the transaction to the block it’s timestamped in.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-5-validating-transaction.png&quot; alt=&quot;Payment Verification Process&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;By linking the transaction to a place in the chain, one can see if network nodes have accepted it by checking the proof-of-work, which would be further confirmed by blocks built on top of it in the chain.&lt;/p&gt;
-
-&lt;p&gt;Again, the verification is only reliable as long as honest nodes control the network. Because the simplified verification method can be fooled by an attacker’s fabricated transactions for as long as the attacker can overpower the compute resources of the unified honest nodes.&lt;/p&gt;
-
-&lt;h3 id=&quot;combining-and-splitting-value&quot;&gt;Combining and Splitting Value&lt;/h3&gt;
-
-&lt;p&gt;Even though it is possible to handle each coin individually, it would be unweildy to make a seperate transaction for every cent in a transfer.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;To allow value to be split and combined, transactions contain multiple inputs and outputs.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-6-splitting-and-joining.png&quot; alt=&quot;Value Handling Protocols&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Usually, there is a single input from a larger previous transaction or multiple inputs combining smaller amounts, and at most two outputs: &lt;strong&gt;one for the payment, and one to return the change, if any, back to the sender&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;privacy&quot;&gt;Privacy&lt;/h3&gt;
-
-&lt;p&gt;Traditional banking models achieve privacy through limiting access to information to the parties involved and the trusted third party.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-12-21-bitcoin-satoshi-nakamoto/fig-7-privacy.png&quot; alt=&quot;Privacy Models&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In the proposed system, it is achieved by anonymizing the public keys that are used to sign a transaction. So, the public ledger can see someone is sending an amount to someone else, but without information linking the transaction to anyone (similar to tape in a stock exchange).&lt;/p&gt;
-
-&lt;p&gt;Some linking is still unavoidable with multi-input transactions, which reveals that the inputs originated from the same owner. So if one owner’s key is revealed, linking will allow to discover other transactions associated with that owner.&lt;/p&gt;
-
-&lt;h3 id=&quot;mathematics-of-bitcoin&quot;&gt;Mathematics of Bitcoin&lt;/h3&gt;
-
-&lt;p&gt;If there were a scenario where an attacker is generating a alternate chain faster than the honest chain, it could still not generate value out of thin air or take someone else’s money because it will be rejected by the corresponding node which owns that token.&lt;/p&gt;
-
-&lt;p&gt;So all it is capable of doing is to double-spend its own money.&lt;/p&gt;
-
-&lt;p&gt;Basically the race between the honest chain and the alternate chain can be characterized as a &lt;strong&gt;Binomial Random Walk&lt;/strong&gt;, where success event is honest chain being extended by a block and failure event is the alternate chain extented by a block gaining a lead on the honest chain.&lt;/p&gt;
-
-&lt;p&gt;In such a case, the probability of an attacker catching up with the honest chain by making up for the deficit can be modeled similar to a &lt;strong&gt;Gambler’s Ruin Problem&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;The &lt;strong&gt;probability that the attacker ever reaches a breakeven&lt;/strong&gt; is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-q_z = 
-\begin{cases}
-1 &amp; \text{ if } p \leq q \\
-(q/p)^z &amp; \text{ if } p \gt q
-\end{cases} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;where,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(p\) is the probability of an honest chain extending&lt;/li&gt;
-  &lt;li&gt;\(q\) is the probability of a attacker chain extending&lt;/li&gt;
-  &lt;li&gt;\(q_z\) is the probability of the attacker catching up with the honest chain from \(z\) blocks deficit.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Given the assumption that the pool of honest compute power is greater than that of attackers, it is safe to assume that \(p \gt q\). So the probability drops exponentially as the number of blocks of deficit for an attacker increases. So after a fair lead, the probability of attacker to catch up is vanishingly small.&lt;/p&gt;
-
-&lt;h3 id=&quot;time-for-establishing-trust&quot;&gt;Time for Establishing Trust&lt;/h3&gt;
-
-&lt;p&gt;Assume that the sender of a transaction is an attacker who wants to make the receiver believe that he paid him for a while, and switch it back to himself after sometime.&lt;/p&gt;
-
-&lt;p&gt;So initially the receiver will generate a new key pair and give the public key to the attacker for making the transfer. This prevents the attacker from preparing a chain of blocks in advance because of the dynamic nature of the public key generated.&lt;/p&gt;
-
-&lt;p&gt;So once the transaction is made, the attacker starts working on a alternate chain where the transactions are different.&lt;/p&gt;
-
-&lt;p&gt;Meanwhile the receiver waits for the transaction to be added to a block and another \(z\) blocks to be chained on top of that block.&lt;/p&gt;
-
-&lt;p&gt;The receiver does not know the progress of the attacker, but assuming the honest nodes took the average time to build a block, the attacker’s progress will be a Poisson Distribution with the expected value,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lambda = z {q \over p}&lt;/script&gt;
-
-&lt;p&gt;Probability that the attacker could catch up can be calculated by mutliplying the Poisson density for each amount of progress by the probability that he could catch up from that point, given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\sum_{k=0}^\infty \frac{\lambda^k\,e^{-\lambda}}{k!} \cdot \begin{cases} (q/p)^{(z-k)} &amp; \text{ if } k \leq z \\ 1 &amp; \text{ if } k \gt z \end{cases} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Rearranging to avoid infinite summation of the distribution,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 - \sum_{k=0}^z \frac{\lambda^k\,e^{-\lambda}}{k!} (1 - (q/p)^{(z-k)})&lt;/script&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fac&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-        &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lamda&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;pow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;q&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;z&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\t&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;=&amp;gt; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;round&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;calculate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
-Output
-------
-0   =&amp;gt;  1.0
-5   =&amp;gt;  0.17735231
-10  =&amp;gt;  0.04166048
-15  =&amp;gt;  0.01010076
-20  =&amp;gt;  0.0024804
-25  =&amp;gt;  0.00061323
-&quot;&quot;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Calculating the values, it is observed that the probability drops off exponentially with z.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Bitcoin does not need a third party to enforce trust.&lt;/li&gt;
-  &lt;li&gt;Coin framework is based on digital signatures.&lt;/li&gt;
-  &lt;li&gt;A peer-to-peer network using proof-of-work records a history of transaction.&lt;/li&gt;
-  &lt;li&gt;Nodes can leave or rejoin the system according to their wish.&lt;/li&gt;
-  &lt;li&gt;Any needed rules and incentives can be enforced with this consensus mechanism.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://bitcoin.org/bitcoin.pdf&quot; target=&quot;_blank&quot;&gt;Bitcoin: A Peer-to-Peer Electronic Cash System&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 21 Dec 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/</guid>
-        
-        <category>concept</category>
-        
-        <category>references</category>
-        
-        <category>papers</category>
         
         
       </item>
