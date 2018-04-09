@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://machinelearningmedium.com</loc>
-    <lastmod>2018-04-09T02:19:18+05:30</lastmod>
+    <lastmod>2018-04-09T18:41:34+05:30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,6 +11,15 @@
       <loc>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</loc>
       
         <lastmod>2018-04-08T00:00:00+05:30</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+    </url>
+  
+    <url>
+      <loc>https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/</loc>
+      
+        <lastmod>2018-04-06T00:00:00+05:30</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>

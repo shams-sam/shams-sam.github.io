@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 09 Apr 2018 02:19:18 +0530</pubDate>
-    <lastBuildDate>Mon, 09 Apr 2018 02:19:18 +0530</lastBuildDate>
+    <pubDate>Mon, 09 Apr 2018 18:41:34 +0530</pubDate>
+    <lastBuildDate>Mon, 09 Apr 2018 18:41:34 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -145,6 +145,322 @@
         
         
         <category>basics-of-machine-learning</category>
+        
+      </item>
+    
+      <item>
+        <title>Docker for Machine Learning Developement</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Containerization, also known as operating-system-level virtualization is a feature of the operating system in which the kernel allows the existence of multiple isolated user-space instances. Such instances may be called containers, partitions, virtualization engines (VEs), or jails. These look like real computers from the point of view of a program running in them.&lt;/p&gt;
+
+&lt;h3 id=&quot;general-commands&quot;&gt;General Commands&lt;/h3&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# docker help &lt;/span&gt;
+docker
+docker &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;
+docker &amp;lt;command-name&amp;gt; &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# check docker version&lt;/span&gt;
+docker &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# check additional docker information&lt;/span&gt;
+docker version
+docker info
+
+&lt;span class=&quot;c&quot;&gt;# check docker installation&lt;/span&gt;
+docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;images&quot;&gt;Images&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker &lt;strong&gt;image&lt;/strong&gt; is an executable package that includes everything needed to run an application - code, libraries, environment variables, and configuration files.&lt;/li&gt;
+  &lt;li&gt;An image is a read-only template with instructions or creating a docker container. It is possible for an image to be based on another base image, with additional customizations.&lt;/li&gt;
+  &lt;li&gt;Images are created using &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; with a simple syntax the defines the steps involved in creating the image and run it. Each instruction in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; creates a layer in the image and cached for the next build to speed up the process until the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; is changed itself.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# list images&lt;/span&gt;
+docker image &lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;docker images
+
+&lt;span class=&quot;c&quot;&gt;# list all images on machine&lt;/span&gt;
+docker image &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# remove image from machine&lt;/span&gt;
+docker image rm &amp;lt;image id&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# remove all images from this machine&lt;/span&gt;
+docker image rm &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker image &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;container&quot;&gt;Container&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker &lt;strong&gt;container&lt;/strong&gt; is launched by running an image. Container is to image, what object is to class, i.e. container is a runtime instance of an image, or what the image becomes in memory when executed.&lt;/li&gt;
+  &lt;li&gt;A container is defined by the image used to spawn it and the configuration options provided while creating or running it.&lt;/li&gt;
+  &lt;li&gt;When a container is removed, any changes in the state not stored in the persistent storage disappear.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# list all running containers&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;ls
+&lt;/span&gt;docker ps
+
+&lt;span class=&quot;c&quot;&gt;# list all containers&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# list all containers in quite mode&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-aq&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# docker container stop using container id&lt;/span&gt;
+docker container stop &amp;lt;container-id&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# docker container kill using container id&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &amp;lt;container-id&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# docker container remove using container id&lt;/span&gt;
+docker container rm &amp;lt;container-id&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# remove all containers&lt;/span&gt;
+docker container rm &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; | awk &lt;span class=&quot;s1&quot;&gt;'{print &quot;docker container rm &quot;,$1}'&lt;/span&gt; | bash
+
+&lt;span class=&quot;c&quot;&gt;# attach to a running container&lt;/span&gt;
+docker attach &amp;lt;container-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl-c&lt;/code&gt; to kill the container.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl-p Ctrl-q&lt;/code&gt; sequence to detach from an running container without killing it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;container-vs-virtual-machines&quot;&gt;Container vs Virtual Machines&lt;/h3&gt;
+
+&lt;p&gt;A container runs natively on Linux, sharing the kernel of the host machines with other containers. It only runs processes and occupies memory required by that executable, hence making it lightweight.&lt;/p&gt;
+
+&lt;p&gt;On the contrary, a virtual machine runs a full guest operating system with virtual access to the host resources through a hypervisor. As a result, VMs provide an entire guest operating system and hence a lot more resources than what the application would actually need.&lt;/p&gt;
+
+&lt;h3 id=&quot;dockerfile&quot;&gt;Dockerfile&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; defines the envrionment inside the container. Options like access to resources, disk drives etc. can be configured in the file. Post this, it can expected that the builds from this Dockerfile would behave the same wherever it runs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# tensorflow nightly build base image with python 3
+FROM tensorflow/tensorflow:nightly-py3
+
+# set working directory
+WORKDIR /development
+
+# Copy the current directory contents into the destination directory
+ADD . /development
+
+# setup command line tools
+RUN apt-get update &amp;amp;&amp;amp; apt-get install -y \
+    emacs \
+    git \
+    tmux \
+    &amp;amp;&amp;amp; \
+apt-get clean &amp;amp;&amp;amp; \
+apt-get autoremove &amp;amp;&amp;amp; \
+rm -rf /var/lib/apt/list/*
+
+# setup non-pip libraries
+RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;-y&quot;, &quot;python-opencv&quot;]
+
+# install requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# expose ports for connection
+# 6006 for tensorboard
+# 8888 for jupyter notebook
+EXPOSE 6006 8888
+
+CMD [&quot;/bin/bash&quot;]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;build-from-dockerfile&quot;&gt;Build from Dockerfile&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Once the Dockerfile is ready, it can be used to build and run the image by using the following commands,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# build image from Dockerfile&lt;/span&gt;
+docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; &amp;lt;docker-image-name&amp;gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# run container in interactive mode&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &amp;lt;image-name&amp;gt; &amp;lt;optional-command-to-overwrite-base-command&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# run container in detached mode&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &amp;lt;image-name&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# run container with port forwarding&lt;/span&gt;
+docker run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &amp;lt;host-port&amp;gt;:&amp;lt;container-port-exposed&amp;gt; &amp;lt;image-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;docker-hub&quot;&gt;Docker Hub&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Dockerhub&lt;/strong&gt; is the public repository of docker images where anyone can publish their images or pull images from. Image names on dockerhub have a name based on username of uploader, project name and tags based on properties of docker image - latest, nightly etc. A template would look like: &lt;strong&gt;username/repository:tag&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Once uploaded, all the images are publically available and can be availed on any system with connectivity, because if an image in not available locally, docker tries to pull it from the repository.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# login to dockerhub&lt;/span&gt;
+docker login
+
+&lt;span class=&quot;c&quot;&gt;# tag &amp;lt;image&amp;gt; for upload to registry&lt;/span&gt;
+docker tag &amp;lt;image&amp;gt; username/repository:tag
+
+&lt;span class=&quot;c&quot;&gt;# upload tagged image to registry&lt;/span&gt;
+docker push username/repository:tag
+
+&lt;span class=&quot;c&quot;&gt;# run image from a registry&lt;/span&gt;
+docker run username/repository:tag
+
+&lt;span class=&quot;c&quot;&gt;# pull tagged image from registry&lt;/span&gt;
+docker pull username/repository:tag
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;services&quot;&gt;Services&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Services are just &lt;strong&gt;containers in production&lt;/strong&gt;. A service runs only one image, but along with it other information is also maintained - ports it should run on, number of replicas of the container to be maintained etc.&lt;/li&gt;
+  &lt;li&gt;Scaling a service basically means to change the number of containers running the particular piece of the software, assigning more compute resources to service in the process.&lt;/li&gt;
+  &lt;li&gt;Services allow the containers to be scaled across multiple docker daemons, which all work together in a swarm using multiple managers and workers. Each member of the swarm in a docker daemon communicating with other daemons using Docker APIs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;swarms&quot;&gt;Swarms&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A swarm is a group of machines that are running docker and joined into a cluster. Post definition of the cluster, all the commands are run on the entire cluster by a &lt;strong&gt;swarm manager&lt;/strong&gt;. The machines in a cluster can be &lt;strong&gt;virtual&lt;/strong&gt; or &lt;strong&gt;physical&lt;/strong&gt;, and are termed as &lt;strong&gt;nodes&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Swarm managers&lt;/strong&gt; can be configured in the compose file to use several different strategies to deploy new containers on the cluster,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Emptiest Node:&lt;/strong&gt; runs the container on the least utilized machine.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Global:&lt;/strong&gt; each machine gets exactly one instance of the specified node.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Swarm managers are the only machines that can run commands on a swarm or allow new nodes to join as a worker in the cluster. Workers are only capable of donating the compute power but do not have the authority to rule any other machine using commands.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The moment swarm mode is switched on, the current machine becomes the swarm mananger and any commands run henceforth are run on the cluster by the swarm manager.&lt;/p&gt;
+
+&lt;p&gt;Setting up swarm,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm init&lt;/code&gt; to enable the swarm mode and make the current machine the swarm manager&lt;/li&gt;
+  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm join&lt;/code&gt; on other machines to make them join the cluster&lt;/li&gt;
+  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm leave&lt;/code&gt; on worker to leave the swarm&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Always run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm init&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm join&lt;/code&gt; with port 2377 (the swarm management port), or let it take the default port by leaving it empty.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The machine IP addresses returned by &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-machine ls&lt;/code&gt; include port 2376, which is the Docker daemon port. Do not use this port or you may experience errors.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;docker-machine&quot;&gt;Docker Machine&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker machine helps to start and manage the virtual machines in a cluster with ease.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create a virtual machine&lt;/span&gt;
+docker-machine create &lt;span class=&quot;nt&quot;&gt;--driver&lt;/span&gt; virtualbox &amp;lt;vm-name&amp;gt;
+
+&lt;span class=&quot;c&quot;&gt;# list as docker machines&lt;/span&gt;
+docker-machine &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# send command to docker machines&lt;/span&gt;
+docker-machine ssh &amp;lt;vm-name&amp;gt; &amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# to use the native ssh of docker&lt;/span&gt;
+docker-machine &lt;span class=&quot;nt&quot;&gt;--native-ssh&lt;/span&gt; ssh &amp;lt;vm-name&amp;gt; &amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# configure shell to interact with docker machine&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker-machine env &amp;lt;vm-name&amp;gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;development-notes&quot;&gt;Development Notes&lt;/h3&gt;
+
+&lt;p&gt;There are various advantages of using docker for machine-learning development,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Library dependencies for complex machine learning libraries like tensorflow can be cumbersome to build sometimes. Using base images it is easier to load them.&lt;/li&gt;
+  &lt;li&gt;Open-source docker images like &lt;a href=&quot;https://github.com/floydhub/dl-docker&quot; target=&quot;\_blank&quot;&gt;this&lt;/a&gt; that give most of the libaries one may use, out of the box.&lt;/li&gt;
+  &lt;li&gt;It can help run mutliple CUDA/cuDNN versions on the same machines based on project requirements.&lt;/li&gt;
+  &lt;li&gt;Services and Swarms can help run experiments on bigger swarms using more compute power from mutliple workers that might not be easily available on a single machine.&lt;/li&gt;
+  &lt;li&gt;Once a system with basic dependencies is ready there would not be any overhead of reiterating the setup process on any other machine thanks to the excellent portability that docker offers, regardless of the host operating systems.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: Updated copy of &lt;a href=&quot;https://github.com/shams-sam/setups/tree/master/docker-setup&quot; target=&quot;\_blank&quot;&gt;Docker Setup Files&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;stack&quot;&gt;Stack&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A stack is the top-most hierarchy of the docker containerization. It is the group of related services that share dependencies, and can be orchestrated and scaled together. A single stack is capable of defining and coordinating the functionality of the entire application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;docker-architecture&quot;&gt;Docker Architecture&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker uses a &lt;strong&gt;client-server architecture&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;The docker client speaks to docker daemon, which does the building, running and managing of the docker containers.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The client and daemon communicate through REST APIs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docker Daemon:&lt;/strong&gt; listens to the APIs and manages the images, containers, networks and volumes. A daemon can communicate with other daemons and clients to manager the docker system.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docker Client:&lt;/strong&gt; the primary way of communicating with the docker daemons. All the commands executed at the client are internally routed to &lt;code class=&quot;highlighter-rouge&quot;&gt;dockerd&lt;/code&gt; which then executes them. A single docker client can communicate with many different docker daemons.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docker Registries:&lt;/strong&gt; stores the docker images. For example, docker hub and docker cloud are the public repositories that anyone can use, and docker is configured by default to look for a image in docker hub in case it does not find local copy. It is also possible to run private registries. Commands like &lt;code class=&quot;highlighter-rouge&quot;&gt;docker pull&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt; fetch the required images from the configured repositories.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;miscellaneous&quot;&gt;Miscellaneous&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Docker is written in &lt;strong&gt;go language&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;It is built to utilize the features of linux kernels in its full advantage.&lt;/li&gt;
+  &lt;li&gt;Docker provides container isolations using &lt;strong&gt;namespaces&lt;/strong&gt;. On executing &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;, docker creates a set of namespaces for the container. Each aspect of the container is run on a different namespace and its access is limited to that namespace.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;namespaces&quot;&gt;Namespaces&lt;/h3&gt;
+
+&lt;p&gt;Docker engine uses the following namespaces on linux,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt; namespace: process isolation&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net&lt;/code&gt; namespace: managing network interfaces&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ipc&lt;/code&gt; namespace: managing access to IPC (InterProcess Communication) resources&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mnt&lt;/code&gt; namespace: managing filesystem mount points.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;uts&lt;/code&gt; namespace: isolating kernel and version identifiers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;contol-groups&quot;&gt;Contol Groups&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Control groups, &lt;code class=&quot;highlighter-rouge&quot;&gt;cgroups&lt;/code&gt;, limits application to a specific set of resources.&lt;/li&gt;
+  &lt;li&gt;It helps docker engine to share available hardware resources among the running containers, and optionally enforce limits and constraints.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://docs.docker.com/get-started/&quot; target=&quot;\_blank&quot;&gt;Docker - Get Started&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 06 Apr 2018 00:00:00 +0530</pubDate>
+        <link>https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/</guid>
+        
+        <category>machine-learning</category>
+        
+        <category>library</category>
+        
+        <category>setup</category>
+        
         
       </item>
     
@@ -2376,104 +2692,6 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
         <category>library</category>
         
         <category>featured</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>B-Money</title>
-        <description>&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/2017/07/02/blockchain/&quot;&gt;Blockchain&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/21/bitcoin-satoshi-nakamoto/&quot;&gt;Bitcoin&lt;/a&gt;&lt;/p&gt;
-
-  &lt;p&gt;&lt;a href=&quot;/2017/12/28/b-money-wei-dai/&quot;&gt;B-Money&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;B-Money, an early proposal by Wei Dai for an anonymous, distributed electronic cash system was referred by Satoshi Nakamoto for creating Bitcoin, the current cryptocurrency giant.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In the referred post, the author identified existing operational problems in an online community named Crypto-Anarchy. Crypto-Anarchy is explained as an online community where participants are identified with psuedonyms which are in no way associated with their true names or physical locations. Because of this seperation of true identity from community identity, the possibility of voilence is rendered impotent. Together these make the role of government permanently forbidden and unnecessary in such a community.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A community is defined by cooperation of its participants, and an efficient cooperation requires a medium of exchange (money) and a way to enforce contracts.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;While traditionally these services were provided by the government or government sponsored institutions, it was not clear theoretically how to implement a similar system among decentralized nodes without using a trusted central authority.&lt;/p&gt;
-
-&lt;p&gt;Author proposed two different protocols which can solve these issues, first one is very similar to the current proof-of-work protocol and second is similar to proof-of-stake protocol.&lt;/p&gt;
-
-&lt;p&gt;Author poses that the implementation of the first system is impractical, because it makes heavy use of synchronous and unjammable anonymous broadcast channel.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Existence of untraceable network is assumed, where senders and receivers are identified only by their digital psuedonyms (i.e. public keys) and every message is signed by its sender and encrypted to its receiver.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;first-protocol&quot;&gt;First Protocol&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Analogous to &lt;strong&gt;proof-of-work&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;A seperate database is maintained by every participant with details of how much money belongs to which &lt;strong&gt;pseudonym&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;The individual databases collectively define the ownership of the money. The accounts are update subject to the rules in this protocol listed below.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The creation of money:&lt;/strong&gt; Money is created by broadcasting the solution to a previously unsolved computational problem. Such solutions must be easy to determine how much computing effort it took to solve the problem and must not otherwise have any practical or intellectual value (similar to nonce in a proof of work). Upon broadcasting the solution and verifying it, everyone credits the amount to solver’s psuedonym, equivalent to the amount of units it would take to buy the electricity utilized by the most economical computer to solve the problem.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The transfer of money:&lt;/strong&gt; If owner of psuedonym pk_A (public key of A) sends X units of money to owner of psuedonym pk_B (public key of B), they have to broadcast a message signed with their public key. On receiving this broadcast, all the participants would debit amount X from psuedonym pk_A and credit it to psuedonym pk_B, unless this creates a negative balance in pk_A’s account in which case the broadcasted transaction is ignored.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The effecting of contracts:&lt;/strong&gt; A valid contract binds a &lt;strong&gt;maximum reperation&lt;/strong&gt; for each participating party in case of default. It also specifies a third party who will do the arbitration in case any dispute arises. In order for the contract to be effective, all the participating parties and the arbitrator must broadcast their public keys (i.e. psuedonyms). Upon the broadcast of contract and all the associated signatures, every participant debits the account of each party by the amount of his maximum reperation and credits a special account identified by secure has of the contract by the sum of the maximum reperations. The contract is a success if the debits succeed for every party without any negative balances, failing which the contract is ignored and the accounts are rolled back.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The conclusion of contracts:&lt;/strong&gt; If the contract concludes without any dispute, each party must broadcast a message stating the same, following which each participant credits the accounts of each party by the amount of their maximum reperation, removes the contract account, then credits or debits the account of each party according to the reparation schedule if there is one.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;The enforcement of contract:&lt;/strong&gt; In case of dispute, which cannot be sorted by the arbitrator, each party broadcasts a suggested reparation/ fine schedule and arguments or evidence in his favor. Each participant makes a determination as to the actual reparations and/or fines, and modifies his accounts accordingly.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;second-protocol&quot;&gt;Second Protocol&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Similar to &lt;strong&gt;proof-of-stake&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;The accounts of every psuedonym is maintained by a &lt;strong&gt;subset of the participants (called servers)&lt;/strong&gt; instead of everyone as in the previous protocol. Servers are connected (using Usenet-style broadcast channel).&lt;/li&gt;
-  &lt;li&gt;Format of broadcasted transaction is same as first protocol, but &lt;strong&gt;affected participant of each transaction should verify the changes&lt;/strong&gt; on a randomly selected subset of the servers.&lt;/li&gt;
-  &lt;li&gt;In order to bring a degree of trust in the servers, &lt;strong&gt;each server is required to deposit a certain amount of money in a special account&lt;/strong&gt; to be &lt;strong&gt;used as potential fines or rewards&lt;/strong&gt; for proof of misconduct.&lt;/li&gt;
-  &lt;li&gt;Each server must &lt;strong&gt;periodically  publish and commit&lt;/strong&gt; to its current money creation and money ownership databases. Also they should verify that his own account balances are correct and that &lt;strong&gt;total sum of account balances in not greater than the total amount of money created&lt;/strong&gt;. This would prevent the servers, even in total collusion, from permanently and costlessly expanding the money supply.&lt;/li&gt;
-  &lt;li&gt;New servers synchronize with the existing servers to used the published databases.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;alternative-b-money-creation&quot;&gt;Alternative B-Money Creation&lt;/h3&gt;
-
-&lt;p&gt;One of the major problems faced in decentralized money network protocols is reaching a consensus for the cost of a computing effort. The rapid advances of computing technology, often in a private development makes it difficult to gather accurate information about these metrics while making sure they are not outdated.&lt;/p&gt;
-
-&lt;p&gt;Author proposes a subprotocol, in which the account keepers (i.e. the participants in first protocol or servers in second protocol) decide and agree on the amount of b-money to be create each period, where the &lt;strong&gt;cost of b-money is determined by an auction&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;Each money creation period is divided up into &lt;strong&gt;four phases&lt;/strong&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Planning:&lt;/strong&gt; Account keepers compute and negotiate to determine an optimal increase in money supply for a given period. Whether or not  the participants reach a concensus, they broadcast their money creation quota and any macroeconomic calculations done to support the figures.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Bidding:&lt;/strong&gt; Anyone who wants to create the b-money makes a bid of the form &amp;lt;X, Y&amp;gt;, where X is the amount of b-money he wants to create and Y is an unsolved problem from a predetermined problem class (proof-of-work solution in case of bitcoin), where each problem has a nominal cost in MIPS-year publically agreed on.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Computation:&lt;/strong&gt; After bidding, the ones who placed the bids in bidding phase solve the problem in their bid and broadcast the solutions.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;Money Creation:&lt;/strong&gt; Each participant accepts the highest bids (among all those who broadcast solutions) in terms of nominal cost per unit of b-money created and credits the bidder’s account accordingly.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;http://www.weidai.com/bmoney.txt&quot; target=&quot;_blank&quot;&gt;B-Money by Wei Dai&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 28 Dec 2017 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/</guid>
-        
-        <category>concept</category>
-        
-        <category>references</category>
         
         
       </item>

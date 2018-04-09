@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Docker for Machine Learning Developement | Machine Learning Medium</title>
+  <meta name="description" content="Docker is a computer program that performs operating-system-level virtualization also known as containerization. It is developed by Docker, Inc." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Docker for Machine Learning Developement"/>
+  
+  <meta property="og:description" content="Docker is a computer program that performs operating-system-level virtualization also known as containerization. It is developed by Docker, Inc." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/docker.jpg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2018-04-06T00:00:00+05:30">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2018-04-06T00:00:00+05:30">Apr 6</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/docker.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://news-cdn.softpedia.com/images/news2/docker-1-13-1-implements-support-for-global-scoped-network-plugins-in-swarm-mode-512751-2.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Docker for Machine Learning Developement</h1>
+            <h2 class="post-description">Docker is a computer program that performs operating-system-level virtualization also known as containerization. It is developed by Docker, Inc.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+
+<p>Containerization, also known as operating-system-level virtualization is a feature of the operating system in which the kernel allows the existence of multiple isolated user-space instances. Such instances may be called containers, partitions, virtualization engines (VEs), or jails. These look like real computers from the point of view of a program running in them.</p>
+
+<h3 id="general-commands">General Commands</h3>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># docker help </span>
+docker
+docker <span class="nt">--help</span>
+docker &lt;command-name&gt; <span class="nt">--help</span>
+
+<span class="c"># check docker version</span>
+docker <span class="nt">--version</span>
+
+<span class="c"># check additional docker information</span>
+docker version
+docker info
+
+<span class="c"># check docker installation</span>
+docker run hello-world
+</code></pre></div></div>
+
+<h3 id="images">Images</h3>
+
+<ul>
+  <li>Docker <strong>image</strong> is an executable package that includes everything needed to run an application - code, libraries, environment variables, and configuration files.</li>
+  <li>An image is a read-only template with instructions or creating a docker container. It is possible for an image to be based on another base image, with additional customizations.</li>
+  <li>Images are created using <code class="highlighter-rouge">Dockerfile</code> with a simple syntax the defines the steps involved in creating the image and run it. Each instruction in the <code class="highlighter-rouge">Dockerfile</code> creates a layer in the image and cached for the next build to speed up the process until the <code class="highlighter-rouge">Dockerfile</code> is changed itself.</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list images</span>
+docker image <span class="nb">ls
+</span>docker images
+
+<span class="c"># list all images on machine</span>
+docker image <span class="nb">ls</span> <span class="nt">-a</span>
+
+<span class="c"># remove image from machine</span>
+docker image rm &lt;image id&gt;
+
+<span class="c"># remove all images from this machine</span>
+docker image rm <span class="k">$(</span>docker image <span class="nb">ls</span> <span class="nt">-a</span> <span class="nt">-q</span><span class="k">)</span>
+</code></pre></div></div>
+
+<h3 id="container">Container</h3>
+
+<ul>
+  <li>Docker <strong>container</strong> is launched by running an image. Container is to image, what object is to class, i.e. container is a runtime instance of an image, or what the image becomes in memory when executed.</li>
+  <li>A container is defined by the image used to spawn it and the configuration options provided while creating or running it.</li>
+  <li>When a container is removed, any changes in the state not stored in the persistent storage disappear.</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># list all running containers</span>
+docker container <span class="nb">ls
+</span>docker ps
+
+<span class="c"># list all containers</span>
+docker container <span class="nb">ls</span> <span class="nt">--all</span>
+docker container <span class="nb">ls</span> <span class="nt">-a</span>
+
+<span class="c"># list all containers in quite mode</span>
+docker container <span class="nb">ls</span> <span class="nt">-aq</span>
+
+<span class="c"># docker container stop using container id</span>
+docker container stop &lt;container-id&gt;
+
+<span class="c"># docker container kill using container id</span>
+docker container <span class="nb">kill</span> &lt;container-id&gt;
+
+<span class="c"># docker container remove using container id</span>
+docker container rm &lt;container-id&gt;
+
+<span class="c"># remove all containers</span>
+docker container rm <span class="k">$(</span>docker container <span class="nb">ls</span> <span class="nt">-a</span> <span class="nt">-q</span><span class="k">)</span>
+docker container <span class="nb">ls</span> <span class="nt">-a</span> | awk <span class="s1">'{print "docker container rm ",$1}'</span> | bash
+
+<span class="c"># attach to a running container</span>
+docker attach &lt;container-id&gt;
+</code></pre></div></div>
+
+<ul>
+  <li><code class="highlighter-rouge">Ctrl-c</code> to kill the container.</li>
+  <li><code class="highlighter-rouge">Ctrl-p Ctrl-q</code> sequence to detach from an running container without killing it.</li>
+</ul>
+
+<h3 id="container-vs-virtual-machines">Container vs Virtual Machines</h3>
+
+<p>A container runs natively on Linux, sharing the kernel of the host machines with other containers. It only runs processes and occupies memory required by that executable, hence making it lightweight.</p>
+
+<p>On the contrary, a virtual machine runs a full guest operating system with virtual access to the host resources through a hypervisor. As a result, VMs provide an entire guest operating system and hence a lot more resources than what the application would actually need.</p>
+
+<h3 id="dockerfile">Dockerfile</h3>
+
+<ul>
+  <li><strong>Dockerfile</strong> defines the envrionment inside the container. Options like access to resources, disk drives etc. can be configured in the file. Post this, it can expected that the builds from this Dockerfile would behave the same wherever it runs.</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># tensorflow nightly build base image with python 3
+FROM tensorflow/tensorflow:nightly-py3
+
+# set working directory
+WORKDIR /development
+
+# Copy the current directory contents into the destination directory
+ADD . /development
+
+# setup command line tools
+RUN apt-get update &amp;&amp; apt-get install -y \
+    emacs \
+    git \
+    tmux \
+    &amp;&amp; \
+apt-get clean &amp;&amp; \
+apt-get autoremove &amp;&amp; \
+rm -rf /var/lib/apt/list/*
+
+# setup non-pip libraries
+RUN ["apt-get", "install", "-y", "python-opencv"]
+
+# install requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# expose ports for connection
+# 6006 for tensorboard
+# 8888 for jupyter notebook
+EXPOSE 6006 8888
+
+CMD ["/bin/bash"]
+</code></pre></div></div>
+
+<h3 id="build-from-dockerfile">Build from Dockerfile</h3>
+
+<ul>
+  <li>Once the Dockerfile is ready, it can be used to build and run the image by using the following commands,</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># build image from Dockerfile</span>
+docker build <span class="nt">-t</span> &lt;docker-image-name&gt; <span class="nb">.</span>
+
+<span class="c"># run container in interactive mode</span>
+docker run <span class="nt">-it</span> &lt;image-name&gt; &lt;optional-command-to-overwrite-base-command&gt;
+
+<span class="c"># run container in detached mode</span>
+docker run <span class="nt">-d</span> &lt;image-name&gt;
+
+<span class="c"># run container with port forwarding</span>
+docker run <span class="nt">-p</span> &lt;host-port&gt;:&lt;container-port-exposed&gt; &lt;image-name&gt;
+</code></pre></div></div>
+
+<h3 id="docker-hub">Docker Hub</h3>
+
+<ul>
+  <li><strong>Dockerhub</strong> is the public repository of docker images where anyone can publish their images or pull images from. Image names on dockerhub have a name based on username of uploader, project name and tags based on properties of docker image - latest, nightly etc. A template would look like: <strong>username/repository:tag</strong></li>
+  <li>Once uploaded, all the images are publically available and can be availed on any system with connectivity, because if an image in not available locally, docker tries to pull it from the repository.</li>
+</ul>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># login to dockerhub</span>
+docker login
+
+<span class="c"># tag &lt;image&gt; for upload to registry</span>
+docker tag &lt;image&gt; username/repository:tag
+
+<span class="c"># upload tagged image to registry</span>
+docker push username/repository:tag
+
+<span class="c"># run image from a registry</span>
+docker run username/repository:tag
+
+<span class="c"># pull tagged image from registry</span>
+docker pull username/repository:tag
+</code></pre></div></div>
+
+<h3 id="services">Services</h3>
+
+<ul>
+  <li>Services are just <strong>containers in production</strong>. A service runs only one image, but along with it other information is also maintained - ports it should run on, number of replicas of the container to be maintained etc.</li>
+  <li>Scaling a service basically means to change the number of containers running the particular piece of the software, assigning more compute resources to service in the process.</li>
+  <li>Services allow the containers to be scaled across multiple docker daemons, which all work together in a swarm using multiple managers and workers. Each member of the swarm in a docker daemon communicating with other daemons using Docker APIs.</li>
+</ul>
+
+<h3 id="swarms">Swarms</h3>
+
+<ul>
+  <li>A swarm is a group of machines that are running docker and joined into a cluster. Post definition of the cluster, all the commands are run on the entire cluster by a <strong>swarm manager</strong>. The machines in a cluster can be <strong>virtual</strong> or <strong>physical</strong>, and are termed as <strong>nodes</strong>.</li>
+</ul>
+
+<p><strong>Swarm managers</strong> can be configured in the compose file to use several different strategies to deploy new containers on the cluster,</p>
+
+<ul>
+  <li><strong>Emptiest Node:</strong> runs the container on the least utilized machine.</li>
+  <li><strong>Global:</strong> each machine gets exactly one instance of the specified node.</li>
+</ul>
+
+<blockquote>
+  <p>Swarm managers are the only machines that can run commands on a swarm or allow new nodes to join as a worker in the cluster. Workers are only capable of donating the compute power but do not have the authority to rule any other machine using commands.</p>
+</blockquote>
+
+<p>The moment swarm mode is switched on, the current machine becomes the swarm mananger and any commands run henceforth are run on the cluster by the swarm manager.</p>
+
+<p>Setting up swarm,</p>
+
+<ul>
+  <li>run <code class="highlighter-rouge">docker swarm init</code> to enable the swarm mode and make the current machine the swarm manager</li>
+  <li>run <code class="highlighter-rouge">docker swarm join</code> on other machines to make them join the cluster</li>
+  <li>run <code class="highlighter-rouge">docker swarm leave</code> on worker to leave the swarm</li>
+</ul>
+
+<blockquote>
+  <p>Always run <code class="highlighter-rouge">docker swarm init</code> and <code class="highlighter-rouge">docker swarm join</code> with port 2377 (the swarm management port), or let it take the default port by leaving it empty.</p>
+</blockquote>
+
+<blockquote>
+  <p>The machine IP addresses returned by <code class="highlighter-rouge">docker-machine ls</code> include port 2376, which is the Docker daemon port. Do not use this port or you may experience errors.</p>
+</blockquote>
+
+<h3 id="docker-machine">Docker Machine</h3>
+
+<ul>
+  <li>Docker machine helps to start and manage the virtual machines in a cluster with ease.</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># create a virtual machine</span>
+docker-machine create <span class="nt">--driver</span> virtualbox &lt;vm-name&gt;
+
+<span class="c"># list as docker machines</span>
+docker-machine <span class="nb">ls</span>
+
+<span class="c"># send command to docker machines</span>
+docker-machine ssh &lt;vm-name&gt; &lt;<span class="nb">command</span><span class="o">&gt;</span>
+
+<span class="c"># to use the native ssh of docker</span>
+docker-machine <span class="nt">--native-ssh</span> ssh &lt;vm-name&gt; &lt;<span class="nb">command</span><span class="o">&gt;</span>
+
+<span class="c"># configure shell to interact with docker machine</span>
+<span class="nb">eval</span> <span class="k">$(</span>docker-machine env &lt;vm-name&gt;<span class="k">)</span>
+</code></pre></div></div>
+
+<h3 id="development-notes">Development Notes</h3>
+
+<p>There are various advantages of using docker for machine-learning development,</p>
+
+<ul>
+  <li>Library dependencies for complex machine learning libraries like tensorflow can be cumbersome to build sometimes. Using base images it is easier to load them.</li>
+  <li>Open-source docker images like <a href="https://github.com/floydhub/dl-docker" target="\_blank">this</a> that give most of the libaries one may use, out of the box.</li>
+  <li>It can help run mutliple CUDA/cuDNN versions on the same machines based on project requirements.</li>
+  <li>Services and Swarms can help run experiments on bigger swarms using more compute power from mutliple workers that might not be easily available on a single machine.</li>
+  <li>Once a system with basic dependencies is ready there would not be any overhead of reiterating the setup process on any other machine thanks to the excellent portability that docker offers, regardless of the host operating systems.</li>
+</ul>
+
+<p><strong>Note: Updated copy of <a href="https://github.com/shams-sam/setups/tree/master/docker-setup" target="\_blank">Docker Setup Files</a></strong></p>
+
+<h3 id="stack">Stack</h3>
+
+<ul>
+  <li>A stack is the top-most hierarchy of the docker containerization. It is the group of related services that share dependencies, and can be orchestrated and scaled together. A single stack is capable of defining and coordinating the functionality of the entire application.</li>
+</ul>
+
+<h3 id="docker-architecture">Docker Architecture</h3>
+
+<ul>
+  <li>Docker uses a <strong>client-server architecture</strong>.</li>
+  <li>The docker client speaks to docker daemon, which does the building, running and managing of the docker containers.</li>
+  <li>
+    <p>The client and daemon communicate through REST APIs.</p>
+  </li>
+  <li><strong>Docker Daemon:</strong> listens to the APIs and manages the images, containers, networks and volumes. A daemon can communicate with other daemons and clients to manager the docker system.</li>
+  <li><strong>Docker Client:</strong> the primary way of communicating with the docker daemons. All the commands executed at the client are internally routed to <code class="highlighter-rouge">dockerd</code> which then executes them. A single docker client can communicate with many different docker daemons.</li>
+  <li><strong>Docker Registries:</strong> stores the docker images. For example, docker hub and docker cloud are the public repositories that anyone can use, and docker is configured by default to look for a image in docker hub in case it does not find local copy. It is also possible to run private registries. Commands like <code class="highlighter-rouge">docker pull</code> and <code class="highlighter-rouge">docker run</code> fetch the required images from the configured repositories.</li>
+</ul>
+
+<h3 id="miscellaneous">Miscellaneous</h3>
+
+<ul>
+  <li>Docker is written in <strong>go language</strong>.</li>
+  <li>It is built to utilize the features of linux kernels in its full advantage.</li>
+  <li>Docker provides container isolations using <strong>namespaces</strong>. On executing <code class="highlighter-rouge">docker run</code>, docker creates a set of namespaces for the container. Each aspect of the container is run on a different namespace and its access is limited to that namespace.</li>
+</ul>
+
+<h3 id="namespaces">Namespaces</h3>
+
+<p>Docker engine uses the following namespaces on linux,</p>
+
+<ul>
+  <li><code class="highlighter-rouge">pid</code> namespace: process isolation</li>
+  <li><code class="highlighter-rouge">net</code> namespace: managing network interfaces</li>
+  <li><code class="highlighter-rouge">ipc</code> namespace: managing access to IPC (InterProcess Communication) resources</li>
+  <li><code class="highlighter-rouge">mnt</code> namespace: managing filesystem mount points.</li>
+  <li><code class="highlighter-rouge">uts</code> namespace: isolating kernel and version identifiers.</li>
+</ul>
+
+<h3 id="contol-groups">Contol Groups</h3>
+
+<ul>
+  <li>Control groups, <code class="highlighter-rouge">cgroups</code>, limits application to a specific set of resources.</li>
+  <li>It helps docker engine to share available hardware resources among the running containers, and optionally enforce limits and constraints.</li>
+</ul>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://docs.docker.com/get-started/" target="\_blank">Docker - Get Started</a></small><br /></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/library" class='category-links'><h1>library</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/setup" class='category-links'><h1>setup</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Docker for Machine Learning Developement&url=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/&title=Docker for Machine Learning Developement&summary=Docker is a computer program that performs operating-system-level virtualization also known as containerization. It is developed by Docker, Inc.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Docker for Machine Learning Developement&amp;body=Check out this site https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2018-04-06 00:00">06 Apr 2018</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2018<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2018 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>
