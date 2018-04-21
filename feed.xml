@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sat, 21 Apr 2018 22:22:12 +0530</pubDate>
-    <lastBuildDate>Sat, 21 Apr 2018 22:22:12 +0530</lastBuildDate>
+    <pubDate>Sat, 21 Apr 2018 22:26:24 +0530</pubDate>
+    <lastBuildDate>Sat, 21 Apr 2018 22:26:24 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -204,7 +204,7 @@ Repeat \{ \\
 
 &lt;p&gt;&lt;img src=&quot;/assets/2018-04-19-k-means-clustering/fig-5-elbow-plot.png?raw=true&quot; alt=&quot;K-Means Compression - Image 2&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Seeing the two plots it is evident while the elbow plot gives a optimal value of two for image 1, there is no well defined elbow for the image 2 and it is not very clear which value would be optimal as mentioned in the &lt;img src=&quot;#choosing-the-number-of-clusters&quot; alt=&quot;section&quot; /&gt; above.&lt;/p&gt;
+&lt;p&gt;Seeing the two plots it is evident while the elbow plot gives a optimal value of two for image 1, there is no well defined elbow for the image 2 and it is not very clear which value would be optimal as mentioned in the &lt;a href=&quot;#choosing-the-number-of-clusters&quot;&gt;section&lt;/a&gt; above.&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
