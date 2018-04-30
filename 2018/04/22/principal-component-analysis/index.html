@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Principal Component Analysis | Machine Learning Medium</title>
+  <meta name="description" content="A mathematical procedure that transforms a number of (possibly) correlated variables into a (possibly smaller) number of uncorrelated variables called principal components." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Principal Component Analysis"/>
+  
+  <meta property="og:description" content="A mathematical procedure that transforms a number of (possibly) correlated variables into a (possibly smaller) number of uncorrelated variables called principal components." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/projections.png" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/04/22/principal-component-analysis/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2018-04-22T00:00:00+05:30">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2018-04-22T00:00:00+05:30">Apr 22</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/projections.png) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn-images-1.medium.com/max/1185/1*2ps4KlEODqLbgYt9u5Li7w.png</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Principal Component Analysis</h1>
+            <h2 class="post-description">A mathematical procedure that transforms a number of (possibly) correlated variables into a (possibly smaller) number of uncorrelated variables called principal components.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="basics-of-machine-learning-series">Basics of Machine Learning Series</h3>
+
+<blockquote>
+  <p><a href="/collection/basics-of-machine-learning">Index</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>For a given dataset, PCA tries to find a lower dimensional surface onto which these points can be projected while minimizing the approximation losses. For example consider the dataset (marked by blue dots’s) in \(\mathbb{R}^2\) in the the plot below. The line formed by the red x’s is the projection of the data from \(\mathbb{R}^2\) to \(\mathbb{R}\).</p>
+
+<p><img src="/assets/2018-04-22-principal-component-analysis/fig-1-pca-projection.png?raw=true" alt="Fig-1 PCA Projection" /></p>
+
+<h3 id="implementation">Implementation</h3>
+
+<p><a href="https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/PCA.ipynb" target="_blank"><strong>Ipython Notebook</strong></a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># library imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c"># random data generation</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c"># applying PCA on data</span>
+<span class="c"># same number of dimensions will help visualize components</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c"># reduced number of dimensions will help understand projections</span>
+<span class="n">pca_reduce</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c"># projection on new components found</span>
+<span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca_reduce</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c"># rebuilding the data back to original space</span>
+<span class="n">X_rebuild</span> <span class="o">=</span> <span class="n">pca_reduce</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X_proj</span><span class="p">)</span>
+<span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c"># plot data and projection</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
+
+<span class="c"># plot the components</span>
+<span class="n">soa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">pca</span><span class="o">.</span><span class="n">mean_</span><span class="p">,</span> 
+    <span class="n">pca</span><span class="o">.</span><span class="n">components_</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span>
+        <span class="c"># components scaled to the length of their variance</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="p">))</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">soa</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> 
+    <span class="n">angles</span><span class="o">=</span><span class="s">'xy'</span><span class="p">,</span> 
+    <span class="n">scale_units</span><span class="o">=</span><span class="s">'xy'</span><span class="p">,</span> 
+    <span class="n">scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s">'rb'</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'scaled'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span>
+    <span class="s">'original'</span><span class="p">,</span> 
+    <span class="s">'projection'</span>
+<span class="p">])</span>
+
+<span class="c"># plot the projection errors</span>
+<span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">p_proj</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_rebuild</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s">'g'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2018-04-22-principal-component-analysis/fig-2-pca-projection-with-errors.png?raw=true" alt="Fig-2 PCA Projection, Components, and Projection Errors" /></p>
+
+<p>From the above plot it is easier to point out what exactly PCA is doing. The green points show the original data. So all PCA is trying to do is to find the orthogonal components along which the eigenvalues are maximized which is basically a fancy way of saying that PCA finds a feature set in the order of decreasing variance for a given dataset. In the above example, the red vector is displaying higher variance and is the first component, while the blue vector is displaying relatively less variance.</p>
+
+<blockquote>
+  <p>Performing PCA for number of components greater than the current number of dimensions is useless as the data is preserved with 100% variance in the current dimension and no new dimension can help enhance that metric.</p>
+</blockquote>
+
+<p>So, when dimensionality reduction is done using PCA as can be seen in the red dots, the projection is done along the more dominant feature among the two as it is more representative of the data among the two dimensions. Also, it can be seen that the red vector lies on a line than minimizes the projection losses represented by the green lines from the original data point to the projected data points.</p>
+
+<blockquote>
+  <p>Mean Normalization and feature scaling are a must before performing the PCA, so that the variance of a component is not affected by the disparity in the range of values.</p>
+</blockquote>
+
+<p>Generalizing to n-dimensional data the same technique can be used to reduce the data to k-dimensions in a similar way by finding the hyper-surface with least projection error.</p>
+
+<h3 id="projection-vs-prediction">Projection vs Prediction</h3>
+
+<blockquote>
+  <p>PCA is not Linear Regression.</p>
+</blockquote>
+
+<p>In linear regression, the aim is predict a given dependent variable, \(y\) based on independent variables, \(x\), i.e. <strong>minimize the prediction error</strong>. In contrast, PCA does not have a target variable, \(y\), it is mere feature reduction by <strong>minimizing the projection error</strong>. The difference is clear from the plot in Fig-3.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># import the sklearn model</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c"># coef_ gives the regression coefficients</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+
+<span class="c"># plot data and projection</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'blue'</span><span class="p">)</span>
+
+<span class="c"># plot the projection errors</span>
+<span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">p_proj</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_rebuild</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c"># plot the prediction errors</span>
+<span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s">'b'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/assets/2018-04-22-principal-component-analysis/fig-3-projection-vs-prediction.png?raw=true" alt="Fig-3 Projection vs Prediction" /></p>
+
+<p>The blue points display the prediction based on linear regression, while the red points display the projection on the reduced dimension. The optimization objectives of the two algorithms are different. While linear regression is trying to minimize the squared errors represented by the blue lines, PCA is trying to minimize the projection errors represented by the red lines.</p>
+
+<h3 id="mean-normalization-and-feature-scaling">Mean Normalization and Feature Scaling</h3>
+
+<p>It is important to have both these steps in the preprocessing, before PCA is applied. The mean of any feature in a design matrix can be calculated by,</p>
+
+<script type="math/tex; mode=display">\mu_j = {1 \over m} \sum_{i=1}^m x_j^{(i)} \label{1} \tag{1}</script>
+
+<p>Following the calculation of means, the normalization can be done by replacing each \(x_j\) by \(x_j - \mu_j\). Similarly, feature scaling is done by replacing each \(x_j^{(i)}\) by,</p>
+
+<script type="math/tex; mode=display">\frac {x_j^{(i)} -\mu_j} {s_j} \label{2} \tag{2}</script>
+
+<p>where \(s_j\) is some <strong>measure of the range of values of feature</strong> \(j\). It can be \(max(x_j) - min(x_j)\) or more commonly the standard deviation of the feature.</p>
+
+<h3 id="pca-algorithm">PCA Algorithm</h3>
+
+<ul>
+  <li>Compute <strong>covariance matrix</strong> given by,</li>
+</ul>
+
+<script type="math/tex; mode=display">\Sigma = {1 \over m} \sum_{i}^n \left( x^{(i)} \right) \left( x^{(i)} \right)^T \label{3} \tag{3}</script>
+
+<blockquote>
+  <p>All covariance matrices, \(\Sigma\), satisfy a mathematical property called symmetric positive definite. (Will take up in future posts.)</p>
+</blockquote>
+
+<ul>
+  <li>Follow by this, eigen vectors and eigen values are calculated. There are various ways of doing this, most popularly done by singular value decomposition (SVD) of the covariance matrix. SVD returns three different matrices given by,</li>
+</ul>
+
+<script type="math/tex; mode=display">U,S,V = SVD(\Sigma) \label{4} \tag{4}</script>
+
+<p>where,</p>
+
+<ul>
+  <li>\(\Sigma\) is a \(n * n\) matrix because each \(x^{(i)}\) is a \(n * 1\) vector.</li>
+  <li>\(U\) is the \(n * n\) matrix where each column represents a component of the PCA. In order to reduce the dimensionality of the data, one needs to choose the first \(k\) columns to form a matrix, \(U_{reduce}\), which is a \(n * k\) matrix.</li>
+</ul>
+
+<p>So the dimensionally compressed data is given by,</p>
+
+<script type="math/tex; mode=display">z^{(i)} = U_{reduce}^T x^{(i)} \label{5} \tag{5}</script>
+
+<p>Since, \(U_{reduce}^T\) is \(k * n\) matrix and \(x^{(i)}\) is \(n * 1\) vector, the product, \(z^{(i)}\) is a \(k * 1\) vector with reduced number of dimensions.</p>
+
+<p>Given a reduced representation, \(z^{(i)}\), we can find its <strong>approximate reconstruction</strong> in the higher dimension by,</p>
+
+<script type="math/tex; mode=display">x_{approx}^{(i)} = U_{reduce} \cdot z^{(i)} \label{6} \tag{6}</script>
+
+<p>Since, \(U_{reduce}\) is \(n * k\) matrix and \(z^{(i)}\) is \(k * 1\) vector, the product, \(x_{approx}^{(i)}\) is a \(n * 1\) vector with the original number of dimensions.</p>
+
+<h3 id="number-of-principal-components">Number of Principal Components</h3>
+
+<p>How to determine the number pricipal components to retain during the dimensionality reduction?</p>
+
+<p>Consider the following two metrics</p>
+
+<ul>
+  <li>The objective of PCA is to minimize the projection error given by,</li>
+</ul>
+
+<script type="math/tex; mode=display">{1 \over m} \sum_{i=1}^m \lVert x^{(i)} - x_{approx}^{(i)} \rVert^2 \label{7} \tag{7}</script>
+
+<ul>
+  <li>Total variation in the data is given by,</li>
+</ul>
+
+<script type="math/tex; mode=display">{1 \over m} \sum_{i=1}^m \lVert x^{(i)} \rVert^2 \label{8} \tag{8}</script>
+
+<p><strong>Rule of Thumb</strong> is, choose the smallest value of \(k\), such that,</p>
+
+<script type="math/tex; mode=display">\frac { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} - x_{approx}^{(i)} \rVert^2} { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} \rVert^2} \leq 0.01 (\text{or } 1\%) \label{9} \tag{9}</script>
+
+<p>i.e. \(99\%\) of the variance is retained (Generally values such as \(95-90\%\) variance retention are used). It will be seen overtime than often the amount of dimensions reduced is significant while maintaining the 99% variance. (because many features are highly correlated.)</p>
+
+<blockquote>
+  <p>Talking about the amount of variance retained in more informative than citing the number of principal components retained.</p>
+</blockquote>
+
+<p>So for choosing k the following method could be used,</p>
+
+<ul>
+  <li>Try PCA for \(k=1\)</li>
+  <li>Compute \(U_{reduce}\), \(z^{(1)}, z^{(2)}, \cdots, z^{(m)}\), \(x_{approx}^{(1)}, x_{approx}^{(2)}, \cdots, x_{approx}^{(m)}\)</li>
+  <li>Check variance retention using \eqref{9}.</li>
+  <li>Repeat the steps for \(k = 2, 3, \cdots\) to satisfy \eqref{9}.</li>
+</ul>
+
+<p>There is an easy work around to bypass this tedious process by using \eqref{4}. The matrix \(S\) returned by SVD is a diagonal matrix of eigenvalues corresponding to each of the components in \(U\). \(S\) is a \(n * n\) matrix with diagonal eigenvalues \(s_{11}, s_{22}, \cdots, s_{nn}\) and off-diagonal elements equal to 0. Then for a given value of \(k\),</p>
+
+<script type="math/tex; mode=display">\frac { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} - x_{approx}^{(i)} \rVert^2} { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} \rVert^2} = 1 - \frac {\sum_{i=1}^k s_{ii}} {\sum_{i=1}^n s_{ii}} \label{10} \tag{10}</script>
+
+<p>Using \eqref{10}, \eqref{9} can be written as,</p>
+
+<script type="math/tex; mode=display">\frac {\sum_{i=1}^k s_{ii}} {\sum_{i=1}^n s_{ii}} \gt 0.99 (\text{or } 99\%) \label{11} \tag{11}</script>
+
+<p>Now, it is easier to calculate the variance retained by iterating over values of \(k\) and calculating the value in \eqref{11}.</p>
+
+<blockquote>
+  <p>The value in \eqref{10} is a good metrics to cite as the performance of PCA, as to how well is the reduced dimensional data representing the original data.</p>
+</blockquote>
+
+<h3 id="suggestions-for-using-pca">Suggestions for Using PCA</h3>
+
+<ul>
+  <li><strong>Speed up a learning algorithm</strong> by reducing the number of features by applying PCA and choosing top-k to maintain 99% variance. PCA should be only applied on the training data to get the \(U_{reduce}\) and not on the cross-validation or test data. This is because \(U_{reduce}\) is parameter of the model and hence should be only learnt on the training data. Once the matrix is determined, the same mapping can be applied on the other two sets.</li>
+</ul>
+
+<blockquote>
+  <p>Run PCA only on the training data, not on cross-validation or test data.</p>
+</blockquote>
+
+<ul>
+  <li>If using PCA for visualization, it does not make sense to choose \(k \gt 3\).</li>
+  <li>Usage of PCA to reduce overfitting is not correct. The reason it works well in some cases is because it reduces the number of features and hence reduces the variance and increases the bias. But often there are better ways of doing this by using regularization and other similar techniques than use PCA. This would be a bad application of PCA. It is generally adviced against because PCA removes some information without keeping into consideration the target values. While this might work when 99% of the variance is retained, it may as well on various occasions lead to the loss of some useful information. On the other hand, regularization parameters are more optimal for preventing overfitting because while penalizing overfitting they also keep in context the values of the target vector.</li>
+</ul>
+
+<blockquote>
+  <p>Do not use PCA to prevent overfitting. Instead look into <a href="/2017/09/08/overfitting-and-regularization/" target="_blank">regularization</a>.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>It is often worth a shot to try any algorithm without using PCA before diving into dimensionality reduction. So, before implementing PCA, implement the models with original dataset. If this does not give desired result, one should move ahead a try using PCA to reduce the number of features. This would also give a worthy baseline score to match the performance of model against once PCA is applied.</p>
+  </li>
+  <li>
+    <p>PCA can also be used in cases when the original data is too big for the disk space. In such cases, compressed data will give some benefits of space saving by dimensionality reduction.</p>
+  </li>
+</ul>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/GBFTt/principal-component-analysis-problem-formulation" target="_blank">Machine Learning: Coursera - PCA Problem Formulation</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/ZYIPa/principal-component-analysis-algorithm" target="_blank">Machine Learning: Coursera - Algorithm</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/X8JoQ/reconstruction-from-compressed-representation" target="_blank">Machine Learning: Coursera - Reconstruction</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/S1bq1/choosing-the-number-of-principal-components" target="_blank">Machine Learning: Coursera - Choosing the number of principal components</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/RBqQl/advice-for-applying-pca" target="_blank">Machine Learning: Coursera - Advice</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Principal Component Analysis&url=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/04/22/principal-component-analysis/&title=Principal Component Analysis&summary=A mathematical procedure that transforms a number of (possibly) correlated variables into a (possibly smaller) number of uncorrelated variables called principal components.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Principal Component Analysis&amp;body=Check out this site https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2018-04-22 00:00">22 Apr 2018</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2018<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2018 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+  </body>
+</html>
