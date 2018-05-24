@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 07 May 2018 23:24:01 +0530</pubDate>
-    <lastBuildDate>Mon, 07 May 2018 23:24:01 +0530</lastBuildDate>
+    <pubDate>Thu, 24 May 2018 13:22:44 +0530</pubDate>
+    <lastBuildDate>Thu, 24 May 2018 13:22:44 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -140,7 +140,7 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
 
 &lt;p&gt;&lt;strong&gt;Implementation&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/Anomaly%20Detection.ipynb&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/CourseraMachineLearningAndrewNg/blob/master/Anomaly%20Detection.ipynb&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
@@ -409,7 +409,7 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
 
 &lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/PCA.ipynb&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/CourseraMachineLearningAndrewNg/blob/master/PCA.ipynb&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# library imports&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
@@ -785,7 +785,7 @@ Repeat \{ \\
 
 &lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/blob/master/CourseraMachineLearningAndrewNg/k-means.ipynb&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/CourseraMachineLearningAndrewNg/blob/master/k-means.ipynb&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cv2&lt;/span&gt;
 &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
@@ -1767,7 +1767,7 @@ docker-machine &lt;span class=&quot;nt&quot;&gt;--native-ssh&lt;/span&gt; ssh &a
 &lt;span class=&quot;n&quot;&gt;J&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;a href=&quot;https://github.com/shams-sam/logic-lab/tree/master/CourseraMachineLearningAndrewNg/Assignments/machine-learning-ex5/ex5&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Complete Code Sample&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;a href=&quot;https://github.com/shams-sam/CourseraMachineLearningAndrewNg/tree/master/Assignments/machine-learning-ex5/ex5&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Complete Code Sample&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;For logistic regression, the cross-entropy cost function, defined as,&lt;/li&gt;
