@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-06-14T15:43:31+05:30</updated>
+ <updated>2018-06-14T16:01:40+05:30</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -33,6 +33,8 @@
   &lt;li&gt;\(r(i, j) = 1\) if user \(j\) has rated choice \(i\).&lt;/li&gt;
   &lt;li&gt;\(y(i,j)\) is the rating given by user \(j\) to the choice \(i\), defined only if \(r(i, j) = 1\).&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/shamssam/recommender-systems&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Kaggle Kernel&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
 
@@ -350,11 +352,11 @@ Y = \left[
 
 &lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
 
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/V9MNG/problem-motivation&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Problem Motivation&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/ZYAyC/gaussian-distribution&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Gaussian Distribution&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/C8IJp/algorithm&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Algorithm&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Rkc5x/anomaly-detection-vs-supervised-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Anomaly Detection vs Supervised Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Cf8DF/multivariate-gaussian-distribution&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Multivariate Gaussian Distribution&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/uG59z/content-based-recommendations&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Content Based Recommendations&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/2WoBV/collaborative-filtering&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Collaborative Filtering&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/f26nH/collaborative-filtering-algorithm&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Algorithm&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/CEXN0/vectorization-low-rank-matrix-factorization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Low Rank Matrix Factorization&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
+&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Adk8G/implementational-detail-mean-normalization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Mean Normalization&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </content>
  </entry>
  
