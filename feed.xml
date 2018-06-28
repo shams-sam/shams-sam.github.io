@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 29 Jun 2018 01:31:33 +0530</pubDate>
-    <lastBuildDate>Fri, 29 Jun 2018 01:31:33 +0530</lastBuildDate>
+    <pubDate>Fri, 29 Jun 2018 02:31:35 +0530</pubDate>
+    <lastBuildDate>Fri, 29 Jun 2018 02:31:35 +0530</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -23,7 +23,9 @@
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_j := \theta_j - \alpha {1 \over m} \sum_{i=1}^m \left( h_{\theta}(x^{(i)}) - y^{(i)} \right) x_j^{(i)} \tag{1} \label{1}&lt;/script&gt;
 
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;&lt;strong&gt;Kaggle Kernel Implementation&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/shamssam/gradient-descent-for-regression&quot; target=&quot;\_blank&quot;&gt;Kaggle Kernel Implementation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;batch_update_vectorized&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;

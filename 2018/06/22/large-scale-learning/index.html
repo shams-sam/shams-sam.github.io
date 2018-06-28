@@ -177,7 +177,9 @@
 
 <script type="math/tex; mode=display">\theta_j := \theta_j - \alpha {1 \over m} \sum_{i=1}^m \left( h_{\theta}(x^{(i)}) - y^{(i)} \right) x_j^{(i)} \tag{1} \label{1}</script>
 
-<p><a href=""><strong>Kaggle Kernel Implementation</strong></a></p>
+<blockquote>
+  <p><a href="https://www.kaggle.com/shamssam/gradient-descent-for-regression" target="\_blank">Kaggle Kernel Implementation</a></p>
+</blockquote>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">batch_update_vectorized</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">m</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">X_train</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
