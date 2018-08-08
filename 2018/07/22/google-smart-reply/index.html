@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Google Smart Reply | Machine Learning Medium</title>
+  <meta name="description" content="Google's smart reply, a feature available in Inbox, Gmail and Allo, saves time by suggesting quick responses to the messages. This feature already drives 12% of replies over mobile devices." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Google Smart Reply"/>
+  
+  <meta property="og:description" content="Google's smart reply, a feature available in Inbox, Gmail and Allo, saves time by suggesting quick responses to the messages. This feature already drives 12% of replies over mobile devices." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/gmail_smart_reply.png" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/07/22/google-smart-reply/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2018-07-22T00:00:00+05:30">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/07/22/google-smart-reply/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2018-07-22T00:00:00+05:30">Jul 22</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/gmail_smart_reply.png) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn.vox-cdn.com/thumbor/-djnqzlq6zDPf7TVXWw86bkfpKk=/0x0:577x397/1200x800/filters:focal(243x153:335x245)/cdn.vox-cdn.com/uploads/chorus_image/image/54826065/gmail_smart_reply.0.png</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Google Smart Reply</h1>
+            <h2 class="post-description">Google's smart reply, a feature available in Inbox, Gmail and Allo, saves time by suggesting quick responses to the messages. This feature already drives 12% of replies over mobile devices.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+<p>Smart reply is an end to end method for automatically generating <strong>short yet semantically diverse</strong> email repsonses. The feature also depends on some novel methods for <strong>semantic clustering of user-generated content</strong> that requires minimal amount of explicitly labeled data.</p>
+
+<p>Google reveals that around 25% of the email responses are 20 tokens or less in length. The high frequency of short replies was the major motivation behind developing an automated reply assist feature. The system exploits concepts of machine learning such as fully-connected neural networks, LSTMs etch.</p>
+
+<p>Major challenges that have been addressed in building this features includes the following:</p>
+
+<ul>
+  <li>High <strong>repsonse quality</strong> in terms of language and content.</li>
+  <li><strong>Utility</strong> maintained by presenting a variety of responses.</li>
+  <li><strong>Scalable architecture</strong> to serve millions of emails google handles without significant latencies.</li>
+  <li>Maintaining <strong>privacy</strong> by ensuring that no personal data is leaked while generating training data. <strong>Only aggregate statistics are inspected.</strong></li>
+</ul>
+
+<h3 id="smart-reply">Smart Reply</h3>
+
+<p>Smart reply consists of the following components:</p>
+
+<ul>
+  <li>Response Selection: An LSTM network processes the incoming messages and produces the most likely responses. <strong>To improve scalability and increase speed of processing, only approximate best responses are found.</strong></li>
+  <li>Response Set Generation: In order to maintain high quality, the responses are selected from a response state <strong>generated offline using semi-supervised graph learning approach</strong>.</li>
+</ul>
+
+<p><img src="/assets/2018-07-22-google-smart-reply/fig-1-smart-reply.png?raw=true" alt="Fig-1: Lifecycle of a message" width="50%" /></p>
+
+<ul>
+  <li>Diversity: After generating the most likely responses, a smaller set of responses are chosen among them to <strong>maximize the utility which requires enforcing diverse semantic intents</strong> among the presented options.</li>
+  <li>Triggering Model: A feedforward neural network decides whether or not to suggest responses, which further improves the utility by not showing suggestions when they are unlikely to be used.</li>
+</ul>
+
+<h3 id="background">Background</h3>
+
+<p>The entire application of smart reply can be basically broken down into two core tasks:</p>
+
+<ul>
+  <li>predicting responses</li>
+  <li>identifying a target response space</li>
+</ul>
+
+<p>While the task of finding the apt response has be attempted before, it has never been applied to a production environment at such a scale. It is this widespread use of the application that requires it to deliver high quality responses at all the instances. This is achieved by choosing the responses from a set of pre-identified response space.</p>
+
+<p>Which leads to the second core task of identifying the target response space. This is achieved by using an algorithm called <strong>Expander Graph Learning Approach</strong>. It is used because it scales well to really large datasets and large output sizes. Generally used for knowledge expansion and classification tasks, smart reply is the first attempt to use it for semantic intent clustering.</p>
+
+<h3 id="selecting-responses">Selecting Responses</h3>
+
+<p>The fundamental aim of smart reply is to find the most likely response given an original message text. i.e. given an original message \(o\) and the set of all possible responses \(R\), find,</p>
+
+<script type="math/tex; mode=display">r^* = argmax_{r \in R} P(r|o) \tag{1} \label{1}</script>
+
+<p>In order to acheive this a model is built to score the responses and then response with the highest score is picked.</p>
+
+<p><strong>LSTM Model</strong></p>
+
+<ul>
+  <li>Since a sequence of tokens \(r\) is being scored conditional on another sequence of characters \(o\), the task is a natural fit for <strong>sequence to sequence learning</strong>.</li>
+  <li>Input to the model is the original message \(\{o_1, o_2, \cdots o_n\}\)</li>
+  <li>The output is the conditional probability distribution of sequence of response tokens given the input:</li>
+</ul>
+
+<script type="math/tex; mode=display">P(r_1, r_2, \cdots, r_m | o_1, o_2, \cdots, o_n) \tag{2} \label{2}</script>
+
+<p>The distribution in \eqref{2} can be further factorized as,</p>
+
+<script type="math/tex; mode=display">P(r_1, \cdots, r_m | o_1, \cdots, o_n) = \prod_{i=1}^m P(r_i|o_1, \cdots, o_n, r_1, \cdots, r_{i-1}) \tag{3} \label{3}</script>
+
+<p>In practice, the sequence of original message is fed to the LSTM, which then encodes the entire message in a vector representation. Then given this state, a softmax output is computed, which is interpretted as \(P(r_1|o_1, \cdots, o_n)\)(probability distribution of the first response token).</p>
+
+<p>Similarly, as the response tokens are fed in, softmax at each timestep \(t\) is interpretted as \(P(r_t|o_1, \cdots, o_n, r_1, \cdots, r_{t-1})\)</p>
+
+<p>Using the factorization in \eqref{3}, these softmax scores can be used to compute \(P(r_1, r_2, \cdots, r_m | o_1, o_2, \cdots, o_n)\).</p>
+
+<p>Training involves the following points:</p>
+
+<ul>
+  <li>maximize the log probability of observed responses, given their respective original messages, i.e.</li>
+</ul>
+
+<script type="math/tex; mode=display">\sum_{(o, r)} log \, P(r_1, \cdots, r_m | o_1, \cdots, o_n) \tag{4} \label{4}</script>
+
+<ul>
+  <li>train using stochastic gradient descent using AdaGrad.</li>
+  <li>training is done on a distributed system because of the size of the dataset.</li>
+  <li><strong>recurrenct projection layer</strong> helped improve quality and time of convergence.</li>
+  <li><strong>gradient clipping</strong> helps stabalize training.</li>
+</ul>
+
+<p><strong>Inference</strong>: At the time of inference one can feed in the original message and then use the output of the softmaxes to get a probability distribution over the vocabulary at each timestep. These can be used in a variety of ways:</p>
+
+<ul>
+  <li>to draw a random sample from the response distribution. This is done by sampling one token at each timestep to feed it back into the model.</li>
+  <li>to approximate the most likely response given the original message. This can be done greedily by taking most likely token at each timestep and feeding it back in. A less greedy strategy is to use <strong>beam search</strong>, i.e. take the top \(b\) tokens and feed them in, then retain the best \(b\) response prefixes and repeat.</li>
+  <li>to determine the likelyhood of a specific response candidate. Done by feeding each token of the candidate and using softmax output to get the likelyhood of next candidate token.</li>
+</ul>
+
+<h3 id="challenges">Challenges</h3>
+
+<p><strong>Response Quality</strong></p>
+
+<ul>
+  <li>In order to surface responses to the users, responses must be always high quality in terms of style, tone, diction, and content. Since the models are trained on real-world data, one has to account for the possibility where the most response is not necessarily a high quality response. Even the most frequent responses might not be appropriate to suggest to users because it could contain poor grammar, spelling or machanics (like <em>you’re the best!</em>) or it could also convey a sense of familiarity that is likely to be offensive (like <em>thanks hon!</em>) etc.</li>
+  <li>While restricting the vocabulary can take care of issues such as profanity or spell errors, it would not be sufficient in averting a politically incorrect statement that can be formed in a wide variety of ways.</li>
+  <li>Hence, smart reply uses a semi-supervised learning to build the target repsonse space \(R\) comprising of only high quality responses.</li>
+  <li>Hence the model described is used to choose the best response among \(R\), instead of best response from any sequence of words in the vocabulary.</li>
+</ul>
+
+<p><strong>Utility</strong></p>
+
+<ul>
+  <li>Suggestions are most useful when they are highly specific to the original message and express a diverse intent.</li>
+  <li>Generally the outputs from LSTM observed tend to (1) favor common but unspecific responses and (2) have little diversity.</li>
+  <li>Specificity of the responses is increased by penalizing the responses that are applicable to a broad range of incoming messages.</li>
+  <li>In order to increase the breadth of options presented to users, diversity is enforced by exploiting the semantic structure of \(R\).</li>
+  <li>Utility of responses is also boosted by passing the incoming message first through a triggering model which decides whether or not it is appropriate for suggestions to pop up.</li>
+</ul>
+
+<p><strong>Scalability</strong></p>
+
+<ul>
+  <li>Scoring every candidate \(r \in R\) would require \(O(|R | l)\) LSTM steps where \(l\) is the length of the longest response.</li>
+  <li>This would mean a growing response time as the number of responses in \(R\) increases over time.</li>
+  <li>In general, an efficient algorithm for this purpose should not be a function of \(|R|\)</li>
+  <li>In order to achieve this, the responses among \(R\) are organized as a trie, followed by a left-to-right beam-search but retain only the hypotheses that appear in the trie.</li>
+  <li>This search process has a complexity of \(O(bl)\) where both \(b\) and \(l\) are in a range of 10-30, which greatly reduces the time it would take to generate the responses.</li>
+  <li>Although the search only approximates the best responses in \(R\), its results are very similar to what one would get by scoring and ranking all \(r \in R\), even for a small \(b\).</li>
+  <li>Also first pass through the triggering model, reduces the average time a message has to spend in LSTM computations.</li>
+</ul>
+
+<h3 id="response-set-generation">Response Set Generation</h3>
+
+<ul>
+  <li>The goal of this step is to generate a structured response set that effectively captures various intents conveyed by people in natural language conversations.</li>
+  <li>The target response space is required to capture both variablity in language and intents.</li>
+  <li>The results are used in two ways - (1) define a response space and (2) promote diversity among chosen suggestions.</li>
+  <li>Response set is constructed by aggregating the most frequently used sentences among the preprocessed data.</li>
+</ul>
+
+<p><strong>Canonicalizing Email Responses</strong></p>
+
+<ul>
+  <li>Involves generating a set of canonicalized responses that capture the variability in language.</li>
+  <li>This is done by performing a dependency parse on all the sentences and then using the syntactic structure to generate a canonicalized representation.</li>
+  <li>Words, phrases that are modifiers or not attached to the head words are ignored.</li>
+</ul>
+
+<p><strong>Semantic Intent Clustering</strong></p>
+
+<ul>
+  <li>partition the responses into semantic clusters where each cluster represents a meaningful response intent.</li>
+  <li>all the messages within a cluster share the same semantic meaning but may appear different in structure.</li>
+  <li>this helps digest the entire information present in frequent responses into a coherent set of semantic cluster</li>
+  <li>because of the lack of data available to train a classifier, a supervised model cannot be trained to predict the semantic cluster of a candidate response.</li>
+  <li>another hindrance in performing supervised learning is that the semantic space classes cannot be all defined a priori.</li>
+  <li>hence the semi-supervised technique is used for achieving this.</li>
+</ul>
+
+<p><strong>Graph Construction</strong></p>
+
+<ul>
+  <li>Start by manually defining the clusters sampled from top frequent responses.</li>
+  <li>A small number of responses are added as seed for the clustering.</li>
+  <li>This leads to a base graph, where <strong>frequent responses are represented by nodes, \(V_R\)</strong>. Lexical features (n-grams and skip grams upto a length of 3) are extracted for the responses and populated in graph as the <strong>feature nodes, \(V_F\)</strong>. Edges are created between the pair of nodes, \((u,v)\) where \(u \in V_R\) and \(v \in V_F\). Similarly, nodes are created for manually labelled examples, \(V_L\).</li>
+</ul>
+
+<p><strong>Unsupervised Learning</strong></p>
+
+<ul>
+  <li>The constructed graph captures the relationship between the canonicalized responses via feature nodes.</li>
+  <li>Semantic intent for each repsonse node is learnt by propagating intent information from manually labelled examples through the graph.</li>
+</ul>
+
+<p>The algorithm works to minimize the following objective function for the response nodes:</p>
+
+<script type="math/tex; mode=display">s_i \lVert \hat{C_i} - C_i \rVert^2 + \mu_{pp} \lVert \hat{C_i} - U \rVert^2 + \mu_{np} \left( \sum_{j \in \mathcal{N}_{\mathcal{F}} (i)} w_{ij} \lVert \hat{C_i} - \hat{C_j} \rVert^2 + \sum_{k \in \mathcal{N}_{\mathcal{R}} (i)} w_{ik} \lVert \hat{C_i} - \hat{C_k} \rVert^2\right) \tag{5} \label{5}</script>
+
+<p>where</p>
+
+<ul>
+  <li>\(s_i\) is an <strong>indicator function</strong> equal to 1 if node \(i\) is a seed else 0.</li>
+  <li>\(\hat{C_i}\) is the <strong>learnt semantic cluster distribution</strong> for response node \(i\).</li>
+  <li>\(C_i\) is the <strong>true label distribution</strong> (i.e. for the manually provided examples)</li>
+  <li>\(\mathcal{N}_{\mathcal{F}} (i)\) and \(\mathcal{N}_{\mathcal{R}} (i)\) represent the feature and response neighbourhood of node \(i\).</li>
+  <li>\(\mu_{np}\) is the predefined penalty for neighbouring nodes with divergent label distributions.</li>
+  <li>\(\hat{C_j}\) is the learnt label distribution for feature neighbour \(j\).</li>
+  <li>\(w_{ij}\) is the weight of feature \(j\) in response \(i\).</li>
+  <li>\(\mu_{pp}\) is the penalty for label distribution deviating from prior, Uniform Distribution \(U\).</li>
+</ul>
+
+<p>Similarly, the objective is to reduce the following objective function for the feature nodes:</p>
+
+<script type="math/tex; mode=display">\mu_{pp} \lVert \hat{C_i} - U \rVert^2 + \mu_{np} \left( \sum_{j \in \mathcal{N}_{\mathcal{F}} (i)} w_{ij} \lVert \hat{C_i} - \hat{C_j} \rVert^2 + \sum_{k \in \mathcal{N}_{\mathcal{R}} (i)} w_{ik} \lVert \hat{C_i} - \hat{C_k} \rVert^2\right) \tag{6} \label{6}</script>
+
+<p>\eqref{5} and \eqref{6} are alike except that \eqref{6} does not have the first term as there are no seed labels for the feature nodes.</p>
+
+<p>The objective functions \eqref{5} and \eqref{6} are jointly optimized for all the nodes. In order to discover the new clusters the algorithm is run in phases, in which randomly 100 new responses are sampled among the unlabeled nodes. These are treated as the potential new clusters and labeled with there canonicalized representations after which the algorithm is rerun and the process is repeated for the unlabeled nodes.</p>
+
+<p><strong>Cluster Validation</strong></p>
+
+<ul>
+  <li>Finally, the top \(k\) members from each semantic cluster are extracted and sorted by their label scores.</li>
+  <li>The set of (response, cluster label) pairs are then validated by human raters.</li>
+</ul>
+
+<h3 id="suggestion-diversity">Suggestion Diversity</h3>
+
+<ul>
+  <li>The LSTM model is trained to returned the approximate best response among the target response set.</li>
+  <li>The responses are <strong>penalized if they are too general</strong> to be valuable to any user.</li>
+  <li>The next <strong>challenge lies in choosing a small number of responses</strong> to display to the user which maximizes the utility.</li>
+  <li>A straight-forward way of doing this can be to <strong>choose the top \(N\) responses</strong> and present them to the user. But in practice it is observed that such responses tend to be very similar. It is obvious to anyone that the likelihood of one of the repsonses being useful is greatest when none of the responses presented to the users are redundant, i.e. it would be wasteful to present a user with three responses that are a variation of same sentence.</li>
+  <li>The second and more optimal approach to suggest responses to users would <strong>include enforcing diversity</strong>. This is achieved by:
+    <ul>
+      <li>omitting redundant responses.</li>
+      <li>enforcing negative or positive responses.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Omitting Redundant Responses</strong></p>
+
+<ul>
+  <li>The strategy states that a user should <strong>never see two responses with the same intent</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>Intent can be thought of as a cluster of responses that have a common communication purpose.</p>
+</blockquote>
+
+<ul>
+  <li>In smart reply, every suggested responses is associated with a exactly one intent. These intents are learnt using the semi-supervised learning algorithm explained <a href="#response-set-generation">above</a>.</li>
+  <li>The actual diversity strategy simple: the top responses are iterated over in order of decreasing score. Each response is added to suggestion list unless its intent is already covered by a response in the suggestion list.</li>
+</ul>
+
+<p><strong>Enforcing Negatives and Positives</strong></p>
+
+<ul>
+  <li>It is observed that the LSTM trained has a strong tendency towards positive responses, whereas negative responses generally get a low score.</li>
+  <li>It might be reflective of the style of email conversations: positive replies are more common and when the replies are negative people prefer more indirect wording.</li>
+  <li>Since, it is important to give out and option of repsonding negatively, the following strategy is followed:</li>
+</ul>
+
+<blockquote>
+  <p>If the top two responses (chosen from different intents) contain atleast one positive and none of the three responses are negative, the third response is replaced with a negative one.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>A positive response is the one that is clearly affirmative. In order to find the negative response to be included as the third option, a second LSTM pass is performed, in which the search is restricted to only to the negative responses in the target set.</p>
+  </li>
+  <li>
+    <p>It might also be the case that an incoming message triggers exclusively negative responses. In which case, an analogous strategy for enforcing positives is employed.</p>
+  </li>
+</ul>
+
+<h3 id="triggering">Triggering</h3>
+
+<ul>
+  <li>This is a second model (in this case a fully-connected feed-forward neural network which produced probability score) that is responsible for filtering messages that are bad candidates for suggesting responses. These might include emails that require longer responses, or emails that do not require a response at all.</li>
+  <li>On an average this system only decides that 11% of the incoming messages should get processed for smart reply. This selectivity further helps to speed up the process of analyzing the incoming emails, and decrease the time spent on LSTM and hence inturn reduce the infrastructure costs.</li>
+  <li>The two main objectives that this system should fulful are:
+    <ul>
+      <li>it should be accurate enough to decide when a smart reply should not be generated</li>
+      <li>it should be fast.</li>
+    </ul>
+  </li>
+  <li>The choice of model is because it has been repeatedly observed that these ANN outperform linear models such as SVMs or linear regression on NLP tasks.</li>
+</ul>
+
+<p><strong>Data and Features</strong></p>
+
+<ul>
+  <li>Data includes the set of emails in the pair \((o, y)\), where \(o\) is an incoming message and \(y\) is a boolean true or false based on whether or not a email was replied to. For the positive class, only the messages that were replied to from a mobile device are considered.</li>
+  <li>Since the number of emails that are not replied to are found to be higher, the negative class examples are downsampled to match the number of positive class examples.</li>
+  <li><strong>Features</strong> (unigrams and bigrams) are extracted from message body, subject and headers. Other <strong>social signals</strong> such as whether or not the sender is in receipent’s address book etc is also used.</li>
+</ul>
+
+<p><strong>Network Architecture and Training</strong></p>
+
+<ul>
+  <li>Feed forward neural network with embedding layer and three fully connected hidden layers</li>
+  <li>Feature hashing is used to bucket rare words that are not present in the vocabulary.</li>
+  <li>Embeddings are aggregated by summation within a features (like bigram etc.)</li>
+  <li>Activation function: ReLu and Dropout layers are used.</li>
+  <li>Trained using AdaGrad optimization technique.</li>
+</ul>
+
+<h3 id="evaluation-and-results">Evaluation and Results</h3>
+
+<p><strong>Data</strong></p>
+
+<ul>
+  <li>For the LSTM model data consists of incoming messages and its responses by a user.</li>
+  <li>
+    <p>For the triggering model, messages are used with the label describing whether or not they were replied to from a mobile device.</p>
+  </li>
+  <li>The following <strong>preprocessing</strong> techniques are used:
+    <ul>
+      <li>Language detection: non-english messages are discarded.</li>
+      <li>Tokenization: messages and subjects are broken down into words and punctuations</li>
+      <li>Sentence segmentation: sentence boundaries are detected in the message body</li>
+      <li>Normalization: infrequent words and entities like personal informations are replaced by special tokens.</li>
+      <li>Quotation removal: Quoted original messages and forwarded messages are removed.</li>
+      <li>Salutation/close removal: salutations and closing notes are removed.</li>
+    </ul>
+  </li>
+  <li>After preprocessing the size of the training data is <strong>238 million</strong> messages, which includes 153 million messages that have no response.</li>
+</ul>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<ul>
+  <li>Standard binary performance metrics are observed for triggering model: Precision, recall and area under the ROC curve.</li>
+  <li>AUC of triggering model is 0.854</li>
+  <li>For the LSTM model Precision, Mean Reciprocal Rank and Precision@K is observed.</li>
+  <li>A model with lower perplexity assigns a higher likelyhood to the test responses, and hence should be better at predicting responses. Perplexity of smart reply is 17.0 (by comparison, and n-gram model with katz backoff and maximum order of 5 has a perplexity of 31.4)</li>
+</ul>
+
+<blockquote>
+  <p>A perplexity equal to \(k\) means that when the model predicts the next word, there are on average \(k\) likely candidates.</p>
+</blockquote>
+
+<ul>
+  <li>In an ideal scenario the perplexity of the system would be 1, i.e. one knows exactly what should be the next word. The perplexity on a set of \(N\) test samples is computed using the following formula:</li>
+</ul>
+
+<script type="math/tex; mode=display">P_r = exp\left( - {1 \over W} \sum_{i=1}^N ln (\hat{P} (r_1^i, \cdots, r_m^i| o_1^i, \cdots, o_n^i)) \right) \tag{7} \label{7}</script>
+
+<p>where</p>
+
+<ul>
+  <li>\(W\) is the total number of words in the \(N\) samples.</li>
+  <li>\(\hat{P}\) is the learnt distribution</li>
+  <li>
+    <p>\(r^i\) and \(o^i\) are the \(i-th\) repsonse and original message.</p>
+  </li>
+  <li>The model is also evaluated on the response ranking. Simply put, the rank of the actual response with respect to other responses in R is evaluated. Using this, the <strong>mean reciprocal rank</strong> (MRR) is calculated using:</li>
+</ul>
+
+<script type="math/tex; mode=display">MRR = {1 \over N} \sum_{i=1}^N {1 \over rank_i} \tag{8} \label{8}</script>
+
+<ul>
+  <li>
+    <p>Additionally, Precision@K (for a given value of K, the number of cases for which target response \(r\) is within the topK responses that were ranked by the model) is also computed.</p>
+  </li>
+  <li>
+    <p>On a daily basis, the smart reply system generates 12.9k unique suggestions that belong to 376 unique semantic clusters, out of which the users utilized, 31.9% of the suggestions and 83.2% of the unique clusters.</p>
+  </li>
+  <li>Among the selected responses, 45% are the 1st responses, 35% 2nd responses, and 20% 3rd responses.</li>
+  <li>If using only the straight-forward approach instead of enforcing diversity, the click through rates drop by roughly 7.5%.</li>
+</ul>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://ai.google/research/pubs/pub45189" target="_blank">Smart Reply: Automated Response Suggestion for Email</a></small><br />
+<small><a href="https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/" target="_blank">Save time with Smart Reply in Gmail</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/nlp" class='category-links'><h1>NLP</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+          </div>
+          <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Google Smart Reply&url=https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/07/22/google-smart-reply/&title=Google Smart Reply&summary=Google's smart reply, a feature available in Inbox, Gmail and Allo, saves time by suggesting quick responses to the messages. This feature already drives 12% of replies over mobile devices.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Google Smart Reply&amp;body=Check out this site https://machinelearningmedium.com/2018/07/22/google-smart-reply/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+        </footer>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2018-07-22 00:00">22 Jul 2018</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2018<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        <br>
+        
+        <div id="vc-feelback-main" data-access-token="334e9d2a5dc341469cda15d8c4bd935e" data-display-type="4"></div>
+        
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2018 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script> 
+(function() { 
+  var v = document.createElement('script'); v.async = true; 
+  v.src = "http://assets-prod.vicomi.com/vicomi.js?token=334e9d2a5dc341469cda15d8c4bd935e"; 
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(v, s); 
+})(); 
+</script>
+
+  </body>
+</html>
