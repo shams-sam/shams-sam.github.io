@@ -76,6 +76,10 @@
         <span class="right-padding-22">|</span>
         <a href=/collections/ class="">Collections</a>
         <a href=/tags/ class="">Tags</a>
+        
+          <span class="right-padding-22">|</span>
+          <a class="icon-search" href="/search/"><i class="fa fa-search"></i></a>
+        
       </div>
       <div class="social-links table-cell">
         <!-- 
@@ -159,63 +163,7 @@
         <div class="noarticleimage">
           <div class="post-meta">
             <h1 class="post-title">Non-linear Hypotheses</h1>
-            <h2 class="post-description">Advantages of neural networks over logistic regession and the relationship between the two. Neural network is essentially the successor of logistic regression.</h2>
-          </div>
-        </div>
-        <div class="horizontal-divider">&#183; &#183; &#183;</div>
-        <section class="post-content">
-          <a name="topofpage"></a>
-          <h3 id="basics-of-machine-learning-series">Basics of Machine Learning Series</h3>
-
-<blockquote>
-  <p><a href="/collection/basics-of-machine-learning">Index</a></p>
-</blockquote>
-
-<div class="horizontal-divider">· · ·</div>
-
-<h3 id="drawbacks-of-logistic-regression">Drawbacks of Logistic Regression</h3>
-<p>Consider a highly <strong>non-linear classification</strong> task, say something similar to the one shown in the plot below. In order to achieve a decision boundary like the one plotted, one needs to introduce <strong>non-linear features</strong> in the form of quadratic and other higher order terms, similar to the equation below.</p>
-
-<p><img src="/assets/2017-09-20-non-linear-hypotheses/fig-1-non-linear-classification.png?raw=true" alt="Non-linear Classification" /></p>
-
-<script type="math/tex; mode=display">h(\theta) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \theta_3\,x_1\,x_2 + \theta_4\,x_1^2\,x_2 + \theta_5\,x_1^3\,x_2 + \cdots)</script>
-
-<p>As the number of features increase then <strong>number of terms in the hypotheses would also increase exponentially</strong> to get a good fit which would have <strong>high probability of overfitting</strong> the data. Hence, when the number of features is really high and the decision boundary is complex, logistic regression would not generalize the solution very well by leveraging the power of polynomial terms. So for highly complex tasks like the ones where one needs to classify objects from images, logistic regression would not perform well.</p>
-
-<p>For example, for images of size 100 * 100 pixels if one uses all quadratic features, there would be around 50 million parameter values to learn which is computationally very expensive task and still not a guarantee of good decision boundary.</p>
-
-<p>This is where <strong>Neural Networks</strong> step in to save the day.</p>
-
-<h3 id="neural-networks">Neural Networks</h3>
-<p>They are class of <strong>very powerful machine learning classifiers</strong> that are capable of fitting almost any hypotheses and are <strong>motivated by the way a brain functions</strong>. Even though the concepts of neural networks were well developed by the 80s, they came into popularity fairly recently because of the advances in the <strong>compute power of machines using multiple cores and GPUs</strong>. It is mainly because neural networks are a class of very <strong>computationally expensive algorithms</strong> and earlier systems were just not fast enough to get good results in a feasible time-frame.</p>
-
-<h3 id="one-learning-algorithm-hypothesis">One Learning Algorithm Hypothesis</h3>
-<p>This hypothesis puts light on the fact that even though human brain learns a variety of tasks involving visual, vocal, or audio inputs, it does not learn them using different algorithms. It has been found that if the optic nerve is re-routed to the auditory cortex (responsible for decoding audio), it would learn to use the input and work with visual input as well i.e. <strong>Auditory cortex learns to see.</strong> So, extending the result of such experiments suggesting that a single tissue in brain is capable of performing different tasks like analyse visuals, audio, touch etc, it is posited that there must be <strong>one algorithm that can approximate any learning task similar to the way brain learns</strong>.</p>
-
-<h2 id="references">REFERENCES:</h2>
-
-<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/OAOhO/non-linear-hypotheses" target="_blank">Machine Learning: Coursera - Non-Linear Hypotheses</a></small><br />
-<small><a href="https://www.coursera.org/learn/machine-learning/lecture/IPmzw/neurons-and-the-brain" target="_blank">Machine Learning: Coursera - Neurons and the Brain</a></small></p>
-
-        </section>
-        <div class="horizontal-divider">· · ·</div>
-        <footer class="post-footer">
-          <div class="wrap">
-            
-              <div class="tile">
-                <div class="text">
-                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
-                </div>
-              </div>
-            
-              <div class="tile">
-                <div class="text">
-                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
-                </div>
-              </div>
-            
-          </div>
-          <section class="share">
+            <section class="share">
             <span id="share-bar">
 
     <span><i class="fa fa-share-alt"></i></span>
@@ -280,6 +228,62 @@
 
 </span>
           </section>
+            <h2 class="post-description">Advantages of neural networks over logistic regession and the relationship between the two. Neural network is essentially the successor of logistic regression.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="basics-of-machine-learning-series">Basics of Machine Learning Series</h3>
+
+<blockquote>
+  <p><a href="/collection/basics-of-machine-learning">Index</a></p>
+</blockquote>
+
+<div class="horizontal-divider">· · ·</div>
+
+<h3 id="drawbacks-of-logistic-regression">Drawbacks of Logistic Regression</h3>
+<p>Consider a highly <strong>non-linear classification</strong> task, say something similar to the one shown in the plot below. In order to achieve a decision boundary like the one plotted, one needs to introduce <strong>non-linear features</strong> in the form of quadratic and other higher order terms, similar to the equation below.</p>
+
+<p><img src="/assets/2017-09-20-non-linear-hypotheses/fig-1-non-linear-classification.png?raw=true" alt="Non-linear Classification" /></p>
+
+<script type="math/tex; mode=display">h(\theta) = g(\theta_0 + \theta_1\,x_1 + \theta_2\,x_2 + \theta_3\,x_1\,x_2 + \theta_4\,x_1^2\,x_2 + \theta_5\,x_1^3\,x_2 + \cdots)</script>
+
+<p>As the number of features increase then <strong>number of terms in the hypotheses would also increase exponentially</strong> to get a good fit which would have <strong>high probability of overfitting</strong> the data. Hence, when the number of features is really high and the decision boundary is complex, logistic regression would not generalize the solution very well by leveraging the power of polynomial terms. So for highly complex tasks like the ones where one needs to classify objects from images, logistic regression would not perform well.</p>
+
+<p>For example, for images of size 100 * 100 pixels if one uses all quadratic features, there would be around 50 million parameter values to learn which is computationally very expensive task and still not a guarantee of good decision boundary.</p>
+
+<p>This is where <strong>Neural Networks</strong> step in to save the day.</p>
+
+<h3 id="neural-networks">Neural Networks</h3>
+<p>They are class of <strong>very powerful machine learning classifiers</strong> that are capable of fitting almost any hypotheses and are <strong>motivated by the way a brain functions</strong>. Even though the concepts of neural networks were well developed by the 80s, they came into popularity fairly recently because of the advances in the <strong>compute power of machines using multiple cores and GPUs</strong>. It is mainly because neural networks are a class of very <strong>computationally expensive algorithms</strong> and earlier systems were just not fast enough to get good results in a feasible time-frame.</p>
+
+<h3 id="one-learning-algorithm-hypothesis">One Learning Algorithm Hypothesis</h3>
+<p>This hypothesis puts light on the fact that even though human brain learns a variety of tasks involving visual, vocal, or audio inputs, it does not learn them using different algorithms. It has been found that if the optic nerve is re-routed to the auditory cortex (responsible for decoding audio), it would learn to use the input and work with visual input as well i.e. <strong>Auditory cortex learns to see.</strong> So, extending the result of such experiments suggesting that a single tissue in brain is capable of performing different tasks like analyse visuals, audio, touch etc, it is posited that there must be <strong>one algorithm that can approximate any learning task similar to the way brain learns</strong>.</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://www.coursera.org/learn/machine-learning/lecture/OAOhO/non-linear-hypotheses" target="_blank">Machine Learning: Coursera - Non-Linear Hypotheses</a></small><br />
+<small><a href="https://www.coursera.org/learn/machine-learning/lecture/IPmzw/neurons-and-the-brain" target="_blank">Machine Learning: Coursera - Neurons and the Brain</a></small></p>
+
+        </section>
+        <div class="horizontal-divider">· · ·</div>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/andrew-ng" class='category-links'><h1>andrew-ng</h1></a>
+                </div>
+              </div>
+            
+          </div>
         </footer>
         <!-- <div class="bottom-teaser cf">
           <div class="isLeft">

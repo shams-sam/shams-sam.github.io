@@ -275,7 +275,13 @@ body {
     border-radius: 4px;
     width: 40px;
     position: relative;
-    top: 25%; }
+    top: 25%;
+    display: inline-block; }
+  .metabar-inner .search-div {
+    display: inline-block;
+    float: right;
+    top: 38%;
+    position: relative; }
   .metabar-inner .icon-quote {
     font-size: 25px;
     color: #FFFFFF;
@@ -1038,18 +1044,15 @@ article a {
         color: #333; }
 
 .share {
-  text-align: left;
-  padding-top: 20px;
-  padding-left: 20px;
-  padding-right: 20px; }
+  text-align: left; }
   .share a {
     text-decoration: none;
-    color: #bbb;
-    padding-left: 12px; }
+    color: #bbb; }
     .share a .hidden {
       display: none; }
     .share a:hover {
-      color: #333; }
+      color: #333;
+      text-decoration: none !important; }
 
 .bottom-closer {
   width: 100%;
