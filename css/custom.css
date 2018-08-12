@@ -1,3 +1,57 @@
+.arrow-button {
+  display: inline-block;
+  margin-top: 40px;
+  position: relative;
+  color: #bbb;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+} 
+
+.arrow-button:hover {
+  color: #fff;
+}
+
+.right-arrow-button {
+  float: right;
+}
+
+.arrow-button .label {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 1.4em;
+    float: left;
+    background-color: #000;
+  }
+}
+
+.arrow-button .label:hover{
+  color: #fff;
+}
+
+.arrow-button .right-arrow {
+    display: block;
+    float: left;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 20px solid #000;
+}
+
+.arrow-button .left-arrow {
+    display: block;
+    float: left;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 20px solid #000;
+}
+
+.arrow-button .arrow:hover {
+  border-left: 20px solid #000;
+}
+
 .wrap {
   margin: auto;
   width: 100%;
