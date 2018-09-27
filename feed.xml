@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 13 Aug 2018 01:38:41 +0530</pubDate>
-    <lastBuildDate>Mon, 13 Aug 2018 01:38:41 +0530</lastBuildDate>
+    <pubDate>Thu, 27 Sep 2018 20:48:15 +0000</pubDate>
+    <lastBuildDate>Thu, 27 Sep 2018 20:48:15 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -250,7 +250,7 @@ mem[a] = r3
 
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://onlinecourses.nptel.ac.in/noc18_cs29/unit?unit=6&amp;amp;lesson=8&quot; target=&quot;_blank&quot;&gt;NPTEL: Introduction to Computer Architecture&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 25 Jul 2018 00:00:00 +0530</pubDate>
+        <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture/</guid>
         
@@ -260,6 +260,496 @@ mem[a] = r3
         
         
         <category>nptel-computer-architecture</category>
+        
+      </item>
+    
+      <item>
+        <title>Introduction to Survival Analysis</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Survival analysis refers to the set of statistical analyses that are used to analyze the length of time until an event of interest occurs. These methods have been traditionally used in analysing the survival times of patients and hence the name. But they also have a utility in a lot of different application including but not limited to analysis of the time of recidivism, failure of equipments, survival time of patients etc. Hence, simply put the phrase &lt;strong&gt;survival time&lt;/strong&gt; is used to refer to the type of variable of interest. It is often also referred by names such as &lt;strong&gt;failure time&lt;/strong&gt; and &lt;strong&gt;waiting time&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Such studies generally work with &lt;strong&gt;data leading upto an event of interest&lt;/strong&gt; along with several other characteristics of individual data points that may be used to explain the survival times statistically.&lt;/p&gt;
+
+&lt;p&gt;The statistical problem (survival analysis) is to construct and estimate an appropriate model of the time of event occurance. A survival model fulfills the following expectations:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;yield predictions of number of individuals who will fail (undergo the event of interest) at any length of time since the beginning of observation (or other decided point in time).&lt;/li&gt;
+  &lt;li&gt;estimate the effect of observable individual characteristics on the survival time (to check the relevance of one variable holding constant all others).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It is often observed that the survival models such as proportional hazard model are capable of &lt;strong&gt;explaining the survival times in terms of observed characteristics&lt;/strong&gt; which is better than straight-forward statistical inferences such as &lt;strong&gt;rates of event occurence without considering characteristic features&lt;/strong&gt; of data.&lt;/p&gt;
+
+&lt;h3 id=&quot;basics&quot;&gt;Basics&lt;/h3&gt;
+
+&lt;p&gt;Assume &lt;strong&gt;survival time T is a random variable&lt;/strong&gt; following some distribution &lt;strong&gt;characterized by cumulative distribution function \(F(t, \theta)\)&lt;/strong&gt;, where&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;\(\theta\) is the set of &lt;strong&gt;parameters to be estimated&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;\(F(t, \theta) = P(T \leq t) = \) &lt;strong&gt;probability that there is a failure&lt;/strong&gt; at or before time \(t\), for any \(t \geq 0\)&lt;/li&gt;
+  &lt;li&gt;\(F(t, \theta) \to 1\) as \(t \to \infty\), since \(F(t, \theta)\) is a &lt;strong&gt;cumulative distribution function&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Above tendency leads to an &lt;strong&gt;implicit assumption that all candidates would eventually fail&lt;/strong&gt;. While this assumptions works selectively based on settings (true for patient survival times, not true for time of repayment of loans) and hence needs to be relaxed where it does not hold true.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Survival times are non-negative&lt;/strong&gt; by definition and hence the distributions (like exponential, Weibull, gamma, lognormal etc.) characterising it are defined for value of time \(t\) from \(0\) to \(\infty\).&lt;/p&gt;
+
+&lt;p&gt;Let \(f(t, \theta)\) be the &lt;strong&gt;density function&lt;/strong&gt; correponding to the distribution function \(F(t, \theta)\), then the &lt;strong&gt;survival function&lt;/strong&gt; is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(t, \theta) = 1 - F(t, \theta) = P(T \gt t) \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;which gives the &lt;strong&gt;probability of survival&lt;/strong&gt; until time \(t\) (\(S(t, \theta) \to 0\) as \(t \to \infty\) because, \(F(t, \theta) \to 1\) as \(t \to \infty\)).&lt;/p&gt;
+
+&lt;p&gt;Another useful concept in survival analysis is called &lt;strong&gt;hazard rate&lt;/strong&gt;, defined by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h(t, \theta) = \frac{f(t, \theta)} {1-F(t, \theta)} = \frac{f(t, \theta)} {S(t, \theta)} \tag{2} \label{2}&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Hazard rate represents the density of a failure at time \(t\), conditional on no failure prior to time \(t\), i.e., it indicates the probability of failure in the next unit of time, given that no failure has occured yet.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;While \(f(t, \theta)\) roughly represents the proportion of original cohort that should be expected to fail between time \(t\) and \(t+1\), hazard rate \(h(t, \theta)\) represents the proportion of survivors until time \(t\) that should be expected to fail in the same time window, \(t\) to \(t+1\).&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The relationship betwee the cumulative distribution function and the hazard rate is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;F(t, \theta) = 1 - exp \left[ - \int_0^t h(x, \theta) dx \right] \tag{3} \label{3}&lt;/script&gt;
+
+&lt;p&gt;and&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h(t, \theta) = - \frac {d\,ln\,[1 - F(t, \theta)]} {dt} \tag{4} \label{4}&lt;/script&gt;
+
+&lt;p&gt;The fact that \(F(t, \theta)\) is a cdf puts some restrictions on the hazard rate,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;hazard rate is non-negative function&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;H(t, \theta) = \int_0^t h(x, \theta) dx \tag{5} \label{5}&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the integrated hazard in \eqref{5} is finite for finite \(t\) and tends to \(\infty\) as \(t\) approaches \(\infty\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;state-dependence&quot;&gt;State Dependence&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Positive state dependence or an increasing hazard rate \(dh(t)/dt \gt 0 \) indicates that the &lt;strong&gt;probability of failure during the next time unit increases&lt;/strong&gt; as the length of time at risk increases.&lt;/li&gt;
+  &lt;li&gt;Negative state dependence or a decreasing hazard rate \(dh(t)/dt \lt 0 \) indicates that the &lt;strong&gt;probability of failure in the next time unit decreases&lt;/strong&gt; as the length of time at risk decreases.&lt;/li&gt;
+  &lt;li&gt;No state dependence indicates a &lt;strong&gt;constant hazard rate&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Only exponential distribution displays no state dependence.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;censoring-and-truncation&quot;&gt;Censoring and Truncation&lt;/h3&gt;
+
+&lt;p&gt;A common feature of data on survival times is that they are censored or truncated. Censoring and truncation are statistical terms that refer to the &lt;strong&gt;inability to observe the variable of interest for the entire population&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A standard example to understand this can be understood in the form of a case of an individual shooting at a round target with a rifle and the variable of interest is the distance by which the bullet misses the center of the target.&lt;/li&gt;
+  &lt;li&gt;If all shots hit the target, this distance can be measure for all the shots and there is no problem of censoring or truncation.&lt;/li&gt;
+  &lt;li&gt;If some shots miss the target, but we know the number of shots fired, &lt;strong&gt;the sample is censored&lt;/strong&gt;. In this case either the distance of shot from center is known or it is known that it was atleast as large as the radius of the target.&lt;/li&gt;
+  &lt;li&gt;Similarly if one does not know how many shots were fired but only have information about distance for shots that hit the target, &lt;strong&gt;the sample is truncated&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Censored sample has more information than a truncated sample.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Survival times are often censored because not all candidates would fail by the end of time during which the data was collected. This &lt;strong&gt;censoring of data must be taken into account&lt;/strong&gt; while making the estimations because it is &lt;strong&gt;not legitimate to drop such observations&lt;/strong&gt; with unobserved survival times &lt;strong&gt;r to set survival times for these observations equal to the length of the follow-up period&lt;/strong&gt; (when the data was collected).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Infrequently so, but there is also a chance of getting information about a candidate during a follow-up collection who was not a part of the original population. In such cases the &lt;strong&gt;survival time is truncated&lt;/strong&gt; because there is no information of the candidate or his survival time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;problem-of-estimation&quot;&gt;Problem of Estimation&lt;/h3&gt;
+
+&lt;p&gt;The initial assumption specifies a cumulative distribution function \(F(t, \theta)\), or equivalently a density \(f(t, \theta)\) or hazard \(h(t, \theta)\) that is of a known form except that it depends on a unknown parameter \(\theta\). Estimation of this parameter is first step for the model to make any meaningful prediction about the survival time of new candidate&lt;/p&gt;
+
+&lt;p&gt;Consider a case of estimation of parameter for a censored sample which is defined as follows,&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;sample has \(N\) individuals with follow-up periods \(T_1, T_2, \cdots, T_N\). These follow-ups may be all equal, but they usually are not.&lt;/li&gt;
+  &lt;li&gt;\(n\) is number of individuals who fail, numbered \(1, 2, \cdots, n\) and individuals numbered \(n+1, n+2, \cdots, N\) are the non-failures.&lt;/li&gt;
+  &lt;li&gt;for the candidates who fail, there exists a survival time \(t_i \leq T_i, \, i \in [1, n]\)&lt;/li&gt;
+  &lt;li&gt;for the non-failures, survival time \(t_i\) is not observed but it is known that it is greater than the length of the follow-up period \(T_i\), \(i \in [n+1, N]\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If it is assumed that &lt;strong&gt;all the outcomes are independent&lt;/strong&gt; of each other the likelyhood function of the sample is,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = \prod_{i=1}^n f(t_i, \theta) \prod_{i=n+1}^N S(T_i, \theta) \tag{6} \label{6}&lt;/script&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Likelyhood function is a general statistical tool that expresses the probability of outcomes observed in terms of unknown parameters that are to be estimated, i.e., it is function of the parameters to be estimated, which serves as a measure of how likely it is that the statistical model, with a given parameter value, would generate the given data.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A common used estimator of \(\theta\) is the &lt;strong&gt;Maximum Likelyhood Estimator (MLE)&lt;/strong&gt; which is defined as the value of \(\theta\) that maximizes the likelyhood function.&lt;/p&gt;
+
+&lt;p&gt;The MLE have been shown to display the following desirable properties over a large sample (&lt;strong&gt;as the sample size approaches infinity&lt;/strong&gt;),&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Unbiased&lt;/li&gt;
+  &lt;li&gt;Efficient&lt;/li&gt;
+  &lt;li&gt;Normally Distributed&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;As mentioned, the properties of MLE are only &lt;strong&gt;relevant when the sample size is large&lt;/strong&gt;. It is often &lt;strong&gt;observed that the sample sizes in these studies are much smaller&lt;/strong&gt; and hence reliance on large sample properties of estimator is more tenuous.&lt;/p&gt;
+
+&lt;p&gt;The above survival model uses observed survival time \(t_i\) while &lt;strong&gt;ignoring the specific timing of the observed returns&lt;/strong&gt;. So the analysis of the fact of failure or non-failure, ignoring the timing of observed failures, would properly be based on the likelyhood function&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = \prod_{i=1}^n F(T_i, \theta) \prod_{i=n+1}^N S(T_i, \theta) \tag{7} \label{7}&lt;/script&gt;
+
+&lt;p&gt;Estimation using \eqref{7} is a legitimate procedure and does not cause any bias or inconsistency, but the estimates are inefficient relative to MLEs from \eqref{6}.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The estimates of \(\theta\) gotten by maximizing \eqref{7} will be less efficient (have larger variance) than the estimates of \(\theta\) gotten by maximizing \eqref{6}, atleast for large sample sizes. Hence if the information on time of return is available, it should be used.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If the &lt;strong&gt;truncated&lt;/strong&gt; case of sample is considered, then there is &lt;strong&gt;no information on all the individuals who do not fail&lt;/strong&gt;. Formally, one starts with a cohort of \(N\) candidates, where &lt;strong&gt;\(N\) is unknown&lt;/strong&gt;, and the only &lt;strong&gt;observations available are the survival times \(t_i\) for the \(n\) individuals who fail&lt;/strong&gt; before the end of follow-up period. The \(n\) individuals appear in sample because \(t_i \leq T_i\), and the appropriate density is therefore&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(t_i, \theta \mid t_i \leq T_i) = \frac{f(t_i, \theta)}{P(t_i \leq T_i)} =  \frac{f(t_i, \theta)}{F(T_i, \theta)} \tag{8} \label{8}&lt;/script&gt;
+
+&lt;p&gt;And the corresponding &lt;strong&gt;likelyhood function&lt;/strong&gt; which can be maximized to obtain the MLEs is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = \prod_{i=1}^n f(t_i, \theta \mid t_i \leq T_i) = \prod_{i=1}^n \frac{f(t_i, \theta)}{F(T_i, \theta)} \tag{9} \label{9}&lt;/script&gt;
+
+&lt;h3 id=&quot;explanatory-variables&quot;&gt;Explanatory Variables&lt;/h3&gt;
+
+&lt;p&gt;Information on &lt;strong&gt;explanatory variables may or may not be used&lt;/strong&gt; in estimating survival time models. Some models that are based on the &lt;strong&gt;implicit assumption that distribution of survival time is the same for all individuals&lt;/strong&gt;, do not use explanatory variables.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But practically it is observed that some individuals are more prone to failing than others and hence if information on individual charestistics and environmental variables is available, it should be used.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This information can be incorporated is survival models by letting the parameter \(\theta\) depend on these individual characteristics and a new set of parameters. E.g. exponential model depends on a single parameter, say \(\theta\), and &lt;strong&gt;\(\theta\) can be assumed to depend on the individual characteristics&lt;/strong&gt; as in linear regression.&lt;/p&gt;
+
+&lt;h3 id=&quot;non-parametric-hazard-rate-and-kaplan-meier&quot;&gt;Non-Parametric Hazard Rate and Kaplan Meier&lt;/h3&gt;
+
+&lt;p&gt;Before beginning any formal analyses of the data, it is often instructive to check the hazard rate. For this purpose, the &lt;strong&gt;time until failure are rounded to the nearest quantized time unit&lt;/strong&gt; (month, week, day etc.). Following this it is easy to count the &lt;strong&gt;number of candidates at risk at the beginning of the said time period&lt;/strong&gt; (i.e. the number of individuals who have not yet failed or been censored at the beginining of the time unit) and the &lt;strong&gt;number of individuals who fail during the time period&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Then, the &lt;strong&gt;non-parametric hazard rate&lt;/strong&gt; can be estimated as the ratio of number of failures during the time period to the number of individuals at risk at the beginning of time period, i.e., if the number of individuals at risk at the beginning of time \(t \, (t = 1, 2, \cdots)\) is denoted by \(r\), and the number of individuals who fail during this time \(t\) is denoted by \(n_t\), then the estimated hazard for time \(t\), \(\hat{h}(t)\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{h}(t) = \frac{n_t}{r} \tag{10} \label{10}&lt;/script&gt;
+
+&lt;p&gt;Such estimated hazard rates are prone to high variability. Also this high variability makes the purely non parametric estimates unattractive as they are less likely to give an accurate prediction on a new dataset. The parametric models such as exponential, Weibull or lognormal take care of this high variability and makes the model more tractable.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But the plots of non parametric estimates of hazard rate provides a good initial guide as to which probability distribution may work well for a given usecase.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;As noted earlier, the hazard function, density function, and distribution function are alternative but equivalent ways of characterizing the distribution of the time until failure. Hence, once the hazard rate is estimated, then implicitly so is the density and the distribution function. It is possible to solve explicitly for the estimated density of distribution function in terms of the estimated hazard function. The resulting estimator (called &lt;strong&gt;Kaplan Meier&lt;/strong&gt; or &lt;strong&gt;product limit&lt;/strong&gt; estimator in statistical literature which is nothing but the non-parametric estimate) of the distribution function is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{F}(t) = 1 - \prod_{j=1}^t [1 - \hat{h}(j)] \tag{11} \label{11}&lt;/script&gt;
+
+&lt;h3 id=&quot;models-without-explanatory-variables&quot;&gt;Models without Explanatory Variables&lt;/h3&gt;
+
+&lt;p&gt;There are various models that do not consider the explanatory variables, and instead &lt;strong&gt;assume some specific distribution&lt;/strong&gt; such as exponential, Weibull, or lognormal for the length of time until failure. Essentially, the distribution of time until failure is known, except for some &lt;strong&gt;unknown parameters that have to be estimated&lt;/strong&gt;. Hence, models of this type are called parametric models, which are different from the models discussed before as the later have no associated parameters or distribution.&lt;/p&gt;
+
+&lt;p&gt;The unknown parameters are &lt;strong&gt;estimated by maximizing the likelyhood function&lt;/strong&gt; of the form \eqref{6}.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In case of exponential distribution, MLEs cannot be written in closed form (i.e. expressed algebraically), and so the maximization of likelyhood function is done numerically.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Once the characteristic parameters have been estimated, one can determine the following (which cannot be determined in case of non-parametric estimates like Kaplan Meier):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;mean time&lt;/strong&gt; until failures&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;proportion of population that should be expected to fail&lt;/strong&gt; within any arbitrary period of time.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;While the &lt;strong&gt;advantage of such models lies in the smoothness of predictions&lt;/strong&gt;, the &lt;strong&gt;disadvatage is the fact that it can be wrong and inturn lead to statements that are systematically misleading&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Exponential Distribution&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The exponential distribution has density,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(t) = \theta \, e^{-\theta t} \tag{12} \label{12}&lt;/script&gt;
+
+&lt;p&gt;and &lt;strong&gt;survivor function&lt;/strong&gt;,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(t) = e^{-\theta t} \tag{13} \label{13}&lt;/script&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the parameter is constrained, \(\theta \gt 0\)&lt;/li&gt;
+  &lt;li&gt;mean: \(1 / \theta\) and variance: \(1 / \theta^2\)&lt;/li&gt;
+  &lt;li&gt;only distribution with a &lt;strong&gt;constant hazard rate&lt;/strong&gt;, specifically \(h(t) = \theta\) for all \(t \geq 0\)&lt;/li&gt;
+  &lt;li&gt;such hazard rates are generally seen in some physical processes such as radioactive decay.&lt;/li&gt;
+  &lt;li&gt;it is often not the most reasonable distribution for survival models.&lt;/li&gt;
+  &lt;li&gt;exponential distribution requires estimation of single parameter \(\theta\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Consider a sample of \(N\) individuals, of which \(n\) have failed before the end of the follow-up period. The observed failure times be denoted by \(t_i\, (i=1, 2, \cdots, n)\) and the censoring times (length of follow up) for the non-failures de denoted by \(T_i\, (i = n+1, \cdots, N)\). Then the likelyhood function \eqref{6} can be written as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = \prod_{i=1}^n \theta\,e^{-\theta t_i} \prod_{i=n+1}^N e^{-\theta T_i} \tag{14} \label{14}&lt;/script&gt;
+
+&lt;p&gt;Maximizing \eqref{14} w.r.t. \(\theta\) yields MLE in closed form:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\hat{\theta} = \frac {n} {\sum_{i=1}^n t_i + \sum_{i=n+1}^N T_i} \tag{15} \label{15}&lt;/script&gt;
+
+&lt;p&gt;For large samples \(\hat{\theta}\) is normal with mean \(\theta\) and variance&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{\theta^2}{\sum_{i=1}^N [1 - exp(-\theta T_i)]} \tag{16} \label{16}&lt;/script&gt;
+
+&lt;p&gt;which for large \(N\) is adequately approximated by \(\theta^2/n\).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Exponential distribution is highly skewed.&lt;/li&gt;
+  &lt;li&gt;Mean may not be a good measure of central tendency for exponential distribution.&lt;/li&gt;
+  &lt;li&gt;Median may be more preferrable indicator in most cases.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Logarithm of likelyhood or log-likelyhood is used as a value to measure the goodness of fit. A higher value (more positive or less negative) for this variable indicates that the model fits the data better.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;Weibull Distribution&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In statistical literature, a very common alternative to the exponential distribution is the Weibull distribution. It is a generalization of the exponential distribution. By using Weibull distribution one can test to check if a simpler exponential model is more appropriate.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;A variable \(T\) has Weibull distribution if \(T^{\tau}\) has an exponential distribution for some value of \(\tau\).&lt;/li&gt;
+  &lt;li&gt;increasing hazard rate if \(\tau \gt 1\) and decreasing hazard rate if \(\tau \lt 1\). Also, if \(\tau = 1\) the hazard rate is constant and the Weibull distribution reduces to the exponential.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Weibull distribution has a monotonic hazard rate&lt;/strong&gt;, i.e it can be increasing, constant or decreasing but it cannot be increasing at first and then decreasing after some point.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The density of Weibull distribution is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(t) = \tau \theta^{\tau} \, t^{\tau -1} e^{-(\theta t)^\tau} \tag{17} \label{17}&lt;/script&gt;
+
+&lt;p&gt;and the survivor function is,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;S(t) = e^{-(\theta t)^\tau} \tag{18} \label{18}&lt;/script&gt;
+
+&lt;p&gt;The likelyhood function for Weibull distribution can be derived by substituting \eqref{17} and \eqref{18} in \eqref{6}.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lognormal Distribution&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;If \(z\) is distributed as \(N(\mu, \sigma^2)\), then \(y = e^z\) has a lognormal distribution with mean&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi = exp(\mu + {1 \over 2} \sigma^2) \tag{19} \label{19}&lt;/script&gt;
+
+&lt;p&gt;and variance,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\tau^2 = exp(2 \mu + \sigma^2) [exp(\sigma^2) -1] = \phi^2 \psi^2 \tag{20} \label{20}&lt;/script&gt;
+
+&lt;p&gt;where&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\psi^2 = exp(\sigma^2) - 1 \tag{21} \label{21}&lt;/script&gt;
+
+&lt;p&gt;The &lt;strong&gt;density&lt;/strong&gt; of \(z = ln \, y\) is the density of \(N(\mu, \sigma^2)\) given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;f(ln \, y) = (1 / \sqrt{2\pi} \sigma) exp [-(1/2 \sigma^2) (ln\, y - \mu)^2] \tag{22} \label{22}&lt;/script&gt;
+
+&lt;p&gt;Generally there is &lt;strong&gt;no advantage to working with the density of \(y\) itself, rather than \(ln \, y\)&lt;/strong&gt;. Thus, one can simply assume that log of survival time is distributed normally, and hence the likelyhood function \eqref{6} becomes&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+L = &amp;- {n \over 2} ln(2\pi) - {n \over 2} ln(\sigma^2) - {1 \over 2\sigma^2} \sum_{i=1}^n (ln\, t_i - \mu)^2 \\
+&amp;+ \sum_{i=n+1}^N ln \, F \left[ \frac {\mu - ln\, T_i} {\sigma} \right]
+\end{align}
+\tag{23} \label{23} %]]&gt;&lt;/script&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;where &lt;strong&gt;\(F\) is the cumulative distribution function&lt;/strong&gt; for \(N(0, 1)\) distribution.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;No analytical solution&lt;/strong&gt; exists for the maximization of \eqref{23} w.r.t. \(\mu\), and \(\sigma^2\), so it &lt;strong&gt;must be maximized numerically&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;the hazard function for lognormal distribution is complicated; it &lt;strong&gt;increases first and then decreases&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Other distributions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Although exponential, Weibull and lognormal are among the three most used distributions, there are various other well-known probability distributions possible, such as&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;log-logistic&lt;/li&gt;
+  &lt;li&gt;LaGuerre&lt;/li&gt;
+  &lt;li&gt;distributions based on Box-Cox power transformation of the normal&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are various ways of measuring how well models fit the data:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;value of likelyhood (or log-likelyhood) function&lt;/li&gt;
+  &lt;li&gt;maximum difference between the fitted value and actual cumulative distribution function&lt;/li&gt;
+  &lt;li&gt;standard Kolmogorov-Smirnov test of goodness of fit&lt;/li&gt;
+  &lt;li&gt;chi-square goodness-of-fit statistic based on predicted and actual failure times.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Over time it has been observed that even though some of these parametric distributions &lt;strong&gt;might fit the data&lt;/strong&gt; better than others and excel on various metrics of good fit of data, these &lt;strong&gt;do not give any explaination about the reasons governing the distribution&lt;/strong&gt; or any &lt;strong&gt;insight into the affecting parameters&lt;/strong&gt; that lead to the different survival times in a population. Hence, these parametric models without the explanatory variables are not considered to be an effective tool for analysis.&lt;/p&gt;
+
+&lt;h3 id=&quot;models-with-explanatory-variables&quot;&gt;Models with Explanatory Variables&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Explanatory variables are in general added to survival models in an attempt to make more accurate predictions: the practical experiments over time corroborate the fact that individual characteristics, previous experiences and environmental setup helps predict whether or not a person will fail.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An analysis of survival time without using the explanatory variables amounts to an analysis of its &lt;strong&gt;marginal distribution&lt;/strong&gt;, whereas an analysis using explanatory variable amounts to an analysis of the &lt;strong&gt;distribution of survival time conditional on these variables&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Variance of the conditional distribution is less than the variance of the marginal distribution, i.e. expect more precise distribution from former.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another more fundamental reason may include the interest of understanding the effect of explanatory variables on the survival time.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;More generally, these variables might be the demographics or environmental characteristics.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;proportional-hazards-model&quot;&gt;Proportional Hazards Model&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;allows one to estimate the effects of individual characteristics on survival time without having to assume a specific parametric form of distribution of time until failure.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For an individual with the vector of characteristics, \(x\), the proportional hazards model assumes a hazard rate of the form,&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h(t \mid x) = h_0(t) e^{x_i^\prime \beta} \tag{24} \label{24}&lt;/script&gt;
+
+&lt;p&gt;where \(h_0(t)\) is completely arbitrary and unspecified baseline hazard function. &lt;strong&gt;Thus, the model assumes that the hazard functions of all individuals differ only by a factor of proportionality,&lt;/strong&gt; i.e. if an individuals hazard rate is 10 times higher than another’s at a given point of time, then it must be 10 times higher at all points in time. &lt;strong&gt;Each hazard function follows same pattern over time.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;However, there is no restriction on what this pattern can be, i.e. it puts no restriction on the \(h_0(t)\) curve, which determines the shape of \(h(t \vert x)\) curve. &lt;strong&gt;\(\beta\) can be estimated without specifying \(h_0(t)\), and \(h_0(t)\) can be estimated non-parametrically and thus with flexibility.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider a sample of \(N\) individuals, \(n\) of whom fail before the end of their follow-up period. Let the observations be ordered such that individual 1 has the shortest failure time, individual 2 has the second shortest failure time, and so forth. Thus, for individual \(i\), failure time \(t_i\) is observed, with,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;t_1 \lt t_2 \lt \cdots \lt t_n \tag{25} \label{25}&lt;/script&gt;
+
+&lt;p&gt;A vector \(x_i\) represents individual characteristics for each individual \(i = 1, 2, \cdots, N\), irrespective of whether they failed.&lt;/p&gt;
+
+&lt;p&gt;For each observed failure times, \(t_i\), \(R(t_i)\) is defined as set of all individuals who were at risk just prior to time \(t_i\), i.e., it includes the individuals with failure times greater than or equal to \(t_i\), as well as the individuals whose follow-up is at least of length \(t_i\).&lt;/p&gt;
+
+&lt;p&gt;Using these definitions, the &lt;strong&gt;partial-likelihood&lt;/strong&gt; function proposed by Cox can be defined for any failure time \(t_i\), as the probability that it is individual \(i\) who fails, given that exactly one individual from set \(R(t_i\)) fails, is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {h(t_i \vert x_i)} {\sum_{j \in R(t_i)} h(t_i \vert x_j)} = \frac {exp(x_i^\prime \beta)} {\sum_{j \in R(t_i)} exp(x_j^\prime \beta)} \tag{26} \label{26}&lt;/script&gt;
+
+&lt;p&gt;The partial-likelyhood function is formed by multiplying \eqref{26} over all \(n\) failure times,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = \prod_{i=1}^n \frac {exp(x_i^\prime \beta)} {\sum_{j \in R(t_i)} exp(x_j^\prime \beta)} \tag{27} \label{27}&lt;/script&gt;
+
+&lt;p&gt;The estimate of \(\beta\) by maximizing \eqref{27} numerically w.r.t \(\beta\) is the &lt;strong&gt;partial maximum-likelyhood estimate&lt;/strong&gt;. The word &lt;strong&gt;partial&lt;/strong&gt; in partial likelyhood refers to the fact that not all available information is used in estimating \(\beta\), i.e., it only depends on knowing which individuals were at risk when each observed failure occured. The exact numerical values of the failure times \(t_i\) or of the censoring times for the non recedivists are not needed; only their &lt;strong&gt;order matters&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Once \(\beta\) is estimated, \(h_0(t)\), the baseline hazard function can be estimated non-parametrically. The estimated baseline hazard function is constant over the intervals between failure times. One can also calculate &lt;strong&gt;survivor function&lt;/strong&gt; \(S_0(t)\) or equivalently the baseline cumulative distribution function \(F_0(t)\), that corresponds to the estimated baseline hazard function.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The estimated survivor function is a step function that falls at each time at which there is a failure.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The point of proportional hazard model is that the survivor function is estimated non-parametrically (i.e. not imposing any structure on its pattern over time, except that it must decrease as \(t\) increases) and estimation of \(\beta\) can proceed seperately from estimation of survivor function.&lt;/p&gt;
+
+&lt;h3 id=&quot;split-population-models&quot;&gt;Split Population Models&lt;/h3&gt;
+
+&lt;p&gt;The models considered so far assume some cumulative distribution function, \(F(t)\) for the survival time, that gives the probability of a failure upto and including time \(t\), and it approaches one as \(t\) approaches infinity. This basically means that every individual must eventually fail, if they were observed for long enough time. This assumption is not true in all cases.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Split Population Models&lt;/strong&gt; (or split models) do not imply that every individual would eventually fail. Rather the population is divided into two groups, one of which would never fail.&lt;/p&gt;
+
+&lt;p&gt;Mathematically, let \(Y\) be an observable indicator with two values, one implying ultimate failure and zero implying perpetual success. Then,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+P(Y=1) &amp;= \delta \\
+P(Y=0) &amp;= 1 - \delta
+\end{align}
+\tag{28} \label{28} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;where \(\delta\) is the proportion of the population that would eventually fail, and \(1 - \delta\) is the proportion that would never fail.&lt;/p&gt;
+
+&lt;p&gt;Let \(g(t \vert Y=1)\) be density of survival times for the ultimate failures, and \(G(t \vert Y=1)\) be the corresponding cumulative distribution function. If one considers exponential model to represent them, then&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\begin{align}
+g(t \vert Y=1) = \theta e^{-\theta t} \\
+G(t \vert Y=1) = 1 - e^{-\theta t}
+\end{align}
+\tag{29} \label{29}&lt;/script&gt;
+
+&lt;p&gt;It can also be noted that \(g (t \vert Y = 0)\) and \(G(t \vert Y=0)\) are not defined.&lt;/p&gt;
+
+&lt;p&gt;Let \(T\) be the length of the follow up period and let \(R\) be an observable indicator equal to one if there is failure by time \(T\) and zero if there is not. The probability for individuals who do not fail during the follow up period, i.e, the event of \(R = 0\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{align}
+P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
+&amp;= 1 - \delta + \delta e^{-\theta T}
+\end{align}
+
+\tag{30} \label{30} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Similarly, probability density for people who fail with survival time \(t\) is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P(Y=1)P(t \lt T \vert Y=1) g(t \vert t \lt T, Y=1) = P(Y=1) g(t \vert Y=1) = \delta \theta e^{-\theta t} \tag{31} \label{31}&lt;/script&gt;
+
+&lt;p&gt;So the likelyhood function is made up of \eqref{29} for those who do not fail and \eqref{30} for those who do. It is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L = \prod_{i=1}^n \delta \theta exp(-\theta t_i) \prod_{i = n+1}^N (1 - \delta + \delta exp(-\theta T_i)) \tag{32} \label{32}&lt;/script&gt;
+
+&lt;p&gt;The maximum likelyhood estimate of both \(\theta\) and \(\delta\) can be obtained by maximizing \eqref{32} numerically. It can be noted that when \(\delta = 1\), \eqref{32} reduces to \eqref{14}, the original exponential survival time model.&lt;/p&gt;
+
+&lt;p&gt;The split population model can be seen as a model of two seperate subpopulations, one with hazard rate \(\theta\) and other with zero. A more generalized model exists where the subpopulations exist with two non-zero hazard rates namely, \(\theta_1\) and \(\theta_2\). Such models help to account for population that is heterogenous in nature.&lt;/p&gt;
+
+&lt;p&gt;Split models can also be based on other distributions such as lognormal etc. Also, it is possible to include explanatory variables into a split model. In such cases, the explanatory variables maybe taken to affect the probabiliy of failure, \(\delta\) or distribution of time until failure.&lt;/p&gt;
+
+&lt;p&gt;For example, for a given feature vector \(x_i\) of explanatory variables, using &lt;strong&gt;logit/individual lognormal model&lt;/strong&gt;, \(\delta\) is modeled using,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\delta_i = 1/(1+exp(x_i^\prime \alpha)) \tag{33} \label{33}&lt;/script&gt;
+
+&lt;p&gt;and parameter \(\mu\) of the lognormal distribution is given by,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu_i = x_i^\prime \beta \tag{34} \label{34}&lt;/script&gt;
+
+&lt;p&gt;Here, the parameter \(\alpha\) gives the effect of \(x_i\) on the probablity of failure, and \(\beta\) gives the effect of \(x_i\) on the time until failure.&lt;/p&gt;
+
+&lt;p&gt;Such models are of importance because they let one distinguish between effects of explanatory variable on probability of eventual failure from effects on time until failure who eventually do fail.&lt;/p&gt;
+
+&lt;h3 id=&quot;heterogeneity-and-state-dependence&quot;&gt;Heterogeneity and State Dependence&lt;/h3&gt;
+
+&lt;p&gt;The two major causes of observed declining hazard rates are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;state dependence&lt;/li&gt;
+  &lt;li&gt;heterogeneity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The phenomenon of an actually decreasing hazard rate over time due to an actual change in behavior over time at individual level is referred to as &lt;strong&gt;state dependence&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;The second possible reason is &lt;strong&gt;heterogeneity&lt;/strong&gt;. This basically means that the hazard rates are different across individuals, i.e., some individuals are more prone to failure than others. Naturally, individuals with higher hazard rates tend to fail earlier, on average, than individuals with lower hazard rates. As a result the average hazard rate of the surviving group will decrease with length of time simply because the most failure prone individuals have been removed already. This is true even without state dependence, i.e, each individual has a constant hazard rate but hazard rate varies across individuals. Even such a group would display decreasing hazard rate.&lt;/p&gt;
+
+&lt;p&gt;It is important to understand the difference because a decrease in a hazard rate due to state dependance means a success of the underlying program, while decrease due to heterogeneity does not imply that the program is effective in preventing failure, because it is happening by the virtue of the data at hand.&lt;/p&gt;
+
+&lt;h3 id=&quot;time-varying-covariates&quot;&gt;Time Varying Covariates&lt;/h3&gt;
+
+&lt;p&gt;Until now explanatory variables affecting the time until failure do not potray changing values over time, but is a possibility that can not be denied.&lt;/p&gt;
+
+&lt;p&gt;The types of explanatory variables can be categorizaed as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;variables that do not change over time, e.g race, sex etc.&lt;/li&gt;
+  &lt;li&gt;variables that change over time but not within a single follow-up period, e.g. number of times followed up etc.&lt;/li&gt;
+  &lt;li&gt;variables that change continuously over time, such as age, education etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The last type of variables make it reasonable to use a statistical model that allows covariates to vary over time. Such incorporation is relatively straightforward in hazard-based models such as proportional hazard models. At each point in time, hazard rate is determined by the values of explanatory variables at that time.&lt;/p&gt;
+
+&lt;p&gt;However, it is much more difficult to introduce time-varying components into parametric models because these models are parameterized in terms of density and cumulative distribution function, and the density of distribution function at time \(t\) depends on the whole history of the explanatory variables up to time \(t\). &lt;strong&gt;In the presence of time varying covariates, a parameterization of the hazard rate would be much more convenient.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Panel or Longitudinal Data:&lt;/strong&gt; data on individuals over time without reference to just a single follow-up. Such datasets include a large number of time-varying explanatory variables.&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://link.springer.com/article/10.1007/BF01083132#&quot; target=&quot;_blank&quot;&gt;Survival Analysis: A Survey&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
+        <link>https://machinelearningmedium.com/2018/07/23/survival-analysis/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2018/07/23/survival-analysis/</guid>
+        
+        <category>machine-learning</category>
+        
+        <category>papers</category>
+        
+        <category>mathematics</category>
+        
+        <category>featured</category>
+        
         
       </item>
     
@@ -620,7 +1110,7 @@ mem[a] = r3
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ai.google/research/pubs/pub45189&quot; target=&quot;_blank&quot;&gt;Smart Reply: Automated Response Suggestion for Email&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/&quot; target=&quot;_blank&quot;&gt;Save time with Smart Reply in Gmail&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 22 Jul 2018 00:00:00 +0530</pubDate>
+        <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/07/22/google-smart-reply/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/07/22/google-smart-reply/</guid>
         
@@ -792,7 +1282,7 @@ mem[a] = r3
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/ABO2q/online-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Online Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/10sqI/map-reduce-and-data-parallelism&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Map Reduce and Data Parallelism&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 22 Jun 2018 00:00:00 +0530</pubDate>
+        <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/06/22/large-scale-learning/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/06/22/large-scale-learning/</guid>
         
@@ -1148,7 +1638,7 @@ Y = \left[
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/CEXN0/vectorization-low-rank-matrix-factorization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Low Rank Matrix Factorization&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Adk8G/implementational-detail-mean-normalization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Mean Normalization&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 11 May 2018 00:00:00 +0530</pubDate>
+        <pubDate>Fri, 11 May 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/05/11/recommender-systems/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/05/11/recommender-systems/</guid>
         
@@ -1530,7 +2020,7 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Rkc5x/anomaly-detection-vs-supervised-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Anomaly Detection vs Supervised Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Cf8DF/multivariate-gaussian-distribution&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Multivariate Gaussian Distribution&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 02 May 2018 00:00:00 +0530</pubDate>
+        <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/05/02/anomaly-detection/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/05/02/anomaly-detection/</guid>
         
@@ -1812,7 +2302,7 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/S1bq1/choosing-the-number-of-principal-components&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Choosing the number of principal components&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/RBqQl/advice-for-applying-pca&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Advice&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 22 Apr 2018 00:00:00 +0530</pubDate>
+        <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</guid>
         
@@ -2029,15 +2519,13 @@ Repeat \{ \\
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/drcBh/random-initialization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Random Initialization&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Ks0E9/choosing-the-number-of-clusters&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Choosing the number of clusters&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 19 Apr 2018 00:00:00 +0530</pubDate>
+        <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/19/k-means-clustering/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/19/k-means-clustering/</guid>
         
         <category>machine-learning</category>
         
         <category>andrew-ng</category>
-        
-        <category>featured</category>
         
         
         <category>basics-of-machine-learning</category>
@@ -2396,7 +2884,7 @@ f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert
 &lt;small&gt;&lt;a href=&quot;https://www.quora.com/Support-Vector-Machines-Why-is-theta-perpendicular-to-the-decision-boundary&quot; target=&quot;_blank&quot;&gt;Quora - Why is theta perpendicular to the decision boundary?&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html&quot; target=&quot;_blank&quot;&gt;Introduction to support vector machines&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 10 Apr 2018 00:00:00 +0530</pubDate>
+        <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/10/support-vector-machines/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/10/support-vector-machines/</guid>
         
@@ -2535,7 +3023,7 @@ f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/XcNcz/data-for-machine-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Data for Machine Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
 &lt;small&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Sensitivity_and_specificity&quot; target=&quot;_blank&quot;&gt;Sensitivity and Specifivity - Wikipedia&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 08 Apr 2018 00:00:00 +0530</pubDate>
+        <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</guid>
         
@@ -2545,322 +3033,6 @@ f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert
         
         
         <category>basics-of-machine-learning</category>
-        
-      </item>
-    
-      <item>
-        <title>Docker for Machine Learning Developement</title>
-        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;Containerization, also known as operating-system-level virtualization is a feature of the operating system in which the kernel allows the existence of multiple isolated user-space instances. Such instances may be called containers, partitions, virtualization engines (VEs), or jails. These look like real computers from the point of view of a program running in them.&lt;/p&gt;
-
-&lt;h3 id=&quot;general-commands&quot;&gt;General Commands&lt;/h3&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# docker help &lt;/span&gt;
-docker
-docker &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;
-docker &amp;lt;command-name&amp;gt; &lt;span class=&quot;nt&quot;&gt;--help&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# check docker version&lt;/span&gt;
-docker &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# check additional docker information&lt;/span&gt;
-docker version
-docker info
-
-&lt;span class=&quot;c&quot;&gt;# check docker installation&lt;/span&gt;
-docker run hello-world
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;images&quot;&gt;Images&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Docker &lt;strong&gt;image&lt;/strong&gt; is an executable package that includes everything needed to run an application - code, libraries, environment variables, and configuration files.&lt;/li&gt;
-  &lt;li&gt;An image is a read-only template with instructions or creating a docker container. It is possible for an image to be based on another base image, with additional customizations.&lt;/li&gt;
-  &lt;li&gt;Images are created using &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; with a simple syntax the defines the steps involved in creating the image and run it. Each instruction in the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; creates a layer in the image and cached for the next build to speed up the process until the &lt;code class=&quot;highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt; is changed itself.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# list images&lt;/span&gt;
-docker image &lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;docker images
-
-&lt;span class=&quot;c&quot;&gt;# list all images on machine&lt;/span&gt;
-docker image &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# remove image from machine&lt;/span&gt;
-docker image rm &amp;lt;image id&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# remove all images from this machine&lt;/span&gt;
-docker image rm &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker image &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;container&quot;&gt;Container&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Docker &lt;strong&gt;container&lt;/strong&gt; is launched by running an image. Container is to image, what object is to class, i.e. container is a runtime instance of an image, or what the image becomes in memory when executed.&lt;/li&gt;
-  &lt;li&gt;A container is defined by the image used to spawn it and the configuration options provided while creating or running it.&lt;/li&gt;
-  &lt;li&gt;When a container is removed, any changes in the state not stored in the persistent storage disappear.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# list all running containers&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;ls
-&lt;/span&gt;docker ps
-
-&lt;span class=&quot;c&quot;&gt;# list all containers&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--all&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# list all containers in quite mode&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-aq&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# docker container stop using container id&lt;/span&gt;
-docker container stop &amp;lt;container-id&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# docker container kill using container id&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;kill&lt;/span&gt; &amp;lt;container-id&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# docker container remove using container id&lt;/span&gt;
-docker container rm &amp;lt;container-id&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# remove all containers&lt;/span&gt;
-docker container rm &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-q&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-docker container &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; | awk &lt;span class=&quot;s1&quot;&gt;'{print &quot;docker container rm &quot;,$1}'&lt;/span&gt; | bash
-
-&lt;span class=&quot;c&quot;&gt;# attach to a running container&lt;/span&gt;
-docker attach &amp;lt;container-id&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl-c&lt;/code&gt; to kill the container.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Ctrl-p Ctrl-q&lt;/code&gt; sequence to detach from an running container without killing it.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;container-vs-virtual-machines&quot;&gt;Container vs Virtual Machines&lt;/h3&gt;
-
-&lt;p&gt;A container runs natively on Linux, sharing the kernel of the host machines with other containers. It only runs processes and occupies memory required by that executable, hence making it lightweight.&lt;/p&gt;
-
-&lt;p&gt;On the contrary, a virtual machine runs a full guest operating system with virtual access to the host resources through a hypervisor. As a result, VMs provide an entire guest operating system and hence a lot more resources than what the application would actually need.&lt;/p&gt;
-
-&lt;h3 id=&quot;dockerfile&quot;&gt;Dockerfile&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Dockerfile&lt;/strong&gt; defines the envrionment inside the container. Options like access to resources, disk drives etc. can be configured in the file. Post this, it can expected that the builds from this Dockerfile would behave the same wherever it runs.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# tensorflow nightly build base image with python 3
-FROM tensorflow/tensorflow:nightly-py3
-
-# set working directory
-WORKDIR /development
-
-# Copy the current directory contents into the destination directory
-ADD . /development
-
-# setup command line tools
-RUN apt-get update &amp;amp;&amp;amp; apt-get install -y \
-    emacs \
-    git \
-    tmux \
-    &amp;amp;&amp;amp; \
-apt-get clean &amp;amp;&amp;amp; \
-apt-get autoremove &amp;amp;&amp;amp; \
-rm -rf /var/lib/apt/list/*
-
-# setup non-pip libraries
-RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;-y&quot;, &quot;python-opencv&quot;]
-
-# install requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
-
-# expose ports for connection
-# 6006 for tensorboard
-# 8888 for jupyter notebook
-EXPOSE 6006 8888
-
-CMD [&quot;/bin/bash&quot;]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;build-from-dockerfile&quot;&gt;Build from Dockerfile&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Once the Dockerfile is ready, it can be used to build and run the image by using the following commands,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# build image from Dockerfile&lt;/span&gt;
-docker build &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; &amp;lt;docker-image-name&amp;gt; &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# run container in interactive mode&lt;/span&gt;
-docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; &amp;lt;image-name&amp;gt; &amp;lt;optional-command-to-overwrite-base-command&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# run container in detached mode&lt;/span&gt;
-docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &amp;lt;image-name&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# run container with port forwarding&lt;/span&gt;
-docker run &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &amp;lt;host-port&amp;gt;:&amp;lt;container-port-exposed&amp;gt; &amp;lt;image-name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;docker-hub&quot;&gt;Docker Hub&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Dockerhub&lt;/strong&gt; is the public repository of docker images where anyone can publish their images or pull images from. Image names on dockerhub have a name based on username of uploader, project name and tags based on properties of docker image - latest, nightly etc. A template would look like: &lt;strong&gt;username/repository:tag&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;Once uploaded, all the images are publically available and can be availed on any system with connectivity, because if an image in not available locally, docker tries to pull it from the repository.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# login to dockerhub&lt;/span&gt;
-docker login
-
-&lt;span class=&quot;c&quot;&gt;# tag &amp;lt;image&amp;gt; for upload to registry&lt;/span&gt;
-docker tag &amp;lt;image&amp;gt; username/repository:tag
-
-&lt;span class=&quot;c&quot;&gt;# upload tagged image to registry&lt;/span&gt;
-docker push username/repository:tag
-
-&lt;span class=&quot;c&quot;&gt;# run image from a registry&lt;/span&gt;
-docker run username/repository:tag
-
-&lt;span class=&quot;c&quot;&gt;# pull tagged image from registry&lt;/span&gt;
-docker pull username/repository:tag
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;services&quot;&gt;Services&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Services are just &lt;strong&gt;containers in production&lt;/strong&gt;. A service runs only one image, but along with it other information is also maintained - ports it should run on, number of replicas of the container to be maintained etc.&lt;/li&gt;
-  &lt;li&gt;Scaling a service basically means to change the number of containers running the particular piece of the software, assigning more compute resources to service in the process.&lt;/li&gt;
-  &lt;li&gt;Services allow the containers to be scaled across multiple docker daemons, which all work together in a swarm using multiple managers and workers. Each member of the swarm in a docker daemon communicating with other daemons using Docker APIs.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;swarms&quot;&gt;Swarms&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A swarm is a group of machines that are running docker and joined into a cluster. Post definition of the cluster, all the commands are run on the entire cluster by a &lt;strong&gt;swarm manager&lt;/strong&gt;. The machines in a cluster can be &lt;strong&gt;virtual&lt;/strong&gt; or &lt;strong&gt;physical&lt;/strong&gt;, and are termed as &lt;strong&gt;nodes&lt;/strong&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Swarm managers&lt;/strong&gt; can be configured in the compose file to use several different strategies to deploy new containers on the cluster,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Emptiest Node:&lt;/strong&gt; runs the container on the least utilized machine.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Global:&lt;/strong&gt; each machine gets exactly one instance of the specified node.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Swarm managers are the only machines that can run commands on a swarm or allow new nodes to join as a worker in the cluster. Workers are only capable of donating the compute power but do not have the authority to rule any other machine using commands.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The moment swarm mode is switched on, the current machine becomes the swarm mananger and any commands run henceforth are run on the cluster by the swarm manager.&lt;/p&gt;
-
-&lt;p&gt;Setting up swarm,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm init&lt;/code&gt; to enable the swarm mode and make the current machine the swarm manager&lt;/li&gt;
-  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm join&lt;/code&gt; on other machines to make them join the cluster&lt;/li&gt;
-  &lt;li&gt;run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm leave&lt;/code&gt; on worker to leave the swarm&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Always run &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm init&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;docker swarm join&lt;/code&gt; with port 2377 (the swarm management port), or let it take the default port by leaving it empty.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The machine IP addresses returned by &lt;code class=&quot;highlighter-rouge&quot;&gt;docker-machine ls&lt;/code&gt; include port 2376, which is the Docker daemon port. Do not use this port or you may experience errors.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;docker-machine&quot;&gt;Docker Machine&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Docker machine helps to start and manage the virtual machines in a cluster with ease.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# create a virtual machine&lt;/span&gt;
-docker-machine create &lt;span class=&quot;nt&quot;&gt;--driver&lt;/span&gt; virtualbox &amp;lt;vm-name&amp;gt;
-
-&lt;span class=&quot;c&quot;&gt;# list as docker machines&lt;/span&gt;
-docker-machine &lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# send command to docker machines&lt;/span&gt;
-docker-machine ssh &amp;lt;vm-name&amp;gt; &amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# to use the native ssh of docker&lt;/span&gt;
-docker-machine &lt;span class=&quot;nt&quot;&gt;--native-ssh&lt;/span&gt; ssh &amp;lt;vm-name&amp;gt; &amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# configure shell to interact with docker machine&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;eval&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;docker-machine env &amp;lt;vm-name&amp;gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;development-notes&quot;&gt;Development Notes&lt;/h3&gt;
-
-&lt;p&gt;There are various advantages of using docker for machine-learning development,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Library dependencies for complex machine learning libraries like tensorflow can be cumbersome to build sometimes. Using base images it is easier to load them.&lt;/li&gt;
-  &lt;li&gt;Open-source docker images like &lt;a href=&quot;https://github.com/floydhub/dl-docker&quot; target=&quot;\_blank&quot;&gt;this&lt;/a&gt; that give most of the libaries one may use, out of the box.&lt;/li&gt;
-  &lt;li&gt;It can help run mutliple CUDA/cuDNN versions on the same machines based on project requirements.&lt;/li&gt;
-  &lt;li&gt;Services and Swarms can help run experiments on bigger swarms using more compute power from mutliple workers that might not be easily available on a single machine.&lt;/li&gt;
-  &lt;li&gt;Once a system with basic dependencies is ready there would not be any overhead of reiterating the setup process on any other machine thanks to the excellent portability that docker offers, regardless of the host operating systems.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Note: Updated copy of &lt;a href=&quot;https://github.com/shams-sam/setups/tree/master/docker-setup&quot; target=&quot;\_blank&quot;&gt;Docker Setup Files&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;stack&quot;&gt;Stack&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A stack is the top-most hierarchy of the docker containerization. It is the group of related services that share dependencies, and can be orchestrated and scaled together. A single stack is capable of defining and coordinating the functionality of the entire application.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;docker-architecture&quot;&gt;Docker Architecture&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Docker uses a &lt;strong&gt;client-server architecture&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;The docker client speaks to docker daemon, which does the building, running and managing of the docker containers.&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;The client and daemon communicate through REST APIs.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Docker Daemon:&lt;/strong&gt; listens to the APIs and manages the images, containers, networks and volumes. A daemon can communicate with other daemons and clients to manager the docker system.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Docker Client:&lt;/strong&gt; the primary way of communicating with the docker daemons. All the commands executed at the client are internally routed to &lt;code class=&quot;highlighter-rouge&quot;&gt;dockerd&lt;/code&gt; which then executes them. A single docker client can communicate with many different docker daemons.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Docker Registries:&lt;/strong&gt; stores the docker images. For example, docker hub and docker cloud are the public repositories that anyone can use, and docker is configured by default to look for a image in docker hub in case it does not find local copy. It is also possible to run private registries. Commands like &lt;code class=&quot;highlighter-rouge&quot;&gt;docker pull&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt; fetch the required images from the configured repositories.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;miscellaneous&quot;&gt;Miscellaneous&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Docker is written in &lt;strong&gt;go language&lt;/strong&gt;.&lt;/li&gt;
-  &lt;li&gt;It is built to utilize the features of linux kernels in its full advantage.&lt;/li&gt;
-  &lt;li&gt;Docker provides container isolations using &lt;strong&gt;namespaces&lt;/strong&gt;. On executing &lt;code class=&quot;highlighter-rouge&quot;&gt;docker run&lt;/code&gt;, docker creates a set of namespaces for the container. Each aspect of the container is run on a different namespace and its access is limited to that namespace.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;namespaces&quot;&gt;Namespaces&lt;/h3&gt;
-
-&lt;p&gt;Docker engine uses the following namespaces on linux,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pid&lt;/code&gt; namespace: process isolation&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;net&lt;/code&gt; namespace: managing network interfaces&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ipc&lt;/code&gt; namespace: managing access to IPC (InterProcess Communication) resources&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;mnt&lt;/code&gt; namespace: managing filesystem mount points.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;uts&lt;/code&gt; namespace: isolating kernel and version identifiers.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;contol-groups&quot;&gt;Contol Groups&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Control groups, &lt;code class=&quot;highlighter-rouge&quot;&gt;cgroups&lt;/code&gt;, limits application to a specific set of resources.&lt;/li&gt;
-  &lt;li&gt;It helps docker engine to share available hardware resources among the running containers, and optionally enforce limits and constraints.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://docs.docker.com/get-started/&quot; target=&quot;\_blank&quot;&gt;Docker - Get Started&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Fri, 06 Apr 2018 00:00:00 +0530</pubDate>
-        <link>https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/</guid>
-        
-        <category>machine-learning</category>
-        
-        <category>library</category>
-        
-        <category>setup</category>
-        
         
       </item>
     

@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Introduction to Survival Analysis | Machine Learning Medium</title>
+  <meta name="description" content="The term survival time is used to describe the length of time until a specified event. The widespread use of these models in medicine to analyze survival times leads to the name survival analysis." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Introduction to Survival Analysis"/>
+  
+  <meta property="og:description" content="The term survival time is used to describe the length of time until a specified event. The widespread use of these models in medicine to analyze survival times leads to the name survival analysis." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/ecg.jpg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2018/07/23/survival-analysis/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2018-07-23T00:00:00+00:00">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2018/07/23/survival-analysis/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+        
+          <span class="right-padding-22">|</span>
+          <a class="icon-search" href="/search/"><i class="fa fa-search"></i></a>
+        
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Data Scientist @ Practo </h5>
+          <time datetime="2018-07-23T00:00:00+00:00">Jul 23</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/ecg.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://images3.alphacoders.com/170/thumb-1920-170789.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Introduction to Survival Analysis</h1>
+            <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Introduction to Survival Analysis&url=https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2018/07/23/survival-analysis/&title=Introduction to Survival Analysis&summary=The term survival time is used to describe the length of time until a specified event. The widespread use of these models in medicine to analyze survival times leads to the name survival analysis.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Introduction to Survival Analysis&amp;body=Check out this site https://machinelearningmedium.com/2018/07/23/survival-analysis/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+            <h2 class="post-description">The term survival time is used to describe the length of time until a specified event. The widespread use of these models in medicine to analyze survival times leads to the name survival analysis.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+
+<p>Survival analysis refers to the set of statistical analyses that are used to analyze the length of time until an event of interest occurs. These methods have been traditionally used in analysing the survival times of patients and hence the name. But they also have a utility in a lot of different application including but not limited to analysis of the time of recidivism, failure of equipments, survival time of patients etc. Hence, simply put the phrase <strong>survival time</strong> is used to refer to the type of variable of interest. It is often also referred by names such as <strong>failure time</strong> and <strong>waiting time</strong>.</p>
+
+<p>Such studies generally work with <strong>data leading upto an event of interest</strong> along with several other characteristics of individual data points that may be used to explain the survival times statistically.</p>
+
+<p>The statistical problem (survival analysis) is to construct and estimate an appropriate model of the time of event occurance. A survival model fulfills the following expectations:</p>
+
+<ul>
+  <li>yield predictions of number of individuals who will fail (undergo the event of interest) at any length of time since the beginning of observation (or other decided point in time).</li>
+  <li>estimate the effect of observable individual characteristics on the survival time (to check the relevance of one variable holding constant all others).</li>
+</ul>
+
+<p>It is often observed that the survival models such as proportional hazard model are capable of <strong>explaining the survival times in terms of observed characteristics</strong> which is better than straight-forward statistical inferences such as <strong>rates of event occurence without considering characteristic features</strong> of data.</p>
+
+<h3 id="basics">Basics</h3>
+
+<p>Assume <strong>survival time T is a random variable</strong> following some distribution <strong>characterized by cumulative distribution function \(F(t, \theta)\)</strong>, where</p>
+
+<ul>
+  <li>\(\theta\) is the set of <strong>parameters to be estimated</strong></li>
+  <li>\(F(t, \theta) = P(T \leq t) = \) <strong>probability that there is a failure</strong> at or before time \(t\), for any \(t \geq 0\)</li>
+  <li>\(F(t, \theta) \to 1\) as \(t \to \infty\), since \(F(t, \theta)\) is a <strong>cumulative distribution function</strong></li>
+  <li>Above tendency leads to an <strong>implicit assumption that all candidates would eventually fail</strong>. While this assumptions works selectively based on settings (true for patient survival times, not true for time of repayment of loans) and hence needs to be relaxed where it does not hold true.</li>
+</ul>
+
+<p><strong>Survival times are non-negative</strong> by definition and hence the distributions (like exponential, Weibull, gamma, lognormal etc.) characterising it are defined for value of time \(t\) from \(0\) to \(\infty\).</p>
+
+<p>Let \(f(t, \theta)\) be the <strong>density function</strong> correponding to the distribution function \(F(t, \theta)\), then the <strong>survival function</strong> is given by,</p>
+
+<script type="math/tex; mode=display">S(t, \theta) = 1 - F(t, \theta) = P(T \gt t) \tag{1} \label{1}</script>
+
+<p>which gives the <strong>probability of survival</strong> until time \(t\) (\(S(t, \theta) \to 0\) as \(t \to \infty\) because, \(F(t, \theta) \to 1\) as \(t \to \infty\)).</p>
+
+<p>Another useful concept in survival analysis is called <strong>hazard rate</strong>, defined by,</p>
+
+<script type="math/tex; mode=display">h(t, \theta) = \frac{f(t, \theta)} {1-F(t, \theta)} = \frac{f(t, \theta)} {S(t, \theta)} \tag{2} \label{2}</script>
+
+<blockquote>
+  <p>Hazard rate represents the density of a failure at time \(t\), conditional on no failure prior to time \(t\), i.e., it indicates the probability of failure in the next unit of time, given that no failure has occured yet.</p>
+</blockquote>
+
+<p><strong>While \(f(t, \theta)\) roughly represents the proportion of original cohort that should be expected to fail between time \(t\) and \(t+1\), hazard rate \(h(t, \theta)\) represents the proportion of survivors until time \(t\) that should be expected to fail in the same time window, \(t\) to \(t+1\).</strong></p>
+
+<p>The relationship betwee the cumulative distribution function and the hazard rate is given by,</p>
+
+<script type="math/tex; mode=display">F(t, \theta) = 1 - exp \left[ - \int_0^t h(x, \theta) dx \right] \tag{3} \label{3}</script>
+
+<p>and</p>
+
+<script type="math/tex; mode=display">h(t, \theta) = - \frac {d\,ln\,[1 - F(t, \theta)]} {dt} \tag{4} \label{4}</script>
+
+<p>The fact that \(F(t, \theta)\) is a cdf puts some restrictions on the hazard rate,</p>
+
+<ul>
+  <li>hazard rate is non-negative function</li>
+</ul>
+
+<script type="math/tex; mode=display">H(t, \theta) = \int_0^t h(x, \theta) dx \tag{5} \label{5}</script>
+
+<ul>
+  <li>the integrated hazard in \eqref{5} is finite for finite \(t\) and tends to \(\infty\) as \(t\) approaches \(\infty\).</li>
+</ul>
+
+<h3 id="state-dependence">State Dependence</h3>
+
+<ul>
+  <li>Positive state dependence or an increasing hazard rate \(dh(t)/dt \gt 0 \) indicates that the <strong>probability of failure during the next time unit increases</strong> as the length of time at risk increases.</li>
+  <li>Negative state dependence or a decreasing hazard rate \(dh(t)/dt \lt 0 \) indicates that the <strong>probability of failure in the next time unit decreases</strong> as the length of time at risk decreases.</li>
+  <li>No state dependence indicates a <strong>constant hazard rate</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>Only exponential distribution displays no state dependence.</p>
+</blockquote>
+
+<h3 id="censoring-and-truncation">Censoring and Truncation</h3>
+
+<p>A common feature of data on survival times is that they are censored or truncated. Censoring and truncation are statistical terms that refer to the <strong>inability to observe the variable of interest for the entire population</strong>.</p>
+
+<ul>
+  <li>A standard example to understand this can be understood in the form of a case of an individual shooting at a round target with a rifle and the variable of interest is the distance by which the bullet misses the center of the target.</li>
+  <li>If all shots hit the target, this distance can be measure for all the shots and there is no problem of censoring or truncation.</li>
+  <li>If some shots miss the target, but we know the number of shots fired, <strong>the sample is censored</strong>. In this case either the distance of shot from center is known or it is known that it was atleast as large as the radius of the target.</li>
+  <li>Similarly if one does not know how many shots were fired but only have information about distance for shots that hit the target, <strong>the sample is truncated</strong>.</li>
+</ul>
+
+<blockquote>
+  <p>Censored sample has more information than a truncated sample.</p>
+</blockquote>
+
+<p>Survival times are often censored because not all candidates would fail by the end of time during which the data was collected. This <strong>censoring of data must be taken into account</strong> while making the estimations because it is <strong>not legitimate to drop such observations</strong> with unobserved survival times <strong>r to set survival times for these observations equal to the length of the follow-up period</strong> (when the data was collected).</p>
+
+<ul>
+  <li>Infrequently so, but there is also a chance of getting information about a candidate during a follow-up collection who was not a part of the original population. In such cases the <strong>survival time is truncated</strong> because there is no information of the candidate or his survival time.</li>
+</ul>
+
+<h3 id="problem-of-estimation">Problem of Estimation</h3>
+
+<p>The initial assumption specifies a cumulative distribution function \(F(t, \theta)\), or equivalently a density \(f(t, \theta)\) or hazard \(h(t, \theta)\) that is of a known form except that it depends on a unknown parameter \(\theta\). Estimation of this parameter is first step for the model to make any meaningful prediction about the survival time of new candidate</p>
+
+<p>Consider a case of estimation of parameter for a censored sample which is defined as follows,</p>
+
+<ul>
+  <li>sample has \(N\) individuals with follow-up periods \(T_1, T_2, \cdots, T_N\). These follow-ups may be all equal, but they usually are not.</li>
+  <li>\(n\) is number of individuals who fail, numbered \(1, 2, \cdots, n\) and individuals numbered \(n+1, n+2, \cdots, N\) are the non-failures.</li>
+  <li>for the candidates who fail, there exists a survival time \(t_i \leq T_i, \, i \in [1, n]\)</li>
+  <li>for the non-failures, survival time \(t_i\) is not observed but it is known that it is greater than the length of the follow-up period \(T_i\), \(i \in [n+1, N]\).</li>
+</ul>
+
+<p>If it is assumed that <strong>all the outcomes are independent</strong> of each other the likelyhood function of the sample is,</p>
+
+<script type="math/tex; mode=display">L = \prod_{i=1}^n f(t_i, \theta) \prod_{i=n+1}^N S(T_i, \theta) \tag{6} \label{6}</script>
+
+<blockquote>
+  <p>Likelyhood function is a general statistical tool that expresses the probability of outcomes observed in terms of unknown parameters that are to be estimated, i.e., it is function of the parameters to be estimated, which serves as a measure of how likely it is that the statistical model, with a given parameter value, would generate the given data.</p>
+</blockquote>
+
+<p>A common used estimator of \(\theta\) is the <strong>Maximum Likelyhood Estimator (MLE)</strong> which is defined as the value of \(\theta\) that maximizes the likelyhood function.</p>
+
+<p>The MLE have been shown to display the following desirable properties over a large sample (<strong>as the sample size approaches infinity</strong>),</p>
+
+<ul>
+  <li>Unbiased</li>
+  <li>Efficient</li>
+  <li>Normally Distributed</li>
+</ul>
+
+<p>As mentioned, the properties of MLE are only <strong>relevant when the sample size is large</strong>. It is often <strong>observed that the sample sizes in these studies are much smaller</strong> and hence reliance on large sample properties of estimator is more tenuous.</p>
+
+<p>The above survival model uses observed survival time \(t_i\) while <strong>ignoring the specific timing of the observed returns</strong>. So the analysis of the fact of failure or non-failure, ignoring the timing of observed failures, would properly be based on the likelyhood function</p>
+
+<script type="math/tex; mode=display">L = \prod_{i=1}^n F(T_i, \theta) \prod_{i=n+1}^N S(T_i, \theta) \tag{7} \label{7}</script>
+
+<p>Estimation using \eqref{7} is a legitimate procedure and does not cause any bias or inconsistency, but the estimates are inefficient relative to MLEs from \eqref{6}.</p>
+
+<p><strong>The estimates of \(\theta\) gotten by maximizing \eqref{7} will be less efficient (have larger variance) than the estimates of \(\theta\) gotten by maximizing \eqref{6}, atleast for large sample sizes. Hence if the information on time of return is available, it should be used.</strong></p>
+
+<p>If the <strong>truncated</strong> case of sample is considered, then there is <strong>no information on all the individuals who do not fail</strong>. Formally, one starts with a cohort of \(N\) candidates, where <strong>\(N\) is unknown</strong>, and the only <strong>observations available are the survival times \(t_i\) for the \(n\) individuals who fail</strong> before the end of follow-up period. The \(n\) individuals appear in sample because \(t_i \leq T_i\), and the appropriate density is therefore</p>
+
+<script type="math/tex; mode=display">f(t_i, \theta \mid t_i \leq T_i) = \frac{f(t_i, \theta)}{P(t_i \leq T_i)} =  \frac{f(t_i, \theta)}{F(T_i, \theta)} \tag{8} \label{8}</script>
+
+<p>And the corresponding <strong>likelyhood function</strong> which can be maximized to obtain the MLEs is given by,</p>
+
+<script type="math/tex; mode=display">L = \prod_{i=1}^n f(t_i, \theta \mid t_i \leq T_i) = \prod_{i=1}^n \frac{f(t_i, \theta)}{F(T_i, \theta)} \tag{9} \label{9}</script>
+
+<h3 id="explanatory-variables">Explanatory Variables</h3>
+
+<p>Information on <strong>explanatory variables may or may not be used</strong> in estimating survival time models. Some models that are based on the <strong>implicit assumption that distribution of survival time is the same for all individuals</strong>, do not use explanatory variables.</p>
+
+<p><strong>But practically it is observed that some individuals are more prone to failing than others and hence if information on individual charestistics and environmental variables is available, it should be used.</strong></p>
+
+<p>This information can be incorporated is survival models by letting the parameter \(\theta\) depend on these individual characteristics and a new set of parameters. E.g. exponential model depends on a single parameter, say \(\theta\), and <strong>\(\theta\) can be assumed to depend on the individual characteristics</strong> as in linear regression.</p>
+
+<h3 id="non-parametric-hazard-rate-and-kaplan-meier">Non-Parametric Hazard Rate and Kaplan Meier</h3>
+
+<p>Before beginning any formal analyses of the data, it is often instructive to check the hazard rate. For this purpose, the <strong>time until failure are rounded to the nearest quantized time unit</strong> (month, week, day etc.). Following this it is easy to count the <strong>number of candidates at risk at the beginning of the said time period</strong> (i.e. the number of individuals who have not yet failed or been censored at the beginining of the time unit) and the <strong>number of individuals who fail during the time period</strong>.</p>
+
+<p>Then, the <strong>non-parametric hazard rate</strong> can be estimated as the ratio of number of failures during the time period to the number of individuals at risk at the beginning of time period, i.e., if the number of individuals at risk at the beginning of time \(t \, (t = 1, 2, \cdots)\) is denoted by \(r\), and the number of individuals who fail during this time \(t\) is denoted by \(n_t\), then the estimated hazard for time \(t\), \(\hat{h}(t)\) is given by,</p>
+
+<script type="math/tex; mode=display">\hat{h}(t) = \frac{n_t}{r} \tag{10} \label{10}</script>
+
+<p>Such estimated hazard rates are prone to high variability. Also this high variability makes the purely non parametric estimates unattractive as they are less likely to give an accurate prediction on a new dataset. The parametric models such as exponential, Weibull or lognormal take care of this high variability and makes the model more tractable.</p>
+
+<p><strong>But the plots of non parametric estimates of hazard rate provides a good initial guide as to which probability distribution may work well for a given usecase.</strong></p>
+
+<p>As noted earlier, the hazard function, density function, and distribution function are alternative but equivalent ways of characterizing the distribution of the time until failure. Hence, once the hazard rate is estimated, then implicitly so is the density and the distribution function. It is possible to solve explicitly for the estimated density of distribution function in terms of the estimated hazard function. The resulting estimator (called <strong>Kaplan Meier</strong> or <strong>product limit</strong> estimator in statistical literature which is nothing but the non-parametric estimate) of the distribution function is given by,</p>
+
+<script type="math/tex; mode=display">\hat{F}(t) = 1 - \prod_{j=1}^t [1 - \hat{h}(j)] \tag{11} \label{11}</script>
+
+<h3 id="models-without-explanatory-variables">Models without Explanatory Variables</h3>
+
+<p>There are various models that do not consider the explanatory variables, and instead <strong>assume some specific distribution</strong> such as exponential, Weibull, or lognormal for the length of time until failure. Essentially, the distribution of time until failure is known, except for some <strong>unknown parameters that have to be estimated</strong>. Hence, models of this type are called parametric models, which are different from the models discussed before as the later have no associated parameters or distribution.</p>
+
+<p>The unknown parameters are <strong>estimated by maximizing the likelyhood function</strong> of the form \eqref{6}.</p>
+
+<blockquote>
+  <p>In case of exponential distribution, MLEs cannot be written in closed form (i.e. expressed algebraically), and so the maximization of likelyhood function is done numerically.</p>
+</blockquote>
+
+<p>Once the characteristic parameters have been estimated, one can determine the following (which cannot be determined in case of non-parametric estimates like Kaplan Meier):</p>
+
+<ul>
+  <li><strong>mean time</strong> until failures</li>
+  <li><strong>proportion of population that should be expected to fail</strong> within any arbitrary period of time.</li>
+</ul>
+
+<p>While the <strong>advantage of such models lies in the smoothness of predictions</strong>, the <strong>disadvatage is the fact that it can be wrong and inturn lead to statements that are systematically misleading</strong>.</p>
+
+<p><strong>Exponential Distribution</strong></p>
+
+<p>The exponential distribution has density,</p>
+
+<script type="math/tex; mode=display">f(t) = \theta \, e^{-\theta t} \tag{12} \label{12}</script>
+
+<p>and <strong>survivor function</strong>,</p>
+
+<script type="math/tex; mode=display">S(t) = e^{-\theta t} \tag{13} \label{13}</script>
+
+<p>where</p>
+
+<ul>
+  <li>the parameter is constrained, \(\theta \gt 0\)</li>
+  <li>mean: \(1 / \theta\) and variance: \(1 / \theta^2\)</li>
+  <li>only distribution with a <strong>constant hazard rate</strong>, specifically \(h(t) = \theta\) for all \(t \geq 0\)</li>
+  <li>such hazard rates are generally seen in some physical processes such as radioactive decay.</li>
+  <li>it is often not the most reasonable distribution for survival models.</li>
+  <li>exponential distribution requires estimation of single parameter \(\theta\).</li>
+</ul>
+
+<p>Consider a sample of \(N\) individuals, of which \(n\) have failed before the end of the follow-up period. The observed failure times be denoted by \(t_i\, (i=1, 2, \cdots, n)\) and the censoring times (length of follow up) for the non-failures de denoted by \(T_i\, (i = n+1, \cdots, N)\). Then the likelyhood function \eqref{6} can be written as</p>
+
+<script type="math/tex; mode=display">L = \prod_{i=1}^n \theta\,e^{-\theta t_i} \prod_{i=n+1}^N e^{-\theta T_i} \tag{14} \label{14}</script>
+
+<p>Maximizing \eqref{14} w.r.t. \(\theta\) yields MLE in closed form:</p>
+
+<script type="math/tex; mode=display">\hat{\theta} = \frac {n} {\sum_{i=1}^n t_i + \sum_{i=n+1}^N T_i} \tag{15} \label{15}</script>
+
+<p>For large samples \(\hat{\theta}\) is normal with mean \(\theta\) and variance</p>
+
+<script type="math/tex; mode=display">\frac{\theta^2}{\sum_{i=1}^N [1 - exp(-\theta T_i)]} \tag{16} \label{16}</script>
+
+<p>which for large \(N\) is adequately approximated by \(\theta^2/n\).</p>
+
+<ul>
+  <li>Exponential distribution is highly skewed.</li>
+  <li>Mean may not be a good measure of central tendency for exponential distribution.</li>
+  <li>Median may be more preferrable indicator in most cases.</li>
+</ul>
+
+<blockquote>
+  <p>Logarithm of likelyhood or log-likelyhood is used as a value to measure the goodness of fit. A higher value (more positive or less negative) for this variable indicates that the model fits the data better.</p>
+</blockquote>
+
+<p><strong>Weibull Distribution</strong></p>
+
+<p>In statistical literature, a very common alternative to the exponential distribution is the Weibull distribution. It is a generalization of the exponential distribution. By using Weibull distribution one can test to check if a simpler exponential model is more appropriate.</p>
+
+<ul>
+  <li>A variable \(T\) has Weibull distribution if \(T^{\tau}\) has an exponential distribution for some value of \(\tau\).</li>
+  <li>increasing hazard rate if \(\tau \gt 1\) and decreasing hazard rate if \(\tau \lt 1\). Also, if \(\tau = 1\) the hazard rate is constant and the Weibull distribution reduces to the exponential.</li>
+  <li><strong>Weibull distribution has a monotonic hazard rate</strong>, i.e it can be increasing, constant or decreasing but it cannot be increasing at first and then decreasing after some point.</li>
+</ul>
+
+<p>The density of Weibull distribution is given by,</p>
+
+<script type="math/tex; mode=display">f(t) = \tau \theta^{\tau} \, t^{\tau -1} e^{-(\theta t)^\tau} \tag{17} \label{17}</script>
+
+<p>and the survivor function is,</p>
+
+<script type="math/tex; mode=display">S(t) = e^{-(\theta t)^\tau} \tag{18} \label{18}</script>
+
+<p>The likelyhood function for Weibull distribution can be derived by substituting \eqref{17} and \eqref{18} in \eqref{6}.</p>
+
+<p><strong>Lognormal Distribution</strong></p>
+
+<p>If \(z\) is distributed as \(N(\mu, \sigma^2)\), then \(y = e^z\) has a lognormal distribution with mean</p>
+
+<script type="math/tex; mode=display">\phi = exp(\mu + {1 \over 2} \sigma^2) \tag{19} \label{19}</script>
+
+<p>and variance,</p>
+
+<script type="math/tex; mode=display">\tau^2 = exp(2 \mu + \sigma^2) [exp(\sigma^2) -1] = \phi^2 \psi^2 \tag{20} \label{20}</script>
+
+<p>where</p>
+
+<script type="math/tex; mode=display">\psi^2 = exp(\sigma^2) - 1 \tag{21} \label{21}</script>
+
+<p>The <strong>density</strong> of \(z = ln \, y\) is the density of \(N(\mu, \sigma^2)\) given by,</p>
+
+<script type="math/tex; mode=display">f(ln \, y) = (1 / \sqrt{2\pi} \sigma) exp [-(1/2 \sigma^2) (ln\, y - \mu)^2] \tag{22} \label{22}</script>
+
+<p>Generally there is <strong>no advantage to working with the density of \(y\) itself, rather than \(ln \, y\)</strong>. Thus, one can simply assume that log of survival time is distributed normally, and hence the likelyhood function \eqref{6} becomes</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+L = &- {n \over 2} ln(2\pi) - {n \over 2} ln(\sigma^2) - {1 \over 2\sigma^2} \sum_{i=1}^n (ln\, t_i - \mu)^2 \\
+&+ \sum_{i=n+1}^N ln \, F \left[ \frac {\mu - ln\, T_i} {\sigma} \right]
+\end{align}
+\tag{23} \label{23} %]]></script>
+
+<ul>
+  <li>where <strong>\(F\) is the cumulative distribution function</strong> for \(N(0, 1)\) distribution.</li>
+  <li><strong>No analytical solution</strong> exists for the maximization of \eqref{23} w.r.t. \(\mu\), and \(\sigma^2\), so it <strong>must be maximized numerically</strong>.</li>
+  <li>the hazard function for lognormal distribution is complicated; it <strong>increases first and then decreases</strong>.</li>
+</ul>
+
+<p><strong>Other distributions</strong></p>
+
+<p>Although exponential, Weibull and lognormal are among the three most used distributions, there are various other well-known probability distributions possible, such as</p>
+
+<ul>
+  <li>log-logistic</li>
+  <li>LaGuerre</li>
+  <li>distributions based on Box-Cox power transformation of the normal</li>
+</ul>
+
+<p>There are various ways of measuring how well models fit the data:</p>
+
+<ul>
+  <li>value of likelyhood (or log-likelyhood) function</li>
+  <li>maximum difference between the fitted value and actual cumulative distribution function</li>
+  <li>standard Kolmogorov-Smirnov test of goodness of fit</li>
+  <li>chi-square goodness-of-fit statistic based on predicted and actual failure times.</li>
+</ul>
+
+<p>Over time it has been observed that even though some of these parametric distributions <strong>might fit the data</strong> better than others and excel on various metrics of good fit of data, these <strong>do not give any explaination about the reasons governing the distribution</strong> or any <strong>insight into the affecting parameters</strong> that lead to the different survival times in a population. Hence, these parametric models without the explanatory variables are not considered to be an effective tool for analysis.</p>
+
+<h3 id="models-with-explanatory-variables">Models with Explanatory Variables</h3>
+
+<ul>
+  <li>
+    <p>Explanatory variables are in general added to survival models in an attempt to make more accurate predictions: the practical experiments over time corroborate the fact that individual characteristics, previous experiences and environmental setup helps predict whether or not a person will fail.</p>
+  </li>
+  <li>
+    <p>An analysis of survival time without using the explanatory variables amounts to an analysis of its <strong>marginal distribution</strong>, whereas an analysis using explanatory variable amounts to an analysis of the <strong>distribution of survival time conditional on these variables</strong>.</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Variance of the conditional distribution is less than the variance of the marginal distribution, i.e. expect more precise distribution from former.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Another more fundamental reason may include the interest of understanding the effect of explanatory variables on the survival time.</p>
+  </li>
+  <li>
+    <p>More generally, these variables might be the demographics or environmental characteristics.</p>
+  </li>
+</ul>
+
+<h3 id="proportional-hazards-model">Proportional Hazards Model</h3>
+
+<ul>
+  <li>
+    <p>allows one to estimate the effects of individual characteristics on survival time without having to assume a specific parametric form of distribution of time until failure.</p>
+  </li>
+  <li>
+    <p>For an individual with the vector of characteristics, \(x\), the proportional hazards model assumes a hazard rate of the form,</p>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">h(t \mid x) = h_0(t) e^{x_i^\prime \beta} \tag{24} \label{24}</script>
+
+<p>where \(h_0(t)\) is completely arbitrary and unspecified baseline hazard function. <strong>Thus, the model assumes that the hazard functions of all individuals differ only by a factor of proportionality,</strong> i.e. if an individuals hazard rate is 10 times higher than another’s at a given point of time, then it must be 10 times higher at all points in time. <strong>Each hazard function follows same pattern over time.</strong></p>
+
+<p>However, there is no restriction on what this pattern can be, i.e. it puts no restriction on the \(h_0(t)\) curve, which determines the shape of \(h(t \vert x)\) curve. <strong>\(\beta\) can be estimated without specifying \(h_0(t)\), and \(h_0(t)\) can be estimated non-parametrically and thus with flexibility.</strong></p>
+
+<p>Consider a sample of \(N\) individuals, \(n\) of whom fail before the end of their follow-up period. Let the observations be ordered such that individual 1 has the shortest failure time, individual 2 has the second shortest failure time, and so forth. Thus, for individual \(i\), failure time \(t_i\) is observed, with,</p>
+
+<script type="math/tex; mode=display">t_1 \lt t_2 \lt \cdots \lt t_n \tag{25} \label{25}</script>
+
+<p>A vector \(x_i\) represents individual characteristics for each individual \(i = 1, 2, \cdots, N\), irrespective of whether they failed.</p>
+
+<p>For each observed failure times, \(t_i\), \(R(t_i)\) is defined as set of all individuals who were at risk just prior to time \(t_i\), i.e., it includes the individuals with failure times greater than or equal to \(t_i\), as well as the individuals whose follow-up is at least of length \(t_i\).</p>
+
+<p>Using these definitions, the <strong>partial-likelihood</strong> function proposed by Cox can be defined for any failure time \(t_i\), as the probability that it is individual \(i\) who fails, given that exactly one individual from set \(R(t_i\)) fails, is given by,</p>
+
+<script type="math/tex; mode=display">\frac {h(t_i \vert x_i)} {\sum_{j \in R(t_i)} h(t_i \vert x_j)} = \frac {exp(x_i^\prime \beta)} {\sum_{j \in R(t_i)} exp(x_j^\prime \beta)} \tag{26} \label{26}</script>
+
+<p>The partial-likelyhood function is formed by multiplying \eqref{26} over all \(n\) failure times,</p>
+
+<script type="math/tex; mode=display">L = \prod_{i=1}^n \frac {exp(x_i^\prime \beta)} {\sum_{j \in R(t_i)} exp(x_j^\prime \beta)} \tag{27} \label{27}</script>
+
+<p>The estimate of \(\beta\) by maximizing \eqref{27} numerically w.r.t \(\beta\) is the <strong>partial maximum-likelyhood estimate</strong>. The word <strong>partial</strong> in partial likelyhood refers to the fact that not all available information is used in estimating \(\beta\), i.e., it only depends on knowing which individuals were at risk when each observed failure occured. The exact numerical values of the failure times \(t_i\) or of the censoring times for the non recedivists are not needed; only their <strong>order matters</strong>.</p>
+
+<p>Once \(\beta\) is estimated, \(h_0(t)\), the baseline hazard function can be estimated non-parametrically. The estimated baseline hazard function is constant over the intervals between failure times. One can also calculate <strong>survivor function</strong> \(S_0(t)\) or equivalently the baseline cumulative distribution function \(F_0(t)\), that corresponds to the estimated baseline hazard function.</p>
+
+<p><strong>The estimated survivor function is a step function that falls at each time at which there is a failure.</strong></p>
+
+<p>The point of proportional hazard model is that the survivor function is estimated non-parametrically (i.e. not imposing any structure on its pattern over time, except that it must decrease as \(t\) increases) and estimation of \(\beta\) can proceed seperately from estimation of survivor function.</p>
+
+<h3 id="split-population-models">Split Population Models</h3>
+
+<p>The models considered so far assume some cumulative distribution function, \(F(t)\) for the survival time, that gives the probability of a failure upto and including time \(t\), and it approaches one as \(t\) approaches infinity. This basically means that every individual must eventually fail, if they were observed for long enough time. This assumption is not true in all cases.</p>
+
+<p><strong>Split Population Models</strong> (or split models) do not imply that every individual would eventually fail. Rather the population is divided into two groups, one of which would never fail.</p>
+
+<p>Mathematically, let \(Y\) be an observable indicator with two values, one implying ultimate failure and zero implying perpetual success. Then,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+P(Y=1) &= \delta \\
+P(Y=0) &= 1 - \delta
+\end{align}
+\tag{28} \label{28} %]]></script>
+
+<p>where \(\delta\) is the proportion of the population that would eventually fail, and \(1 - \delta\) is the proportion that would never fail.</p>
+
+<p>Let \(g(t \vert Y=1)\) be density of survival times for the ultimate failures, and \(G(t \vert Y=1)\) be the corresponding cumulative distribution function. If one considers exponential model to represent them, then</p>
+
+<script type="math/tex; mode=display">\begin{align}
+g(t \vert Y=1) = \theta e^{-\theta t} \\
+G(t \vert Y=1) = 1 - e^{-\theta t}
+\end{align}
+\tag{29} \label{29}</script>
+
+<p>It can also be noted that \(g (t \vert Y = 0)\) and \(G(t \vert Y=0)\) are not defined.</p>
+
+<p>Let \(T\) be the length of the follow up period and let \(R\) be an observable indicator equal to one if there is failure by time \(T\) and zero if there is not. The probability for individuals who do not fail during the follow up period, i.e, the event of \(R = 0\) is given by,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+P(R=0) &= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
+&= 1 - \delta + \delta e^{-\theta T}
+\end{align}
+
+\tag{30} \label{30} %]]></script>
+
+<p>Similarly, probability density for people who fail with survival time \(t\) is given by,</p>
+
+<script type="math/tex; mode=display">P(Y=1)P(t \lt T \vert Y=1) g(t \vert t \lt T, Y=1) = P(Y=1) g(t \vert Y=1) = \delta \theta e^{-\theta t} \tag{31} \label{31}</script>
+
+<p>So the likelyhood function is made up of \eqref{29} for those who do not fail and \eqref{30} for those who do. It is given by,</p>
+
+<script type="math/tex; mode=display">L = \prod_{i=1}^n \delta \theta exp(-\theta t_i) \prod_{i = n+1}^N (1 - \delta + \delta exp(-\theta T_i)) \tag{32} \label{32}</script>
+
+<p>The maximum likelyhood estimate of both \(\theta\) and \(\delta\) can be obtained by maximizing \eqref{32} numerically. It can be noted that when \(\delta = 1\), \eqref{32} reduces to \eqref{14}, the original exponential survival time model.</p>
+
+<p>The split population model can be seen as a model of two seperate subpopulations, one with hazard rate \(\theta\) and other with zero. A more generalized model exists where the subpopulations exist with two non-zero hazard rates namely, \(\theta_1\) and \(\theta_2\). Such models help to account for population that is heterogenous in nature.</p>
+
+<p>Split models can also be based on other distributions such as lognormal etc. Also, it is possible to include explanatory variables into a split model. In such cases, the explanatory variables maybe taken to affect the probabiliy of failure, \(\delta\) or distribution of time until failure.</p>
+
+<p>For example, for a given feature vector \(x_i\) of explanatory variables, using <strong>logit/individual lognormal model</strong>, \(\delta\) is modeled using,</p>
+
+<script type="math/tex; mode=display">\delta_i = 1/(1+exp(x_i^\prime \alpha)) \tag{33} \label{33}</script>
+
+<p>and parameter \(\mu\) of the lognormal distribution is given by,</p>
+
+<script type="math/tex; mode=display">\mu_i = x_i^\prime \beta \tag{34} \label{34}</script>
+
+<p>Here, the parameter \(\alpha\) gives the effect of \(x_i\) on the probablity of failure, and \(\beta\) gives the effect of \(x_i\) on the time until failure.</p>
+
+<p>Such models are of importance because they let one distinguish between effects of explanatory variable on probability of eventual failure from effects on time until failure who eventually do fail.</p>
+
+<h3 id="heterogeneity-and-state-dependence">Heterogeneity and State Dependence</h3>
+
+<p>The two major causes of observed declining hazard rates are:</p>
+
+<ul>
+  <li>state dependence</li>
+  <li>heterogeneity</li>
+</ul>
+
+<p>The phenomenon of an actually decreasing hazard rate over time due to an actual change in behavior over time at individual level is referred to as <strong>state dependence</strong>.</p>
+
+<p>The second possible reason is <strong>heterogeneity</strong>. This basically means that the hazard rates are different across individuals, i.e., some individuals are more prone to failure than others. Naturally, individuals with higher hazard rates tend to fail earlier, on average, than individuals with lower hazard rates. As a result the average hazard rate of the surviving group will decrease with length of time simply because the most failure prone individuals have been removed already. This is true even without state dependence, i.e, each individual has a constant hazard rate but hazard rate varies across individuals. Even such a group would display decreasing hazard rate.</p>
+
+<p>It is important to understand the difference because a decrease in a hazard rate due to state dependance means a success of the underlying program, while decrease due to heterogeneity does not imply that the program is effective in preventing failure, because it is happening by the virtue of the data at hand.</p>
+
+<h3 id="time-varying-covariates">Time Varying Covariates</h3>
+
+<p>Until now explanatory variables affecting the time until failure do not potray changing values over time, but is a possibility that can not be denied.</p>
+
+<p>The types of explanatory variables can be categorizaed as follows:</p>
+
+<ul>
+  <li>variables that do not change over time, e.g race, sex etc.</li>
+  <li>variables that change over time but not within a single follow-up period, e.g. number of times followed up etc.</li>
+  <li>variables that change continuously over time, such as age, education etc.</li>
+</ul>
+
+<p>The last type of variables make it reasonable to use a statistical model that allows covariates to vary over time. Such incorporation is relatively straightforward in hazard-based models such as proportional hazard models. At each point in time, hazard rate is determined by the values of explanatory variables at that time.</p>
+
+<p>However, it is much more difficult to introduce time-varying components into parametric models because these models are parameterized in terms of density and cumulative distribution function, and the density of distribution function at time \(t\) depends on the whole history of the explanatory variables up to time \(t\). <strong>In the presence of time varying covariates, a parameterization of the hazard rate would be much more convenient.</strong></p>
+
+<p><strong>Panel or Longitudinal Data:</strong> data on individuals over time without reference to just a single follow-up. Such datasets include a large number of time-varying explanatory variables.</p>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://link.springer.com/article/10.1007/BF01083132#" target="_blank">Survival Analysis: A Survey</a></small><br /></p>
+
+        </section>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/featured" class='category-links'><h1>featured</h1></a>
+                </div>
+              </div>
+            
+          </div>
+        </footer>
+        <div class="horizontal-divider">· · ·</div>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Data Scientist @ Practo</p>
+              <hr>
+              <p class="published">Published on <time datetime="2018-07-23 00:00">23 Jul 2018</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2018<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        <br>
+        
+        <div id="vc-feelback-main" data-access-token="334e9d2a5dc341469cda15d8c4bd935e" data-display-type="4"></div>
+        
+        <nav class="page-navigation" role="navigation">
+  
+    <a href=/2018/07/22/google-smart-reply/ class="arrow-button left-arrow-button"><span class="left-arrow"></span><span class="label left-label">Google Smart Reply</span></a>
+  
+  
+    <a href=/2018/07/25/introduction-to-computer-architecture/ class="arrow-button right-arrow-button"><span class="label right-label">Introduction to Computer Architecture</span><span class="right-arrow"></span></a>
+  
+</nav>
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2018 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script> 
+(function() { 
+  var v = document.createElement('script'); v.async = true; 
+  v.src = "https://assets-prod.vicomi.com/vicomi.js?token=334e9d2a5dc341469cda15d8c4bd935e"; 
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(v, s); 
+})(); 
+</script>
+
+  </body>
+</html>

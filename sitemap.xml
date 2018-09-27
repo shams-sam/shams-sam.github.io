@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://machinelearningmedium.com</loc>
-    <lastmod>2018-08-13T01:38:41+05:30</lastmod>
+    <lastmod>2018-09-27T20:48:15+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -10,7 +10,16 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture/</loc>
       
-        <lastmod>2018-07-25T00:00:00+05:30</lastmod>
+        <lastmod>2018-07-25T00:00:00+00:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+    </url>
+  
+    <url>
+      <loc>https://machinelearningmedium.com/2018/07/23/survival-analysis/</loc>
+      
+        <lastmod>2018-07-23T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -19,7 +28,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/07/22/google-smart-reply/</loc>
       
-        <lastmod>2018-07-22T00:00:00+05:30</lastmod>
+        <lastmod>2018-07-22T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -28,7 +37,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/06/22/large-scale-learning/</loc>
       
-        <lastmod>2018-06-22T00:00:00+05:30</lastmod>
+        <lastmod>2018-06-22T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -37,7 +46,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/05/11/recommender-systems/</loc>
       
-        <lastmod>2018-05-11T00:00:00+05:30</lastmod>
+        <lastmod>2018-05-11T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -46,7 +55,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/05/02/anomaly-detection/</loc>
       
-        <lastmod>2018-05-02T00:00:00+05:30</lastmod>
+        <lastmod>2018-05-02T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -55,7 +64,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</loc>
       
-        <lastmod>2018-04-22T00:00:00+05:30</lastmod>
+        <lastmod>2018-04-22T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -64,7 +73,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/04/19/k-means-clustering/</loc>
       
-        <lastmod>2018-04-19T00:00:00+05:30</lastmod>
+        <lastmod>2018-04-19T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -73,7 +82,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/04/10/support-vector-machines/</loc>
       
-        <lastmod>2018-04-10T00:00:00+05:30</lastmod>
+        <lastmod>2018-04-10T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -82,7 +91,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</loc>
       
-        <lastmod>2018-04-08T00:00:00+05:30</lastmod>
+        <lastmod>2018-04-08T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -91,7 +100,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/</loc>
       
-        <lastmod>2018-04-06T00:00:00+05:30</lastmod>
+        <lastmod>2018-04-06T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -100,7 +109,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/</loc>
       
-        <lastmod>2018-04-02T00:00:00+05:30</lastmod>
+        <lastmod>2018-04-02T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -109,7 +118,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/03/31/how-to-train-your-neural-network/</loc>
       
-        <lastmod>2018-03-31T00:00:00+05:30</lastmod>
+        <lastmod>2018-03-31T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -118,7 +127,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/03/29/backpropagation-implementation-and-gradient-checking/</loc>
       
-        <lastmod>2018-03-29T00:00:00+05:30</lastmod>
+        <lastmod>2018-03-29T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -127,7 +136,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/</loc>
       
-        <lastmod>2018-03-20T00:00:00+05:30</lastmod>
+        <lastmod>2018-03-20T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -136,7 +145,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/03/08/program-in-pytorch/</loc>
       
-        <lastmod>2018-03-08T00:00:00+05:30</lastmod>
+        <lastmod>2018-03-08T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -145,7 +154,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/</loc>
       
-        <lastmod>2018-02-04T00:00:00+05:30</lastmod>
+        <lastmod>2018-02-04T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -154,7 +163,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/02/01/what-is-computer-vision/</loc>
       
-        <lastmod>2018-02-01T00:00:00+05:30</lastmod>
+        <lastmod>2018-02-01T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -163,7 +172,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2018/01/02/understanding-tensorflow/</loc>
       
-        <lastmod>2018-01-02T00:00:00+05:30</lastmod>
+        <lastmod>2018-01-02T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -172,7 +181,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/</loc>
       
-        <lastmod>2017-12-28T00:00:00+05:30</lastmod>
+        <lastmod>2017-12-28T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -181,7 +190,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/</loc>
       
-        <lastmod>2017-12-21T00:00:00+05:30</lastmod>
+        <lastmod>2017-12-21T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -190,7 +199,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/</loc>
       
-        <lastmod>2017-12-20T00:00:00+05:30</lastmod>
+        <lastmod>2017-12-20T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -199,7 +208,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/11/01/prime-numbers/</loc>
       
-        <lastmod>2017-11-01T00:00:00+05:30</lastmod>
+        <lastmod>2017-11-01T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -208,7 +217,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/10/28/mathematical-induction/</loc>
       
-        <lastmod>2017-10-28T00:00:00+05:30</lastmod>
+        <lastmod>2017-10-28T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -217,7 +226,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/10/27/number-system/</loc>
       
-        <lastmod>2017-10-27T00:00:00+05:30</lastmod>
+        <lastmod>2017-10-27T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -226,7 +235,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/</loc>
       
-        <lastmod>2017-10-03T00:00:00+05:30</lastmod>
+        <lastmod>2017-10-03T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -235,7 +244,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/27/neural-network-intuition/</loc>
       
-        <lastmod>2017-09-27T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-27T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -244,7 +253,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/21/neural-networks/</loc>
       
-        <lastmod>2017-09-21T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-21T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -253,7 +262,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/</loc>
       
-        <lastmod>2017-09-20T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-20T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -262,7 +271,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/</loc>
       
-        <lastmod>2017-09-15T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-15T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -271,7 +280,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/</loc>
       
-        <lastmod>2017-09-12T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-12T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -280,7 +289,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/11/regularized-linear-regression/</loc>
       
-        <lastmod>2017-09-11T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-11T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -289,7 +298,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/</loc>
       
-        <lastmod>2017-09-08T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-08T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -298,7 +307,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/</loc>
       
-        <lastmod>2017-09-06T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-06T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -307,7 +316,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/09/02/logistic-regression-model/</loc>
       
-        <lastmod>2017-09-02T00:00:00+05:30</lastmod>
+        <lastmod>2017-09-02T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -316,7 +325,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/31/classification-and-representation/</loc>
       
-        <lastmod>2017-08-31T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-31T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -325,7 +334,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/28/normal-equation/</loc>
       
-        <lastmod>2017-08-28T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-28T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -334,7 +343,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression/</loc>
       
-        <lastmod>2017-08-23T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-23T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -343,7 +352,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/20/linear-algebra/</loc>
       
-        <lastmod>2017-08-20T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-20T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -352,7 +361,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression/</loc>
       
-        <lastmod>2017-08-17T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-17T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -361,7 +370,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/15/gradient-descent/</loc>
       
-        <lastmod>2017-08-15T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-15T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -370,7 +379,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/</loc>
       
-        <lastmod>2017-08-11T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-11T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -379,7 +388,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis/</loc>
       
-        <lastmod>2017-08-10T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-10T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -388,7 +397,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/09/supervised-learning/</loc>
       
-        <lastmod>2017-08-09T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-09T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -397,7 +406,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning/</loc>
       
-        <lastmod>2017-08-09T00:00:00+05:30</lastmod>
+        <lastmod>2017-08-09T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -406,7 +415,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/31/normal-distribution/</loc>
       
-        <lastmod>2017-07-31T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-31T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -415,7 +424,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/</loc>
       
-        <lastmod>2017-07-28T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-28T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -424,7 +433,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/28/continuous-random-variable/</loc>
       
-        <lastmod>2017-07-28T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-28T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -433,7 +442,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/26/improvements-on-word2vec/</loc>
       
-        <lastmod>2017-07-26T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-26T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -442,7 +451,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/24/discounted-cumulative-gain/</loc>
       
-        <lastmod>2017-07-24T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-24T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -451,7 +460,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/21/merge-sort/</loc>
       
-        <lastmod>2017-07-21T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-21T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -460,7 +469,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/19/umls-knowledge-sources/</loc>
       
-        <lastmod>2017-07-19T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-19T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -469,7 +478,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/</loc>
       
-        <lastmod>2017-07-18T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-18T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -478,7 +487,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/14/introduction-to-linguistics/</loc>
       
-        <lastmod>2017-07-14T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-14T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -487,7 +496,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/13/pseudocode/</loc>
       
-        <lastmod>2017-07-13T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-13T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -496,7 +505,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/13/insertion-sort/</loc>
       
-        <lastmod>2017-07-13T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-13T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -505,7 +514,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/12/algorithms-in-computing/</loc>
       
-        <lastmod>2017-07-12T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-12T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -514,7 +523,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/</loc>
       
-        <lastmod>2017-07-11T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-11T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -523,7 +532,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/04/building-stopword-list-for-information-retrieval-system/</loc>
       
-        <lastmod>2017-07-04T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-04T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -532,7 +541,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/03/zero-sum-subarray/</loc>
       
-        <lastmod>2017-07-03T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-03T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -541,7 +550,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/03/sort-binary-array/</loc>
       
-        <lastmod>2017-07-03T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-03T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -550,7 +559,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/03/pair-sums-in-an-array/</loc>
       
-        <lastmod>2017-07-03T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-03T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -559,7 +568,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/03/duplicate-in-limited-range-array-using-xor/</loc>
       
-        <lastmod>2017-07-03T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-03T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -568,7 +577,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/07/02/blockchain/</loc>
       
-        <lastmod>2017-07-02T00:00:00+05:30</lastmod>
+        <lastmod>2017-07-02T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -577,7 +586,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/06/23/discrete-random-variables/</loc>
       
-        <lastmod>2017-06-23T00:00:00+05:30</lastmod>
+        <lastmod>2017-06-23T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -586,7 +595,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/06/22/bayes-rule-conditional-probability-chain-rule/</loc>
       
-        <lastmod>2017-06-22T00:00:00+05:30</lastmod>
+        <lastmod>2017-06-22T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -595,7 +604,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/06/16/initial-site-setup/</loc>
       
-        <lastmod>2017-06-16T00:00:00+05:30</lastmod>
+        <lastmod>2017-06-16T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -604,7 +613,7 @@
     <url>
       <loc>https://machinelearningmedium.com/2017/06/16/basic-probability-models-and-rules/</loc>
       
-        <lastmod>2017-06-16T00:00:00+05:30</lastmod>
+        <lastmod>2017-06-16T00:00:00+00:00</lastmod>
       
       <changefreq>monthly</changefreq>
       <priority>0.5</priority>
@@ -617,7 +626,7 @@
   <url>
     <loc>https://machinelearningmedium.com/about/</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -632,7 +641,7 @@
   <url>
     <loc>https://machinelearningmedium.com/archive/</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -647,7 +656,7 @@
   <url>
     <loc>https://machinelearningmedium.com/atom.xml</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -662,7 +671,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collections/</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -677,7 +686,7 @@
   <url>
     <loc>https://machinelearningmedium.com/feed.xml</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -692,7 +701,7 @@
   <url>
     <loc>https://machinelearningmedium.com/css/main.css</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -707,7 +716,7 @@
   <url>
     <loc>https://machinelearningmedium.com/search/</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -722,7 +731,7 @@
   <url>
     <loc>https://machinelearningmedium.com/sitemap.xml</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -737,7 +746,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tags/</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -752,7 +761,7 @@
   <url>
     <loc>https://machinelearningmedium.com/assets/tipuesearch/tipuesearch_content.js</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -767,7 +776,7 @@
   <url>
     <loc>https://machinelearningmedium.com/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -782,7 +791,7 @@
   <url>
     <loc>https://machinelearningmedium.com/2/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -797,7 +806,7 @@
   <url>
     <loc>https://machinelearningmedium.com/3/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -812,7 +821,7 @@
   <url>
     <loc>https://machinelearningmedium.com/4/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -827,7 +836,7 @@
   <url>
     <loc>https://machinelearningmedium.com/5/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -842,7 +851,7 @@
   <url>
     <loc>https://machinelearningmedium.com/6/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -857,7 +866,7 @@
   <url>
     <loc>https://machinelearningmedium.com/7/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -872,7 +881,7 @@
   <url>
     <loc>https://machinelearningmedium.com/8/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -887,7 +896,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/mathematics/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -902,7 +911,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/mathematics/2/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -917,7 +926,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/probability/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -932,7 +941,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/setup/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -947,7 +956,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/github-pages/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -962,7 +971,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/jekyll/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -977,7 +986,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/concept/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -992,7 +1001,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/references/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1007,7 +1016,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/array-algorithms/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1022,7 +1031,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/algorithms/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1037,7 +1046,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/nlp/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1052,7 +1061,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/machine-learning/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1067,7 +1076,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/machine-learning/2/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1082,7 +1091,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/machine-learning/3/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1097,7 +1106,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/machine-learning/4/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1112,7 +1121,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/machine-learning/5/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1127,7 +1136,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/papers/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1142,7 +1151,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/word-embedding/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1157,7 +1166,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/dsa/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1172,7 +1181,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/umls/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1187,7 +1196,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/andrew-ng/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1202,7 +1211,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/andrew-ng/2/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1217,7 +1226,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/andrew-ng/3/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1232,7 +1241,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/andrew-ng/4/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1247,7 +1256,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/number-system/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1262,7 +1271,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/what-is-mathematics/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1277,7 +1286,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/theorems/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1292,7 +1301,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/tensorflow/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1307,7 +1316,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/library/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1322,7 +1331,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/computer-vision/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1337,7 +1346,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/image-processing/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1352,7 +1361,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/udacity/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1367,7 +1376,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/pytorch/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1382,7 +1391,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/featured/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1397,7 +1406,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/computer-science/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1412,7 +1421,7 @@
   <url>
     <loc>https://machinelearningmedium.com/tag/nptel/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1427,7 +1436,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/basics-of-machine-learning/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1442,7 +1451,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/basics-of-machine-learning/2/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1457,7 +1466,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/basics-of-machine-learning/3/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1472,7 +1481,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/basics-of-machine-learning/4/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1487,7 +1496,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/what-is-mathematics/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1502,7 +1511,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/basics-of-computer-vision/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
@@ -1517,7 +1526,7 @@
   <url>
     <loc>https://machinelearningmedium.com/collection/nptel-computer-architecture/index.html</loc>
     
-      <lastmod>2018-08-13</lastmod>
+      <lastmod>2018-09-27</lastmod>
     
     
       <changefreq>monthly</changefreq>
