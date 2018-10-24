@@ -5,8 +5,8 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 24 Oct 2018 20:00:02 +0000</pubDate>
-    <lastBuildDate>Wed, 24 Oct 2018 20:00:02 +0000</lastBuildDate>
+    <pubDate>Wed, 24 Oct 2018 20:05:03 +0000</pubDate>
+    <lastBuildDate>Wed, 24 Oct 2018 20:05:03 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
     
       <item>
@@ -305,8 +305,6 @@
         <category>machine-learning</category>
         
         <category>algorithmic-fairness</category>
-        
-        <category>big-data</category>
         
         
       </item>
@@ -1047,8 +1045,6 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
         <category>machine-learning</category>
         
         <category>papers</category>
-        
-        <category>mathematics</category>
         
         <category>featured</category>
         

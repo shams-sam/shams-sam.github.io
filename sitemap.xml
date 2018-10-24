@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://machinelearningmedium.com</loc>
-    <lastmod>2018-10-24T20:00:02+00:00</lastmod>
+    <lastmod>2018-10-24T20:05:03+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1444,21 +1444,6 @@
   
   <url>
     <loc>https://machinelearningmedium.com/tag/algorithmic-fairness/index.html</loc>
-    
-      <lastmod>2018-10-24</lastmod>
-    
-    
-      <changefreq>monthly</changefreq>
-    
-    
-      <priority>0.3</priority>
-    
-  </url>
-  
-  
-  
-  <url>
-    <loc>https://machinelearningmedium.com/tag/big-data/index.html</loc>
     
       <lastmod>2018-10-24</lastmod>
     
