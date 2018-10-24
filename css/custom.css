@@ -179,6 +179,10 @@
     flex-direction: column;
     width: 100%;
   }
+
+  .arrow-button .label {
+    display: none;
+  }
 }
 
 table {

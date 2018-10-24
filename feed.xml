@@ -5,9 +5,311 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 27 Sep 2018 20:48:15 +0000</pubDate>
-    <lastBuildDate>Thu, 27 Sep 2018 20:48:15 +0000</lastBuildDate>
+    <pubDate>Wed, 24 Oct 2018 20:00:02 +0000</pubDate>
+    <lastBuildDate>Wed, 24 Oct 2018 20:00:02 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Social Bias in Machine Learning</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Discrimination, injustice, oppression are some of the dark words that have been an integral part of human history. While there is a active effort to make world a fair place in every sphere of life, it is almost impossible to make the data that has been recorded over the years fair to all the caste, creeds, races and religions because the history is written in ink. Since the world was far more biased as we age backwards in time, it would not be incorrect to say that a historical record of data would often reflect these biases in terms of minority and majority classes. These are the very same data that is continuously used in training most of our machine learning models without actually giving a conscious thought to the fairness of the algorithm i.e. whether or not the algorithm reflects the biases that prevailed back then. Recently machine learning has seen its utilitization in a lot of important decision making pipelines such as predicting time of recidivism, college acceptance, loan approvals etc., and hence it becomes increasingly important to question the machine learning models being developed in terms of implicit bias that they might be inheriting from the data that they train on. In order to do away with such biases in a machine learning algorithm one needs to understand how exactly does bias creep in, what are the various metrics through which it can be measured and what are the methods through which one can remove such unfairness. This post is an attempt to summarize such issues and possible remedies.&lt;/p&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Since machine learning is now being used to make a lot policy decisions that affect the life of people on an everyday basis, it should be made sure that unfairness is not a part of such decision making. It is found that training machine learning algorithms with the standard utility maximization and loss minimization objectives sometimes result in algorithms that behave in a way that a fair human observer would deem biased. A very recent example of such a case was &lt;a href=&quot;https://www.ml.cmu.edu/news/news-archive/2018/october/amazon-scraps-secret-artificial-intelligence-recruiting-engine-that-showed-biases-against-women.html&quot; target=&quot;\_blank&quot;&gt;cited&lt;/a&gt; by Amazon which notices a gender bias in its recruiting engine algorithms.&lt;/p&gt;
+
+&lt;h3 id=&quot;its-all-in-the-data&quot;&gt;It’s all in the Data&lt;/h3&gt;
+
+&lt;p&gt;One of the potential reasons for such biases in these algorithms can be attributed to the training data itself. Since the algorithms are big numerical puzzles that are trained to recognize and mimic the statistical patterns over the history, it is only natural for such a trained system to display biased characteristics. Even some of the state of the art solutions in the field of NLP and Machine Learning are not free from biases and unfairness. For example, it has been shown that word2vec embeddings learnt from huge corpuses of text often show gender bias as the euclidean distance between words that signifies correlation between words, suggests strong correlation between words like homemaker, nanny with she and maestro, boss with he. Any system built on top of such a word embedding is very likely to propagate this bias on a daily basis at some level.&lt;/p&gt;
+
+&lt;p&gt;One of the contested ways of dealing with this issue is to retrain the models continuously with new data, which relies on the assumption that historical bias is on a process of correcting itself.&lt;/p&gt;
+
+&lt;p&gt;Another major question that continuously arise is based on the fact the these machine learning algorithms work well when the amount of data they train on is huge. While this is true in an overall sense, if we break down the number of data points one has for minority class it becomes more apparent that the algorithms does not have enough supporting instances to learn as good a representation about minority classes as it would about the majority and hence could lead in unfair judgements because of lack of data.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;There is general tendency for automated decisions to favor those who belong to statistically dominant groups.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Statistical patterns that apply to majority population might be invalid for the the minority group. It can also happen that a variable that is positively correlated with target in general population maybe negatively correlated with target in the minority group. For example, a real name might be a short common name in one culture and a long unique name in another. Hence same rules for detecting fake names would not work across such groups.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-10-09-algorithmic-fairness/fig-2-survival-distribution.png?raw=true&quot; alt=&quot;Fig-1: Survival Distribution&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider a very simple dataset from Kaggle called &lt;a href=&quot;https://www.kaggle.com/c/titanic&quot; target=&quot;\_blank&quot;&gt;titanic&lt;/a&gt;. This is a basic dataset where based on a bunch of features given one has to &lt;strong&gt;predict the survival probability of an individual who was on titanic&lt;/strong&gt;. The survival distribution on the training data shows that in past &lt;strong&gt;during the titanic incident a female candidate had much higher chances of surviving than a male candidate&lt;/strong&gt;. It would be rather obvious &lt;strong&gt;for an algorithm trained on this data that being female is a strong indicator of survival&lt;/strong&gt;. If the same algorithm was used to predict survival on an impending sinking incident where candidates who have higher survival probability would be boarded on rescue boats first, it is bound to make biased decisions.&lt;/p&gt;
+
+&lt;p&gt;Also it can be seen that being male is negatively correlated to surviving while being a female is positively correlated, because graph 2 in fig-1 shows that more males died than survived and by contrast,  more females survived than died. So &lt;strong&gt;if the algorithm was to learn only from majority of the data belonging to males, it would predict badly for the female population&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;undeniable-complexities&quot;&gt;Undeniable Complexities&lt;/h3&gt;
+
+&lt;p&gt;One way to counter the sample size disparity might be to learn different classifiers for different sub-groups. But it is not as simple as it sounds because of the reason that learning and testing for individual sub-group might require acting on the protected attributes which might in itself be objectionable. Also the definition of minority is fuzzy as there could be many different overlapping minorities and no straightforward way of determining group membership.&lt;/p&gt;
+
+&lt;h3 id=&quot;noise-vs-modeling-error&quot;&gt;Noise vs Modeling Error&lt;/h3&gt;
+
+&lt;p&gt;Say a classifier achieves 95 percent accuracy. In the real world scenario this 5 percent error rate would point to a really well trained classifier. But what is often overlooked is that there might be two different kinds of underlying reasons behind the error rate. One could be the general case of noise that the classifier was not able to model and hence was not able to predict and account for. Other possible reason could be that while the model is 100 percent accurate on majority class, it is only 50 percent accurate on minority class. This systematic error in the minority class would be a clear case of algorithmic unfairness.&lt;/p&gt;
+
+&lt;p&gt;The bigger issue of the matter here is that there is no principled or book methodology for distinguishing noise from the modeling errors. Such questions can only be answered by great deal of domain knowledge and experience.&lt;/p&gt;
+
+&lt;h3 id=&quot;edge-cases-always-exist&quot;&gt;Edge Cases always exist&lt;/h3&gt;
+
+&lt;p&gt;It is also true to assume that in a very unexpected way it is possible for bias to creep into the algorithms even if the training data is labelled correctly and is free of any issues that could be pointed out as unbiased. A recent &lt;a href=&quot;https://www.theverge.com/2015/7/1/8880363/google-apologizes-photos-app-tags-two-black-people-gorillas&quot; target=&quot;\_blank&quot;&gt;example&lt;/a&gt; of this is when google photos by mistake labeled two black people as gorillas. Obviously, the machine was never trained with any training data that should lead to such inferences, but because the number of trained parameters are so high, it often becomes intractable and unimaginably hard to understand why a system behaves haphazardly in certain conditions. This uncertainty of outcomes can also be a cause of bias in situations that could not be predicted in advance.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-fairness&quot;&gt;What is Fairness?&lt;/h3&gt;
+
+&lt;p&gt;Fairness in classification involves studying algorithms not only from a perspective of accuracy, but also from a perspective of fairness.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The most difficult part of this is to define what is fairness.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Consideration for fairness often leads to compromise on accuracy but it’s a necessary evil that is not going anywhere in the near future. What if often more surprising is that many of these metrics have a trade off among themselves.&lt;/p&gt;
+
+&lt;h3 id=&quot;fairness-of-process-vs-fairness-of-outcome&quot;&gt;Fairness of Process vs Fairness of Outcome&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;An &lt;strong&gt;aware&lt;/strong&gt; algorithm is one that uses the information regarding the protected attribute (such as gender, ethnicity etc.) in the process of learning. An &lt;strong&gt;unaware&lt;/strong&gt; algorithm will not.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;While the motivation regarding unaware algorithm is that being fair means disregarding the protected attribute, it often does not work just by removing the protected attribute. Sometimes there is a strong correlation between protected attribute and some other feature. So in order to train a truly unaware algorithm, one needs to remove the correlated feature group as well.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This process of manually engineering a feature list that conveys no information about the protected attribute can also be automated using machine learning techniques discussed in following sections.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;are-unaware-algorithms-the-solution&quot;&gt;Are Unaware Algorithms the Solution&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;There could be inherent differences between the populations defined by these masked protected attributes, which would only render this process undesirable.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The aware approaches use these proctected attributes and have a better chance of understanding depence of outcome on them.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This can be seen as a distinction between &lt;strong&gt;fairness of process&lt;/strong&gt; vs &lt;strong&gt;fairness of outcomes&lt;/strong&gt;. The unaware algorithms ensure a fairness of process, because under such a scheme the algorithm does not use any of the protected attributes for decision making. However, such fairness in process does not guarantee a fair outcome towards the protected and un-protected sub-groups.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The aware approaches on the contrary use these protected attributes and hence not a fair process, but it can reach an outcome that is more fair towards the minorities.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;mathematical-fairness-statistical-parity&quot;&gt;Mathematical Fairness: Statistical Parity&lt;/h3&gt;
+
+&lt;p&gt;A mathematical version of absolute fairness can be a statistical condition where the chances of success or failure is same for both the majority and minority classes (or more classes in case of multi-class scenarios). This can be written as,&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Pr[h(x) = 1 \vert x \in P^C] = Pr[h(x) = 1 \vert x \in P] \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;The main drawback of such models is given by the argument that is that &lt;strong&gt;does one really want to equalize the outcomes across all sub-groups?&lt;/strong&gt;. For example, predicting the success chances of a basketball player irrespective of his height is not really a very strong model, because the discrimination in various domains do not really fall in a black or white region but may lie in the gray region somewhere in between. Another example might be predicting the chances of child birth without using the features such as gender and age would be a really poor algorithm. So, &lt;strong&gt;enforcing the statistical parity is not always the solution&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;cross-group-calibration&quot;&gt;Cross-group Calibration&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Instead of equalizing the outcomes themselves, one can look to equalize some other statistics of the algorithm’s performance, for example &lt;strong&gt;error rates across groups&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A fair algorithm would make as many mistakes on a minority group as it does on the majority group.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;A useful tool for such an analysis is the confusion matrix as shown below&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-10-09-algorithmic-fairness/fig-1-confusion-matrix.png?raw=true&quot; alt=&quot;Fig-2: Confusion Matrix&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Some of the metrics based on the confusion matrix are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Treatment equality&lt;/strong&gt; is achieved by a classifier that yields a ratio of false negatives and false positives (in table, c/b or b/c) that is same for both protected group categories.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Conditional procedure accuracy equality&lt;/strong&gt; is achieved when conditioning on the known outcome, the classifier is equally accurate across protected group categories. This is equivalent to the false negative rate and false positive rate being same for all protected categories.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since all the columns and rows of a confusion matrix should add up to the total number of observations, many of these fainess metrics have a trade-off relationship. This basically means &lt;strong&gt;zero-sum game&lt;/strong&gt;, one increases at the cost of the other and there is no win-win situation. Based on the use-case one has to decide which metrics should be optimized for as there is no blanket solution to the group.&lt;/p&gt;
+
+&lt;h3 id=&quot;example-titanic&quot;&gt;Example: Titanic&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/shamssam/algorithmic-fairness-in-ml&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Kaggle Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c&quot;&gt;### libraries&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;pandas&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;seaborn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sn&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.model_selection&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_test_split&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.metrics&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;confusion_matrix&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;xgboost&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XGBClassifier&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df_train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'train.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index_col&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'PassengerId'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;df_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;df_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'female'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;df_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Ticket'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Cabin'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Embarked'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inplace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;train_test_split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stratify&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;df_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# aware classification&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XGBClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OVERALL&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_valid_hat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accuracy: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FEMALE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_valid_hat_female&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_female&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accuracy: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_female&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MALE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_valid_hat_male&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_male&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accuracy: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_male&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;# output&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# OVERALL&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#              precision    recall  f1-score   support&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#           0       0.85      0.90      0.87       165&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#           1       0.82      0.75      0.78       103&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# avg / total       0.84      0.84      0.84       268&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Accuracy: 0.8395522388059702&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# FEMALE&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#              precision    recall  f1-score   support&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#           0       0.45      0.41      0.43        22&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#           1       0.83      0.86      0.84        76&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# avg / total       0.75      0.76      0.75        98&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Accuracy: 0.7551020408163265&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# MALE&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#              precision    recall  f1-score   support&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#           0       0.90      0.97      0.94       143&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#           1       0.75      0.44      0.56        27&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# avg / total       0.88      0.89      0.88       170&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Accuracy: 0.888235294117647&lt;/span&gt;
+
+
+&lt;span class=&quot;c&quot;&gt;# unaware classification&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;XGBClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Sex'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_train&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;OVERALL&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_valid_hat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Sex'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accuracy: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FEMALE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_valid_hat_female&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Sex'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_female&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accuracy: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_female&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;MALE&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;=&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;y_valid_hat_male&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;drop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'Survived'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'Sex'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;classification_report&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_male&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Accuracy: {}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;accuracy_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_valid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Sex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Survived&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tolist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_valid_hat_male&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# output&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# OVERALL&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#              precision    recall  f1-score   support&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#           0       0.73      0.84      0.78       165&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#           1       0.66      0.51      0.58       103&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# avg / total       0.71      0.71      0.70       268&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Accuracy: 0.7126865671641791&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# FEMALE&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#              precision    recall  f1-score   support&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#           0       0.32      0.82      0.46        22&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#           1       0.90      0.50      0.64        76&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# avg / total       0.77      0.57      0.60        98&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Accuracy: 0.5714285714285714&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# MALE&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ========================================&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#              precision    recall  f1-score   support&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;#           0       0.91      0.84      0.87       143&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#           1       0.39      0.56      0.46        27&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# avg / total       0.83      0.79      0.81       170&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Accuracy: 0.7941176470588235&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Confusion matrices for the cases using awareness and without awareness of protected attribute (sex in this case) is shown below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-10-09-algorithmic-fairness/fig-3-aware-confusion-matrix.png?raw=true&quot; alt=&quot;Fig-3: Aware Confusion Matrix&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-10-09-algorithmic-fairness/fig-4-unaware-confusion-matrix.png?raw=true&quot; alt=&quot;Fig-4: Unaware Confusion Matrix&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Conditional accuracy in the code output shows that the system is very biased both in aware in unaware scenarios.&lt;/li&gt;
+  &lt;li&gt;treatment equality is more divergent in aware case than in unaware case.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://towardsdatascience.com/a-gentle-introduction-to-the-discussion-on-algorithmic-fairness-740bbb469b6&quot; target=&quot;_blank&quot;&gt;A Gentle Introduction to the Discussion on Algorithmic Fairness
+&lt;/a&gt;&lt;/small&gt;&lt;br /&gt; 
+&lt;small&gt;&lt;a href=&quot;https://medium.com/@mrtz/how-big-data-is-unfair-9aa544d739de&quot; target=&quot;\_blank&quot;&gt;How big data is unfair&lt;/a&gt;&lt;/small&gt;&lt;br /&gt; 
+&lt;small&gt;&lt;a href=&quot;http://fairness-measures.org/&quot; target=&quot;\_blank&quot;&gt;Fairness Measures&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
+        <link>https://machinelearningmedium.com/2018/10/09/algorithmic-fairness/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2018/10/09/algorithmic-fairness/</guid>
+        
+        <category>machine-learning</category>
+        
+        <category>algorithmic-fairness</category>
+        
+        <category>big-data</category>
+        
+        
+      </item>
     
       <item>
         <title>Introduction to Computer Architecture</title>
@@ -2887,145 +3189,6 @@ f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert
         <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/10/support-vector-machines/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/10/support-vector-machines/</guid>
-        
-        <category>machine-learning</category>
-        
-        <category>andrew-ng</category>
-        
-        
-        <category>basics-of-machine-learning</category>
-        
-      </item>
-    
-      <item>
-        <title>Error Metrics for Skewed Classes and Using Large Datasets</title>
-        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;what-are-skewed-classes&quot;&gt;What are Skewed Classes?&lt;/h3&gt;
-
-&lt;p&gt;Skewed classes basically refer to a dataset, wherein the number of training example belonging to one class out-numbers heavily the number of training examples beloning to the other.&lt;/p&gt;
-
-&lt;p&gt;Consider a binary classification, where a cancerous patient is to be detected based on some features. And say only \(1\ %\) of the data provided has cancer positive. In a setting where having cancer is labelled 1 and not cancer labelled 0, if a system naively gives the prediction as all 0’s, still the prediction accuracy will be 99%.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;naive&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prediction&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ignoring&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;predict_cancer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Therefore, it can be said with conviction that the accuracy metrics or mean-squared error for skewed classes, is not a proper indicator of model performance. Hence, there is a need for a different error metric for skewed classes.&lt;/p&gt;
-
-&lt;h3 id=&quot;precisionrecall&quot;&gt;Precision/Recall&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Note: \(y = 1\) is ther rarer class among the two.&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;In a binary classification, one of the following four scenarios may occur,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;True Positive (TP):&lt;/strong&gt; the model predicts 1 and the actual class is 1&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;True Negative (TN):&lt;/strong&gt; the model predicts 0 and the actual class is 0&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;False Positive (FP):&lt;/strong&gt; the model predicts 1 but the actual class is 0&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;False Negative (FN):&lt;/strong&gt; the model predicts 0 but the actual class is 1&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-08-error-metrics-for-skewed-data-and-large-datasets/fig-1-prediction-matrix.png?raw=true&quot; alt=&quot;Fig-1. Prediction Matrix&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Then precision and recall can be defined as follows,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Precision = \frac {TP} {TP + FP}&lt;/script&gt;
-
-&lt;p&gt;Precision defines of all the predictions \(y=1\), which ones are correct.&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;Recall = \frac {TP} {TP + FN}&lt;/script&gt;
-
-&lt;p&gt;Recall defines of all the actual \(y=1\), which ones did the model predict correctly.&lt;/p&gt;
-
-&lt;p&gt;Now, if we evaluate a scenario where the classifier predicts all 0’s then the recall of the model will be 0, which then points out the inability of the system.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;In case of skewed classes, it’s not possible for the classifiers to cheat the evaluation metrics of recall and precision. Also, it is important to note that precision and recall metrics work better if \(y=1\), denotes the presence of the rarer class.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;the-tradeoff&quot;&gt;The Tradeoff&lt;/h3&gt;
-
-&lt;p&gt;By changing the threshold value for the classifier confidence, one can adjust the precision and recall for the model.&lt;/p&gt;
-
-&lt;p&gt;For example, in a logistic regression the threshold is generally at 0.5. If one increases it, we can be sure that of all the predictions made more will be correct, hence, high precision. But there are also higher chances of missing the positive cases, hence, the lower recall.&lt;/p&gt;
-
-&lt;p&gt;Similary, if one decreases the threshold, then the chances of false positives increases, hence low precision. Also, there is lesser probability of missing the actual cases, hence high recall.&lt;/p&gt;
-
-&lt;p&gt;A precision-recall tradeoff curve may look like one among the following,&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-08-error-metrics-for-skewed-data-and-large-datasets/fig-2-precision-recall-curve.gif?raw=true&quot; alt=&quot;Fig-2. Precision Recall Curve&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;f-score&quot;&gt;F Score&lt;/h3&gt;
-
-&lt;p&gt;Given two pairs of precision and recall, how to choose the better pair. One of the options would be to choose the one which higher average. That is not the ideal solution as the pair with \((precision=0.02 and recall= 1)\) has a better mean than the pair \((precision=0.5 and recall= 0.4)\).&lt;/p&gt;
-
-&lt;p&gt;Enter \(F\,Score\) or \(F_1\,Score\), which is the &lt;strong&gt;harmonic mean of precision and recall&lt;/strong&gt;,  defined as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;F_1 = 2 \frac{P*R}{P+R}&lt;/script&gt;
-
-&lt;p&gt;The above formula has advantage over the average method because, if either precision or recall is small, the the numerator product \(P*R\) will weigh the F-Score low and consequently lead to choosing the better pair of precision and recall. So,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;if \(P=0\) or \(R=0\), then \(F_1=0\)&lt;/li&gt;
-  &lt;li&gt;if \(P=1\) and \(R=1\), then \(F_1=1\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;One reasonable way of automatically choosing threshold for classifier is to try a range of them on the cross-validation set and pick the one that gives the highest F-Score.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;sensitivityspecifivity&quot;&gt;Sensitivity/Specifivity&lt;/h3&gt;
-
-&lt;p&gt;Apart from precision and recall, sensitivity and specifivity are among the most used error metrics in classfication.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Sensitivity or True Positive Rate (TPR)&lt;/strong&gt; is another name for &lt;strong&gt;recall&lt;/strong&gt; and is also called &lt;strong&gt;hit rate&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;TPR = \frac {TP} {TP + FN}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Specifivity (SPC) or True Negative Rate&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;SPC = \frac {TN} {TN + FP}&lt;/script&gt;
-
-&lt;h3 id=&quot;using-large-datasets&quot;&gt;Using Large Datasets&lt;/h3&gt;
-
-&lt;p&gt;Although, its been stated &lt;a href=&quot;/2018/04/02/evaluation-of-learning-algorithm/#learning-curves&quot;&gt;here&lt;/a&gt; that for a high bias problem in the model, gathering more and more data will not help the model improve.&lt;/p&gt;
-
-&lt;p&gt;But under certain conditions, getting a lot of data and training on a certain type of training algorithm can be an effective way to improve the learning algorithm’s performance.&lt;/p&gt;
-
-&lt;p&gt;The following are the conditions that should be met for the above statement to hold true,&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;The features, \(x\), must have sufficient information to predict \(y\) accurately. One way to test this would be to check if human expert can make a confident predition using the features.&lt;/li&gt;
-  &lt;li&gt;Using a learning algorithm with a large number of parameters to learn (e.g. logistic regression, linear regression, neural network with many hidden units etc.). What this truly accomplishes is that these algorithms are &lt;strong&gt;low bias algorithm&lt;/strong&gt; due to the large number of learnable parameters.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;In such settings, where the problem of high bias is removed by the virtue of highly parametrized learning algorithms, a large dataset ensures the &lt;strong&gt;low variance&lt;/strong&gt;. Hence, under the listed settings a large number of dataset is almost always going to help improve the model performance.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;It’s not who has the best algorithm that wins, it’s who has the most data.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/tKMWX/error-metrics-for-skewed-classes&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Error Metrics for Skewed Classes&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/CuONQ/trading-off-precision-and-recall&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Trading off Precision and Recall&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/XcNcz/data-for-machine-learning&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Data for Machine Learning&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Sensitivity_and_specificity&quot; target=&quot;_blank&quot;&gt;Sensitivity and Specifivity - Wikipedia&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 08 Apr 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/</guid>
         
         <category>machine-learning</category>
         
