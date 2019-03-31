@@ -5,9 +5,252 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 20 Nov 2018 20:01:45 +0000</pubDate>
-    <lastBuildDate>Tue, 20 Nov 2018 20:01:45 +0000</lastBuildDate>
+    <pubDate>Sun, 31 Mar 2019 06:56:00 +0000</pubDate>
+    <lastBuildDate>Sun, 31 Mar 2019 06:56:00 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Breaking down Tesseract OCR</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It was originally an HP research project between 1984 and 1994, which was presented at 1995 UNLV Annual Test of OCR Accuracy where it performed beyond expectations.&lt;/li&gt;
+  &lt;li&gt;Purpose of tesseract was integration with the flatbed HP scanners with objectives such as compression which was not possible with the then existing commercial OCR solutions which were struggling with accuracy.&lt;/li&gt;
+  &lt;li&gt;During a phase of development, work concentrated on improving rejection efficiency than on base-level accuracy.&lt;/li&gt;
+  &lt;li&gt;Finally in 2005, Tesseract was released as an open-source project by HP available at Google Code until it was finally moved to &lt;a href=&quot;https://github.com/tesseract-ocr/tesseract&quot; target=&quot;\_blank&quot;&gt;Github&lt;/a&gt; for open-source contribution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;architecture&quot;&gt;Architecture&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Because of HP’s proprietary layout analysis technology, Tesseract did not have it’s own dedicated layout analyser. As a result, Tesseract assumes the inputs to be &lt;strong&gt;binary image with optional polygonal text regions defined&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Connected Component Analysis&lt;/strong&gt; is the first step in which the outlines of the components are stored. Outlines are gathered together, purely by nesting, into &lt;strong&gt;Blobs&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blobs are organized into text lines, and the the lines and regions are analyzed for &lt;strong&gt;fixed pitch&lt;/strong&gt; or &lt;strong&gt;proportional text&lt;/strong&gt;. The lines are broken into words differently based on the kind of character spacing. Fixed pitch text is chopped immidiately by character cells. Proportional text is broken into words using &lt;strong&gt;definite spaces or fuzzy spaces&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Recognition&lt;/strong&gt; proceeds as a &lt;strong&gt;two-pass process&lt;/strong&gt;. During the &lt;strong&gt;first pass&lt;/strong&gt;, attempt is made to recognize each word. The words that are satifactorily identified are passed to an &lt;strong&gt;adaptive classifier&lt;/strong&gt; as training data. As a result the adaptive classifier gets a chance at improving results among text lower down on the page. In order to utilize the training of adaptive classifier on the text near the top of the page as &lt;strong&gt;second pass&lt;/strong&gt; is performed, during which words that were not recognized well enough are classified again.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Final Phase&lt;/strong&gt; resolves the &lt;strong&gt;fuzzy spaces&lt;/strong&gt;, and checks &lt;strong&gt;alternative hypotheses&lt;/strong&gt; for the x-height to locate small-cap text.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;line-and-word-finding&quot;&gt;Line and Word Finding&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Line Finding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Algorithm is designed so that skewed page can be recognized without having to deskew, thus preventing any loss of image quality.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Blob filtering&lt;/strong&gt; and &lt;strong&gt;line construction&lt;/strong&gt; are key parts of this process.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under the assumption that most blobs have uniform text size, a simple &lt;strong&gt;percentile height filter&lt;/strong&gt; removes drop-caps and vertically touching characters and &lt;strong&gt;median height&lt;/strong&gt; approximates the text size in the region.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blobs smaller than a certain fraction of the median height are filtered out, being most likely punctuation, diacritical marks and noise.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The filtered blobs are more likely to fit a model of &lt;strong&gt;non-overlapping, parallel, but sloping lines&lt;/strong&gt;. Sorting and processing the blobs by x-coordinates makes it possible to assign blobs to a unique text line, while tracking the slope across the page.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once the lines are assigned, a &lt;strong&gt;least median of squares fit&lt;/strong&gt; is used to estimate the baselines, and filtered-out blobs are fitted back into appropriate lines.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Final step merges blobs that overlap by at least half horizontally, putting diacritical marks together with the correct base and correctly associating parts of some broken characters.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Baseline Fitting&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Using the text lines, baselines are fitted precisely using a &lt;strong&gt;quadratic spline&lt;/strong&gt;, which allows Tesseract to handle pages with curved baselines.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-1-curved-fitted-baseline.png?raw=true&quot; alt=&quot;Fig-1: Curved Fitted Baseline&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baseline fitting is done by partitioning the blobs into groups of reasonable continuous displacement for the original straight baseline. A quadratic spline is fitted to the most populous partition by a least square fit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Fixed Pitch Detection and Chopping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lines are tested to determine whether they are fixed pitch. Where it finds fixed pitch text, Tesseract chops the words into characters using pitch, and disables the &lt;strong&gt;chopper&lt;/strong&gt; and &lt;strong&gt;associator&lt;/strong&gt; on these words for the &lt;strong&gt;word recognition step&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-2-fixed-pitch-chopped-word.png?raw=true&quot; alt=&quot;Fig-2: Fixed Pitch Chopped Word&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Proportional Word Finding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Detecting word boundaries in a not-fixed-pitch or proportional text spacing is highly non-trivial task.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-3-difficult-word-spacing.png?raw=true&quot; alt=&quot;Fig-3: Difficult Word Spacing&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For example, the gap between the tens and units of ‘11.9%’ is similar size to general space, but is certainly larger the kerned space between ‘erated’ and ‘junk’. Another case can be noticed that there is no horizontal gap between the bounding box of ‘of’ and ‘financial’.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract solves most of these problems by measuring &lt;strong&gt;gaps in a limited vertical range between baseline and mean line&lt;/strong&gt;. Spaces close to a threshold are made &lt;strong&gt;fuzzy&lt;/strong&gt;, where the decisions are made after &lt;strong&gt;word recognition&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;word-recognition&quot;&gt;Word Recognition&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A major part of any word recognition algorithm is to identify how a word should be segmented into characters.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The initial segmented outputs from line finding is classified first. The non-fixed pitch text in the remaining text is classified using other word recognition steps.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Chopping Joined Characters&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract attempts to improve the result by chopping the blob with worst confidence from the character classifier.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Chop points&lt;/strong&gt; are found from concave vertices of a poligonal approximation of the outline, which may have a concave vertex opposite or a line segment. It may take upto 3 pairs of chop points to successfully separate joined characters from ASCII set.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-4-candidate-chop-points-and-chop.png?raw=true&quot; alt=&quot;Fig-4: Candidate Chop Points and Chop&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Chops are executed in priority order. Any chop that fails to improve the confidence of the result is undone, but not completely discarded so that it can be re-used by the &lt;strong&gt;associator&lt;/strong&gt; if needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Associating Broken Characters&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;After the potential chops have been exhausted, if the word is still not good enough, it is given to the &lt;strong&gt;associator&lt;/strong&gt;, which makes a &lt;strong&gt;best first search&lt;/strong&gt; of the segmentation graph of the possible combinations of the maximally chopped blobs into candidate characters.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The search pulls candidate new states from a priority queue and evaluates them by classifying unclassified combinations of fragments.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The chop-then-associate method is inefficient but it gives a benefit of simpler data structures that would be required to maintain the full segmentation graph.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-5-broken-characters.png?raw=true&quot; alt=&quot;Fig-5: Broken Characters recognized by Tesseract&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This ability of Tesseract to successfully classify broken characters gave it an edge over the contemporaries.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;static-character-classifier&quot;&gt;Static Character Classifier&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Features&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Early version of Tesseract used &lt;strong&gt;topological features&lt;/strong&gt;, which are independent of font and size but are not robust to issues found in real-life images.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another idea for classification involved use of segments of the polygonal approximation as features, but this method is also not robust to damaged characters.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-6-poligonal-approximation-features.png?raw=true&quot; alt=&quot;Fig-6: Differences in Polygonal Approximation for same character&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Solution to these problems lie in the fact that the features in the unknown need not be the same as the features in the training data. During training, &lt;strong&gt;segments of a polygonal approximation&lt;/strong&gt; are used for features, but during recognition, features of a small, fixed length are extracted from the outline and matched many-to-one against the clustered prototype features of the training data.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The process of small features matching large prototypes is easily able to cope with recognition of damaged words.&lt;/strong&gt; It’s main problem is that the computational cost of computing the distance between an unknown and a prototype is very high.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Classfication&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;This stage proceeds as a &lt;strong&gt;two-step process&lt;/strong&gt;. First step involves a &lt;strong&gt;class pruner&lt;/strong&gt; that creates a shortlist of character classes that the unknown might match.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The classes shortlisted in step one are taken further to the next step, where the actual similarity is calculated from the feature bit vectors. &lt;strong&gt;Each prototype character class is represented by a logical sum-of-product expression with each term called a configuration&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Training Data&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The classifier is trained on a mere 20 samples of 94 characters from 8 fonts in a single size, but with 4 attributes (normal, bold, italic, bold italic), making the total of 60160 training samples.&lt;/p&gt;
+
+&lt;h3 id=&quot;linguistic-analysis&quot;&gt;Linguistic Analysis&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Whenver the word recognition module is considering a new segmentation, the linguistic model (called &lt;strong&gt;permuter&lt;/strong&gt;) choses the best available word string in the categories: &lt;strong&gt;Top frequent word, Top dictionary word, Top numeric word, Top UPPER case word, Top lower case word (with optional initial upper)&lt;/strong&gt;, where the final decision for segmentation is simply the word with the lowest total distance rating.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Since words from different segmentations may have different number of characters in them, it would be hard to compare these words directly (even if a classifier claims to produce probabilities, which Tesseract does not).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract instead produces two numbers to solve this issue, namely,&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Confidence&lt;/strong&gt;, is minus the normalized distance from the prototype. It is confidence in the sense that greater the number better a metric it is.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Rating&lt;/strong&gt; is product of normalized distance from the prototype and total outline length in the unknown character.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;adaptive-classifier&quot;&gt;Adaptive Classifier&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;OCR engines are benefitted from use of an adaptive classifier because the static classifier has to be good at generalizing to any kind of font, its ability to discriminate between different characters or between characters and non-characters is weakened.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract has a font-sensitive adaptive classifier that is trained using the output of the static classifiers which is commonly used to obtain greater discrimination within each document, where the number of fonts is limited.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It uses the same features and classifier as the static classifier to train the adaptive classifier. &lt;strong&gt;The only significant difference between the two classifiers apart from the training data is that the adaptive classifier uses the isotropic baseline/x-height normalization, whereas the static classifier normalizes the characters by the centroid (first moment) for position, and second moments for anisotropic size normalization.&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The baseline normalization helps distinguish the upper and lower case characters and also improves immunity to noise specks.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-7-baseline-and-moment-normalized.png?raw=true&quot; alt=&quot;Fig-7: Baseline and Moment Normalized letters&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The main benefit of character moment normalization is &lt;strong&gt;removal of font aspect ratio&lt;/strong&gt; and some degree of &lt;strong&gt;font stroke width&lt;/strong&gt;. It also makes recognition of subscripts and superscripts easier, but requires an additional feature to distinguish the uppercase and lowercase characters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;REFERENCES&lt;/h1&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/33418.pdf&quot; target=&quot;\_blank&quot;&gt;An Overview of the Tesseract OCR Engine&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
+        <link>https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr/</guid>
+        
+        <category>vision</category>
+        
+        <category>ocr</category>
+        
+        <category>machine-learning</category>
+        
+        <category>papers</category>
+        
+        
+      </item>
     
       <item>
         <title>Social Bias in Machine Learning</title>
@@ -2820,371 +3063,6 @@ Repeat \{ \\
         <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/19/k-means-clustering/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/19/k-means-clustering/</guid>
-        
-        <category>machine-learning</category>
-        
-        <category>andrew-ng</category>
-        
-        
-        <category>basics-of-machine-learning</category>
-        
-      </item>
-    
-      <item>
-        <title>Support Vector Machine</title>
-        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;optimization-objective&quot;&gt;Optimization Objective&lt;/h3&gt;
-
-&lt;p&gt;The support vector machine objective can seen as a modification to the cost of logistic regression. Consider the sigmoid function, given as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = \frac {1} {1 + e^{-z}} \tag{1} \label{1}&lt;/script&gt;
-
-&lt;p&gt;where \(z = \theta^T x \)&lt;/p&gt;
-
-&lt;p&gt;The cost function of logistic regression as in the post &lt;a href=&quot;/2017/09/02/logistic-regression-model/#mjx-eqn-6&quot;&gt;&lt;strong&gt;Logistic Regression Model&lt;/strong&gt;&lt;/a&gt;, is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-J(\theta) &amp;= -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(h_\theta(x^{(i)}) + (1-y^{(i)})\,log(1 - h_\theta(x^{(i)})) \right) \\
-    &amp;= -{1 \over m} \sum_{i=1}^m \left( y^{(i)}\,log(\frac {1} {1 + e^{-\theta^T x}}) + (1-y^{(i)})\,log(1 - \frac {1} {1 + e^{-\theta^T x}}) \right)
-\tag{2} \label{2}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Each training instance contributes to the cost function the following term,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;-y\,log(\frac {1} {1 + e^{-z}}) - (1-y)\,log(1 - \frac {1} {1 + e^{-z}})&lt;/script&gt;
-
-&lt;p&gt;So when \(y = 1\), the contributed term is \(-log(\frac {1} {1 + e^{-z}})\), which can be seen in the plot below. The cost function of SVM, denoted as \(cost_1(z)\), is a modification the former and a close approximation.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-1-svm-cost-at-y-1.png&quot; alt=&quot;Fig-1. SVM Cost function at y = 1&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;svm_cost_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;negative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm_cost_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'logistic regression cost function'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'modified SVM cost function'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Similarly, when \(y = 0\), the contributed term is \(-log(1 - \frac {1} {1 + e^{-z}})\), which can be seen in the plot below. The cost function of SVM, denoted as \(cost_0(z)\), is a modification the former and a close approximation.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-2-svm-cost-at-y-0.png&quot; alt=&quot;Fig-2. SVM Cost function at y = 0&quot; /&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;svm_cost_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.26&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;log10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;exp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;negative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))))))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;svm_cost_0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'logistic regression cost function'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'modified SVM cost function'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;While the slope the straight line is not of as much importance, it is the linear approximation that gives SVMs computational advantages that helps in formulating an easier optimization problem.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Regularized version of \eqref{2} can from the post &lt;a href=&quot;/2017/09/15/regularized-logistic-regression/#mjx-eqn-1&quot;&gt;&lt;strong&gt;Regularized Logistic Regression&lt;/strong&gt;&lt;/a&gt; can rewritten as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = {1 \over m} \sum_{i=1}^m \left( y^{(i)}\,(-log(h_\theta(x^{(i)}))) + (1-y^{(i)})\,(-log(1 - h_\theta(x^{(i)}))) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2  \tag{3} \label{3}&lt;/script&gt;
-
-&lt;p&gt;In order to come up with the cost function for the SVM, \eqref{3} is modified by replacing the corresponding cost terms, which gives,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = {1 \over m} \sum_{i=1}^m \left( y^{(i)}\,cost_1(z) + (1-y^{(i)})\,cost_0(z) \right) + {\lambda \over 2m } \sum_{j=1}^n \theta_j^2 \tag{4} \label{4}&lt;/script&gt;
-
-&lt;p&gt;Following the conventions of SVM the following modifications are made to the cost in \eqref{4}, which effectively is a change in notation but not the underlying logic,&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;removing \({1 \over m}\) does not affect the minimization logic at all as the minima of a function is not changed by the linear scaling.&lt;/li&gt;
-  &lt;li&gt;change the form of parameterization from \(A + \lambda B\) to \(CA + B\) where it can be intuitively thought that \(C = {1 \over \lambda}\).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;After applying the above changes, \eqref{4} gives,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = C \sum_{i=1}^m \left[ y^{(i)}\,cost_1(\theta^T x^{(i)}) + (1-y^{(i)})\,cost_0(\theta^T x^{(i)}) \right] + {1 \over 2 } \sum_{j=1}^n \theta_j^2 \tag{5} \label{5}&lt;/script&gt;
-
-&lt;p&gt;The SVM hypothesis does not predict probability, instead gives hard class labels,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x) = 
-\begin{cases}
-1 \text{, if } \theta^Tx \geq 0 \\
-0 \text{, otherwise}
-\end{cases}
-\tag{6} \label{6}&lt;/script&gt;
-
-&lt;h3 id=&quot;large-margin-intuition&quot;&gt;Large Margin Intuition&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-3-cost-plots.png?raw=true&quot; alt=&quot;Fig-3. SVM Cost function plots&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;According to \eqref{5} and the plots of the cost function as shown in the image above, the following are two desirable states for SVM,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;if \(y=1\), then \(\theta^Tx \geq 1\) (not just \(\geq 0\))&lt;/li&gt;
-  &lt;li&gt;if \(y=0\), then \(\theta^Tx \leq -1\) (not just \(\lt 0\))&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Let C in \eqref{5} be a large value. Consequently, in order to minimize the cost, the corresponding term \(\sum_{i=1}^m \left[ y^{(i)}\,cost_1(\theta^T x^{(i)}) + (1-y^{(i)})\,cost_0(\theta^T x^{(i)}) \right]\) must be close to 0.&lt;/p&gt;
-
-&lt;p&gt;Hence, in order to minimize the cost function, when \(y=1\), \(cost_1(\theta^T x)\) should be 0, and similarly, when \(y=0\), \(cost_0(\theta^T x)\) should be 0. And thus, from the plots in Fig.3, it is clear that it can only fulfilled by the two states listed above.&lt;/p&gt;
-
-&lt;p&gt;Following the above intuition, the cost function can we written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;min_\theta J(\theta) = min_\theta {1 \over 2 } \sum_{j=1}^n \theta_j^2 \tag{7} \label{7}&lt;/script&gt;
-
-&lt;p&gt;subject to contraints,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\theta^Tx^{(i)} &amp;\geq 1 \text{, if } y^{(i)}=1 \\
-\theta^Tx^{(i)} &amp;\leq -1 \text{, if } y^{(i)}=0
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;What this basically leads to is the selection of a decision boundary that tries to maximize the margin from the support vectors as shown in the plot below. This maximization of the margin as seen for decision boundary A increases the robustness over decision boundaries with lesser margins like B. And it is this property of the SVMs that attributes the name &lt;strong&gt;large margin classifier&lt;/strong&gt; to it.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-4-large-margin-decision-boundary.png?raw=true&quot; alt=&quot;Fig-4. Large Margin Decision Boundary&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;effect-of-parameter-c&quot;&gt;Effect of Parameter C&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-5-effect-of-regularization.png?raw=true&quot; alt=&quot;Fig-5. Effect of Parameter C&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As discussed in the &lt;a href=&quot;#optimization-objective&quot;&gt;section&lt;/a&gt; above, the effect of C can be considered as reciprocal of regularization parameter, \(\lambda\). This is more clear from Fig-5. A single outlier, can make the model choose the decision boundary with smaller margin if the value of C is large. A small value of C ensures that the outliers are overlooked and best approximation of large margin boundary is determined.&lt;/p&gt;
-
-&lt;h3 id=&quot;mathematical-background&quot;&gt;Mathematical Background&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Vector Inner Product:&lt;/strong&gt; Consider two vectors, \(v\) and \(w\), given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;v = \begin{bmatrix}v_1 \\ v_2 \end{bmatrix}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;w = \begin{bmatrix}w_1 \\ w_2 \end{bmatrix}&lt;/script&gt;
-
-&lt;p&gt;Then, the &lt;strong&gt;inner product&lt;/strong&gt; or the &lt;strong&gt;dot product&lt;/strong&gt; is defined as \(v^Tw = w^Tv\).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Norm&lt;/strong&gt; of a vector, \(v\), denoted as \(\lVert v\rVert\) is the euclidean length of the vector given by the pythagoras theorem as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\lVert v\rVert = \sqrt{\sum_{i=0}^n v_i^2} \in \mathbb{R} \tag{8} \label{8}&lt;/script&gt;
-
-&lt;p&gt;The inner product can also be defined as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\text{Inner_Product(v, w)} &amp;= v^Tw = w^Tv = \sum_{i=0}^n v_i \cdot w_i \\
-    &amp;= \lVert v\rVert \cdot \lVert w\rVert \cdot cos \theta = p \cdot \lVert v\rVert \tag{9} \label{9}
-\end{align} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;where \(p=\lVert w\rVert \cdot cos \theta\) can be described as the projection of vector \(w\) onto vector \(v\) which can be either positive or negative signed based on the angle \(\theta\) between the vectors as shown in the image below.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-6-dot-product.jpg?raw=true&quot; alt=&quot;Fig-6. Dot Product&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SVM Decision Boundary:&lt;/strong&gt; From \eqref{7}, the optimization statement can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;min_\theta \, {1 \over 2 } \sum_{j=1}^n \theta_j^2 \tag{10} \label{10}&lt;/script&gt;
-
-&lt;p&gt;subject to contraints,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-\theta^Tx^{(i)} &amp;\geq 1 \text{, if } y^{(i)}=1 \\
-\theta^Tx^{(i)} &amp;\leq -1 \text{, if } y^{(i)}=0
-\end{align}
-\tag{11} \label{11} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Let \(\theta_0 = 0\) and \(n=2\), i.e. number of features is 2 for simplicity, then \eqref{10} can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;min_\theta \, {1 \over 2 } (\theta_1^2 + \theta_1^2) = {1 \over 2 } \sqrt{(\theta_1^2 + \theta_1^2)}^2 =  {1 \over 2 } \lVert \theta \rVert^2 \tag{12} \label{12}&lt;/script&gt;
-
-&lt;p&gt;Using \eqref{9}, \(\theta^Tx^{(i)}\) in \eqref{11} can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^Tx^{(i)} = p^{(i)} \cdot \lVert \theta \rVert \tag{13} \label{13}&lt;/script&gt;
-
-&lt;p&gt;The plot of \eqref{13} can be seen below,&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-7-dot-product-in-svm.png?raw=true&quot; alt=&quot;Fig-7. Dot Product in SVM&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Hence, using \eqref{12} and \eqref{13}, the optimization objective in \eqref{10} and the constraints in \eqref{11} are written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;min_\theta \, {1 \over 2 } \lVert \theta \rVert^2 \tag{14} \label{14}&lt;/script&gt;
-
-&lt;p&gt;subject to contraints,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-p^{(i)} \cdot \lVert \theta \rVert &amp;\geq 1 \text{, if } y^{(i)}=1 \\
-p^{(i)} \cdot \lVert \theta \rVert &amp;\leq -1 \text{, if } y^{(i)}=0
-\end{align}
-\tag{15} \label{15} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;where \(p^{(i)}\) is the projection of \(x^{(i)}\) onto vector \(\theta\).&lt;/p&gt;
-
-&lt;p&gt;Consider two decision boundaries, A and B, and their respective perpendicular parameters, \(\theta_A\) and \(\theta_B\) as shown in the plot below. As a consequence of choosing \(\theta_0 = 0\) for simplification, all the corresponding decision boundaries pass through the origin.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-8-choosing-large-margin.png?raw=true&quot; alt=&quot;Fig-8. Choosing Large Margin Classifier&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Based on the two training examples of either class chosen, close to the boundaries, it can be seen that the magnitude of projection is more in case of \(\theta_B\) than \(\theta_A\). This basically tells that it would be possible to choose smaller values of \(\theta\) and satisfy \eqref{14} and \eqref{15} if the value of projection \(p\) is bigger and hence, the decision boundary, B is more favourable to the optimization objective.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Why is decision boundary perpendicular to the \(\theta\)?&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Consider two points \(x_1\) and \(x_2\) on the decision boundary given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\,x + c= 0 \tag{16} \label{16}&lt;/script&gt;
-
-&lt;p&gt;Since the two points are on the line, they must satisfy \eqref{16}. Substitution leads to the following,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\,x_1 + c= 0 \tag{17} \label{17}&lt;/script&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\,x_2 + c= 0 \tag{18} \label{18}&lt;/script&gt;
-
-&lt;p&gt;Subtracting \eqref{18} from \eqref{17},&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta\,(x_1 - x_2) = 0 \tag{17} \label{19}&lt;/script&gt;
-
-&lt;p&gt;Since \(x_1\) and \(x_2\) lie on the line, the vector \((x_1 - x_2)\) is on the line too. Following the property of orthogonal vectors, \eqref{19} is possible only if \(\theta\) is orthogonal or perpendicular to \((x_1 - x_2)\), and hence perpendicular to the decision boundary.&lt;/p&gt;
-
-&lt;h3 id=&quot;kernels&quot;&gt;Kernels&lt;/h3&gt;
-
-&lt;p&gt;When dealing with non-linear decision boundaries, a learning method like logistic regression relies on high order polynomial features to find a complex decision boundary and fit the dataset, i.e. predict \(y=1\) if,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_0\,f_0 + \theta_1\,f_1 + \theta_2\,f_2 + \theta_3\,f_3 + \cdots \geq 0 \tag{20} \label{20}&lt;/script&gt;
-
-&lt;p&gt;where \(f_0 = x_0,\, f_1=x_1,\, f_2=x_2,\, f_3=x_1x_2,\, f_4=x_1^2,\, \cdots \).&lt;/p&gt;
-
-&lt;p&gt;A natural question that arises is if there are choices of better/different features than in \eqref{20}? A SVM does this by picking points in the space called &lt;strong&gt;landmarks&lt;/strong&gt; and defining functions called &lt;strong&gt;similarity&lt;/strong&gt; corresponding to the landmarks.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-10-support-vector-machines/fig-9-svm-landmarks.png?raw=true&quot; alt=&quot;Fig-9. SVM Landmarks&quot; width=&quot;50%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Say, there are three landmarks defined, \(l^{(1)}\), \(l^{(2)}\) and \(l^{(3)}\) as shown in the plot above, the for any given x, \(f_1\), \(f_2\) and \(f_3\) are defined as follows,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-f_1 &amp;= similarity(x, l^{(1)}) = exp \left(- \frac {\lVert x - l^{(1)} \rVert^2} {2 \sigma^2} \right) \\
-f_2 &amp;= similarity(x, l^{(2)}) = exp \left(- \frac {\lVert x - l^{(2)} \rVert^2} {2 \sigma^2} \right) \\
-f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert^2} {2 \sigma^2} \right) \\
-    &amp; \vdots
-\end{align}
-\tag{21} \label{21} %]]&gt;&lt;/script&gt;
-
-&lt;p&gt;Here, the similarity function is mathematically termed a &lt;strong&gt;kernel&lt;/strong&gt;. The specific kernel used in \eqref{21} is called the \(Gaussian Kernel\). Kernels are sometimes also denoted as \(k(x, l^{(i)})\).&lt;/p&gt;
-
-&lt;p&gt;Consider \(f_1\) from \eqref{21}. If there exists \(x\) close to landmark \(l^{(1)}\), then \(\lVert x - l^{(1)} \rVert \approx 0\) and hence, \(f_1 \approx 1\). Similarly for a \(x\) far from the landmark, \(\lVert x - l^{(1)} \rVert\) will be a larger value and hence exponential fall will cause \(f_1 \approx 0\). So effectively the choice of landmarks has helped in increasing the number of features \(x\) had from 2 to 3. which can be helpful in discrimination.&lt;/p&gt;
-
-&lt;p&gt;For a gaussian kernel, the value of \(\sigma\) defines the spread of the normal distribution. If \(\sigma\) is small, the spread will be narrower and when its large the spread will be wider.&lt;/p&gt;
-
-&lt;p&gt;Also, the intuition is clear about how landmarks help in generating the new features. Along with the values of parameter, \(\theta\) and \(\sigma\), various different decision boundaries can be achieved.&lt;/p&gt;
-
-&lt;h3 id=&quot;how-to-choose-optimal-landmarks&quot;&gt;How to choose optimal landmarks?&lt;/h3&gt;
-
-&lt;p&gt;In a complex machine learning problem it would be advantageous to choose a lot more landmarks. This is generally acheived by choosing landmarks at the point of the training examples, i.e. landmarks equal to the number of training examples are chosen, ending up in \(l^{(1)}, l^{(2)}, \cdots l^{(m)}\) if there are \(m\) training examples. This translates to the fact that each feature is a measure of how close is an instance to the existing points of the class, leading to generation of new feature vectors.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;For SVM training, given training examples, \(x\), features \(f\) are computed, and \(y=1\), if \(\theta^Tf \geq 0\)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;The training objective from \eqref{5} is modified as follows,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;min_\theta \, C \sum_{i=1}^m \left[ y^{(i)}\,cost_1(\theta^T f^{(i)}) + (1-y^{(i)})\,cost_0(\theta^T f^{(i)}) \right] + {1 \over 2 } \sum_{j=1}^m \theta_j^2 \tag{22} \label{22}&lt;/script&gt;
-
-&lt;p&gt;In this case, \(n=m\) in \eqref{5} by the virtue of procedure used to choose \(f\).&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The regularization term in \eqref{22} can be written as \(\theta^T\theta\). But in practice most SVM libraries, instead \(\theta^TM\theta\), which can be considered a scaled version is used as it gives certain optimization benefits and scaling to bigger training sets, which will be taken up at a later point in maybe another post.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;While the kernels idea can be applied to other algorithms like logistic regression, the computational tricks that apply to SVMs do not generalize as well to other algorithms.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Hence, SVMs and Kernels tend to go particularly well together.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;biasvariance&quot;&gt;Bias/Variance&lt;/h3&gt;
-
-&lt;p&gt;Since \(C (= {1 \over \lambda})\),&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Large C: Low bias, High Variance&lt;/li&gt;
-  &lt;li&gt;Small C: High bias, Low Variance&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Regarding \(\sigma\),&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Large \(\sigma^2\): High Bias, Low Variance (Features vary more smoothly)&lt;/li&gt;
-  &lt;li&gt;Small \(\sigma^2\): Low Bias, High Variance (Features vary less smoothly)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;choice-of-kernels&quot;&gt;Choice of Kernels&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Linear Kernel:&lt;/strong&gt; is equivalent to a no kernel setting giving a standard linear classifier given by,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta_0\,x_0 + \theta_1\,x_1 + \theta_2\,x_2 + \theta_3\,x_3 + \cdots \geq 0 \tag{23} \label{23}&lt;/script&gt;
-
-&lt;p&gt;Linear kernels are used when the number of training data is less but the number of features in the training data is huge.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Gaussian Kernel:&lt;/strong&gt; Make a choice of \(\sigma^2\) to adjust the bias/variance trade-off.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Gaussian kernels are generally used when the number of training data is huge and the number of features are small.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Feature scaling is important when using SVM, especially Gaussian Kernels, because if the ranges vary a lot then the similarity feature would be dominated by features with higher range of values.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;All the kernels used for SVM, must satisfy Mercer’s Theorem, to make sure that SVM optimizations do not diverge.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Some other kernels known to be used with SVMs are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Polynomial kernels, \(k(x, l) = (x^T l + constant)^degree\)&lt;/li&gt;
-  &lt;li&gt;Esoteric kernels, like string kernel, chi-square kernel, histogram intersection kernel, ..&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;multi-class-classification&quot;&gt;Multi-Class Classification&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Most SVM libraries have multi-class classification.&lt;/li&gt;
-  &lt;li&gt;Alternatively, one may use one-vs-all technique to train \(k\) different SVMs and pick class with largest \(\theta^Tx\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;logistic-regression-vs-svm&quot;&gt;Logistic Regression vs SVM&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If \(n\) is large relative to \(m\), use logistic regression or SVM with linear kernel, like if \(n=10000, m=10-1000\)&lt;/li&gt;
-  &lt;li&gt;If \(n\) is small and \(m\) is intermediate, use SVM with gaussian kernel, like if \(n=1-1000, m=10-10000\)&lt;/li&gt;
-  &lt;li&gt;If \(n\) is small and \(m\) is large, create/add more features, then use logistic regression or SVM with no kernel, as with huge datasets SVMs struggle with gaussian kernels, like if \(n=1-1000, m=50000+\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Logistic Regression and SVM without a kernel (with linear kernel) generally give very similar. A neural network would work well on these training data too, but would be slower to train.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Also, the optimization problem of SVM is a convex problem, so the issue of getting stuck in local minima is non-existent for SVMs.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/sHfVT/optimization-objective&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Optimization Objective&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/wrjaS/large-margin-intuition&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Large Margin Intuition&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/3eNnh/mathematics-behind-large-margin-classification&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Mathematics of Large Margin Classification&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/YOMHn/kernels-i&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Kernel I&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/hxdcH/kernels-ii&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Kernel II&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/sKQoJ/using-an-svm&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Using An SVM&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.quora.com/Support-Vector-Machines-Why-is-theta-perpendicular-to-the-decision-boundary&quot; target=&quot;_blank&quot;&gt;Quora - Why is theta perpendicular to the decision boundary?&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://docs.opencv.org/2.4/doc/tutorials/ml/introduction_to_svm/introduction_to_svm.html&quot; target=&quot;_blank&quot;&gt;Introduction to support vector machines&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Tue, 10 Apr 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/04/10/support-vector-machines/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/10/support-vector-machines/</guid>
         
         <category>machine-learning</category>
         

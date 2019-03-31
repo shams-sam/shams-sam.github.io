@@ -4,13 +4,246 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2018-11-20T20:01:45+00:00</updated>
+ <updated>2019-03-31T06:56:00+00:00</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Breaking down Tesseract OCR</title>
+   <link href="https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr/"/>
+   <updated>2019-01-15T00:00:00+00:00</updated>
+   <id>https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr</id>
+   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It was originally an HP research project between 1984 and 1994, which was presented at 1995 UNLV Annual Test of OCR Accuracy where it performed beyond expectations.&lt;/li&gt;
+  &lt;li&gt;Purpose of tesseract was integration with the flatbed HP scanners with objectives such as compression which was not possible with the then existing commercial OCR solutions which were struggling with accuracy.&lt;/li&gt;
+  &lt;li&gt;During a phase of development, work concentrated on improving rejection efficiency than on base-level accuracy.&lt;/li&gt;
+  &lt;li&gt;Finally in 2005, Tesseract was released as an open-source project by HP available at Google Code until it was finally moved to &lt;a href=&quot;https://github.com/tesseract-ocr/tesseract&quot; target=&quot;\_blank&quot;&gt;Github&lt;/a&gt; for open-source contribution.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;architecture&quot;&gt;Architecture&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Because of HP’s proprietary layout analysis technology, Tesseract did not have it’s own dedicated layout analyser. As a result, Tesseract assumes the inputs to be &lt;strong&gt;binary image with optional polygonal text regions defined&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Connected Component Analysis&lt;/strong&gt; is the first step in which the outlines of the components are stored. Outlines are gathered together, purely by nesting, into &lt;strong&gt;Blobs&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blobs are organized into text lines, and the the lines and regions are analyzed for &lt;strong&gt;fixed pitch&lt;/strong&gt; or &lt;strong&gt;proportional text&lt;/strong&gt;. The lines are broken into words differently based on the kind of character spacing. Fixed pitch text is chopped immidiately by character cells. Proportional text is broken into words using &lt;strong&gt;definite spaces or fuzzy spaces&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Recognition&lt;/strong&gt; proceeds as a &lt;strong&gt;two-pass process&lt;/strong&gt;. During the &lt;strong&gt;first pass&lt;/strong&gt;, attempt is made to recognize each word. The words that are satifactorily identified are passed to an &lt;strong&gt;adaptive classifier&lt;/strong&gt; as training data. As a result the adaptive classifier gets a chance at improving results among text lower down on the page. In order to utilize the training of adaptive classifier on the text near the top of the page as &lt;strong&gt;second pass&lt;/strong&gt; is performed, during which words that were not recognized well enough are classified again.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Final Phase&lt;/strong&gt; resolves the &lt;strong&gt;fuzzy spaces&lt;/strong&gt;, and checks &lt;strong&gt;alternative hypotheses&lt;/strong&gt; for the x-height to locate small-cap text.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;line-and-word-finding&quot;&gt;Line and Word Finding&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Line Finding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Algorithm is designed so that skewed page can be recognized without having to deskew, thus preventing any loss of image quality.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Blob filtering&lt;/strong&gt; and &lt;strong&gt;line construction&lt;/strong&gt; are key parts of this process.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Under the assumption that most blobs have uniform text size, a simple &lt;strong&gt;percentile height filter&lt;/strong&gt; removes drop-caps and vertically touching characters and &lt;strong&gt;median height&lt;/strong&gt; approximates the text size in the region.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Blobs smaller than a certain fraction of the median height are filtered out, being most likely punctuation, diacritical marks and noise.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The filtered blobs are more likely to fit a model of &lt;strong&gt;non-overlapping, parallel, but sloping lines&lt;/strong&gt;. Sorting and processing the blobs by x-coordinates makes it possible to assign blobs to a unique text line, while tracking the slope across the page.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Once the lines are assigned, a &lt;strong&gt;least median of squares fit&lt;/strong&gt; is used to estimate the baselines, and filtered-out blobs are fitted back into appropriate lines.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Final step merges blobs that overlap by at least half horizontally, putting diacritical marks together with the correct base and correctly associating parts of some broken characters.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Baseline Fitting&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Using the text lines, baselines are fitted precisely using a &lt;strong&gt;quadratic spline&lt;/strong&gt;, which allows Tesseract to handle pages with curved baselines.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-1-curved-fitted-baseline.png?raw=true&quot; alt=&quot;Fig-1: Curved Fitted Baseline&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Baseline fitting is done by partitioning the blobs into groups of reasonable continuous displacement for the original straight baseline. A quadratic spline is fitted to the most populous partition by a least square fit.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Fixed Pitch Detection and Chopping&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lines are tested to determine whether they are fixed pitch. Where it finds fixed pitch text, Tesseract chops the words into characters using pitch, and disables the &lt;strong&gt;chopper&lt;/strong&gt; and &lt;strong&gt;associator&lt;/strong&gt; on these words for the &lt;strong&gt;word recognition step&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-2-fixed-pitch-chopped-word.png?raw=true&quot; alt=&quot;Fig-2: Fixed Pitch Chopped Word&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Proportional Word Finding&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Detecting word boundaries in a not-fixed-pitch or proportional text spacing is highly non-trivial task.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-3-difficult-word-spacing.png?raw=true&quot; alt=&quot;Fig-3: Difficult Word Spacing&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;For example, the gap between the tens and units of ‘11.9%’ is similar size to general space, but is certainly larger the kerned space between ‘erated’ and ‘junk’. Another case can be noticed that there is no horizontal gap between the bounding box of ‘of’ and ‘financial’.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract solves most of these problems by measuring &lt;strong&gt;gaps in a limited vertical range between baseline and mean line&lt;/strong&gt;. Spaces close to a threshold are made &lt;strong&gt;fuzzy&lt;/strong&gt;, where the decisions are made after &lt;strong&gt;word recognition&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;word-recognition&quot;&gt;Word Recognition&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A major part of any word recognition algorithm is to identify how a word should be segmented into characters.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The initial segmented outputs from line finding is classified first. The non-fixed pitch text in the remaining text is classified using other word recognition steps.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Chopping Joined Characters&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract attempts to improve the result by chopping the blob with worst confidence from the character classifier.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Chop points&lt;/strong&gt; are found from concave vertices of a poligonal approximation of the outline, which may have a concave vertex opposite or a line segment. It may take upto 3 pairs of chop points to successfully separate joined characters from ASCII set.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-4-candidate-chop-points-and-chop.png?raw=true&quot; alt=&quot;Fig-4: Candidate Chop Points and Chop&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Chops are executed in priority order. Any chop that fails to improve the confidence of the result is undone, but not completely discarded so that it can be re-used by the &lt;strong&gt;associator&lt;/strong&gt; if needed.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Associating Broken Characters&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;After the potential chops have been exhausted, if the word is still not good enough, it is given to the &lt;strong&gt;associator&lt;/strong&gt;, which makes a &lt;strong&gt;best first search&lt;/strong&gt; of the segmentation graph of the possible combinations of the maximally chopped blobs into candidate characters.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The search pulls candidate new states from a priority queue and evaluates them by classifying unclassified combinations of fragments.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The chop-then-associate method is inefficient but it gives a benefit of simpler data structures that would be required to maintain the full segmentation graph.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-5-broken-characters.png?raw=true&quot; alt=&quot;Fig-5: Broken Characters recognized by Tesseract&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This ability of Tesseract to successfully classify broken characters gave it an edge over the contemporaries.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;static-character-classifier&quot;&gt;Static Character Classifier&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Features&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Early version of Tesseract used &lt;strong&gt;topological features&lt;/strong&gt;, which are independent of font and size but are not robust to issues found in real-life images.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another idea for classification involved use of segments of the polygonal approximation as features, but this method is also not robust to damaged characters.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-6-poligonal-approximation-features.png?raw=true&quot; alt=&quot;Fig-6: Differences in Polygonal Approximation for same character&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Solution to these problems lie in the fact that the features in the unknown need not be the same as the features in the training data. During training, &lt;strong&gt;segments of a polygonal approximation&lt;/strong&gt; are used for features, but during recognition, features of a small, fixed length are extracted from the outline and matched many-to-one against the clustered prototype features of the training data.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;The process of small features matching large prototypes is easily able to cope with recognition of damaged words.&lt;/strong&gt; It’s main problem is that the computational cost of computing the distance between an unknown and a prototype is very high.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Classfication&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;This stage proceeds as a &lt;strong&gt;two-step process&lt;/strong&gt;. First step involves a &lt;strong&gt;class pruner&lt;/strong&gt; that creates a shortlist of character classes that the unknown might match.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The classes shortlisted in step one are taken further to the next step, where the actual similarity is calculated from the feature bit vectors. &lt;strong&gt;Each prototype character class is represented by a logical sum-of-product expression with each term called a configuration&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Training Data&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The classifier is trained on a mere 20 samples of 94 characters from 8 fonts in a single size, but with 4 attributes (normal, bold, italic, bold italic), making the total of 60160 training samples.&lt;/p&gt;
+
+&lt;h3 id=&quot;linguistic-analysis&quot;&gt;Linguistic Analysis&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Whenver the word recognition module is considering a new segmentation, the linguistic model (called &lt;strong&gt;permuter&lt;/strong&gt;) choses the best available word string in the categories: &lt;strong&gt;Top frequent word, Top dictionary word, Top numeric word, Top UPPER case word, Top lower case word (with optional initial upper)&lt;/strong&gt;, where the final decision for segmentation is simply the word with the lowest total distance rating.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Since words from different segmentations may have different number of characters in them, it would be hard to compare these words directly (even if a classifier claims to produce probabilities, which Tesseract does not).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract instead produces two numbers to solve this issue, namely,&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Confidence&lt;/strong&gt;, is minus the normalized distance from the prototype. It is confidence in the sense that greater the number better a metric it is.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Rating&lt;/strong&gt; is product of normalized distance from the prototype and total outline length in the unknown character.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;adaptive-classifier&quot;&gt;Adaptive Classifier&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;OCR engines are benefitted from use of an adaptive classifier because the static classifier has to be good at generalizing to any kind of font, its ability to discriminate between different characters or between characters and non-characters is weakened.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tesseract has a font-sensitive adaptive classifier that is trained using the output of the static classifiers which is commonly used to obtain greater discrimination within each document, where the number of fonts is limited.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;It uses the same features and classifier as the static classifier to train the adaptive classifier. &lt;strong&gt;The only significant difference between the two classifiers apart from the training data is that the adaptive classifier uses the isotropic baseline/x-height normalization, whereas the static classifier normalizes the characters by the centroid (first moment) for position, and second moments for anisotropic size normalization.&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The baseline normalization helps distinguish the upper and lower case characters and also improves immunity to noise specks.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-01-15-breaking-down-tesseract-ocr/fig-7-baseline-and-moment-normalized.png?raw=true&quot; alt=&quot;Fig-7: Baseline and Moment Normalized letters&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The main benefit of character moment normalization is &lt;strong&gt;removal of font aspect ratio&lt;/strong&gt; and some degree of &lt;strong&gt;font stroke width&lt;/strong&gt;. It also makes recognition of subscripts and superscripts easier, but requires an additional feature to distinguish the uppercase and lowercase characters.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;REFERENCES&lt;/h1&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/33418.pdf&quot; target=&quot;\_blank&quot;&gt;An Overview of the Tesseract OCR Engine&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Social Bias in Machine Learning</title>
