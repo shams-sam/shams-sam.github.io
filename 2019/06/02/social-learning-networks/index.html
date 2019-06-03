@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Social Learning Networks | Machine Learning Medium</title>
+  <meta name="description" content="A type of network among students, instructors and modules of learning encoding the relationships among people and learning processes." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Social Learning Networks"/>
+  
+  <meta property="og:description" content="A type of network among students, instructors and modules of learning encoding the relationships among people and learning processes." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/social-learning-networks.jpeg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2019/06/02/social-learning-networks/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2019-06-02T00:00:00+00:00">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2019/06/02/social-learning-networks/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+        
+          <span class="right-padding-22">|</span>
+          <a class="icon-search" href="/search/"><i class="fa fa-search"></i></a>
+        
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <time datetime="2019-06-02T00:00:00+00:00">Jun 2</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/social-learning-networks.jpeg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://cdn-images-1.medium.com/max/1600/1*jSKvARO6h8PcfgFKpOWp3w.jpeg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Social Learning Networks</h1>
+            <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Social Learning Networks&url=https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2019/06/02/social-learning-networks/&title=Social Learning Networks&summary=A type of network among students, instructors and modules of learning encoding the relationships among people and learning processes.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Social Learning Networks&amp;body=Check out this site https://machinelearningmedium.com/2019/06/02/social-learning-networks/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+            <h2 class="post-description">A type of network among students, instructors and modules of learning encoding the relationships among people and learning processes.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="active-recall">Active Recall</h3>
+<ol>
+  <li><a href="#introduction">What is a SLN?</a></li>
+  <li><a href="#characteristics-of-sln">What do the nodes, connections and weights represent in a SLN graph?</a></li>
+  <li><a href="#types-of-sln-graphs">What are the types of graphs used to represent information in SLN?</a></li>
+</ol>
+
+<h3 id="introduction">Introduction</h3>
+
+<ul>
+  <li>An SLN is a type of <strong>social network between student, instructors and modules of learning</strong>. The network consists of dynamics of learning behaviour over a variety of <strong>graphs that represent the relationships</strong> among people and processes involved in learning</li>
+</ul>
+
+<h3 id="characteristics-of-sln">Characteristics of SLN</h3>
+
+<ul>
+  <li>People in network <strong>learn through interaction</strong>.</li>
+  <li>Consists of functionality models and <strong>graph-theoretic models</strong>.</li>
+  <li><strong>Nodes</strong> represent learners, learning concepts, or both learners and concepts.</li>
+  <li><strong>Links</strong> represent the connection between the nodes.</li>
+  <li>Links can be <strong>undirected to denote similarity</strong> or <strong>directed to denote flow of information</strong>.</li>
+  <li><strong>Link weights</strong> gives magnitude to the connections extracted through some network measurements.</li>
+</ul>
+
+<h3 id="applications-for-sln">Applications for SLN</h3>
+
+<ul>
+  <li>Massive increase in popularity of <strong>MOOCs</strong> over the past decades has led to access of unprecedented data that can be easily used in the context of SLNs. Among these data, the discussion forums are of utmost importance as they are the primary means for interaction among students or between students and instructors and help extract SLNs.</li>
+  <li>The blended learning offered by <strong>FLIP</strong> that combines the elements of online and traditional instruction is also gaining popularity. In this system, watching the lectures online becomes homework and class time is used for discussions instead.</li>
+  <li>In the last decade, there has also been a steady rise in the popularity of Q&amp;A Sites which have emerged with complementary search engines that allows users to enter questions in NLP format.</li>
+</ul>
+
+<p><strong>1. MOOCs Discussion Forums</strong></p>
+
+<ul>
+  <li>Similar to Q&amp;A sites but have a different set of terminologies.</li>
+  <li>Each course has a <strong>discussion forum</strong> (hierarchy 1). Discussion forum comprises of <strong>threads</strong> (hierarchy 2): the first <strong>post</strong> is by the creator of thread followed by <strong>comments</strong> (hierarchy 3), hence leading to a 3-level hierarchy.</li>
+  <li>A user interacting with these forums has one of following options:
+    <ul>
+      <li>Create a thread</li>
+      <li>Create a post</li>
+      <li>Comment on an existing post</li>
+    </ul>
+  </li>
+  <li>When threads are created, each forum allows annotation of these threads with a number categories. These categories are often inconsistent as there is no effective mechanism to force learners to abide by them consistently.</li>
+  <li>Posts and comments can also <strong>receive up votes and down votes</strong> from users and staff.</li>
+</ul>
+
+<p><strong>2. FLIP</strong></p>
+
+<ul>
+  <li>The interaction in these classes can be used to extract the SLN as the structure of posts and comments here would resemble that of MOOCs but would be different on the following accounts:
+    <ul>
+      <li><strong>Size and sparsity</strong>: smaller number of learners and denser connectivity among them.</li>
+      <li><strong>Informational vs conversational discussions</strong>: While MOOC discussions are more conversational in nature, SLN from FLIP would typically not include conversational discussions because students can talk informally outside the class and also because the discussions are presided over by an instructor.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>3. Q&amp;A Sites</strong></p>
+
+<ul>
+  <li>Q&amp;A sites allow the following functions to it’s users:
+    <ul>
+      <li>post question</li>
+      <li>answer question</li>
+      <li>comment on answer</li>
+      <li>up/down vote post</li>
+      <li>allow asker to choose the best or acceptable answer</li>
+      <li>for quality assurance there are points associated with receiving up or down votes.</li>
+    </ul>
+  </li>
+  <li>Major differences can be seen between SLNs from such sites and sites from educational settings:
+    <ul>
+      <li><strong>Incentive structure</strong>: well-defined automated set of incentives to encourage participation. These may or may not be a part of conversation in MOOCs or FLIP, more so because it is not a scalable concept for these forums as participation in MOOCs and FLIP can not be pushed for assessment of student academically.</li>
+      <li><strong>Broader concept list</strong>: information propagated in an SLN for a course will be limited to materials associated with the subject. Also each course has it’s own forum where only the students enrolled can participate. Q&amp;A sites have some focal specificity but typically one can expect the number of concepts emerging in these SLNs to be much more broader.</li>
+      <li><strong>Single learning modality</strong>: In a Q&amp;A site, SLN is the only means of learning, whereas in an educational setting it is one of the four modalities: lecture videos, assessment and text resources.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="types-of-sln-graphs">Types of SLN Graphs</h3>
+
+<p>These are the most commonly used graphs but are not comprehensive.</p>
+
+<p><strong>1. Undirected graph among learners</strong></p>
+
+<ul>
+  <li>Nodes represent learners</li>
+  <li>Undirected links indicate the presence or absence of some characteristics between them. Properties could be age, geographic location, education level, whether or not they have interacted etc.</li>
+  <li>For nodes \(i\) and \(j\), one can say for example,
+    <ul>
+      <li>\(prop_k(i,j)\) is a binary variable that is 1 iff \(i\) and \(j\) satisfy property \(k\) in set of properties \(K\),</li>
+      <li>\(P \leq |K|\) is a threshold constant i.e. node \(i\) and \(j\) are connected if and only if they both satisfy at least \(P\) criiteria specified in \(K\).</li>
+    </ul>
+  </li>
+</ul>
+
+<script type="math/tex; mode=display">(i, j) \in G \Leftrightarrow \sum_{k \in K} prop_k(i, j) \geq P \tag{1} \label{1}</script>
+
+<p><strong>2. Directed graph among learners</strong></p>
+
+<ul>
+  <li>Used to note flow of information in the SLN.</li>
+  <li>A directional link frok \(i\) to \(j\) represents an answer by \(j\) to a question posted by \(i\). Several restrictions can be added to this directional flow e.g. include only “best answers” given.</li>
+  <li>It could be a multi-graph where there is more than one link from \(i\) to \(j\) since learners can ask and answer more than one question each.</li>
+</ul>
+
+<p><strong>3. Undirected graph among learners and concepts</strong></p>
+
+<ul>
+  <li>Nodes are used to represent both the learners as well as the concepts.</li>
+  <li>Key concepts are extracted in a number of ways:
+    <ul>
+      <li>running textual analysis to find keywords in discussions</li>
+      <li>using syllabus specified by the instructors</li>
+    </ul>
+  </li>
+  <li>Such graphs are generally bipartite graphs between learners and concepts.</li>
+  <li>A setting similar to \eqref{1} represents this graph, but each property \(k\) represent a condition on the participation of user \(i\) in concept \(j\).</li>
+</ul>
+
+<p><strong>4. Directed graph among learners and concepts</strong></p>
+
+<ul>
+  <li>To depict structure of interactions in more details.</li>
+  <li>Concept nodes are used and each question or post by a learner is handled separately, which allows tow sets of links for each post: \((i_0, j) \in G\) for learner \(i_0\) who makes the initial post, and \((j, i_l) \in G\) for each learner \(i_l\) who commented on \(j\).</li>
+  <li>In a forum where up/down votes are allowed, these links can be weighted to match the net votes obtained.</li>
+</ul>
+
+<h3 id="research-objectives">Research Objectives</h3>
+
+<p><strong>1. Predictions</strong></p>
+
+<ul>
+  <li><strong>Performance</strong>: ability to predict performance on assessments - homework, quiz, or exam questions - a student has not taken.</li>
+  <li><strong>Drop-off rate</strong>: predict drop-off rates of a course. This could be for an individual student or for the volume of participation in the course as a whole. Metrics on interest in such a case would be the completion rate of assignments, lecture videos, or rate of involvement in discussion forums.</li>
+</ul>
+
+<p><strong>2. Recommendations</strong></p>
+
+<ul>
+  <li><strong>Courses and topics</strong>: to help students locate courses of interests based on their interactions with the enrolled courses. This presents an opportunity to improve the learning experience by recommending new courses and redirecting to relevant discussion forums.</li>
+  <li><strong>Study buddies</strong>: to help students locate study partners over MOOCs where the number of students participating can vary in terms of engagement, interests, demographics, geography etc.</li>
+</ul>
+
+<p>Recommendation algorithms could focus on similarities or, more importantly dissimilarities between users. For example, a learner who actively engages on discussion forums can be paired with one who is struggling in those topics.</p>
+
+<p><strong>3. Peer-grading</strong></p>
+
+<ul>
+  <li>In MOOCs, generally the teacher-to-student ratio is very small. As a result, it would be infeasible for a teaching staff to manually grade each submission.</li>
+  <li>This is generally tackled by only giving away machine gradable homework or exams, such as MCQs. But this limits the variety and quality of questions that can be posed.</li>
+  <li>A different approach would be where students score each others work. This method lacks efficacy so far, because:
+    <ul>
+      <li>different students have different grading quality</li>
+      <li>time commitment is required for grading</li>
+    </ul>
+  </li>
+  <li>Structure of SLN might help in locating quality-graders for each assignment related to a specific topic.</li>
+</ul>
+
+<p><strong>4. Personalization</strong></p>
+
+<ul>
+  <li>Online education poses the question of trade-off between efficacy and scale in learning. It is statistically seen that only 10% of students enrolling in a MOOC ever complete the courses.</li>
+  <li>The ineffectiveness of MOOCs can be because of the following reasons:
+    <ul>
+      <li>teacher-to-student ratio is very low</li>
+      <li>learning is asynchronous</li>
+      <li>student population is very diverse and hard to personalize</li>
+    </ul>
+  </li>
+  <li>Advance technology is required for course individualization, to lift tradeoff curve and enable effective learning environment at massive scales rather than having a one-size-fits-all online course.</li>
+  <li>The information stored  in SLNs can play a key role in such adaptation to become a part of learning experience.</li>
+</ul>
+
+<p><img src="/assets/2019-06-02-social-learning-networks/fig-1-flowchart-of-individualization.png?raw=true" alt="Fig-1: Flowchart of individualizaiton" /></p>
+
+<ul>
+  <li>The key components of such an indivualization effort can be seen in the flowchart in Fig-1.
+    <ul>
+      <li><strong>Behavioural measurements</strong>: measurement of user behaviour while engaging with course material, e.g. video watching trajectory (pauses and jumps) can be captured, information that user enters in a discussion forum can also be collected.</li>
+      <li><strong>Data analytics</strong>: use machine learning techniques to generate a low-dimensional model of the high-dimensional process of learning. The latent space can be:
+        <ul>
+          <li>discovered throught data mining</li>
+          <li>defined in advance in terms of author-specified learning features</li>
+        </ul>
+      </li>
+      <li><strong>Content/presentation adaptation</strong>: based on the analysis, user’s updated profile dictates decisions on what content will be presented next and how it will be presented, e.g. different versions of text and video may be presented.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="methodologies">Methodologies</h3>
+
+<p><strong>1. Data Collection</strong></p>
+
+<ul>
+  <li>There are two basic modes of data collections, both with pros and cons:
+    <ul>
+      <li><strong>Use existing data</strong>: various open online course offerings over the past years remain open even after the sessions end and gives access to the discussion forums etc. Similary the SLN data from Q&amp;A portals is accessible through the respective websites. This data can easily be crawled and scraped by writing scripts to extract the information from the pages. Major drawbacks of this methodology are:
+        <ul>
+          <li>no opportunity to excite the state of SLN formation for subsequent data analysis</li>
+          <li>only data on open courses is available</li>
+          <li>public data is only accessible upto a certain measurement granularity</li>
+        </ul>
+      </li>
+      <li><strong>Generate new data</strong>: To overcome the cons of earlier method, one can collaborate with the educators. Or alternatively, a team could invest resources in creating  a brand new online education platform to host courses for a number of instructors.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>2. Analysis</strong></p>
+
+<ul>
+  <li>This approach varies widely based on the research objective being tackled and generally involves large-scale machine learning methods.</li>
+  <li>Linear regression models can be used to determine which course properties are correlated with learner participation in the forums, which can be quantified using the number of posts that appeared each day for each course in the dataset.</li>
+  <li>Using user-quiz pair matrix, algorithms can be trained:
+    <ul>
+      <li>baseline predictor for solving least square optimization to minimize error in terms of student and quiz biases.</li>
+      <li>neighbourhood predictorthat extends the baseline to leverage student-student and quiz-quiz similarities</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<ul>
+  <li>SLN data from the online interactions can lead to tracking of information in the network that can assist various objectives that lead to better learning outcomes.</li>
+</ul>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://ieeexplore.ieee.org/document/6814139" target="_blank">Social Learning Networks: A brief survey</a></small><br /></p>
+
+        </section>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+          </div>
+        </footer>
+        <div class="horizontal-divider">· · ·</div>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Research Scientist @ Foundation AI</p>
+              <hr>
+              <p class="published">Published on <time datetime="2019-06-02 00:00">02 Jun 2019</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2019<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        <br>
+        
+        <div id="vc-feelback-main" data-access-token="334e9d2a5dc341469cda15d8c4bd935e" data-display-type="4"></div>
+        
+        <nav class="page-navigation" role="navigation">
+  
+    <a href=/2019/01/15/breaking-down-tesseract-ocr/ class="arrow-button left-arrow-button"><span class="left-arrow"></span><span class="label left-label">Breaking down Tesseract OCR</span></a>
+  
+  
+</nav>
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2019 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script> 
+(function() { 
+  var v = document.createElement('script'); v.async = true; 
+  v.src = "https://assets-prod.vicomi.com/vicomi.js?token=334e9d2a5dc341469cda15d8c4bd935e"; 
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(v, s); 
+})(); 
+</script>
+
+  </body>
+</html>

@@ -5,9 +5,258 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 31 Mar 2019 06:56:00 +0000</pubDate>
-    <lastBuildDate>Sun, 31 Mar 2019 06:56:00 +0000</lastBuildDate>
+    <pubDate>Mon, 03 Jun 2019 13:09:32 +0000</pubDate>
+    <lastBuildDate>Mon, 03 Jun 2019 13:09:32 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>Social Learning Networks</title>
+        <description>&lt;h3 id=&quot;active-recall&quot;&gt;Active Recall&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;What is a SLN?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#characteristics-of-sln&quot;&gt;What do the nodes, connections and weights represent in a SLN graph?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#types-of-sln-graphs&quot;&gt;What are the types of graphs used to represent information in SLN?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An SLN is a type of &lt;strong&gt;social network between student, instructors and modules of learning&lt;/strong&gt;. The network consists of dynamics of learning behaviour over a variety of &lt;strong&gt;graphs that represent the relationships&lt;/strong&gt; among people and processes involved in learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;characteristics-of-sln&quot;&gt;Characteristics of SLN&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People in network &lt;strong&gt;learn through interaction&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Consists of functionality models and &lt;strong&gt;graph-theoretic models&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nodes&lt;/strong&gt; represent learners, learning concepts, or both learners and concepts.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Links&lt;/strong&gt; represent the connection between the nodes.&lt;/li&gt;
+  &lt;li&gt;Links can be &lt;strong&gt;undirected to denote similarity&lt;/strong&gt; or &lt;strong&gt;directed to denote flow of information&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Link weights&lt;/strong&gt; gives magnitude to the connections extracted through some network measurements.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;applications-for-sln&quot;&gt;Applications for SLN&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Massive increase in popularity of &lt;strong&gt;MOOCs&lt;/strong&gt; over the past decades has led to access of unprecedented data that can be easily used in the context of SLNs. Among these data, the discussion forums are of utmost importance as they are the primary means for interaction among students or between students and instructors and help extract SLNs.&lt;/li&gt;
+  &lt;li&gt;The blended learning offered by &lt;strong&gt;FLIP&lt;/strong&gt; that combines the elements of online and traditional instruction is also gaining popularity. In this system, watching the lectures online becomes homework and class time is used for discussions instead.&lt;/li&gt;
+  &lt;li&gt;In the last decade, there has also been a steady rise in the popularity of Q&amp;amp;A Sites which have emerged with complementary search engines that allows users to enter questions in NLP format.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;1. MOOCs Discussion Forums&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Similar to Q&amp;amp;A sites but have a different set of terminologies.&lt;/li&gt;
+  &lt;li&gt;Each course has a &lt;strong&gt;discussion forum&lt;/strong&gt; (hierarchy 1). Discussion forum comprises of &lt;strong&gt;threads&lt;/strong&gt; (hierarchy 2): the first &lt;strong&gt;post&lt;/strong&gt; is by the creator of thread followed by &lt;strong&gt;comments&lt;/strong&gt; (hierarchy 3), hence leading to a 3-level hierarchy.&lt;/li&gt;
+  &lt;li&gt;A user interacting with these forums has one of following options:
+    &lt;ul&gt;
+      &lt;li&gt;Create a thread&lt;/li&gt;
+      &lt;li&gt;Create a post&lt;/li&gt;
+      &lt;li&gt;Comment on an existing post&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When threads are created, each forum allows annotation of these threads with a number categories. These categories are often inconsistent as there is no effective mechanism to force learners to abide by them consistently.&lt;/li&gt;
+  &lt;li&gt;Posts and comments can also &lt;strong&gt;receive up votes and down votes&lt;/strong&gt; from users and staff.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. FLIP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The interaction in these classes can be used to extract the SLN as the structure of posts and comments here would resemble that of MOOCs but would be different on the following accounts:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Size and sparsity&lt;/strong&gt;: smaller number of learners and denser connectivity among them.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Informational vs conversational discussions&lt;/strong&gt;: While MOOC discussions are more conversational in nature, SLN from FLIP would typically not include conversational discussions because students can talk informally outside the class and also because the discussions are presided over by an instructor.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Q&amp;amp;A Sites&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Q&amp;amp;A sites allow the following functions to it’s users:
+    &lt;ul&gt;
+      &lt;li&gt;post question&lt;/li&gt;
+      &lt;li&gt;answer question&lt;/li&gt;
+      &lt;li&gt;comment on answer&lt;/li&gt;
+      &lt;li&gt;up/down vote post&lt;/li&gt;
+      &lt;li&gt;allow asker to choose the best or acceptable answer&lt;/li&gt;
+      &lt;li&gt;for quality assurance there are points associated with receiving up or down votes.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Major differences can be seen between SLNs from such sites and sites from educational settings:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Incentive structure&lt;/strong&gt;: well-defined automated set of incentives to encourage participation. These may or may not be a part of conversation in MOOCs or FLIP, more so because it is not a scalable concept for these forums as participation in MOOCs and FLIP can not be pushed for assessment of student academically.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Broader concept list&lt;/strong&gt;: information propagated in an SLN for a course will be limited to materials associated with the subject. Also each course has it’s own forum where only the students enrolled can participate. Q&amp;amp;A sites have some focal specificity but typically one can expect the number of concepts emerging in these SLNs to be much more broader.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Single learning modality&lt;/strong&gt;: In a Q&amp;amp;A site, SLN is the only means of learning, whereas in an educational setting it is one of the four modalities: lecture videos, assessment and text resources.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;types-of-sln-graphs&quot;&gt;Types of SLN Graphs&lt;/h3&gt;
+
+&lt;p&gt;These are the most commonly used graphs but are not comprehensive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Undirected graph among learners&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nodes represent learners&lt;/li&gt;
+  &lt;li&gt;Undirected links indicate the presence or absence of some characteristics between them. Properties could be age, geographic location, education level, whether or not they have interacted etc.&lt;/li&gt;
+  &lt;li&gt;For nodes \(i\) and \(j\), one can say for example,
+    &lt;ul&gt;
+      &lt;li&gt;\(prop_k(i,j)\) is a binary variable that is 1 iff \(i\) and \(j\) satisfy property \(k\) in set of properties \(K\),&lt;/li&gt;
+      &lt;li&gt;\(P \leq |K|\) is a threshold constant i.e. node \(i\) and \(j\) are connected if and only if they both satisfy at least \(P\) criiteria specified in \(K\).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(i, j) \in G \Leftrightarrow \sum_{k \in K} prop_k(i, j) \geq P \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Directed graph among learners&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Used to note flow of information in the SLN.&lt;/li&gt;
+  &lt;li&gt;A directional link frok \(i\) to \(j\) represents an answer by \(j\) to a question posted by \(i\). Several restrictions can be added to this directional flow e.g. include only “best answers” given.&lt;/li&gt;
+  &lt;li&gt;It could be a multi-graph where there is more than one link from \(i\) to \(j\) since learners can ask and answer more than one question each.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Undirected graph among learners and concepts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nodes are used to represent both the learners as well as the concepts.&lt;/li&gt;
+  &lt;li&gt;Key concepts are extracted in a number of ways:
+    &lt;ul&gt;
+      &lt;li&gt;running textual analysis to find keywords in discussions&lt;/li&gt;
+      &lt;li&gt;using syllabus specified by the instructors&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Such graphs are generally bipartite graphs between learners and concepts.&lt;/li&gt;
+  &lt;li&gt;A setting similar to \eqref{1} represents this graph, but each property \(k\) represent a condition on the participation of user \(i\) in concept \(j\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Directed graph among learners and concepts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To depict structure of interactions in more details.&lt;/li&gt;
+  &lt;li&gt;Concept nodes are used and each question or post by a learner is handled separately, which allows tow sets of links for each post: \((i_0, j) \in G\) for learner \(i_0\) who makes the initial post, and \((j, i_l) \in G\) for each learner \(i_l\) who commented on \(j\).&lt;/li&gt;
+  &lt;li&gt;In a forum where up/down votes are allowed, these links can be weighted to match the net votes obtained.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;research-objectives&quot;&gt;Research Objectives&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Predictions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: ability to predict performance on assessments - homework, quiz, or exam questions - a student has not taken.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Drop-off rate&lt;/strong&gt;: predict drop-off rates of a course. This could be for an individual student or for the volume of participation in the course as a whole. Metrics on interest in such a case would be the completion rate of assignments, lecture videos, or rate of involvement in discussion forums.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Recommendations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Courses and topics&lt;/strong&gt;: to help students locate courses of interests based on their interactions with the enrolled courses. This presents an opportunity to improve the learning experience by recommending new courses and redirecting to relevant discussion forums.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Study buddies&lt;/strong&gt;: to help students locate study partners over MOOCs where the number of students participating can vary in terms of engagement, interests, demographics, geography etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Recommendation algorithms could focus on similarities or, more importantly dissimilarities between users. For example, a learner who actively engages on discussion forums can be paired with one who is struggling in those topics.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Peer-grading&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In MOOCs, generally the teacher-to-student ratio is very small. As a result, it would be infeasible for a teaching staff to manually grade each submission.&lt;/li&gt;
+  &lt;li&gt;This is generally tackled by only giving away machine gradable homework or exams, such as MCQs. But this limits the variety and quality of questions that can be posed.&lt;/li&gt;
+  &lt;li&gt;A different approach would be where students score each others work. This method lacks efficacy so far, because:
+    &lt;ul&gt;
+      &lt;li&gt;different students have different grading quality&lt;/li&gt;
+      &lt;li&gt;time commitment is required for grading&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Structure of SLN might help in locating quality-graders for each assignment related to a specific topic.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Personalization&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Online education poses the question of trade-off between efficacy and scale in learning. It is statistically seen that only 10% of students enrolling in a MOOC ever complete the courses.&lt;/li&gt;
+  &lt;li&gt;The ineffectiveness of MOOCs can be because of the following reasons:
+    &lt;ul&gt;
+      &lt;li&gt;teacher-to-student ratio is very low&lt;/li&gt;
+      &lt;li&gt;learning is asynchronous&lt;/li&gt;
+      &lt;li&gt;student population is very diverse and hard to personalize&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Advance technology is required for course individualization, to lift tradeoff curve and enable effective learning environment at massive scales rather than having a one-size-fits-all online course.&lt;/li&gt;
+  &lt;li&gt;The information stored  in SLNs can play a key role in such adaptation to become a part of learning experience.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-06-02-social-learning-networks/fig-1-flowchart-of-individualization.png?raw=true&quot; alt=&quot;Fig-1: Flowchart of individualizaiton&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The key components of such an indivualization effort can be seen in the flowchart in Fig-1.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Behavioural measurements&lt;/strong&gt;: measurement of user behaviour while engaging with course material, e.g. video watching trajectory (pauses and jumps) can be captured, information that user enters in a discussion forum can also be collected.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Data analytics&lt;/strong&gt;: use machine learning techniques to generate a low-dimensional model of the high-dimensional process of learning. The latent space can be:
+        &lt;ul&gt;
+          &lt;li&gt;discovered throught data mining&lt;/li&gt;
+          &lt;li&gt;defined in advance in terms of author-specified learning features&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Content/presentation adaptation&lt;/strong&gt;: based on the analysis, user’s updated profile dictates decisions on what content will be presented next and how it will be presented, e.g. different versions of text and video may be presented.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;methodologies&quot;&gt;Methodologies&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Data Collection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There are two basic modes of data collections, both with pros and cons:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Use existing data&lt;/strong&gt;: various open online course offerings over the past years remain open even after the sessions end and gives access to the discussion forums etc. Similary the SLN data from Q&amp;amp;A portals is accessible through the respective websites. This data can easily be crawled and scraped by writing scripts to extract the information from the pages. Major drawbacks of this methodology are:
+        &lt;ul&gt;
+          &lt;li&gt;no opportunity to excite the state of SLN formation for subsequent data analysis&lt;/li&gt;
+          &lt;li&gt;only data on open courses is available&lt;/li&gt;
+          &lt;li&gt;public data is only accessible upto a certain measurement granularity&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Generate new data&lt;/strong&gt;: To overcome the cons of earlier method, one can collaborate with the educators. Or alternatively, a team could invest resources in creating  a brand new online education platform to host courses for a number of instructors.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Analysis&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This approach varies widely based on the research objective being tackled and generally involves large-scale machine learning methods.&lt;/li&gt;
+  &lt;li&gt;Linear regression models can be used to determine which course properties are correlated with learner participation in the forums, which can be quantified using the number of posts that appeared each day for each course in the dataset.&lt;/li&gt;
+  &lt;li&gt;Using user-quiz pair matrix, algorithms can be trained:
+    &lt;ul&gt;
+      &lt;li&gt;baseline predictor for solving least square optimization to minimize error in terms of student and quiz biases.&lt;/li&gt;
+      &lt;li&gt;neighbourhood predictorthat extends the baseline to leverage student-student and quiz-quiz similarities&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SLN data from the online interactions can lead to tracking of information in the network that can assist various objectives that lead to better learning outcomes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/document/6814139&quot; target=&quot;_blank&quot;&gt;Social Learning Networks: A brief survey&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
+        <link>https://machinelearningmedium.com/2019/06/02/social-learning-networks/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2019/06/02/social-learning-networks/</guid>
+        
+        <category>machine-learning</category>
+        
+        <category>papers</category>
+        
+        
+      </item>
     
       <item>
         <title>Breaking down Tesseract OCR</title>
@@ -2846,223 +3095,6 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
         <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</guid>
-        
-        <category>machine-learning</category>
-        
-        <category>andrew-ng</category>
-        
-        
-        <category>basics-of-machine-learning</category>
-        
-      </item>
-    
-      <item>
-        <title>K-Means Clustering</title>
-        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;K-means clustering is one of the most popular clustering algorithms.&lt;/li&gt;
-  &lt;li&gt;It gets it name based on its property that it tries to find most optimal user specified k number of clusters in a any dataset. The quality of the dataset and their seperability is subject to implementation details, but it is fairly straight forward iterative algorithm.&lt;/li&gt;
-  &lt;li&gt;It basically involves a random centroid initialization step followed by two steps, namely, cluster assignment step, and centroid calculation step that are executed iteratively until a stable mean set is arrived upon. It becomes more clear in the animation below.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-19-k-means-clustering/fig-1-clustering-animation.gif?raw=true&quot; alt=&quot;Fig-1 K-Means Animation&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Cluster Assignment&lt;/strong&gt;: Assign each data point to one of the two clusters based on its distance from them. A point is assigned to the cluster, whose centroid it is closer to.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Move Centroid:&lt;/strong&gt; After cluster assignment, centroids are moved to the mean of clusters formed. And then the process is repeated. After a certain number of steps the centroids will no longer move around and then the iterations can stop.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;k-means-algorithm&quot;&gt;K-Means Algorithm&lt;/h3&gt;
-
-&lt;p&gt;Input:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(K\), number of clusters&lt;/li&gt;
-  &lt;li&gt;Training set, \(x^{(1)}, x^{(2)}, \cdots, x^{(m)}\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;where:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(x^{(i)} \in \mathbb{R}^n\), as there are no bias terms, \(x_0=1\)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Algorithm:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Randomly initialize \(K\) cluster centroids, \(\mu_1, \mu_2, \cdots, \mu_k \in \mathbb{R}^n\)&lt;/li&gt;
-  &lt;li&gt;Then,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
-\begin{align}
-Repeat \{ \\
-    \text{for }i &amp;= 1\text{ to }m \\
-        &amp; c^{(i)} =\text{ index (from }1\text{ to }K\text{) of centroid closest to }x^{(i)}\text{, i.e., } min_k \lVert x^{(i)} - \mu_k \rVert^2 \\
-    \text{for }k &amp;= 1\text{ to }K \\
-        &amp; \mu_k =\text{ average (mean) of points assigned to cluster, }k\text{, i.e., } \frac {\text{sum of } x^{(i)}\text{, where }c^{(i)} = k} {\text{number of }c^{(i)} = k} \\
-\}
-\end{align}
-\tag{1} \label{1} %]]&gt;&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;It is common to apply k-means to a non-seperated clusters. This has particular applications in segmentation problems, like market segmentation or population division based on pre-selected features.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;optimization-objective&quot;&gt;Optimization Objective&lt;/h3&gt;
-
-&lt;p&gt;Notation:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(c^{(i)}\) - index of cluster \(\{1, 2, \cdots, K\}\) to which example \(x^{(i)}\) is currently assigned&lt;/li&gt;
-  &lt;li&gt;\(\mu_k\) - cluster centroid \(k\), \(\mu_k \in \mathbb{R}^n\)&lt;/li&gt;
-  &lt;li&gt;\(\mu_{c^{(i)}}\) - cluster centroid of the cluster to which the example \(x^{(i)}\) is assigned&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Following the above notation, the cost function of the k-means clustering is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(c^{(1)}, c^{(2)}, \cdots, c^{(m)}, \mu_1, \mu_2, \cdots, \mu_K) = {1 \over m} \sum_{i=1}^m \lVert x^{(i)} - \mu_{c^{(i)}} \rVert^2 \tag{2} \label{2}&lt;/script&gt;
-
-&lt;p&gt;Hence the optimization objective is,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;min_{c^{(1)}, c^{(2)}, \cdots, c^{(m)},\\ \mu_1, \mu_2, \cdots, \mu_K} J(c^{(1)}, c^{(2)}, \cdots, c^{(m)}, \mu_1, \mu_2, \cdots, \mu_K) \tag{3} \label{3}&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The cost function in \eqref{2} is called distortion cost function or the distortion of k-means clustering.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;It can argued that the k-means algorithm in \eqref{1}, is implementing the cost function optimization. This is so because the first step of k-mean clustering, i.e. the cluster assignment step is nothing but the minimization of the cost w.r.t. \(c^{(1)}, c^{(2)}, \cdots, c^{(m)}\) as this step involves assigning a data point to the nearest possible cluster. Similarly the second step, i.e. moving the centroid step is the minimization of the clustering cost w.r.t. \(\mu_1, \mu_2, \cdots, \mu_K\) as the most optimal position of centroid for minimizing the distortion for a given set of points is the mean position.&lt;/p&gt;
-
-&lt;p&gt;One handy way of checking if the clustering alorithm is working correctly is to plot distortion as a function of number of iterations. As both the steps in the k-means are calculated steps for minimization it is always going to decrease or remain approximately constant as the number of iterations increase.&lt;/p&gt;
-
-&lt;h3 id=&quot;random-initialization&quot;&gt;Random Initialization&lt;/h3&gt;
-
-&lt;p&gt;There are various ways for randomly picking out \(K &amp;lt; m\) cluster centroids, but the most recommended one involves picking \(K\) randomly picked training examples and initialize \(\{\mu_1, \mu_2, \cdots, \mu_K\}\) equal to these \(K\) examples.&lt;/p&gt;
-
-&lt;p&gt;Based on initialization, it is possible that k-means could converge to different centroids or stuck in some local optima. One possible solution to this is to try multiple random initializations and then choose the one with the least distortion. It’s fairly usual to run k-means around 50-1000 times with random initialization to make sure that it does not get stuck in local optima.&lt;/p&gt;
-
-&lt;p&gt;Generally the trick of multiple random initializations will help only if the number of clusters is small, i.e. between 2-10. For higher number of clusters the multiple number of random initializations are less likely to help improve the distortion cost function.&lt;/p&gt;
-
-&lt;h3 id=&quot;choosing-the-number-of-clusters&quot;&gt;Choosing the Number of Clusters&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;One way of choosing the number of clusters is by manually visualizing the data.&lt;/li&gt;
-  &lt;li&gt;Sometimes it is ambiguous as to how many clusters exist in the dataset and in such cases it’s rather more useful to choose the number of clusters on the basis of end goal or the number of clusters that serve well the later down stream goal that needs to be extracted from the datasets.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Elbow Method:&lt;/strong&gt; On plotting the distortion as a function of number of clusters, \(K\), this methods says that the optimal number of cluster at the point the elbow occurs as can be seen for line B in the plot below. It is a reasonable way of choosing the number of clusters. But this method does not always work because the sometimes the plot would look like line A which does not have clear elbow to choose.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-19-k-means-clustering/fig-2-elbow-method.png?raw=true&quot; alt=&quot;Fig-2 Elbow Method&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;As a strict rule in k-means, as the number of cluster \(K\) increases, the distortion would decrease. But after some point the increase in cluster would not give much decrease in the distortion.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;example&quot;&gt;Example&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/CourseraMachineLearningAndrewNg/blob/master/k-means.ipynb&quot; target=&quot;\_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cv2&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Given a image it is reshaped into a vector for ease of processing,&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;vec_img&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;astype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Following this K points are randomly chosen and assigned as centroids,&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;choose_random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;choose_random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The two basic steps of k-means clustering, cluster assignment and moving centroids can be implemented as follows,&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;cluster_assignment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newaxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;argmin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;move_centroid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;vec_sub&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;vec_sub&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;The distortion cost fuction is calculated as follows,&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;distortion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Once all the modules are in place, k-means needs to iterate over the steps of cluster assignment and moving centroids until the distorion is within the threshold (threshold chosen = 1),&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;last_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distortion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;curr_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;last_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;last_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;curr_dist&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cluster_assignment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;move_centroid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;    
-    &lt;span class=&quot;n&quot;&gt;curr_dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;distortion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vec_img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Following plots are obtained after running k-means for image compression on two different images,&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-19-k-means-clustering/fig-3-image-compression-1.png?raw=true&quot; alt=&quot;K-Means Compression - Image 1&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-19-k-means-clustering/fig-4-image-compression-2.png?raw=true&quot; alt=&quot;K-Means Compression - Image 2&quot; width=&quot;70%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Following code implements k-means for different values of K.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;elbow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;K_hist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;dist_hist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tqdm&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;K_hist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;mu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k_means&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;K&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;dist_hist&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;K_hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dist_hist&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;xlabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;K&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ylabel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;final distortion&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'elbow plot of image 1'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;elbow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;subplot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;elbow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;img_2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'elbow plot of image 2'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-19-k-means-clustering/fig-5-elbow-plot.png?raw=true&quot; alt=&quot;K-Means Compression - Image 2&quot; width=&quot;80%&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Seeing the two plots it is evident while the elbow plot gives a optimal value of two for image 1, there is no well defined elbow for the image 2 and it is not very clear which value would be optimal as mentioned in the &lt;a href=&quot;#choosing-the-number-of-clusters&quot;&gt;section&lt;/a&gt; above.&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/93VPG/k-means-algorithm&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - K-Means Clustering&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/G6QWt/optimization-objective&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Optimization Objective&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/drcBh/random-initialization&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Random Initialization&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/Ks0E9/choosing-the-number-of-clusters&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Choosing the number of clusters&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Thu, 19 Apr 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/04/19/k-means-clustering/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/19/k-means-clustering/</guid>
         
         <category>machine-learning</category>
         

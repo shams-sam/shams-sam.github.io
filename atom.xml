@@ -4,13 +4,256 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2019-03-31T06:56:00+00:00</updated>
+ <updated>2019-06-03T13:09:32+00:00</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Social Learning Networks</title>
+   <link href="https://machinelearningmedium.com/2019/06/02/social-learning-networks/"/>
+   <updated>2019-06-02T00:00:00+00:00</updated>
+   <id>https://machinelearningmedium.com/2019/06/02/social-learning-networks</id>
+   <content type="html">&lt;h3 id=&quot;active-recall&quot;&gt;Active Recall&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;What is a SLN?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#characteristics-of-sln&quot;&gt;What do the nodes, connections and weights represent in a SLN graph?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#types-of-sln-graphs&quot;&gt;What are the types of graphs used to represent information in SLN?&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An SLN is a type of &lt;strong&gt;social network between student, instructors and modules of learning&lt;/strong&gt;. The network consists of dynamics of learning behaviour over a variety of &lt;strong&gt;graphs that represent the relationships&lt;/strong&gt; among people and processes involved in learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;characteristics-of-sln&quot;&gt;Characteristics of SLN&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People in network &lt;strong&gt;learn through interaction&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;Consists of functionality models and &lt;strong&gt;graph-theoretic models&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Nodes&lt;/strong&gt; represent learners, learning concepts, or both learners and concepts.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Links&lt;/strong&gt; represent the connection between the nodes.&lt;/li&gt;
+  &lt;li&gt;Links can be &lt;strong&gt;undirected to denote similarity&lt;/strong&gt; or &lt;strong&gt;directed to denote flow of information&lt;/strong&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Link weights&lt;/strong&gt; gives magnitude to the connections extracted through some network measurements.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;applications-for-sln&quot;&gt;Applications for SLN&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Massive increase in popularity of &lt;strong&gt;MOOCs&lt;/strong&gt; over the past decades has led to access of unprecedented data that can be easily used in the context of SLNs. Among these data, the discussion forums are of utmost importance as they are the primary means for interaction among students or between students and instructors and help extract SLNs.&lt;/li&gt;
+  &lt;li&gt;The blended learning offered by &lt;strong&gt;FLIP&lt;/strong&gt; that combines the elements of online and traditional instruction is also gaining popularity. In this system, watching the lectures online becomes homework and class time is used for discussions instead.&lt;/li&gt;
+  &lt;li&gt;In the last decade, there has also been a steady rise in the popularity of Q&amp;amp;A Sites which have emerged with complementary search engines that allows users to enter questions in NLP format.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;1. MOOCs Discussion Forums&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Similar to Q&amp;amp;A sites but have a different set of terminologies.&lt;/li&gt;
+  &lt;li&gt;Each course has a &lt;strong&gt;discussion forum&lt;/strong&gt; (hierarchy 1). Discussion forum comprises of &lt;strong&gt;threads&lt;/strong&gt; (hierarchy 2): the first &lt;strong&gt;post&lt;/strong&gt; is by the creator of thread followed by &lt;strong&gt;comments&lt;/strong&gt; (hierarchy 3), hence leading to a 3-level hierarchy.&lt;/li&gt;
+  &lt;li&gt;A user interacting with these forums has one of following options:
+    &lt;ul&gt;
+      &lt;li&gt;Create a thread&lt;/li&gt;
+      &lt;li&gt;Create a post&lt;/li&gt;
+      &lt;li&gt;Comment on an existing post&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When threads are created, each forum allows annotation of these threads with a number categories. These categories are often inconsistent as there is no effective mechanism to force learners to abide by them consistently.&lt;/li&gt;
+  &lt;li&gt;Posts and comments can also &lt;strong&gt;receive up votes and down votes&lt;/strong&gt; from users and staff.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. FLIP&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The interaction in these classes can be used to extract the SLN as the structure of posts and comments here would resemble that of MOOCs but would be different on the following accounts:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Size and sparsity&lt;/strong&gt;: smaller number of learners and denser connectivity among them.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Informational vs conversational discussions&lt;/strong&gt;: While MOOC discussions are more conversational in nature, SLN from FLIP would typically not include conversational discussions because students can talk informally outside the class and also because the discussions are presided over by an instructor.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Q&amp;amp;A Sites&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Q&amp;amp;A sites allow the following functions to it’s users:
+    &lt;ul&gt;
+      &lt;li&gt;post question&lt;/li&gt;
+      &lt;li&gt;answer question&lt;/li&gt;
+      &lt;li&gt;comment on answer&lt;/li&gt;
+      &lt;li&gt;up/down vote post&lt;/li&gt;
+      &lt;li&gt;allow asker to choose the best or acceptable answer&lt;/li&gt;
+      &lt;li&gt;for quality assurance there are points associated with receiving up or down votes.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Major differences can be seen between SLNs from such sites and sites from educational settings:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Incentive structure&lt;/strong&gt;: well-defined automated set of incentives to encourage participation. These may or may not be a part of conversation in MOOCs or FLIP, more so because it is not a scalable concept for these forums as participation in MOOCs and FLIP can not be pushed for assessment of student academically.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Broader concept list&lt;/strong&gt;: information propagated in an SLN for a course will be limited to materials associated with the subject. Also each course has it’s own forum where only the students enrolled can participate. Q&amp;amp;A sites have some focal specificity but typically one can expect the number of concepts emerging in these SLNs to be much more broader.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Single learning modality&lt;/strong&gt;: In a Q&amp;amp;A site, SLN is the only means of learning, whereas in an educational setting it is one of the four modalities: lecture videos, assessment and text resources.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;types-of-sln-graphs&quot;&gt;Types of SLN Graphs&lt;/h3&gt;
+
+&lt;p&gt;These are the most commonly used graphs but are not comprehensive.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Undirected graph among learners&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nodes represent learners&lt;/li&gt;
+  &lt;li&gt;Undirected links indicate the presence or absence of some characteristics between them. Properties could be age, geographic location, education level, whether or not they have interacted etc.&lt;/li&gt;
+  &lt;li&gt;For nodes \(i\) and \(j\), one can say for example,
+    &lt;ul&gt;
+      &lt;li&gt;\(prop_k(i,j)\) is a binary variable that is 1 iff \(i\) and \(j\) satisfy property \(k\) in set of properties \(K\),&lt;/li&gt;
+      &lt;li&gt;\(P \leq |K|\) is a threshold constant i.e. node \(i\) and \(j\) are connected if and only if they both satisfy at least \(P\) criiteria specified in \(K\).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(i, j) \in G \Leftrightarrow \sum_{k \in K} prop_k(i, j) \geq P \tag{1} \label{1}&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Directed graph among learners&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Used to note flow of information in the SLN.&lt;/li&gt;
+  &lt;li&gt;A directional link frok \(i\) to \(j\) represents an answer by \(j\) to a question posted by \(i\). Several restrictions can be added to this directional flow e.g. include only “best answers” given.&lt;/li&gt;
+  &lt;li&gt;It could be a multi-graph where there is more than one link from \(i\) to \(j\) since learners can ask and answer more than one question each.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Undirected graph among learners and concepts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Nodes are used to represent both the learners as well as the concepts.&lt;/li&gt;
+  &lt;li&gt;Key concepts are extracted in a number of ways:
+    &lt;ul&gt;
+      &lt;li&gt;running textual analysis to find keywords in discussions&lt;/li&gt;
+      &lt;li&gt;using syllabus specified by the instructors&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Such graphs are generally bipartite graphs between learners and concepts.&lt;/li&gt;
+  &lt;li&gt;A setting similar to \eqref{1} represents this graph, but each property \(k\) represent a condition on the participation of user \(i\) in concept \(j\).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Directed graph among learners and concepts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To depict structure of interactions in more details.&lt;/li&gt;
+  &lt;li&gt;Concept nodes are used and each question or post by a learner is handled separately, which allows tow sets of links for each post: \((i_0, j) \in G\) for learner \(i_0\) who makes the initial post, and \((j, i_l) \in G\) for each learner \(i_l\) who commented on \(j\).&lt;/li&gt;
+  &lt;li&gt;In a forum where up/down votes are allowed, these links can be weighted to match the net votes obtained.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;research-objectives&quot;&gt;Research Objectives&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Predictions&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: ability to predict performance on assessments - homework, quiz, or exam questions - a student has not taken.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Drop-off rate&lt;/strong&gt;: predict drop-off rates of a course. This could be for an individual student or for the volume of participation in the course as a whole. Metrics on interest in such a case would be the completion rate of assignments, lecture videos, or rate of involvement in discussion forums.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Recommendations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Courses and topics&lt;/strong&gt;: to help students locate courses of interests based on their interactions with the enrolled courses. This presents an opportunity to improve the learning experience by recommending new courses and redirecting to relevant discussion forums.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Study buddies&lt;/strong&gt;: to help students locate study partners over MOOCs where the number of students participating can vary in terms of engagement, interests, demographics, geography etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Recommendation algorithms could focus on similarities or, more importantly dissimilarities between users. For example, a learner who actively engages on discussion forums can be paired with one who is struggling in those topics.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3. Peer-grading&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In MOOCs, generally the teacher-to-student ratio is very small. As a result, it would be infeasible for a teaching staff to manually grade each submission.&lt;/li&gt;
+  &lt;li&gt;This is generally tackled by only giving away machine gradable homework or exams, such as MCQs. But this limits the variety and quality of questions that can be posed.&lt;/li&gt;
+  &lt;li&gt;A different approach would be where students score each others work. This method lacks efficacy so far, because:
+    &lt;ul&gt;
+      &lt;li&gt;different students have different grading quality&lt;/li&gt;
+      &lt;li&gt;time commitment is required for grading&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Structure of SLN might help in locating quality-graders for each assignment related to a specific topic.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;4. Personalization&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Online education poses the question of trade-off between efficacy and scale in learning. It is statistically seen that only 10% of students enrolling in a MOOC ever complete the courses.&lt;/li&gt;
+  &lt;li&gt;The ineffectiveness of MOOCs can be because of the following reasons:
+    &lt;ul&gt;
+      &lt;li&gt;teacher-to-student ratio is very low&lt;/li&gt;
+      &lt;li&gt;learning is asynchronous&lt;/li&gt;
+      &lt;li&gt;student population is very diverse and hard to personalize&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Advance technology is required for course individualization, to lift tradeoff curve and enable effective learning environment at massive scales rather than having a one-size-fits-all online course.&lt;/li&gt;
+  &lt;li&gt;The information stored  in SLNs can play a key role in such adaptation to become a part of learning experience.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-06-02-social-learning-networks/fig-1-flowchart-of-individualization.png?raw=true&quot; alt=&quot;Fig-1: Flowchart of individualizaiton&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The key components of such an indivualization effort can be seen in the flowchart in Fig-1.
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Behavioural measurements&lt;/strong&gt;: measurement of user behaviour while engaging with course material, e.g. video watching trajectory (pauses and jumps) can be captured, information that user enters in a discussion forum can also be collected.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Data analytics&lt;/strong&gt;: use machine learning techniques to generate a low-dimensional model of the high-dimensional process of learning. The latent space can be:
+        &lt;ul&gt;
+          &lt;li&gt;discovered throught data mining&lt;/li&gt;
+          &lt;li&gt;defined in advance in terms of author-specified learning features&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Content/presentation adaptation&lt;/strong&gt;: based on the analysis, user’s updated profile dictates decisions on what content will be presented next and how it will be presented, e.g. different versions of text and video may be presented.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;methodologies&quot;&gt;Methodologies&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1. Data Collection&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;There are two basic modes of data collections, both with pros and cons:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Use existing data&lt;/strong&gt;: various open online course offerings over the past years remain open even after the sessions end and gives access to the discussion forums etc. Similary the SLN data from Q&amp;amp;A portals is accessible through the respective websites. This data can easily be crawled and scraped by writing scripts to extract the information from the pages. Major drawbacks of this methodology are:
+        &lt;ul&gt;
+          &lt;li&gt;no opportunity to excite the state of SLN formation for subsequent data analysis&lt;/li&gt;
+          &lt;li&gt;only data on open courses is available&lt;/li&gt;
+          &lt;li&gt;public data is only accessible upto a certain measurement granularity&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Generate new data&lt;/strong&gt;: To overcome the cons of earlier method, one can collaborate with the educators. Or alternatively, a team could invest resources in creating  a brand new online education platform to host courses for a number of instructors.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;2. Analysis&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This approach varies widely based on the research objective being tackled and generally involves large-scale machine learning methods.&lt;/li&gt;
+  &lt;li&gt;Linear regression models can be used to determine which course properties are correlated with learner participation in the forums, which can be quantified using the number of posts that appeared each day for each course in the dataset.&lt;/li&gt;
+  &lt;li&gt;Using user-quiz pair matrix, algorithms can be trained:
+    &lt;ul&gt;
+      &lt;li&gt;baseline predictor for solving least square optimization to minimize error in terms of student and quiz biases.&lt;/li&gt;
+      &lt;li&gt;neighbourhood predictorthat extends the baseline to leverage student-student and quiz-quiz similarities&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;SLN data from the online interactions can lead to tracking of information in the network that can assist various objectives that lead to better learning outcomes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/document/6814139&quot; target=&quot;_blank&quot;&gt;Social Learning Networks: A brief survey&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Breaking down Tesseract OCR</title>
