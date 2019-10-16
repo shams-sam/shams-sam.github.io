@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>A GAN Architecture for Privacy Preserving Encoding Generation | Machine Learning Medium</title>
+  <meta name="description" content="This paper examines a GAN architecture to generate private encodings by ensuring a two player min-max optimization that regulates information leakage." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="A GAN Architecture for Privacy Preserving Encoding Generation"/>
+  
+  <meta property="og:description" content="This paper examines a GAN architecture to generate private encodings by ensuring a two player min-max optimization that regulates information leakage." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/privacy.jpg" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2019-10-14T00:00:00+00:00">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+        
+          <span class="right-padding-22">|</span>
+          <a class="icon-search" href="/search/"><i class="fa fa-search"></i></a>
+        
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <time datetime="2019-10-14T00:00:00+00:00">Oct 14</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/privacy.jpg) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://www.incimages.com/uploaded_files/image/1940x900/getty_468867139_157971.jpg</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">A GAN Architecture for Privacy Preserving Encoding Generation</h1>
+            <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=A GAN Architecture for Privacy Preserving Encoding Generation&url=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/&title=A GAN Architecture for Privacy Preserving Encoding Generation&summary=This paper examines a GAN architecture to generate private encodings by ensuring a two player min-max optimization that regulates information leakage.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=A GAN Architecture for Privacy Preserving Encoding Generation&amp;body=Check out this site https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+            <h2 class="post-description">This paper examines a GAN architecture to generate private encodings by ensuring a two player min-max optimization that regulates information leakage.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+
+<p>In the current era of increasing data sharing and ubiquity of machine learning there is a very little focus on privacy of the subjects whose data is being shared at such large scale. While most data released promises anonymization of the PIIs, there is much work in literature to point of that simple anonymization techniques fail to mask users if there is an access to auxilliary dataset in which such features are not masked.</p>
+
+<p>In order to fix this issue there has been study in the field of privacy preservation for the datasets in public domain to ensure public trust in sharing their information which eventually is the root to building amazing machine learning models and drawing insights from big data.</p>
+
+<p>This paper discusses a new architecture of GAN which tries to achieve this very objective of anonymization of the private data but in a deep learning setting where the work in overseen by an objective function for the encoder which embeds in itself the notion of anonymizing sensitive columns while trying to maximize the predivity of non-sensitive data columns.</p>
+
+<h3 id="about-the-paper">About the paper</h3>
+
+<p>The GAN framework presented consists of three components (explained in detail in later sections):</p>
+
+<ul>
+  <li>Encoder</li>
+  <li>Ally that predicts the desired variables,</li>
+  <li>Adversary that predicts the sensitive data.</li>
+</ul>
+
+<p>The objective of the GAN framework is two-fold:</p>
+
+<ul>
+  <li>learn low-dimensional representation of data points (users in this case) that excels at  classifying a desired task (whether a user will answer quiz question correctly here)</li>
+  <li>prevent an adversary from recovering sensitive data (each users identity in this case)</li>
+</ul>
+
+<h3 id="background">Background</h3>
+
+<p>Netflix dataset one of the famous datasets which is used for various starter tutorials on recommendation system. The history of privacy breach in this particular case is related to this seemly harmless data. While the company had ensured data anonymization to prevent breach of privacy. It was later discovered that it is easy to locate the users with good accuracy using auxilliary data from other related datasets such as IMDB which does not anonymize its dataset. Similarly there are cases in the domain of insurance companies where it has been proven that reverse engineering is a viable effort despite the anonymization.</p>
+
+<p>It has similarly been shown that one can identify anonymous users in online social networks with upto 90% accuracy. These metrics point to the fact that it is possible for an attacker to uncover sensitive attributes from user data.</p>
+
+<p>One of the popular work that has caught traction in this field is called Differential Privacy (DP), which proposes to add random noise to raw data, where the noise (generally from Laplacian Distribution) level controls the trade off between predictive quality and user privacy. But it has been found that this mechanism also reduces the utility of the data for predictive modeling and increases the sample complexity</p>
+
+<p>The GAN model presented in this particular work is an effort to achieve the privacy (to prevent de-anonymization) while preserving the predictive aspects of the dataset (to overcome the drawbacks of techniques like DP).</p>
+
+<h3 id="contributions">Contributions</h3>
+
+<p>The authors apply this GAN architecture in a online MOOC setting. The objectives of the work include:</p>
+
+<ul>
+  <li>Use the student data to predict whether or not they will answer a quiz correctly.</li>
+  <li>Ensure that the encoded data does not achieve a good convergence on sensitive data such as user identity.</li>
+</ul>
+
+<p><img src="/assets/2019-10-14-learning-informative-and-private-representations/fig-1-gan-architecture.png?raw=true" alt="GAN Architecure" /></p>
+
+<p>The work is different from DP in two key aspects:</p>
+
+<ul>
+  <li>It is data-dependent, i.e., it learns representations from user data</li>
+  <li>Directly uses raw user data without relying on feature engineering</li>
+</ul>
+
+<p>The objective of the GAN is to generate representations that minimize the loss function of the ally while maximizing the loss function of adversary.</p>
+
+<p>One key advantage mentioned about the architecture is that it is model agnostic, i.e. each module can instantiate a specific differential function (e.g. neural networks) based on the needs of the particular application</p>
+
+<h3 id="algorithm">Algorithm</h3>
+
+<p><img src="/assets/2019-10-14-learning-informative-and-private-representations/fig-2-algorithm.png?raw=true" alt="" /></p>
+
+<h3 id="datasets-and-objectives">Datasets and Objectives</h3>
+
+<p>This particular paper presents the empirical results on dataset from the course Networks: Friends, Money and Bytes on Coursera MOOC platform. This has a total of 92 in-video quiz questions among 20 lectures. Each lecture has 4-5 videos. A total of 314,632 clickstreams were recorded for 3976 unique students.</p>
+
+<p>Two types of data are collected about students:</p>
+<ul>
+  <li>Video-watching clickstream: behavior is recorded as a sequence of clickstreams based on actions available in the scrub bar.</li>
+  <li>Question submissions: answers submitted by a student to an in-video question</li>
+</ul>
+
+<p>The final <strong>objective</strong> is defined as a mapping from student’s interaction (clickstream) on a video to their performance on questions (data acquired regarding question submissions)</p>
+
+<p>The data collected can have both time-varying as well as static attributes. Time varying attributes include the series of clickstream before a question is answered, while the static attribute will included metrics like fraction of course completed, amount of time spent etc.</p>
+
+<h3 id="metrics">Metrics</h3>
+
+<ul>
+  <li>Accuracy on binary prediction of questions answered</li>
+  <li>AUC-ROC curve to assess the tradeoff between true and false positive rates</li>
+  <li>K Ranks and Mean average precision at K (MAP@K) to measure performance of privacy preservation</li>
+</ul>
+
+<h3 id="baselines">Baselines</h3>
+
+<ul>
+  <li>Only one baseline benchmark is included in the work which is Laplace Mechanism in DP (Differential Privacy) which simply adds Laplace noise to the data.</li>
+</ul>
+
+<h3 id="findings-and-conclusions">Findings and Conclusions</h3>
+
+<ul>
+  <li>The new architecture outperforms DP in terms of prediction task on question answers. It actually performs slightly better than the original features themselves.</li>
+  <li>With parameter <script type="math/tex">\alpha \to 1</script> in the GAN architecture, encoder is biased towards prediction than sensitive data obfuscation which is theoretically correct.</li>
+  <li>Larger <script type="math/tex">\epsilon</script> in DP means adding smaller noise component to the actual data, and it can be seen that models are better at predictive performance under such a setting.</li>
+  <li>Larger sizes of encoding dimension ensures more preserved information towards both prediction and sensitive data with identical <script type="math/tex">\alpha</script> values. This confirms the fact that the size of representations controls the amount of information contained in data representation.</li>
+  <li>Raw clickstream data with LSTM performs better than the hand-crafted features in terms of the tradeoff between prediction quality vs user privacy.</li>
+</ul>
+
+<h3 id="follow-up-citations">Follow-up Citations</h3>
+
+<ul>
+  <li>J. Bennett, S. Lanning et al., “The netflix prize,” in Proceedings of KDD
+cup and workshop, vol. 2007. New York, NY, USA, 2007, p. 35.</li>
+  <li>A. Narayanan and V. Shmatikov, “Robust de-anonymization of large sparse datasets,” in Security and Privacy, 2008. SP 2008. IEEE Symposium on. IEEE, 2008, pp. 111–125.</li>
+  <li>“De-anonymizing social networks,” in Security and Privacy, 2009
+30th IEEE Symposium on. IEEE, 2009, pp. 173–187.</li>
+  <li>Dwork, F. McSherry, K. Nissim, and A. Smith, “Calibrating noise
+to sensitivity in private data analysis,” in Proc. Theory of Cryptography
+Conference, Mar. 2006, pp. 265–284.</li>
+  <li>“Calibrating noise to sensitivity in private data analysis,” in Theory of Cryptography Conference. Springer, 2006, pp. 265–284.</li>
+  <li>C. Huang, P. Kairouzyz, X. Chen, S. L., and R. Rajagopal, “Context-aware generative adversarial privacy,” arXiv preprint arXiv:1710.09549, Dec. 2017.</li>
+</ul>
+
+<h1 id="references">REFERENCES</h1>
+
+<p><small><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8622089&amp;tag=1" target="_blank">Learning Informative and Private Representations via Generative Adversarial Networks</a></small></p>
+
+        </section>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/gan" class='category-links'><h1>GAN</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+          </div>
+        </footer>
+        <div class="horizontal-divider">· · ·</div>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Research Scientist @ Foundation AI</p>
+              <hr>
+              <p class="published">Published on <time datetime="2019-10-14 00:00">14 Oct 2019</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2019<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        <br>
+        
+        <div id="vc-feelback-main" data-access-token="334e9d2a5dc341469cda15d8c4bd935e" data-display-type="4"></div>
+        
+        <nav class="page-navigation" role="navigation">
+  
+    <a href=/2019/06/02/social-learning-networks/ class="arrow-button left-arrow-button"><span class="left-arrow"></span><span class="label left-label">Social Learning Networks</span></a>
+  
+  
+</nav>
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2019 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['A step away from the illusion of knowledge.'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script> 
+(function() { 
+  var v = document.createElement('script'); v.async = true; 
+  v.src = "https://assets-prod.vicomi.com/vicomi.js?token=334e9d2a5dc341469cda15d8c4bd935e"; 
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(v, s); 
+})(); 
+</script>
+
+  </body>
+</html>

@@ -5,9 +5,142 @@
     <description>A step away from the illusion of knowledge.</description>
     <link>https://machinelearningmedium.com/</link>
     <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 16 Oct 2019 16:20:32 +0000</pubDate>
-    <lastBuildDate>Wed, 16 Oct 2019 16:20:32 +0000</lastBuildDate>
+    <pubDate>Wed, 16 Oct 2019 16:24:35 +0000</pubDate>
+    <lastBuildDate>Wed, 16 Oct 2019 16:24:35 +0000</lastBuildDate>
     <generator>Jekyll v3.6.2</generator>
+    
+      <item>
+        <title>A GAN Architecture for Privacy Preserving Encoding Generation</title>
+        <description>&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;In the current era of increasing data sharing and ubiquity of machine learning there is a very little focus on privacy of the subjects whose data is being shared at such large scale. While most data released promises anonymization of the PIIs, there is much work in literature to point of that simple anonymization techniques fail to mask users if there is an access to auxilliary dataset in which such features are not masked.&lt;/p&gt;
+
+&lt;p&gt;In order to fix this issue there has been study in the field of privacy preservation for the datasets in public domain to ensure public trust in sharing their information which eventually is the root to building amazing machine learning models and drawing insights from big data.&lt;/p&gt;
+
+&lt;p&gt;This paper discusses a new architecture of GAN which tries to achieve this very objective of anonymization of the private data but in a deep learning setting where the work in overseen by an objective function for the encoder which embeds in itself the notion of anonymizing sensitive columns while trying to maximize the predivity of non-sensitive data columns.&lt;/p&gt;
+
+&lt;h3 id=&quot;about-the-paper&quot;&gt;About the paper&lt;/h3&gt;
+
+&lt;p&gt;The GAN framework presented consists of three components (explained in detail in later sections):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Encoder&lt;/li&gt;
+  &lt;li&gt;Ally that predicts the desired variables,&lt;/li&gt;
+  &lt;li&gt;Adversary that predicts the sensitive data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The objective of the GAN framework is two-fold:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;learn low-dimensional representation of data points (users in this case) that excels at  classifying a desired task (whether a user will answer quiz question correctly here)&lt;/li&gt;
+  &lt;li&gt;prevent an adversary from recovering sensitive data (each users identity in this case)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Netflix dataset one of the famous datasets which is used for various starter tutorials on recommendation system. The history of privacy breach in this particular case is related to this seemly harmless data. While the company had ensured data anonymization to prevent breach of privacy. It was later discovered that it is easy to locate the users with good accuracy using auxilliary data from other related datasets such as IMDB which does not anonymize its dataset. Similarly there are cases in the domain of insurance companies where it has been proven that reverse engineering is a viable effort despite the anonymization.&lt;/p&gt;
+
+&lt;p&gt;It has similarly been shown that one can identify anonymous users in online social networks with upto 90% accuracy. These metrics point to the fact that it is possible for an attacker to uncover sensitive attributes from user data.&lt;/p&gt;
+
+&lt;p&gt;One of the popular work that has caught traction in this field is called Differential Privacy (DP), which proposes to add random noise to raw data, where the noise (generally from Laplacian Distribution) level controls the trade off between predictive quality and user privacy. But it has been found that this mechanism also reduces the utility of the data for predictive modeling and increases the sample complexity&lt;/p&gt;
+
+&lt;p&gt;The GAN model presented in this particular work is an effort to achieve the privacy (to prevent de-anonymization) while preserving the predictive aspects of the dataset (to overcome the drawbacks of techniques like DP).&lt;/p&gt;
+
+&lt;h3 id=&quot;contributions&quot;&gt;Contributions&lt;/h3&gt;
+
+&lt;p&gt;The authors apply this GAN architecture in a online MOOC setting. The objectives of the work include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use the student data to predict whether or not they will answer a quiz correctly.&lt;/li&gt;
+  &lt;li&gt;Ensure that the encoded data does not achieve a good convergence on sensitive data such as user identity.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-10-14-learning-informative-and-private-representations/fig-1-gan-architecture.png?raw=true&quot; alt=&quot;GAN Architecure&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The work is different from DP in two key aspects:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is data-dependent, i.e., it learns representations from user data&lt;/li&gt;
+  &lt;li&gt;Directly uses raw user data without relying on feature engineering&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The objective of the GAN is to generate representations that minimize the loss function of the ally while maximizing the loss function of adversary.&lt;/p&gt;
+
+&lt;p&gt;One key advantage mentioned about the architecture is that it is model agnostic, i.e. each module can instantiate a specific differential function (e.g. neural networks) based on the needs of the particular application&lt;/p&gt;
+
+&lt;h3 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-10-14-learning-informative-and-private-representations/fig-2-algorithm.png?raw=true&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;datasets-and-objectives&quot;&gt;Datasets and Objectives&lt;/h3&gt;
+
+&lt;p&gt;This particular paper presents the empirical results on dataset from the course Networks: Friends, Money and Bytes on Coursera MOOC platform. This has a total of 92 in-video quiz questions among 20 lectures. Each lecture has 4-5 videos. A total of 314,632 clickstreams were recorded for 3976 unique students.&lt;/p&gt;
+
+&lt;p&gt;Two types of data are collected about students:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Video-watching clickstream: behavior is recorded as a sequence of clickstreams based on actions available in the scrub bar.&lt;/li&gt;
+  &lt;li&gt;Question submissions: answers submitted by a student to an in-video question&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The final &lt;strong&gt;objective&lt;/strong&gt; is defined as a mapping from student’s interaction (clickstream) on a video to their performance on questions (data acquired regarding question submissions)&lt;/p&gt;
+
+&lt;p&gt;The data collected can have both time-varying as well as static attributes. Time varying attributes include the series of clickstream before a question is answered, while the static attribute will included metrics like fraction of course completed, amount of time spent etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;metrics&quot;&gt;Metrics&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Accuracy on binary prediction of questions answered&lt;/li&gt;
+  &lt;li&gt;AUC-ROC curve to assess the tradeoff between true and false positive rates&lt;/li&gt;
+  &lt;li&gt;K Ranks and Mean average precision at K (MAP@K) to measure performance of privacy preservation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;baselines&quot;&gt;Baselines&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Only one baseline benchmark is included in the work which is Laplace Mechanism in DP (Differential Privacy) which simply adds Laplace noise to the data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;findings-and-conclusions&quot;&gt;Findings and Conclusions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The new architecture outperforms DP in terms of prediction task on question answers. It actually performs slightly better than the original features themselves.&lt;/li&gt;
+  &lt;li&gt;With parameter &lt;script type=&quot;math/tex&quot;&gt;\alpha \to 1&lt;/script&gt; in the GAN architecture, encoder is biased towards prediction than sensitive data obfuscation which is theoretically correct.&lt;/li&gt;
+  &lt;li&gt;Larger &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; in DP means adding smaller noise component to the actual data, and it can be seen that models are better at predictive performance under such a setting.&lt;/li&gt;
+  &lt;li&gt;Larger sizes of encoding dimension ensures more preserved information towards both prediction and sensitive data with identical &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; values. This confirms the fact that the size of representations controls the amount of information contained in data representation.&lt;/li&gt;
+  &lt;li&gt;Raw clickstream data with LSTM performs better than the hand-crafted features in terms of the tradeoff between prediction quality vs user privacy.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;follow-up-citations&quot;&gt;Follow-up Citations&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;J. Bennett, S. Lanning et al., “The netflix prize,” in Proceedings of KDD
+cup and workshop, vol. 2007. New York, NY, USA, 2007, p. 35.&lt;/li&gt;
+  &lt;li&gt;A. Narayanan and V. Shmatikov, “Robust de-anonymization of large sparse datasets,” in Security and Privacy, 2008. SP 2008. IEEE Symposium on. IEEE, 2008, pp. 111–125.&lt;/li&gt;
+  &lt;li&gt;“De-anonymizing social networks,” in Security and Privacy, 2009
+30th IEEE Symposium on. IEEE, 2009, pp. 173–187.&lt;/li&gt;
+  &lt;li&gt;Dwork, F. McSherry, K. Nissim, and A. Smith, “Calibrating noise
+to sensitivity in private data analysis,” in Proc. Theory of Cryptography
+Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
+  &lt;li&gt;“Calibrating noise to sensitivity in private data analysis,” in Theory of Cryptography Conference. Springer, 2006, pp. 265–284.&lt;/li&gt;
+  &lt;li&gt;C. Huang, P. Kairouzyz, X. Chen, S. L., and R. Rajagopal, “Context-aware generative adversarial privacy,” arXiv preprint arXiv:1710.09549, Dec. 2017.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;REFERENCES&lt;/h1&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=8622089&amp;amp;tag=1&quot; target=&quot;_blank&quot;&gt;Learning Informative and Private Representations via Generative Adversarial Networks&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</description>
+        <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+        <link>https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/</link>
+        <guid isPermaLink="true">https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/</guid>
+        
+        <category>GAN</category>
+        
+        <category>machine-learning</category>
+        
+        <category>papers</category>
+        
+        
+      </item>
     
       <item>
         <title>Social Learning Networks</title>
@@ -2813,288 +2946,6 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
         <pubDate>Wed, 02 May 2018 00:00:00 +0000</pubDate>
         <link>https://machinelearningmedium.com/2018/05/02/anomaly-detection/</link>
         <guid isPermaLink="true">https://machinelearningmedium.com/2018/05/02/anomaly-detection/</guid>
-        
-        <category>machine-learning</category>
-        
-        <category>andrew-ng</category>
-        
-        
-        <category>basics-of-machine-learning</category>
-        
-      </item>
-    
-      <item>
-        <title>Principal Component Analysis</title>
-        <description>&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;a href=&quot;/collection/basics-of-machine-learning&quot;&gt;Index&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;div class=&quot;horizontal-divider&quot;&gt;· · ·&lt;/div&gt;
-
-&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
-
-&lt;p&gt;For a given dataset, PCA tries to find a lower dimensional surface onto which these points can be projected while minimizing the approximation losses. For example consider the dataset (marked by blue dots’s) in \(\mathbb{R}^2\) in the the plot below. The line formed by the red x’s is the projection of the data from \(\mathbb{R}^2\) to \(\mathbb{R}\).&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-22-principal-component-analysis/fig-1-pca-projection.png?raw=true&quot; alt=&quot;Fig-1 PCA Projection&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/shams-sam/CourseraMachineLearningAndrewNg/blob/master/PCA.ipynb&quot; target=&quot;_blank&quot;&gt;&lt;strong&gt;Ipython Notebook&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# library imports&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.decomposition&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# random data generation&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;linspace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# applying PCA on data&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# same number of dimensions will help visualize components&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pca&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# reduced number of dimensions will help understand projections&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;pca_reduce&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PCA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# projection on new components found&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X_proj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca_reduce&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# rebuilding the data back to original space&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca_reduce&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inverse_transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;X_proj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# plot data and projection&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'green'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# plot the components&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;soa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ones&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pca&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;components_&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pca&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;pca&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;components_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;atleast_2d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;c&quot;&gt;# components scaled to the length of their variance&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pca&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;explained_variance_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transpose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;soa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;gca&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;ax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;quiver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;angles&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'xy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;scale_units&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'xy'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;scale&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;n&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'rb'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;axis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'scaled'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;draw&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;legend&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;'original'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-    &lt;span class=&quot;s&quot;&gt;'projection'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# plot the projection errors&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_proj&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'g'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-22-principal-component-analysis/fig-2-pca-projection-with-errors.png?raw=true&quot; alt=&quot;Fig-2 PCA Projection, Components, and Projection Errors&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;From the above plot it is easier to point out what exactly PCA is doing. The green points show the original data. So all PCA is trying to do is to find the orthogonal components along which the eigenvalues are maximized which is basically a fancy way of saying that PCA finds a feature set in the order of decreasing variance for a given dataset. In the above example, the red vector is displaying higher variance and is the first component, while the blue vector is displaying relatively less variance.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Performing PCA for number of components greater than the current number of dimensions is useless as the data is preserved with 100% variance in the current dimension and no new dimension can help enhance that metric.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;So, when dimensionality reduction is done using PCA as can be seen in the red dots, the projection is done along the more dominant feature among the two as it is more representative of the data among the two dimensions. Also, it can be seen that the red vector lies on a line than minimizes the projection losses represented by the green lines from the original data point to the projected data points.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Mean Normalization and feature scaling are a must before performing the PCA, so that the variance of a component is not affected by the disparity in the range of values.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Generalizing to n-dimensional data the same technique can be used to reduce the data to k-dimensions in a similar way by finding the hyper-surface with least projection error.&lt;/p&gt;
-
-&lt;h3 id=&quot;projection-vs-prediction&quot;&gt;Projection vs Prediction&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;PCA is not Linear Regression.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;In linear regression, the aim is predict a given dependent variable, \(y\) based on independent variables, \(x\), i.e. &lt;strong&gt;minimize the prediction error&lt;/strong&gt;. In contrast, PCA does not have a target variable, \(y\), it is mere feature reduction by &lt;strong&gt;minimizing the projection error&lt;/strong&gt;. The difference is clear from the plot in Fig-3.&lt;/p&gt;
-
-&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# import the sklearn model&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.linear_model&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LinearRegression&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;lin_reg&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LinearRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;lin_reg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# coef_ gives the regression coefficients&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;y_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lin_reg&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;coef_&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figure&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;figsize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# plot data and projection&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'green'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_pred&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'blue'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# plot the projection errors&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_proj&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X_rebuild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_proj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'r'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# plot the prediction errors&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;zip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hstack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_pred&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;reshape&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))):&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p_orig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;alpha&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-04-22-principal-component-analysis/fig-3-projection-vs-prediction.png?raw=true&quot; alt=&quot;Fig-3 Projection vs Prediction&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The blue points display the prediction based on linear regression, while the red points display the projection on the reduced dimension. The optimization objectives of the two algorithms are different. While linear regression is trying to minimize the squared errors represented by the blue lines, PCA is trying to minimize the projection errors represented by the red lines.&lt;/p&gt;
-
-&lt;h3 id=&quot;mean-normalization-and-feature-scaling&quot;&gt;Mean Normalization and Feature Scaling&lt;/h3&gt;
-
-&lt;p&gt;It is important to have both these steps in the preprocessing, before PCA is applied. The mean of any feature in a design matrix can be calculated by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mu_j = {1 \over m} \sum_{i=1}^m x_j^{(i)} \label{1} \tag{1}&lt;/script&gt;
-
-&lt;p&gt;Following the calculation of means, the normalization can be done by replacing each \(x_j\) by \(x_j - \mu_j\). Similarly, feature scaling is done by replacing each \(x_j^{(i)}\) by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {x_j^{(i)} -\mu_j} {s_j} \label{2} \tag{2}&lt;/script&gt;
-
-&lt;p&gt;where \(s_j\) is some &lt;strong&gt;measure of the range of values of feature&lt;/strong&gt; \(j\). It can be \(max(x_j) - min(x_j)\) or more commonly the standard deviation of the feature.&lt;/p&gt;
-
-&lt;h3 id=&quot;pca-algorithm&quot;&gt;PCA Algorithm&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Compute &lt;strong&gt;covariance matrix&lt;/strong&gt; given by,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\Sigma = {1 \over m} \sum_{i}^n \left( x^{(i)} \right) \left( x^{(i)} \right)^T \label{3} \tag{3}&lt;/script&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;All covariance matrices, \(\Sigma\), satisfy a mathematical property called symmetric positive definite. (Will take up in future posts.)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Follow by this, eigen vectors and eigen values are calculated. There are various ways of doing this, most popularly done by singular value decomposition (SVD) of the covariance matrix. SVD returns three different matrices given by,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;U,S,V = SVD(\Sigma) \label{4} \tag{4}&lt;/script&gt;
-
-&lt;p&gt;where,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;\(\Sigma\) is a \(n * n\) matrix because each \(x^{(i)}\) is a \(n * 1\) vector.&lt;/li&gt;
-  &lt;li&gt;\(U\) is the \(n * n\) matrix where each column represents a component of the PCA. In order to reduce the dimensionality of the data, one needs to choose the first \(k\) columns to form a matrix, \(U_{reduce}\), which is a \(n * k\) matrix.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So the dimensionally compressed data is given by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;z^{(i)} = U_{reduce}^T x^{(i)} \label{5} \tag{5}&lt;/script&gt;
-
-&lt;p&gt;Since, \(U_{reduce}^T\) is \(k * n\) matrix and \(x^{(i)}\) is \(n * 1\) vector, the product, \(z^{(i)}\) is a \(k * 1\) vector with reduced number of dimensions.&lt;/p&gt;
-
-&lt;p&gt;Given a reduced representation, \(z^{(i)}\), we can find its &lt;strong&gt;approximate reconstruction&lt;/strong&gt; in the higher dimension by,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;x_{approx}^{(i)} = U_{reduce} \cdot z^{(i)} \label{6} \tag{6}&lt;/script&gt;
-
-&lt;p&gt;Since, \(U_{reduce}\) is \(n * k\) matrix and \(z^{(i)}\) is \(k * 1\) vector, the product, \(x_{approx}^{(i)}\) is a \(n * 1\) vector with the original number of dimensions.&lt;/p&gt;
-
-&lt;h3 id=&quot;number-of-principal-components&quot;&gt;Number of Principal Components&lt;/h3&gt;
-
-&lt;p&gt;How to determine the number pricipal components to retain during the dimensionality reduction?&lt;/p&gt;
-
-&lt;p&gt;Consider the following two metrics&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The objective of PCA is to minimize the projection error given by,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{1 \over m} \sum_{i=1}^m \lVert x^{(i)} - x_{approx}^{(i)} \rVert^2 \label{7} \tag{7}&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Total variation in the data is given by,&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;{1 \over m} \sum_{i=1}^m \lVert x^{(i)} \rVert^2 \label{8} \tag{8}&lt;/script&gt;
-
-&lt;p&gt;&lt;strong&gt;Rule of Thumb&lt;/strong&gt; is, choose the smallest value of \(k\), such that,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} - x_{approx}^{(i)} \rVert^2} { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} \rVert^2} \leq 0.01 (\text{or } 1\%) \label{9} \tag{9}&lt;/script&gt;
-
-&lt;p&gt;i.e. \(99\%\) of the variance is retained (Generally values such as \(95-90\%\) variance retention are used). It will be seen overtime than often the amount of dimensions reduced is significant while maintaining the 99% variance. (because many features are highly correlated.)&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Talking about the amount of variance retained in more informative than citing the number of principal components retained.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;So for choosing k the following method could be used,&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Try PCA for \(k=1\)&lt;/li&gt;
-  &lt;li&gt;Compute \(U_{reduce}\), \(z^{(1)}, z^{(2)}, \cdots, z^{(m)}\), \(x_{approx}^{(1)}, x_{approx}^{(2)}, \cdots, x_{approx}^{(m)}\)&lt;/li&gt;
-  &lt;li&gt;Check variance retention using \eqref{9}.&lt;/li&gt;
-  &lt;li&gt;Repeat the steps for \(k = 2, 3, \cdots\) to satisfy \eqref{9}.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;There is an easy work around to bypass this tedious process by using \eqref{4}. The matrix \(S\) returned by SVD is a diagonal matrix of eigenvalues corresponding to each of the components in \(U\). \(S\) is a \(n * n\) matrix with diagonal eigenvalues \(s_{11}, s_{22}, \cdots, s_{nn}\) and off-diagonal elements equal to 0. Then for a given value of \(k\),&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} - x_{approx}^{(i)} \rVert^2} { {1 \over m} \sum_{i=1}^m \lVert x^{(i)} \rVert^2} = 1 - \frac {\sum_{i=1}^k s_{ii}} {\sum_{i=1}^n s_{ii}} \label{10} \tag{10}&lt;/script&gt;
-
-&lt;p&gt;Using \eqref{10}, \eqref{9} can be written as,&lt;/p&gt;
-
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac {\sum_{i=1}^k s_{ii}} {\sum_{i=1}^n s_{ii}} \gt 0.99 (\text{or } 99\%) \label{11} \tag{11}&lt;/script&gt;
-
-&lt;p&gt;Now, it is easier to calculate the variance retained by iterating over values of \(k\) and calculating the value in \eqref{11}.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The value in \eqref{10} is a good metrics to cite as the performance of PCA, as to how well is the reduced dimensional data representing the original data.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h3 id=&quot;suggestions-for-using-pca&quot;&gt;Suggestions for Using PCA&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Speed up a learning algorithm&lt;/strong&gt; by reducing the number of features by applying PCA and choosing top-k to maintain 99% variance. PCA should be only applied on the training data to get the \(U_{reduce}\) and not on the cross-validation or test data. This is because \(U_{reduce}\) is parameter of the model and hence should be only learnt on the training data. Once the matrix is determined, the same mapping can be applied on the other two sets.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Run PCA only on the training data, not on cross-validation or test data.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If using PCA for visualization, it does not make sense to choose \(k \gt 3\).&lt;/li&gt;
-  &lt;li&gt;Usage of PCA to reduce overfitting is not correct. The reason it works well in some cases is because it reduces the number of features and hence reduces the variance and increases the bias. But often there are better ways of doing this by using regularization and other similar techniques than use PCA. This would be a bad application of PCA. It is generally adviced against because PCA removes some information without keeping into consideration the target values. While this might work when 99% of the variance is retained, it may as well on various occasions lead to the loss of some useful information. On the other hand, regularization parameters are more optimal for preventing overfitting because while penalizing overfitting they also keep in context the values of the target vector.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Do not use PCA to prevent overfitting. Instead look into &lt;a href=&quot;/2017/09/08/overfitting-and-regularization/&quot; target=&quot;_blank&quot;&gt;regularization&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;It is often worth a shot to try any algorithm without using PCA before diving into dimensionality reduction. So, before implementing PCA, implement the models with original dataset. If this does not give desired result, one should move ahead a try using PCA to reduce the number of features. This would also give a worthy baseline score to match the performance of model against once PCA is applied.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;PCA can also be used in cases when the original data is too big for the disk space. In such cases, compressed data will give some benefits of space saving by dimensionality reduction.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;REFERENCES:&lt;/h2&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/GBFTt/principal-component-analysis-problem-formulation&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - PCA Problem Formulation&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/ZYIPa/principal-component-analysis-algorithm&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Algorithm&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/X8JoQ/reconstruction-from-compressed-representation&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Reconstruction&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/S1bq1/choosing-the-number-of-principal-components&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Choosing the number of principal components&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;
-&lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/RBqQl/advice-for-applying-pca&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Advice&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 22 Apr 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/04/22/principal-component-analysis/</guid>
         
         <category>machine-learning</category>
         

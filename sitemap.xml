@@ -2,10 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://machinelearningmedium.com</loc>
-    <lastmod>2019-10-16T16:20:32+00:00</lastmod>
+    <lastmod>2019-10-16T16:24:35+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+    <url>
+      <loc>https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/</loc>
+      
+        <lastmod>2019-10-14T00:00:00+00:00</lastmod>
+      
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+    </url>
   
     <url>
       <loc>https://machinelearningmedium.com/2019/06/02/social-learning-networks/</loc>
@@ -1507,6 +1516,21 @@
   
   <url>
     <loc>https://machinelearningmedium.com/tag/ocr/index.html</loc>
+    
+      <lastmod>2019-10-16</lastmod>
+    
+    
+      <changefreq>monthly</changefreq>
+    
+    
+      <priority>0.3</priority>
+    
+  </url>
+  
+  
+  
+  <url>
+    <loc>https://machinelearningmedium.com/tag/gan/index.html</loc>
     
       <lastmod>2019-10-16</lastmod>
     

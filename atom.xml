@@ -4,13 +4,138 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2019-10-16T16:20:32+00:00</updated>
+ <updated>2019-10-16T16:24:35+00:00</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
    <email>shams.sam@live.com</email>
  </author>
 
+ 
+ <entry>
+   <title>A GAN Architecture for Privacy Preserving Encoding Generation</title>
+   <link href="https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"/>
+   <updated>2019-10-14T00:00:00+00:00</updated>
+   <id>https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations</id>
+   <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;In the current era of increasing data sharing and ubiquity of machine learning there is a very little focus on privacy of the subjects whose data is being shared at such large scale. While most data released promises anonymization of the PIIs, there is much work in literature to point of that simple anonymization techniques fail to mask users if there is an access to auxilliary dataset in which such features are not masked.&lt;/p&gt;
+
+&lt;p&gt;In order to fix this issue there has been study in the field of privacy preservation for the datasets in public domain to ensure public trust in sharing their information which eventually is the root to building amazing machine learning models and drawing insights from big data.&lt;/p&gt;
+
+&lt;p&gt;This paper discusses a new architecture of GAN which tries to achieve this very objective of anonymization of the private data but in a deep learning setting where the work in overseen by an objective function for the encoder which embeds in itself the notion of anonymizing sensitive columns while trying to maximize the predivity of non-sensitive data columns.&lt;/p&gt;
+
+&lt;h3 id=&quot;about-the-paper&quot;&gt;About the paper&lt;/h3&gt;
+
+&lt;p&gt;The GAN framework presented consists of three components (explained in detail in later sections):&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Encoder&lt;/li&gt;
+  &lt;li&gt;Ally that predicts the desired variables,&lt;/li&gt;
+  &lt;li&gt;Adversary that predicts the sensitive data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The objective of the GAN framework is two-fold:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;learn low-dimensional representation of data points (users in this case) that excels at  classifying a desired task (whether a user will answer quiz question correctly here)&lt;/li&gt;
+  &lt;li&gt;prevent an adversary from recovering sensitive data (each users identity in this case)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;background&quot;&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;Netflix dataset one of the famous datasets which is used for various starter tutorials on recommendation system. The history of privacy breach in this particular case is related to this seemly harmless data. While the company had ensured data anonymization to prevent breach of privacy. It was later discovered that it is easy to locate the users with good accuracy using auxilliary data from other related datasets such as IMDB which does not anonymize its dataset. Similarly there are cases in the domain of insurance companies where it has been proven that reverse engineering is a viable effort despite the anonymization.&lt;/p&gt;
+
+&lt;p&gt;It has similarly been shown that one can identify anonymous users in online social networks with upto 90% accuracy. These metrics point to the fact that it is possible for an attacker to uncover sensitive attributes from user data.&lt;/p&gt;
+
+&lt;p&gt;One of the popular work that has caught traction in this field is called Differential Privacy (DP), which proposes to add random noise to raw data, where the noise (generally from Laplacian Distribution) level controls the trade off between predictive quality and user privacy. But it has been found that this mechanism also reduces the utility of the data for predictive modeling and increases the sample complexity&lt;/p&gt;
+
+&lt;p&gt;The GAN model presented in this particular work is an effort to achieve the privacy (to prevent de-anonymization) while preserving the predictive aspects of the dataset (to overcome the drawbacks of techniques like DP).&lt;/p&gt;
+
+&lt;h3 id=&quot;contributions&quot;&gt;Contributions&lt;/h3&gt;
+
+&lt;p&gt;The authors apply this GAN architecture in a online MOOC setting. The objectives of the work include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Use the student data to predict whether or not they will answer a quiz correctly.&lt;/li&gt;
+  &lt;li&gt;Ensure that the encoded data does not achieve a good convergence on sensitive data such as user identity.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-10-14-learning-informative-and-private-representations/fig-1-gan-architecture.png?raw=true&quot; alt=&quot;GAN Architecure&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The work is different from DP in two key aspects:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It is data-dependent, i.e., it learns representations from user data&lt;/li&gt;
+  &lt;li&gt;Directly uses raw user data without relying on feature engineering&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The objective of the GAN is to generate representations that minimize the loss function of the ally while maximizing the loss function of adversary.&lt;/p&gt;
+
+&lt;p&gt;One key advantage mentioned about the architecture is that it is model agnostic, i.e. each module can instantiate a specific differential function (e.g. neural networks) based on the needs of the particular application&lt;/p&gt;
+
+&lt;h3 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-10-14-learning-informative-and-private-representations/fig-2-algorithm.png?raw=true&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;datasets-and-objectives&quot;&gt;Datasets and Objectives&lt;/h3&gt;
+
+&lt;p&gt;This particular paper presents the empirical results on dataset from the course Networks: Friends, Money and Bytes on Coursera MOOC platform. This has a total of 92 in-video quiz questions among 20 lectures. Each lecture has 4-5 videos. A total of 314,632 clickstreams were recorded for 3976 unique students.&lt;/p&gt;
+
+&lt;p&gt;Two types of data are collected about students:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Video-watching clickstream: behavior is recorded as a sequence of clickstreams based on actions available in the scrub bar.&lt;/li&gt;
+  &lt;li&gt;Question submissions: answers submitted by a student to an in-video question&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The final &lt;strong&gt;objective&lt;/strong&gt; is defined as a mapping from student’s interaction (clickstream) on a video to their performance on questions (data acquired regarding question submissions)&lt;/p&gt;
+
+&lt;p&gt;The data collected can have both time-varying as well as static attributes. Time varying attributes include the series of clickstream before a question is answered, while the static attribute will included metrics like fraction of course completed, amount of time spent etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;metrics&quot;&gt;Metrics&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Accuracy on binary prediction of questions answered&lt;/li&gt;
+  &lt;li&gt;AUC-ROC curve to assess the tradeoff between true and false positive rates&lt;/li&gt;
+  &lt;li&gt;K Ranks and Mean average precision at K (MAP@K) to measure performance of privacy preservation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;baselines&quot;&gt;Baselines&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Only one baseline benchmark is included in the work which is Laplace Mechanism in DP (Differential Privacy) which simply adds Laplace noise to the data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;findings-and-conclusions&quot;&gt;Findings and Conclusions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The new architecture outperforms DP in terms of prediction task on question answers. It actually performs slightly better than the original features themselves.&lt;/li&gt;
+  &lt;li&gt;With parameter &lt;script type=&quot;math/tex&quot;&gt;\alpha \to 1&lt;/script&gt; in the GAN architecture, encoder is biased towards prediction than sensitive data obfuscation which is theoretically correct.&lt;/li&gt;
+  &lt;li&gt;Larger &lt;script type=&quot;math/tex&quot;&gt;\epsilon&lt;/script&gt; in DP means adding smaller noise component to the actual data, and it can be seen that models are better at predictive performance under such a setting.&lt;/li&gt;
+  &lt;li&gt;Larger sizes of encoding dimension ensures more preserved information towards both prediction and sensitive data with identical &lt;script type=&quot;math/tex&quot;&gt;\alpha&lt;/script&gt; values. This confirms the fact that the size of representations controls the amount of information contained in data representation.&lt;/li&gt;
+  &lt;li&gt;Raw clickstream data with LSTM performs better than the hand-crafted features in terms of the tradeoff between prediction quality vs user privacy.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;follow-up-citations&quot;&gt;Follow-up Citations&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;J. Bennett, S. Lanning et al., “The netflix prize,” in Proceedings of KDD
+cup and workshop, vol. 2007. New York, NY, USA, 2007, p. 35.&lt;/li&gt;
+  &lt;li&gt;A. Narayanan and V. Shmatikov, “Robust de-anonymization of large sparse datasets,” in Security and Privacy, 2008. SP 2008. IEEE Symposium on. IEEE, 2008, pp. 111–125.&lt;/li&gt;
+  &lt;li&gt;“De-anonymizing social networks,” in Security and Privacy, 2009
+30th IEEE Symposium on. IEEE, 2009, pp. 173–187.&lt;/li&gt;
+  &lt;li&gt;Dwork, F. McSherry, K. Nissim, and A. Smith, “Calibrating noise
+to sensitivity in private data analysis,” in Proc. Theory of Cryptography
+Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
+  &lt;li&gt;“Calibrating noise to sensitivity in private data analysis,” in Theory of Cryptography Conference. Springer, 2006, pp. 265–284.&lt;/li&gt;
+  &lt;li&gt;C. Huang, P. Kairouzyz, X. Chen, S. L., and R. Rajagopal, “Context-aware generative adversarial privacy,” arXiv preprint arXiv:1710.09549, Dec. 2017.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;REFERENCES&lt;/h1&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=8622089&amp;amp;tag=1&quot; target=&quot;_blank&quot;&gt;Learning Informative and Private Representations via Generative Adversarial Networks&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Social Learning Networks</title>
