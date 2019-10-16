@@ -4,7 +4,7 @@
  <title>Machine Learning Medium</title>
  <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
  <link href="https://machinelearningmedium.com/"/>
- <updated>2019-06-03T13:09:32+00:00</updated>
+ <updated>2019-10-16T16:20:32+00:00</updated>
  <id>https://machinelearningmedium.com</id>
  <author>
    <name>Shams S</name>
@@ -6723,9 +6723,9 @@ Output
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;10^2 \equiv (-1)(-1) = 1 \pmod{11}&lt;/script&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv = -1 \pmod{11}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^3 \equiv (-1)(-1)(-1)= -1 \pmod{11}&lt;/script&gt;
 
-&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv = 1 \pmod{11}&lt;/script&gt;
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;10^4 \equiv (-1)(-1)(-1)(-1)= 1 \pmod{11}&lt;/script&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;\vdots&lt;/script&gt;
 
