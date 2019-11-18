@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2018-10-09T00:00:00+00:00">Oct 9</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -357,8 +357,8 @@
 <p><a href="https://www.kaggle.com/shamssam/algorithmic-fairness-in-ml" target="\_blank"><strong>Kaggle Notebook</strong></a></p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="c">### libraries</span>
-
+<span class="c1">### libraries
+</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -374,8 +374,8 @@
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_valid</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df_train</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">df_train</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
-<span class="c"># aware classification</span>
-
+<span class="c1"># aware classification
+</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">X_train</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
@@ -384,62 +384,62 @@
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">y_valid_hat</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"FEMALE"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">y_valid_hat_female</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_female</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_female</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_female</span><span class="p">)))</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"MALE"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">y_valid_hat_male</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_male</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_male</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_male</span><span class="p">)))</span>
 
 
-<span class="c"># output</span>
+<span class="c1"># output
+</span>
+<span class="c1"># ========================================
+# OVERALL
+# ========================================
+#              precision    recall  f1-score   support
+</span>
+<span class="c1">#           0       0.85      0.90      0.87       165
+#           1       0.82      0.75      0.78       103
+</span>
+<span class="c1"># avg / total       0.84      0.84      0.84       268
+</span>
+<span class="c1"># Accuracy: 0.8395522388059702
+# ========================================
+# FEMALE
+# ========================================
+#              precision    recall  f1-score   support
+</span>
+<span class="c1">#           0       0.45      0.41      0.43        22
+#           1       0.83      0.86      0.84        76
+</span>
+<span class="c1"># avg / total       0.75      0.76      0.75        98
+</span>
+<span class="c1"># Accuracy: 0.7551020408163265
+# ========================================
+# MALE
+# ========================================
+#              precision    recall  f1-score   support
+</span>
+<span class="c1">#           0       0.90      0.97      0.94       143
+#           1       0.75      0.44      0.56        27
+</span>
+<span class="c1"># avg / total       0.88      0.89      0.88       170
+</span>
+<span class="c1"># Accuracy: 0.888235294117647
+</span>
 
-<span class="c"># ========================================</span>
-<span class="c"># OVERALL</span>
-<span class="c"># ========================================</span>
-<span class="c">#              precision    recall  f1-score   support</span>
-
-<span class="c">#           0       0.85      0.90      0.87       165</span>
-<span class="c">#           1       0.82      0.75      0.78       103</span>
-
-<span class="c"># avg / total       0.84      0.84      0.84       268</span>
-
-<span class="c"># Accuracy: 0.8395522388059702</span>
-<span class="c"># ========================================</span>
-<span class="c"># FEMALE</span>
-<span class="c"># ========================================</span>
-<span class="c">#              precision    recall  f1-score   support</span>
-
-<span class="c">#           0       0.45      0.41      0.43        22</span>
-<span class="c">#           1       0.83      0.86      0.84        76</span>
-
-<span class="c"># avg / total       0.75      0.76      0.75        98</span>
-
-<span class="c"># Accuracy: 0.7551020408163265</span>
-<span class="c"># ========================================</span>
-<span class="c"># MALE</span>
-<span class="c"># ========================================</span>
-<span class="c">#              precision    recall  f1-score   support</span>
-
-<span class="c">#           0       0.90      0.97      0.94       143</span>
-<span class="c">#           1       0.75      0.44      0.56        27</span>
-
-<span class="c"># avg / total       0.88      0.89      0.88       170</span>
-
-<span class="c"># Accuracy: 0.888235294117647</span>
-
-
-<span class="c"># unaware classification</span>
-
+<span class="c1"># unaware classification
+</span>
 <span class="n">clf</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">()</span>
 <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">X_train</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
 
@@ -448,58 +448,58 @@
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">y_valid_hat</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat</span><span class="p">)))</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"FEMALE"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">y_valid_hat_female</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_female</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_female</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">True</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_female</span><span class="p">)))</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"MALE"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 <span class="n">y_valid_hat_male</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'Survived'</span><span class="p">,</span> <span class="s">'Sex'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_male</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_male</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Accuracy: {}"</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">X_valid</span><span class="p">[</span><span class="n">X_valid</span><span class="o">.</span><span class="n">Sex</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span><span class="o">.</span><span class="n">Survived</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="n">y_valid_hat_male</span><span class="p">)))</span>
 
-<span class="c"># output</span>
-
-<span class="c"># ========================================</span>
-<span class="c"># OVERALL</span>
-<span class="c"># ========================================</span>
-<span class="c">#              precision    recall  f1-score   support</span>
-
-<span class="c">#           0       0.73      0.84      0.78       165</span>
-<span class="c">#           1       0.66      0.51      0.58       103</span>
-
-<span class="c"># avg / total       0.71      0.71      0.70       268</span>
-
-<span class="c"># Accuracy: 0.7126865671641791</span>
-<span class="c"># ========================================</span>
-<span class="c"># FEMALE</span>
-<span class="c"># ========================================</span>
-<span class="c">#              precision    recall  f1-score   support</span>
-
-<span class="c">#           0       0.32      0.82      0.46        22</span>
-<span class="c">#           1       0.90      0.50      0.64        76</span>
-
-<span class="c"># avg / total       0.77      0.57      0.60        98</span>
-
-<span class="c"># Accuracy: 0.5714285714285714</span>
-<span class="c"># ========================================</span>
-<span class="c"># MALE</span>
-<span class="c"># ========================================</span>
-<span class="c">#              precision    recall  f1-score   support</span>
-
-<span class="c">#           0       0.91      0.84      0.87       143</span>
-<span class="c">#           1       0.39      0.56      0.46        27</span>
-
-<span class="c"># avg / total       0.83      0.79      0.81       170</span>
-
-<span class="c"># Accuracy: 0.7941176470588235</span>
-</code></pre></div></div>
+<span class="c1"># output
+</span>
+<span class="c1"># ========================================
+# OVERALL
+# ========================================
+#              precision    recall  f1-score   support
+</span>
+<span class="c1">#           0       0.73      0.84      0.78       165
+#           1       0.66      0.51      0.58       103
+</span>
+<span class="c1"># avg / total       0.71      0.71      0.70       268
+</span>
+<span class="c1"># Accuracy: 0.7126865671641791
+# ========================================
+# FEMALE
+# ========================================
+#              precision    recall  f1-score   support
+</span>
+<span class="c1">#           0       0.32      0.82      0.46        22
+#           1       0.90      0.50      0.64        76
+</span>
+<span class="c1"># avg / total       0.77      0.57      0.60        98
+</span>
+<span class="c1"># Accuracy: 0.5714285714285714
+# ========================================
+# MALE
+# ========================================
+#              precision    recall  f1-score   support
+</span>
+<span class="c1">#           0       0.91      0.84      0.87       143
+#           1       0.39      0.56      0.46        27
+</span>
+<span class="c1"># avg / total       0.83      0.79      0.81       170
+</span>
+<span class="c1"># Accuracy: 0.7941176470588235
+</span></code></pre></div></div>
 
 <p>Confusion matrices for the cases using awareness and without awareness of protected attribute (sex in this case) is shown below.</p>
 
@@ -546,7 +546,7 @@
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2018-10-09 00:00">09 Oct 2018</time></p>
             </section>
@@ -609,7 +609,7 @@
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -663,7 +663,7 @@
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true

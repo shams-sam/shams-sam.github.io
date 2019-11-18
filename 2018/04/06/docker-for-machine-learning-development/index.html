@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2018-04-06T00:00:00+00:00">Apr 6</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -272,10 +272,10 @@ docker image <span class="nb">ls
 docker image <span class="nb">ls</span> <span class="nt">-a</span>
 
 <span class="c"># remove image from machine</span>
-docker image rm &lt;image id&gt;
+docker image <span class="nb">rm</span> &lt;image <span class="nb">id</span><span class="o">&gt;</span>
 
 <span class="c"># remove all images from this machine</span>
-docker image rm <span class="k">$(</span>docker image <span class="nb">ls</span> <span class="nt">-a</span> <span class="nt">-q</span><span class="k">)</span>
+docker image <span class="nb">rm</span> <span class="si">$(</span>docker image <span class="nb">ls</span> <span class="nt">-a</span> <span class="nt">-q</span><span class="si">)</span>
 </code></pre></div></div>
 
 <h3 id="container">Container</h3>
@@ -304,11 +304,11 @@ docker container stop &lt;container-id&gt;
 docker container <span class="nb">kill</span> &lt;container-id&gt;
 
 <span class="c"># docker container remove using container id</span>
-docker container rm &lt;container-id&gt;
+docker container <span class="nb">rm</span> &lt;container-id&gt;
 
 <span class="c"># remove all containers</span>
-docker container rm <span class="k">$(</span>docker container <span class="nb">ls</span> <span class="nt">-a</span> <span class="nt">-q</span><span class="k">)</span>
-docker container <span class="nb">ls</span> <span class="nt">-a</span> | awk <span class="s1">'{print "docker container rm ",$1}'</span> | bash
+docker container <span class="nb">rm</span> <span class="si">$(</span>docker container <span class="nb">ls</span> <span class="nt">-a</span> <span class="nt">-q</span><span class="si">)</span>
+docker container <span class="nb">ls</span> <span class="nt">-a</span> | <span class="nb">awk</span> <span class="s1">'{print "docker container rm ",$1}'</span> | bash
 
 <span class="c"># attach to a running container</span>
 docker attach &lt;container-id&gt;
@@ -468,7 +468,7 @@ docker-machine ssh &lt;vm-name&gt; &lt;<span class="nb">command</span><span clas
 docker-machine <span class="nt">--native-ssh</span> ssh &lt;vm-name&gt; &lt;<span class="nb">command</span><span class="o">&gt;</span>
 
 <span class="c"># configure shell to interact with docker machine</span>
-<span class="nb">eval</span> <span class="k">$(</span>docker-machine env &lt;vm-name&gt;<span class="k">)</span>
+<span class="nb">eval</span> <span class="si">$(</span>docker-machine <span class="nb">env</span> &lt;vm-name&gt;<span class="si">)</span>
 </code></pre></div></div>
 
 <h3 id="development-notes">Development Notes</h3>
@@ -566,7 +566,7 @@ docker-machine <span class="nt">--native-ssh</span> ssh &lt;vm-name&gt; &lt;<spa
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2018-04-06 00:00">06 Apr 2018</time></p>
             </section>
@@ -629,7 +629,7 @@ docker-machine <span class="nt">--native-ssh</span> ssh &lt;vm-name&gt; &lt;<spa
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -683,7 +683,7 @@ docker-machine <span class="nt">--native-ssh</span> ssh &lt;vm-name&gt; &lt;<spa
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true

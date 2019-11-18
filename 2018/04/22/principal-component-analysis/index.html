@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2018-04-22T00:00:00+00:00">Apr 22</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -252,40 +252,40 @@
 
 <p><a href="https://github.com/shams-sam/CourseraMachineLearningAndrewNg/blob/master/PCA.ipynb" target="_blank"><strong>Ipython Notebook</strong></a></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># library imports</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># library imports
+</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
 
-<span class="c"># random data generation</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="c1"># random data generation
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
-<span class="c"># applying PCA on data</span>
-<span class="c"># same number of dimensions will help visualize components</span>
-<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="c"># reduced number of dimensions will help understand projections</span>
-<span class="n">pca_reduce</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="c"># projection on new components found</span>
-<span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca_reduce</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="c"># rebuilding the data back to original space</span>
-<span class="n">X_rebuild</span> <span class="o">=</span> <span class="n">pca_reduce</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X_proj</span><span class="p">)</span>
+<span class="c1"># applying PCA on data
+# same number of dimensions will help visualize components
+</span><span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># reduced number of dimensions will help understand projections
+</span><span class="n">pca_reduce</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># projection on new components found
+</span><span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca_reduce</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="c1"># rebuilding the data back to original space
+</span><span class="n">X_rebuild</span> <span class="o">=</span> <span class="n">pca_reduce</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X_proj</span><span class="p">)</span>
 <span class="n">X_proj</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
-<span class="c"># plot data and projection</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="c1"># plot data and projection
+</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
 
-<span class="c"># plot the components</span>
-<span class="n">soa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span>
+<span class="c1"># plot the components
+</span><span class="n">soa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span>
     <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">components_</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">*</span> <span class="n">pca</span><span class="o">.</span><span class="n">mean_</span><span class="p">,</span> 
     <span class="n">pca</span><span class="o">.</span><span class="n">components_</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">atleast_2d</span><span class="p">(</span>
-        <span class="c"># components scaled to the length of their variance</span>
-        <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>
+        <span class="c1"># components scaled to the length of their variance
+</span>        <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_</span><span class="p">)</span>
     <span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
 <span class="p">))</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">soa</span><span class="p">)</span>
@@ -306,8 +306,8 @@
     <span class="s">'projection'</span>
 <span class="p">])</span>
 
-<span class="c"># plot the projection errors</span>
-<span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">p_proj</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_rebuild</span><span class="p">):</span>
+<span class="c1"># plot the projection errors
+</span><span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">p_proj</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_rebuild</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s">'g'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
     
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -337,27 +337,27 @@
 
 <p>In linear regression, the aim is predict a given dependent variable, \(y\) based on independent variables, \(x\), i.e. <strong>minimize the prediction error</strong>. In contrast, PCA does not have a target variable, \(y\), it is mere feature reduction by <strong>minimizing the projection error</strong>. The difference is clear from the plot in Fig-3.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># import the sklearn model</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># import the sklearn model
+</span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 
 <span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 <span class="n">lin_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
-<span class="c"># coef_ gives the regression coefficients</span>
-<span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span>
+<span class="c1"># coef_ gives the regression coefficients
+</span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">lin_reg</span><span class="o">.</span><span class="n">coef_</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
 
-<span class="c"># plot data and projection</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
+<span class="c1"># plot data and projection
+</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'green'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X_rebuild</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s">'blue'</span><span class="p">)</span>
 
-<span class="c"># plot the projection errors</span>
-<span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">p_proj</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_rebuild</span><span class="p">):</span>
+<span class="c1"># plot the projection errors
+</span><span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">p_proj</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">X_rebuild</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">p_proj</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s">'r'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 
-<span class="c"># plot the prediction errors</span>
-<span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))):</span>
+<span class="c1"># plot the prediction errors
+</span><span class="k">for</span> <span class="n">p_orig</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">X</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="p">[</span><span class="n">p_orig</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span> <span class="n">c</span><span class="o">=</span><span class="s">'b'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 </code></pre></div></div>
 
@@ -526,7 +526,7 @@
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2018-04-22 00:00">22 Apr 2018</time></p>
             </section>
@@ -589,7 +589,7 @@
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -643,7 +643,7 @@
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true

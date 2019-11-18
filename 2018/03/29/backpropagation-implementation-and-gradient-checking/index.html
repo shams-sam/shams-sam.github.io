@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2018-03-29T00:00:00+00:00">Mar 29</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -246,8 +246,8 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
-<span class="c"># define XOR training data</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+<span class="c1"># define XOR training data
+</span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
@@ -259,87 +259,87 @@
 <span class="k">print</span><span class="p">(</span><span class="s">'X.shape:'</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">'y.shape:'</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-<span class="c"># defining network parameters</span>
-<span class="c"># [2, 2, 1] will also work for the XOR problem presented</span>
-<span class="n">LAYERS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="n">ETA</span> <span class="o">=</span> <span class="o">.</span><span class="mi">1</span>
+<span class="c1"># defining network parameters
+# [2, 2, 1] will also work for the XOR problem presented
+</span><span class="n">LAYERS</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">ETA</span> <span class="o">=</span> <span class="mf">.1</span>
 <span class="n">THETA</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="c"># sigmoid activation function</span>
-<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="c1"># sigmoid activation function
+</span><span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
 
-<span class="c"># derivative of sigmoid activation function</span>
-<span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="c1"># derivative of sigmoid activation function
+</span><span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 
-<span class="c"># calculating cost given the prediction and actual vectors</span>
-<span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="c1"># calculating cost given the prediction and actual vectors
+</span><span class="k">def</span> <span class="nf">cost</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">_</span> <span class="o">*</span> <span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="p">(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)])</span>
 
-<span class="c"># initialing THETA params for all the layers</span>
-<span class="k">def</span> <span class="nf">initialize_parameters</span><span class="p">():</span>
+<span class="c1"># initialing THETA params for all the layers
+</span><span class="k">def</span> <span class="nf">initialize_parameters</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">LAYERS</span><span class="p">)):</span>
         <span class="n">THETA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">LAYERS</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">LAYERS</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="c"># vectorized forward propagation</span>
-<span class="k">def</span> <span class="nf">forward_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">initialize</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
+<span class="c1"># vectorized forward propagation
+</span><span class="k">def</span> <span class="nf">forward_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">initialize</span><span class="o">=</span><span class="bp">True</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">initialize</span><span class="p">:</span>
         <span class="n">initialize_parameters</span><span class="p">()</span>
-    <span class="c"># adding bias column to the input X</span>
-    <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="p">))]</span>
+    <span class="c1"># adding bias column to the input X
+</span>    <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="p">))]</span>
     <span class="n">Z</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">activate</span> <span class="o">=</span> <span class="bp">False</span>
     <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">theta</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">THETA</span><span class="p">):</span>
         <span class="n">Z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">theta</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
-        <span class="c"># adding bias column to the output of previous layer</span>
-        <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)),</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))))</span>
-    <span class="c"># bias is not needed in the final output</span>
-    <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span>
+        <span class="c1"># adding bias column to the output of previous layer
+</span>        <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)),</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))))</span>
+    <span class="c1"># bias is not needed in the final output
+</span>    <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span>
     <span class="n">y_hat</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span>
 
-<span class="c"># vectorized backpropagation</span>
-<span class="k">def</span> <span class="nf">back_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="c"># run a forward pass</span>
-    <span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span> <span class="o">=</span> <span class="n">forward_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">initialize</span><span class="p">)</span>
-    <span class="c"># calculate delta at final output</span>
-    <span class="n">del_</span> <span class="o">=</span> <span class="p">[(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
+<span class="c1"># vectorized backpropagation
+</span><span class="k">def</span> <span class="nf">back_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="c1"># run a forward pass
+</span>    <span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span> <span class="o">=</span> <span class="n">forward_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">initialize</span><span class="p">)</span>
+    <span class="c1"># calculate delta at final output
+</span>    <span class="n">del_</span> <span class="o">=</span> <span class="p">[(</span><span class="n">y_hat</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="n">cost</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-    <span class="c"># flag to signify whether a layer has bias column of not</span>
-    <span class="n">bias_free</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="c"># running in reverse because delta is propagated backwards</span>
-    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">THETA</span><span class="p">))):</span>
+    <span class="c1"># flag to signify whether a layer has bias column of not
+</span>    <span class="n">bias_free</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="c1"># running in reverse because delta is propagated backwards
+</span>    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">THETA</span><span class="p">))):</span>
         <span class="k">if</span> <span class="n">bias_free</span><span class="p">:</span>
-            <span class="c"># true only for the final layer where there is no bias</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+            <span class="c1"># true only for the final layer where there is no bias
+</span>            <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
             <span class="n">bias_free</span><span class="o">=</span><span class="bp">False</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c"># true for all the layers except the input and output layer</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:],</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+            <span class="c1"># true for all the layers except the input and output layer
+</span>            <span class="n">temp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="mi">0</span><span class="p">][:,</span><span class="mi">1</span><span class="p">:],</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">Z</span><span class="p">[</span><span class="n">idx</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
         <span class="n">del_</span> <span class="o">=</span> <span class="p">[</span><span class="n">temp</span><span class="p">]</span> <span class="o">+</span> <span class="n">del_</span>
     <span class="n">del_theta</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">bias_free</span> <span class="o">=</span> <span class="bp">True</span>
-    <span class="c"># calculation for the delta in the parameters</span>
-    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">del_</span><span class="p">))):</span>
+    <span class="c1"># calculation for the delta in the parameters
+</span>    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">del_</span><span class="p">))):</span>
         <span class="k">if</span> <span class="n">bias_free</span><span class="p">:</span>
-            <span class="c"># true only for the final layer where there is no bias</span>
-            <span class="n">del_theta</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">ETA</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">])]</span> <span class="o">+</span> <span class="n">del_theta</span>
+            <span class="c1"># true only for the final layer where there is no bias
+</span>            <span class="n">del_theta</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">ETA</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">])]</span> <span class="o">+</span> <span class="n">del_theta</span>
             <span class="n">bias_free</span> <span class="o">=</span> <span class="bp">False</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="c"># true for all the layers except the input and output layer</span>
-            <span class="n">del_theta</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">ETA</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="n">idx</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">])]</span> <span class="o">+</span> <span class="n">del_theta</span>
-    <span class="c"># update parameters</span>
-    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">THETA</span><span class="p">)):</span>
-        <span class="c"># asserting that the matrix sizes are same</span>
-        <span class="k">assert</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">del_theta</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+            <span class="c1"># true for all the layers except the input and output layer
+</span>            <span class="n">del_theta</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">ETA</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">del_</span><span class="p">[</span><span class="n">idx</span><span class="p">][:,</span> <span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">])]</span> <span class="o">+</span> <span class="n">del_theta</span>
+    <span class="c1"># update parameters
+</span>    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">THETA</span><span class="p">)):</span>
+        <span class="c1"># asserting that the matrix sizes are same
+</span>        <span class="k">assert</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="n">del_theta</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
         <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+</span> <span class="n">del_theta</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">del_</span><span class="p">,</span> <span class="n">del_theta</span><span class="p">)</span>
 
-<span class="c"># training epochs</span>
-<span class="n">initialize</span><span class="o">=</span><span class="bp">True</span>
+<span class="c1"># training epochs
+</span><span class="n">initialize</span><span class="o">=</span><span class="bp">True</span>
 <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span>
 <span class="n">THETA</span><span class="o">=</span><span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10000</span><span class="p">):</span>
@@ -349,11 +349,11 @@
     <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span>
     <span class="n">initialize</span><span class="o">=</span><span class="bp">False</span>
 
-<span class="c"># inference after training</span>
-<span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span> <span class="o">=</span> <span class="n">forward_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="c1"># inference after training
+</span><span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span> <span class="o">=</span> <span class="n">forward_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">initialize</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="c"># final output of the network</span>
-<span class="k">print</span><span class="p">(</span><span class="n">y_hat</span><span class="p">)</span>
+<span class="c1"># final output of the network
+</span><span class="k">print</span><span class="p">(</span><span class="n">y_hat</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p><strong>Sometimes, it can been seen that the network get stuck over a few epochs and then continues to converge quickly. It might be due to the fact that the implementation of neural network above is not the most optimum because of using the mean squared error cost function which is not the recommended for classification purposes because of the issues explained in <a href="/2017/08/31/classification-and-representation/">Classification and Logistic Regression</a>.</strong></p>
@@ -380,16 +380,16 @@
 
 <p>Using the NumPy example of backpropagation, gradient checking can be confirmed as follows:</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># set epsilon and the index of THETA to check</span>
-<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.01</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># set epsilon and the index of THETA to check
+</span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.01</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="c"># reset THETA and run backpropagation</span>
-<span class="n">THETA</span><span class="o">=</span><span class="p">[]</span>
+<span class="c1"># reset THETA and run backpropagation
+</span><span class="n">THETA</span><span class="o">=</span><span class="p">[]</span>
 <span class="n">A</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">y_hat</span><span class="p">,</span> <span class="n">del_</span><span class="p">,</span> <span class="n">del_theta</span> <span class="o">=</span> <span class="n">back_propagation</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="bp">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
-<span class="c"># calculate the approximate gradients using centered difference formula</span>
-<span class="n">grad_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="c1"># calculate the approximate gradients using centered difference formula
+</span><span class="n">grad_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">THETA</span><span class="p">[</span><span class="n">idx</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">epsilon</span>
@@ -463,7 +463,7 @@ from grad check:
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2018-03-29 00:00">29 Mar 2018</time></p>
             </section>
@@ -526,7 +526,7 @@ from grad check:
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -580,7 +580,7 @@ from grad check:
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true

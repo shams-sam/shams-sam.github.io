@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2018-02-04T00:00:00+00:00">Feb 4</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -325,12 +325,12 @@
 </ul>
 
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% change brightness</span>
-<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">scale</span><span class="p">(</span><span class="nb">image</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-  <span class="n">result</span> <span class="o">=</span> <span class="nb">image</span> <span class="o">.*</span> <span class="n">value</span><span class="p">;</span>
+<span class="k">function</span> <span class="nb">result</span> <span class="o">=</span> <span class="nb">scale</span><span class="p">(</span><span class="nb">image</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+  <span class="nb">result</span> <span class="o">=</span> <span class="nb">image</span> <span class="o">.*</span> <span class="n">value</span><span class="p">;</span>
 <span class="n">endfunction</span>
 
-<span class="nb">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-<span class="nb">imshow</span><span class="p">(</span><span class="n">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="nb">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="nb">imshow</span><span class="p">(</span><span class="nb">scale</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">));</span>
 </code></pre></div></div>
 
 <ul>
@@ -367,8 +367,8 @@
   <li>Alpha blending has roots in weighted addition of two images to maintain pixel limits within the range.</li>
 </ul>
 
-<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">image_1</span><span class="p">,</span> <span class="n">image_2</span><span class="p">,</span> <span class="nb">alpha</span><span class="p">)</span>
-  <span class="n">result</span> <span class="o">=</span> <span class="nb">alpha</span> <span class="o">.*</span> <span class="n">image_1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">alpha</span><span class="p">)</span> <span class="o">.*</span> <span class="n">image_2</span><span class="p">;</span>
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="nb">result</span> <span class="o">=</span> <span class="n">blend</span><span class="p">(</span><span class="n">image_1</span><span class="p">,</span> <span class="n">image_2</span><span class="p">,</span> <span class="nb">alpha</span><span class="p">)</span>
+  <span class="nb">result</span> <span class="o">=</span> <span class="nb">alpha</span> <span class="o">.*</span> <span class="n">image_1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="nb">alpha</span><span class="p">)</span> <span class="o">.*</span> <span class="n">image_2</span><span class="p">;</span>
 <span class="n">endfunction</span>
 
 <span class="nb">imshow</span><span class="p">(</span><span class="n">blend</span><span class="p">(</span><span class="n">img_1</span><span class="p">,</span> <span class="n">img_2</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">));</span>
@@ -411,7 +411,7 @@
 
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% plotting randn</span>
 <span class="n">noise</span> <span class="o">=</span> <span class="nb">randn</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">]);</span>
-<span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">hist</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
+<span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="nb">hist</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">));</span>
 <span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
 <span class="nb">title</span><span class="p">(</span><span class="s1">'plot of randn function'</span><span class="p">);</span>
 <span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">);</span>
@@ -538,7 +538,7 @@
 
 <div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">% weighted moving average for 1D</span>
 <span class="c1">% assuming weights to be an odd sized vector</span>
-<span class="k">function</span> <span class="n">result</span> <span class="o">=</span> <span class="n">weighted_moving_average</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
+<span class="k">function</span> <span class="nb">result</span> <span class="o">=</span> <span class="n">weighted_moving_average</span><span class="p">(</span><span class="n">series</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span>
   <span class="n">size_weights</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">weights</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
   <span class="n">size_series</span> <span class="o">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">series</span><span class="p">)(</span><span class="mi">2</span><span class="p">);</span>
   <span class="n">padding</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size_weights</span><span class="p">/</span><span class="mi">2</span><span class="p">);</span>
@@ -550,7 +550,7 @@
         <span class="o">.</span><span class="p">/</span><span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
         <span class="o">.*</span><span class="n">weights</span><span class="p">);</span>
   <span class="n">endfor</span>
-  <span class="n">result</span> <span class="o">=</span> <span class="n">series</span><span class="p">;</span>
+  <span class="nb">result</span> <span class="o">=</span> <span class="n">series</span><span class="p">;</span>
 <span class="n">endfunction</span>
 
 <span class="c1">% weighted moving average over a random vector</span>
@@ -787,7 +787,7 @@
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2018-02-04 00:00">04 Feb 2018</time></p>
             </section>
@@ -850,7 +850,7 @@
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -904,7 +904,7 @@
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true

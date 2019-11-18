@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <!-- (1) Optimize for mobile versions: http://goo.gl/EOpFl -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- (1) force latest IE rendering engine: bit.ly/1c8EiC9 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  
+
+  <title>Generative Adversarial Networks | Machine Learning Medium</title>
+  <meta name="description" content="GAN originally presented by Goodfellow et al is a novel technique that uses a minmax two-player game to learn latent data distributions." />
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  
+  
+  <meta property="og:site_name" content="Machine Learning Medium" />
+  <meta property="og:title" content="Generative Adversarial Networks"/>
+  
+  <meta property="og:description" content="GAN originally presented by Goodfellow et al is a novel technique that uses a minmax two-player game to learn latent data distributions." />
+  
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/gan.png" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/" >
+  <meta property="og:type" content="blog" />
+  <meta property="article:published_time" content="2019-10-29T00:00:00+00:00">
+
+  <link rel="canonical" href="https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"/>
+  <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
+  <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="print" href="/css/print.css" />
+  <link rel="stylesheet" type="text/css" href="/css/custom.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/share_bar.css" />
+  <link rel="stylesheet" type="text/css" href="/public/css/syntax.css" />
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,600|Open+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" >
+  <link rel="shortcut icon" href="/public/fav.ico?v1">
+
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+
+</head>
+
+  <body itemscope itemtype="http://schema.org/Article">
+    <div class="metabar metabar-header">
+  <div class="metabar-inner">
+    <div class="quote-div">
+      <a class="icon-quote" href="/">
+        <i class="fa fa-quote-left fa-pull-left fa-border" aria-hidden="true"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="sectionbar sectionbar-header">
+  <div class="sectionbar-inner">
+    <div class="table">
+      <div class="category-links table-cell">
+        
+          <a href=/>Home</a>
+        
+        
+        <a href="/tag/machine-learning">Machine Learning</a>
+        
+        <a href="/tag/mathematics">Mathematics</a>
+        
+        <a href="/tag/papers">Papers</a>
+        
+        <span class="right-padding-22">|</span>
+        <a href=/collections/ class="">Collections</a>
+        <a href=/tags/ class="">Tags</a>
+        
+          <span class="right-padding-22">|</span>
+          <a class="icon-search" href="/search/"><i class="fa fa-search"></i></a>
+        
+      </div>
+      <div class="social-links table-cell">
+        <!-- 
+          
+              <a class="icon-github-alt" href="https://github.com/shams-sam/shams-sam.github.io"  title="Gihub Project" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-github-alt fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-facebook" href="https://facebook.com/shams-sam"  title="Facebook" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-facebook fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-twitter" href="https://twitter.com/sshamssam"  title="Twitter" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-twitter fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-linkedin" href="https://linkedin.com/in/shams-sheikh-20328154"  title="LinkedIn" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-linkedin fa-stack-1x"></i>
+                </span>
+              </a>
+          
+        
+          
+              <a class="icon-envelope" href="mailto:shams.sam@live.com"  title="E-mail" target="_blank">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-envelope fa-stack-1x"></i>
+                </span>
+              </a>
+          
+         -->
+        <div class="fb-like" data-href="https://www.facebook.com/machinelearningmedium/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+        <a href="https://twitter.com/sshamssam" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-dnt="true" data-show-count="false"></a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="author-strip">
+      <div class="author-strip-inner">
+        <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+        <div class="author-detail">
+          <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
+          <time datetime="2019-10-29T00:00:00+00:00">Oct 29</time>
+          <span class="middot">&#183;</span>
+          <div class="post-reading">
+            <span class="post-reading-time"></span> read
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="postcover">
+    <div class="postimage">
+        <div class="postimage-image"  style="background-image: url(/assets/images/gan.png) ">
+        </div>
+    </div>
+    
+    <figcaption>Image Source: https://user-images.githubusercontent.com/8406802/45344464-683fb800-b569-11e8-90fe-a228401ffadd.png</figcaption>
+    
+    </div>
+    <main class="content post-content" role="main">
+      <article class="post">
+        <div class="noarticleimage">
+          <div class="post-meta">
+            <h1 class="post-title">Generative Adversarial Networks</h1>
+            <section class="share">
+            <span id="share-bar">
+
+    <span><i class="fa fa-share-alt"></i></span>
+
+    <span class="share-buttons">
+        <span>
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Facebook" >
+            <i class="fa fa-facebook-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://twitter.com/intent/tweet?text=Generative Adversarial Networks&url=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Twitter" >
+            <i class="fa fa-twitter-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Google+" >
+            <i class="fa fa-google-plus-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Pinterest" >
+            <i class="fa fa-pinterest-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Tumblr" >
+            <i class="fa fa-tumblr-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on Reddit" >
+            <i class="fa fa-reddit-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/&title=Generative Adversarial Networks&summary=GAN originally presented by Goodfellow et al is a novel technique that uses a minmax two-player game to learn latent data distributions.&source=Machine Learning Medium"
+            onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
+            title="Share on LinkedIn" >
+            <i class="fa fa-linkedin-square"></i>
+        </a>
+        </span>
+        <span>
+        <a  href="mailto:?subject=Generative Adversarial Networks&amp;body=Check out this site https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"
+            title="Share via Email" >
+            <i class="fa fa-envelope-square"></i>
+        </a>
+        </span>
+    </span>
+
+</span>
+          </section>
+            <h2 class="post-description">GAN originally presented by Goodfellow et al is a novel technique that uses a minmax two-player game to learn latent data distributions.</h2>
+          </div>
+        </div>
+        <div class="horizontal-divider">&#183; &#183; &#183;</div>
+        <section class="post-content">
+          <a name="topofpage"></a>
+          <h3 id="introduction">Introduction</h3>
+
+<p>The basic <strong>adversarial</strong> framework of the GAN architecture can be broken down into the following <strong>two players</strong>:</p>
+<ul>
+  <li>A <strong>generative</strong> model <script type="math/tex">G</script>, that tries to capture the latent data distribution.</li>
+  <li>A <strong>discriminative</strong> model <script type="math/tex">D</script>, that estimates the probability that a sample came from training data rather than <script type="math/tex">G</script>.</li>
+</ul>
+
+<p>The framework is adversarial in the sense that the training procedure for <script type="math/tex">G</script> tries to <strong>maximize the probability of <script type="math/tex">D</script> making a mistake</strong>. The framework thus corresponds to a minimax two-player game.</p>
+
+<h3 id="related-generative-models">Related Generative Models</h3>
+
+<ul>
+  <li>Restricted Boltzmann Machines</li>
+  <li>Deep Boltzmann Machines</li>
+  <li>Deep Belief Networks</li>
+  <li>Denoising Autoencoders</li>
+  <li>Contractive Autoencoders</li>
+  <li>Generative Stochastic Network</li>
+</ul>
+
+<h3 id="notations">Notations</h3>
+
+<ul>
+  <li>Easiest to implement GANs when the models are <strong>multilayer perceptrons</strong> for both generator and discriminator.</li>
+  <li><script type="math/tex">p_g</script> is the generator’s distribution over data <script type="math/tex">x</script>.</li>
+  <li><script type="math/tex">p_z(z)</script> is an input noise function and <script type="math/tex">G(z; \theta_g)</script> is the mapping to data space.</li>
+  <li><script type="math/tex">G</script> is differentiable function represented by a paramter <script type="math/tex">\theta_g</script>.</li>
+  <li><script type="math/tex">D</script> is another differentiable function that outputs a scalar.</li>
+  <li><script type="math/tex">D(x)</script> represents the probability of assigning the correct label to both training examples and samples from <script type="math/tex">G</script>.</li>
+  <li><script type="math/tex">G</script> is simultaneously trained to minimize <script type="math/tex">log(1-D(G(z)))</script></li>
+</ul>
+
+<h3 id="optimization-objective">Optimization Objective</h3>
+
+<p>The training framework between <script type="math/tex">D</script> and <script type="math/tex">G</script> can be represented by a two player minimax game in value function <script type="math/tex">V(G,D)</script>,</p>
+
+<script type="math/tex; mode=display">\min_G \max_D V(D, G) = \mathbb{E}_{x\sim p_{data}(x)} [log D(x)] + \mathbb{E}_{z\sim p_z(z)} [log(1 - D(G(z)))]</script>
+
+<p><img src="/assets/2019-10-29-generative-adversarial-networks/fig-2-Generative-Adversarial-Network-GAN.png?raw=true" alt="GAN Architecture" /></p>
+
+<h3 id="implementation-details">Implementation Details</h3>
+
+<ul>
+  <li><script type="math/tex">G</script> and <script type="math/tex">D</script> are trained iteratively one after the other</li>
+  <li><script type="math/tex">D</script> is not optimized to completion as it would lead to overfitting</li>
+  <li>Alternate between <script type="math/tex">k</script> steps of optimizing <script type="math/tex">D</script> and one step of <script type="math/tex">G</script></li>
+  <li>Results in <script type="math/tex">D</script> near its optimal, so long as <script type="math/tex">G</script> changes slowly.</li>
+  <li>Early in learning when <script type="math/tex">G</script> is poor <script type="math/tex">D</script> can reject samples with high confidence which causes <script type="math/tex">log(1-D(G(z)))</script> to saturate</li>
+  <li>Instead of minimizing <script type="math/tex">log(1-D(G(z)))</script>, maximize <script type="math/tex">log(D(G(z)))</script> for stronger gradients early in the learning.</li>
+</ul>
+
+<p><img src="/assets/2019-10-29-generative-adversarial-networks/fig-1-gan-algorithm.png?raw=true" alt="Algorithm for GAN training" /></p>
+
+<h3 id="theoretical-results">Theoretical Results</h3>
+
+<p>For a fixed <script type="math/tex">G</script>, the optimal discriminator can be found by differentiating the objective function w.r.t. <script type="math/tex">D(x)</script>. The objective function is of the form,</p>
+
+<script type="math/tex; mode=display">f(y) = a\,log\,y + b\,log\,(1-y)</script>
+
+<p>Differentiating w.r.t $y$ gives,</p>
+
+<script type="math/tex; mode=display">\frac{df(y)}{dy} = \frac{a}{y} - \frac{b}{1-y}</script>
+
+<p>Since we are maximising this, the maximum can be found by estimating the point of 0 derivative, i.e,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+    \frac{df(y)}{dy} &= 0 \\
+    \frac{a}{y} - \frac{b}{1-y} &= 0 \\
+    \frac{a}{y} &= \frac{b}{1-y} \\
+    y &= \frac{a}{a+b}
+\end{align} %]]></script>
+
+<p>So the optimal discriminator for a fixed <script type="math/tex">G</script> is given by,</p>
+
+<script type="math/tex; mode=display">D_G^*(x) = \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}</script>
+
+<p>For this maximized <script type="math/tex">D</script>, the optimization objective can be rewritten as,</p>
+
+<script type="math/tex; mode=display">C(G) = \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}\right] + \mathbb{E}_{x\sim p_g} \left[log\frac{p_{g }(x)}{p_{data}(x)+p_{g}(x)}\right]</script>
+
+<p>We can show that this expression is minimized for <script type="math/tex">p_g=p_{data}</script>. The value of <script type="math/tex">D_G^*(x)</script> is <script type="math/tex">1/2</script> at <script type="math/tex">p_g=p_{data}</script> and <script type="math/tex">C(G) = -log\,4</script>.</p>
+
+<p>To see that this is the minimu possible value, consider the following modification to the <script type="math/tex">C(G)</script> expression above,</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{align}
+C(G) &= \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}\right] + \mathbb{E}_{x\sim p_g} \left[log\frac{p_{g }(x)}{p_{data}(x)+p_{g}(x)}\right] + log\,2 \cdot 2 - log\,4 \\
+&= - log\,4 + \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)}\right] + log\,2 +  \mathbb{E}_{x\sim p_g} \left[log\frac{p_{g }(x)}{p_{data}(x)+p_{g}(x)}\right] + log\,2 \\ 
+&=- log\,4 + \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{p_{data}(x)+p_{g}(x)} + log\,2\right] +  \mathbb{E}_{x\sim p_g} \left[log\frac{p_{g }(x)}{p_{data}(x)+p_{g}(x)} + log\,2\right] \\
+&=- log\,4 + \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{\frac{p_{data}(x)+p_{g}(x)}{2}}\right] +  \mathbb{E}_{x\sim p_g} \left[log\frac{p_{g }(x)}{\frac{p_{data}(x)+p_{g}(x)}{2}}\right] \\
+&= -log\,4 + KL\left(p_{data}||\frac{p_{data}+p_g}{2}\right) + KL\left(p_{g}||\frac{p_{data}+p_g}{2}\right)\\
+&= -log\,4 + 2\cdot JSD(p_{data}||p_g)
+\end{align} %]]></script>
+
+<p>The last term is the Jensen-Shannon divergence between two distributions which is always non-negative and zero only when the two distributions are equal. So <script type="math/tex">C^* = -log\,4</script> is the global minimum of <script type="math/tex">C(G)</script> at <script type="math/tex">p_g=p_{data}</script>, i.e. generative model perfectly replicating the data distribution.</p>
+
+<h3 id="complexity-comparison-of-generative-models">Complexity Comparison of Generative Models</h3>
+
+<p><img src="/assets/2019-10-29-generative-adversarial-networks/fig-3-comparison-of-generative models.png?raw=true" alt="" /></p>
+
+<h3 id="disadvantages">Disadvantages</h3>
+
+<ul>
+  <li>There is no explicit representation of <script type="math/tex">p_g(x)</script></li>
+  <li><script type="math/tex">G</script> must be synchronized well with <script type="math/tex">D</script> during training. There are possibilities of <script type="math/tex">D</script> being too strong leading to zero gradient for <script type="math/tex">G</script> or <script type="math/tex">D</script> being too weak which causes <script type="math/tex">G</script> to collapse to many values of <script type="math/tex">z</script> to the same value of <script type="math/tex">x</script> which would not have enough diversity to model <script type="math/tex">p_{data}</script></li>
+</ul>
+
+<h3 id="follow-up-citations">Follow-up Citations</h3>
+
+<ul>
+  <li>RBMs and DBMs
+    <ul>
+      <li>A fast learning algorithm for deep belief nets by Hinton et al.</li>
+      <li>Deep boltzman machines by Salakhutdinov et al.</li>
+      <li>Information processing in dynamical systems: Foundations of harmony theory by Smolensky</li>
+    </ul>
+  </li>
+  <li>MCMC
+    <ul>
+      <li>Better mixing via deep representations by Bengio et al.</li>
+      <li>Deep generative stochastic networks trainable by backprop by Bengio et al.</li>
+    </ul>
+  </li>
+  <li>Encodings
+    <ul>
+      <li>What is the best multi-stage architecture for object recognition? by Jarett et al.</li>
+      <li>Generalized denoising auto-encoders as generative models by Bengio et al.</li>
+      <li>Deep sparse rectifier neural networks by Glorot et al.</li>
+      <li>Maxout networks by Goodfellow et al.</li>
+    </ul>
+  </li>
+  <li>Optimizations
+    <ul>
+      <li>Auto-encoding variational bayes by Kingma et al.</li>
+      <li>Stochastic backpropagation and approximate inference in deep generative models by Rezende et al.</li>
+    </ul>
+  </li>
+  <li>Learning deep architectures for AI by Bengio Y.</li>
+</ul>
+
+<h2 id="references">REFERENCES:</h2>
+
+<p><small><a href="https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf" target="_blank">Generative Adversarial Nets by Goodfellow et al.</a></small><br /></p>
+
+        </section>
+        <footer class="post-footer">
+          <div class="wrap">
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/gan" class='category-links'><h1>gan</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/privacy-gans" class='category-links'><h1>privacy-gans</h1></a>
+                </div>
+              </div>
+            
+          </div>
+        </footer>
+        <div class="horizontal-divider">· · ·</div>
+        <!-- <div class="bottom-teaser cf">
+          <div class="isLeft">
+            <h5 class="index-headline featured"><span>Written by</span></h5>
+            <section class="author">
+              <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
+              <h4>Shams S</h4>
+              <p class="bio">Research Assistant @ Purdue University</p>
+              <hr>
+              <p class="published">Published on <time datetime="2019-10-29 00:00">29 Oct 2019</time></p>
+            </section>
+          </div>
+          <div class="isRight">
+            <h5 class="index-headline featured"><span>Supported by</span></h5>
+            <footer class="site-footer">
+              <section class="poweredby">Proudly published with <a href="http://jekyllrb.com"> Jekyll</a></section>
+              <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> You should subscribe to my feed.</span></a>
+              <div class="inner">
+                <section class="copyright">All content copyright <a href="https://machinelearningmedium.com/">Machine Learning Medium</a> &copy; 2019<br>All rights reserved.</section>
+              </div>
+            </footer>
+          </div>
+        </div> -->
+        <br>
+        
+        <div id="vc-feelback-main" data-access-token="334e9d2a5dc341469cda15d8c4bd935e" data-display-type="4"></div>
+        
+        <nav class="page-navigation" role="navigation">
+  
+    <a href=/2019/10/14/learning-informative-and-private-representations/ class="arrow-button left-arrow-button"><span class="left-arrow"></span><span class="label left-label">Privacy Preserving Predictive Modeling GANs</span></a>
+  
+  
+</nav>
+        
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE */
+            var disqus_shortname = 'shams-sam'; /* required: replace example with your forum shortname */
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        
+      </article>
+    </main>
+    <!-- footer start -->
+<div class="footer-container">
+
+<footer class="site-footer">
+  <a class="subscribe" href="/feed.xml"> <span class="tooltip"> <i class="fa fa-rss"></i> Subscribe!</span></a>
+    <div class="inner">
+         <section class="copyright">All content copyright <a href="/">Machine Learning Medium</a> &copy; 2019 &bull; All rights reserved.</section>
+         <section class="poweredby">Made with <a href="http://jekyllrb.com"> Jekyll</a></section>
+         <section class="poweredby">Inspired by <a href="https://medium.com/"> Medium</a> and <a href="https://github.com/dirkfabisch/mediator">Mediator</a></section>
+    </div>
+</footer>
+
+<div class="bottom-closer">
+  <div class="background-closer-image"  style="background-image: url(/assets/images/footer.jpg)">
+    Image
+  </div>
+  <div class="inner">
+    <h1 class="footer-title">Machine Learning Medium</h1>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
+    <a href=/about/ class="btn">About Me</a>
+  </div>
+</div>
+
+<!-- footer end -->
+</div>
+
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/assets/js/readingTime.min.js"></script>
+<script type="text/javascript" src="/assets/js/index.js"></script>
+<script>
+(function ($) {
+  "use strict";
+  $(document).ready(function(){
+
+    var $window = $(window),
+    $image = $('.post-image-image, .teaserimage-image');
+    
+      $window.on('scroll', function() {
+        var top = $window.scrollTop();
+
+        if (top < 0 || top > 1500) { return; }
+        $image
+          .css('transform', 'translate3d(0px, '+top/3+'px, 0px)')
+          .css('opacity', 1-Math.max(top/700, 0));
+      });
+      $window.trigger('scroll');
+
+      var height = $('.article-image').height();
+      $('.post-content').css('padding-top', height + 'px');
+
+      $('a[href*=#]:not([href=#])').click(function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+         && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+          if (target.length) {
+            $('html,body').animate({ scrollTop: target.offset().top }, 500);
+            return false;
+          }
+        }
+      });
+
+  });
+}(jQuery));
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="/public/js/typed.js"></script>
+<script>
+  $(function(){
+    $(".blog-description").typed({
+      strings: ['Recursing the Rabbit Hole'],
+      typeSpeed: 50,
+      backSpeed: 25,
+      loop: true
+    });
+  });
+</script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+
+
+<script>
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-108148924-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+
+<div id="fb-root"></div>
+
+<script>
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=391866664565981';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<script> 
+(function() { 
+  var v = document.createElement('script'); v.async = true; 
+  v.src = "https://assets-prod.vicomi.com/vicomi.js?token=334e9d2a5dc341469cda15d8c4bd935e"; 
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(v, s); 
+})(); 
+</script>
+
+  </body>
+</html>

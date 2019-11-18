@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2018-05-11T00:00:00+00:00">May 11</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -255,8 +255,8 @@
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
-<span class="c"># defining a ratings matrix, Y where 0's denote not rated</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+<span class="c1"># defining a ratings matrix, Y where 0's denote not rated
+</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
     <span class="p">[</span>
         <span class="p">[</span><span class="mf">3.</span> <span class="p">,</span> <span class="mf">0.</span> <span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.</span> <span class="p">,</span> <span class="mf">2.</span> <span class="p">],</span>
         <span class="p">[</span><span class="mf">3.</span> <span class="p">,</span> <span class="mf">4.</span> <span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">5.</span> <span class="p">,</span> <span class="mf">3.</span> <span class="p">],</span>
@@ -271,8 +271,8 @@
     <span class="p">]</span>
 <span class="p">)</span>
 
-<span class="c"># calculating matrix R from matrix Y</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># calculating matrix R from matrix Y
+</span><span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>So, the objective of the reocmmender system is to use the rated choices by the population of users and predict the ratings that a user would attribute to a choice that is not rated i.e. \(r(i, j) = 0\). In most real-world cases such as movie ratings, the number of unrated choices is generally very high and hence is not an elementary/easy problem to solve.</p>
@@ -410,11 +410,11 @@
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tolerance</span><span class="o">=</span><span class="mf">0.001</span>
 <span class="n">max_k</span><span class="o">=</span><span class="mi">50</span>
 
-<span class="c"># the order of application of the estimate_x and estimate_theta can be altered</span>
-<span class="n">theta</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">estimate_x_v2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">_tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">max_k</span><span class="o">=</span><span class="n">max_k</span><span class="p">)</span>
+<span class="c1"># the order of application of the estimate_x and estimate_theta can be altered
+</span><span class="n">theta</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">estimate_x_v2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">_tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">max_k</span><span class="o">=</span><span class="n">max_k</span><span class="p">)</span>
 
-<span class="c"># iterating twice. more iterations would result in better convergence</span>
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+<span class="c1"># iterating twice. more iterations would result in better convergence
+</span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
     <span class="n">theta</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">estimate_theta_v2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">_tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">max_k</span><span class="o">=</span><span class="n">max_k</span><span class="p">)</span>
     <span class="n">theta</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">estimate_x_v2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">_tolerance</span><span class="o">=</span><span class="n">tolerance</span><span class="p">,</span> <span class="n">max_k</span><span class="o">=</span><span class="n">max_k</span><span class="p">)</span>
 
@@ -600,7 +600,7 @@ Y = \left[
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2018-05-11 00:00">11 May 2018</time></p>
             </section>
@@ -663,7 +663,7 @@ Y = \left[
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -717,7 +717,7 @@ Y = \left[
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true

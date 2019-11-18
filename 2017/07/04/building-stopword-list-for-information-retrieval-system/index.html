@@ -139,7 +139,7 @@
         <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
-          <h5 class="author-name"> Research Scientist @ Foundation AI </h5>
+          <h5 class="author-name"> Research Assistant @ Purdue University </h5>
           <time datetime="2017-07-04T00:00:00+00:00">Jul 4</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
@@ -346,16 +346,16 @@
   <li>A <strong>threshold value</strong> is to be determined to produce the best average precision. It cannont be chosen at random. It is needed to check the difference between the frequency of consecutive ranks say \(F(r)\) and \(F(r+1)\) because if the difference is big enough threshold can be set as \(frequency \geq F(r)\) for choosing the stopwords.</li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># imports</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># imports
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
 
-<span class="c"># documents is the list of documents in the collection</span>
-
+<span class="c1"># documents is the list of documents in the collection
+</span>
 <span class="n">vocab</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">sub_doc</span> <span class="ow">in</span> <span class="n">documents</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">sub_doc</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">()]))</span>
 
-<span class="c"># TfidfVectorizer from sklearn</span>
-<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
+<span class="c1"># TfidfVectorizer from sklearn
+</span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
     <span class="n">stop_words</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
     <span class="n">norm</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
     <span class="n">min_df</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -364,12 +364,12 @@
     <span class="n">vocabulary</span><span class="o">=</span><span class="n">vocab</span>
 <span class="p">)</span>
 
-<span class="c"># calculate tf-idf</span>
-<span class="k">def</span> <span class="nf">tf_idf</span><span class="p">(</span><span class="n">documents</span><span class="p">):</span>
+<span class="c1"># calculate tf-idf
+</span><span class="k">def</span> <span class="nf">tf_idf</span><span class="p">(</span><span class="n">documents</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
 
-<span class="c"># create dataframe from pandas</span>
-<span class="n">tf_idf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'word'</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary</span><span class="p">,</span> <span class="s">'idf'</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">idf_</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+<span class="c1"># create dataframe from pandas
+</span><span class="n">tf_idf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">'word'</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">vocabulary</span><span class="p">,</span> <span class="s">'idf'</span><span class="p">:</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">idf_</span><span class="p">},</span> <span class="n">index</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">tf_idf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'idf'</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">get_word_idf</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
@@ -428,23 +428,23 @@
   </li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># imports</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># imports
+</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">defaultdict</span>
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">log</span>
 
-<span class="c"># documents is the list of documents in the collection</span>
-<span class="c"># Collection Analysis</span>
-<span class="n">tokens</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'\w+'</span><span class="p">,</span> <span class="s">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">documents</span><span class="p">)))</span>
+<span class="c1"># documents is the list of documents in the collection
+# Collection Analysis
+</span><span class="n">tokens</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'\w+'</span><span class="p">,</span> <span class="s">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">documents</span><span class="p">)))</span>
 <span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">tokens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 <span class="n">TOKEN_C</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">P_c</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">word</span><span class="p">))</span><span class="o">/</span><span class="n">TOKEN_C</span>
 
-<span class="c"># creating inverted index</span>
-<span class="k">def</span> <span class="nf">create_index</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="c1"># creating inverted index
+</span><span class="k">def</span> <span class="nf">create_index</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">document</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">document</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">():</span>
@@ -452,8 +452,8 @@
     <span class="k">return</span> <span class="n">index</span>
 <span class="n">inv_index</span> <span class="o">=</span> <span class="n">create_index</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
 
-<span class="c"># sample analysis</span>
-<span class="k">def</span> <span class="nf">P_x</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+<span class="c1"># sample analysis
+</span><span class="k">def</span> <span class="nf">P_x</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="p">[</span><span class="n">documents</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">inv_index</span><span class="p">[</span><span class="n">word</span><span class="p">]]</span>
     <span class="n">tokens_sample</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r'\w+'</span><span class="p">,</span> <span class="s">' '</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sample</span><span class="p">)))</span>
     <span class="n">L_x</span> <span class="o">=</span> <span class="mi">0</span>
@@ -461,14 +461,14 @@
         <span class="n">L_x</span> <span class="o">+=</span> <span class="n">v</span>
     <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">tokens_sample</span><span class="p">[</span><span class="n">word</span><span class="p">])</span><span class="o">/</span><span class="n">L_x</span>
 
-<span class="c"># kullback leibler divergence</span>
-<span class="k">def</span> <span class="nf">kl_div</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
+<span class="c1"># kullback leibler divergence
+</span><span class="k">def</span> <span class="nf">kl_div</span><span class="p">(</span><span class="n">word</span><span class="p">):</span>
     <span class="n">p_x</span> <span class="o">=</span> <span class="n">P_x</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
     <span class="n">p_c</span> <span class="o">=</span> <span class="n">P_c</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">p_x</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">p_x</span><span class="o">/</span><span class="n">p_c</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="c"># collection analysis if the dataset is not huge</span>
-<span class="n">terms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="c1"># collection analysis if the dataset is not huge
+</span><span class="n">terms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokens</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">kl_div_val</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
     <span class="n">kl_div_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kl_div</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
@@ -517,7 +517,7 @@
             <section class="author">
               <div class="author-image" style="background-image: url(/assets/images/author.jpg)">Blog Logo</div>
               <h4>Shams S</h4>
-              <p class="bio">Research Scientist @ Foundation AI</p>
+              <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
               <p class="published">Published on <time datetime="2017-07-04 00:00">04 Jul 2017</time></p>
             </section>
@@ -580,7 +580,7 @@
   </div>
   <div class="inner">
     <h1 class="footer-title">Machine Learning Medium</h1>
-    <h2 class="footer-description">A step away from the illusion of knowledge.</h2>
+    <h2 class="footer-description">Recursing the Rabbit Hole</h2>
     <a href=/about/ class="btn">About Me</a>
   </div>
 </div>
@@ -634,7 +634,7 @@
 <script>
   $(function(){
     $(".blog-description").typed({
-      strings: ['A step away from the illusion of knowledge.'],
+      strings: ['Recursing the Rabbit Hole'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true
