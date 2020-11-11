@@ -9,8 +9,8 @@
 
   
 
-  <title>Divide and Conquer | Machine Learning Medium</title>
-  <meta name="description" content="Divide and conquer is an algorithm design paradigm based on multi-branched recursion" />
+  <title>Deep Learning without Poor Local Minima | Machine Learning Medium</title>
+  <meta name="description" content="This paper proves a conjecture about deep neural networks published in 1989 and addresses an open problem announced at COLT 2015." />
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -19,16 +19,16 @@
   
   
   <meta property="og:site_name" content="Machine Learning Medium" />
-  <meta property="og:title" content="Divide and Conquer"/>
+  <meta property="og:title" content="Deep Learning without Poor Local Minima"/>
   
-  <meta property="og:description" content="Divide and conquer is an algorithm design paradigm based on multi-branched recursion" />
+  <meta property="og:description" content="This paper proves a conjecture about deep neural networks published in 1989 and addresses an open problem announced at COLT 2015." />
   
-  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/dsa.png" />
-  <meta property="og:url" content="https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/" >
+  <meta property="og:image" content="https://machinelearningmedium.com/assets/images/nips-2016.png" />
+  <meta property="og:url" content="https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/" >
   <meta property="og:type" content="blog" />
-  <meta property="article:published_time" content="2017-07-18T00:00:00+00:00">
+  <meta property="article:published_time" content="2020-11-10T00:00:00+00:00">
 
-  <link rel="canonical" href="https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"/>
+  <link rel="canonical" href="https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"/>
   <link rel="shortcut icon" href="/public/fav.png" type="image/png"/>
   <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Linux+Libertine:400,400i,700,700i/Open+Sans:400,400i,700,700i">
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -140,7 +140,7 @@
         <div class="author-detail">
           <h4 class="author-name" itemprop="author" itemscope itemtype="http://schema.org/Person"><a href="/about/" style="color: #000000; text-decoration: none;">Shams S</a></h4>
           <h5 class="author-name"> Research Assistant @ Purdue University </h5>
-          <time datetime="2017-07-18T00:00:00+00:00">Jul 18</time>
+          <time datetime="2020-11-10T00:00:00+00:00">Nov 10</time>
           <span class="middot">&#183;</span>
           <div class="post-reading">
             <span class="post-reading-time"></span> read
@@ -151,18 +151,18 @@
     
     <div class="postcover">
     <div class="postimage">
-        <div class="postimage-image"  style="background-image: url(/assets/images/dsa.png) ">
+        <div class="postimage-image"  style="background-image: url(/assets/images/nips-2016.png) ">
         </div>
     </div>
     
-    <figcaption>Image Source: https://analyticsindiamag.com/wp-content/uploads/2017/01/algoritms.png</figcaption>
+    <figcaption>Image Source: https://www.incimages.com/uploaded_files/image/1940x900/getty_468867139_157971.jpg</figcaption>
     
     </div>
     <main class="content post-content" role="main">
       <article class="post">
         <div class="noarticleimage">
           <div class="post-meta">
-            <h1 class="post-title">Divide and Conquer</h1>
+            <h1 class="post-title">Deep Learning without Poor Local Minima</h1>
             <section class="share">
             <span id="share-bar">
 
@@ -170,56 +170,56 @@
 
     <span class="share-buttons">
         <span>
-        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="https://www.facebook.com/sharer/sharer.php?u=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Facebook" >
             <i class="fa fa-facebook-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://twitter.com/intent/tweet?text=Divide and Conquer&url=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="https://twitter.com/intent/tweet?text=Deep Learning without Poor Local Minima&url=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Twitter" >
             <i class="fa fa-twitter-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="https://plus.google.com/share?url=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Google+" >
             <i class="fa fa-google-plus-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="http://pinterest.com/pin/create/button/?url=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Pinterest" >
             <i class="fa fa-pinterest-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="http://www.tumblr.com/share/link?url=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Tumblr" >
             <i class="fa fa-tumblr-square"></i>
         </a>
         </span>
         <span>
-        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="http://www.reddit.com/submit?url=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=900,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on Reddit" >
             <i class="fa fa-reddit-square"></i>
         </a>
         </span>
         <span>
-        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/&title=Divide and Conquer&summary=Divide and conquer is an algorithm design paradigm based on multi-branched recursion&source=Machine Learning Medium"
+        <a  href="https://www.linkedin.com/shareArticle?mini=true&url=https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/&title=Deep Learning without Poor Local Minima&summary=This paper proves a conjecture about deep neural networks published in 1989 and addresses an open problem announced at COLT 2015.&source=Machine Learning Medium"
             onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"
             title="Share on LinkedIn" >
             <i class="fa fa-linkedin-square"></i>
         </a>
         </span>
         <span>
-        <a  href="mailto:?subject=Divide and Conquer&amp;body=Check out this site https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"
+        <a  href="mailto:?subject=Deep Learning without Poor Local Minima&amp;body=Check out this site https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"
             title="Share via Email" >
             <i class="fa fa-envelope-square"></i>
         </a>
@@ -228,52 +228,54 @@
 
 </span>
           </section>
-            <h2 class="post-description">Divide and conquer is an algorithm design paradigm based on multi-branched recursion</h2>
+            <h2 class="post-description">This paper proves a conjecture about deep neural networks published in 1989 and addresses an open problem announced at COLT 2015.</h2>
           </div>
         </div>
         <div class="horizontal-divider">&#183; &#183; &#183;</div>
         <section class="post-content">
           <a name="topofpage"></a>
-          <h3 id="recursion">Recursion</h3>
-<p>The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as <strong>recursive function</strong>.</p>
+          <h3 id="importance">Importance</h3>
+
+<p>It has long been an open question to understand why is training a deep neural network tractable. Specifically, we know that deep neural networks are non-convex functions with possible local minima. We also know that stochastic gradient descent is prone to getting stuck in such local minima. What has confounded researchers for a long time is the fact that <strong>while searching such a huge solution space, why does a neural network not get stuck in local minima” more often</strong> and learn bad solutions. This work tries to give some understanding about these open questions.</p>
+
+<h3 id="prior-works">Prior works</h3>
+
+<p>There has an earlier paper in the field published back in 1989, that proves similar statements but under much tighter assumptions. This work builds on top of that using different techniques although and relaxing the assumptions and using only 2 or the original 7 used in the prior work.</p>
+
+<h3 id="interesting-results">Interesting Results</h3>
+
+<p>Part of the main result says “Every critical point that is not a global minimum is a saddle point”, which is interesting because it can be loosely translated to “there are no local maxima” which can be quite unintuitive to imagine at first.</p>
+
+<blockquote>
+  <p>There are no local maxima.</p>
+</blockquote>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>A brief understanding of the following topics would be good to have:</p>
 
 <ul>
-  <li><strong>Base Condition</strong>: In a recursive problem, solution to the base case is provided and solution to bigger problem is expressed in terms of smaller problems.</li>
-  <li><strong>Stack Overflow</strong>: In a recursion if the base condition is not reached and the function call stack reaches its limit, a stack overflow error is thrown.</li>
-  <li><strong>Direct vs Indirect Recursion</strong>: A function is <strong>direct recursive</strong> if it calls the same function, but a <strong>indirect recursive</strong> function calls a different method which inturn calls the original function.</li>
-  <li><strong>Tail Recursion</strong>: If the recursive call is the last thing executed by the function.</li>
-  <li><strong>Disadvantage</strong>: Greater space requirements and additional overhead for function calls and return values.</li>
+  <li>Linear Algebra. duh!</li>
+  <li>First order and second order necessary conditions for local minima.</li>
+  <li>Familiarity with graph interpretation of neural networks.</li>
 </ul>
 
-<h3 id="divide-and-conquer-approach">Divide and Conquer Approach</h3>
-<p>The divide and conquer paradigm involves three steps:</p>
+<h3 id="contributions">Contributions</h3>
+
+<p>This paper proves the following statements for squared loss function of deep linear networks with any depth and any widths:</p>
 
 <ul>
-  <li><strong>Divide</strong>: Divide a problem into a number of smaller subproblems.</li>
-  <li><strong>Conquer</strong>: Solve the subproblems recursively.</li>
-  <li><strong>Combine</strong>: Combine solution to subproblems to get the solution of original problem.</li>
+  <li>The function is non-convex and non-concave.</li>
+  <li>Every local minimum is a global minimum.</li>
+  <li>Every critical point that is not a global minimum is a saddle point.</li>
+  <li>Bad saddle points exist for deeper networks s.t. Hessian has no negative eigenvalue</li>
 </ul>
 
-<p>For example <strong>merge sort</strong> is based on divide and conquer paradigm. It follows the following steps:</p>
-
-<ul>
-  <li>Divide array of size n to be sorted into two of size n/2.</li>
-  <li>Sort the sub-arrays recursively.</li>
-  <li>Combine the two sorted sub-arrays to get the sorted array.</li>
-</ul>
-
-<p>Base case is when the sub-array has only a single element and is trivially sorted.</p>
-
-<p>Auxiliary procedure Merge(A, p, q, r) where A is the array and p, q and r are indices into the array such that p &lt;= q &lt;= r.</p>
-
-<p>Merge procedure assumes that the sequence A[p .. q] and A[q+1 .. r] are in sorted order and return A[p .. r] in sorted order.</p>
-
-<p><strong>Time Complexity of the Merge(A, p, q, r) procedure is O(n)</strong>.</p>
+<p>Shallow networks don’t have this issue of bad saddle points. This work further proves the same 4 statements via reduction about deep non-linear neural networks</p>
 
 <h2 id="references">REFERENCES:</h2>
 
-<p><small><a href="https://web.njit.edu/~wl256/download/cs610/Introduction-to-algorithm-3rdEdition.pdf" target="_blank">Introduction to Algorithms 3rd Edition - Chapter 2</a></small><br />
-<small><a href="http://www.geeksforgeeks.org/recursion/" target="_blank">Recursion - GeeksforGeeks</a></small></p>
+<p><small><a href="https://papers.nips.cc/paper/2016/hash/f2fc990265c712c49d51a18a32b39f0c-Abstract.html" target="_blank">Deep Learning without Poor Local Minima</a></small></p>
 
         </section>
         <footer class="post-footer">
@@ -281,13 +283,25 @@
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/algorithms" class='category-links'><h1>algorithms</h1></a>
+                <a href="/tag/machine-learning" class='category-links'><h1>machine-learning</h1></a>
                 </div>
               </div>
             
               <div class="tile">
                 <div class="text">
-                <a href="/tag/dsa" class='category-links'><h1>DSA</h1></a>
+                <a href="/tag/mathematics" class='category-links'><h1>mathematics</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/papers" class='category-links'><h1>papers</h1></a>
+                </div>
+              </div>
+            
+              <div class="tile">
+                <div class="text">
+                <a href="/tag/theorems" class='category-links'><h1>theorems</h1></a>
                 </div>
               </div>
             
@@ -302,7 +316,7 @@
               <h4>Shams S</h4>
               <p class="bio">Research Assistant @ Purdue University</p>
               <hr>
-              <p class="published">Published on <time datetime="2017-07-18 00:00">18 Jul 2017</time></p>
+              <p class="published">Published on <time datetime="2020-11-10 00:00">10 Nov 2020</time></p>
             </section>
           </div>
           <div class="isRight">
@@ -322,10 +336,8 @@
         
         <nav class="page-navigation" role="navigation">
   
-    <a href=/2017/07/14/introduction-to-linguistics/ class="arrow-button left-arrow-button"><span class="left-arrow"></span><span class="label left-label">Basics of Linguistics</span></a>
+    <a href=/2019/10/29/generative-adversarial-networks/ class="arrow-button left-arrow-button"><span class="left-arrow"></span><span class="label left-label">Generative Adversarial Networks</span></a>
   
-  
-    <a href=/2017/07/19/umls-knowledge-sources/ class="arrow-button right-arrow-button"><span class="label right-label">UMLS Knowledge Sources</span><span class="right-arrow"></span></a>
   
 </nav>
         
@@ -424,6 +436,27 @@
     });
   });
 </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      },
+      CommonHTML: {matchFontHeight: false},
+      "HTML-CSS": {matchFontHeight: false},
+      SVG: {matchFontHeight: false}
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
 
 
 
