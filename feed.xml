@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Machine Learning Medium</title>
+    <title>Notes</title>
     <description>Recursing the Rabbit Hole</description>
-    <link>https://machinelearningmedium.com/</link>
-    <atom:link href="https://machinelearningmedium.com/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 24 Oct 2022 04:24:10 +0000</pubDate>
-    <lastBuildDate>Mon, 24 Oct 2022 04:24:10 +0000</lastBuildDate>
+    <link>https://notes.pairml.com/</link>
+    <atom:link href="https://notes.pairml.com/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Tue, 25 Oct 2022 04:24:02 +0000</pubDate>
+    <lastBuildDate>Tue, 25 Oct 2022 04:24:02 +0000</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -55,8 +55,8 @@
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://papers.nips.cc/paper/2016/hash/f2fc990265c712c49d51a18a32b39f0c-Abstract.html&quot; target=&quot;_blank&quot;&gt;Deep Learning without Poor Local Minima&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/</guid>
+        <link>https://notes.pairml.com/2020/11/10/deep-learning-without-poor-local-minima/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2020/11/10/deep-learning-without-poor-local-minima/</guid>
         
         <category>machine-learning</category>
         
@@ -218,8 +218,8 @@ C(G) &amp;= \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{p_{data}(x)
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf&quot; target=&quot;_blank&quot;&gt;Generative Adversarial Nets by Goodfellow et al.&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 29 Oct 2019 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/</guid>
+        <link>https://notes.pairml.com/2019/10/29/generative-adversarial-networks/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2019/10/29/generative-adversarial-networks/</guid>
         
         <category>gan</category>
         
@@ -353,8 +353,8 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;amp;arnumber=8622089&amp;amp;tag=1&quot; target=&quot;_blank&quot;&gt;Learning Informative and Private Representations via Generative Adversarial Networks&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/</guid>
+        <link>https://notes.pairml.com/2019/10/14/learning-informative-and-private-representations/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2019/10/14/learning-informative-and-private-representations/</guid>
         
         <category>GAN</category>
         
@@ -606,8 +606,8 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://ieeexplore.ieee.org/document/6814139&quot; target=&quot;_blank&quot;&gt;Social Learning Networks: A brief survey&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 02 Jun 2019 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2019/06/02/social-learning-networks/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2019/06/02/social-learning-networks/</guid>
+        <link>https://notes.pairml.com/2019/06/02/social-learning-networks/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2019/06/02/social-learning-networks/</guid>
         
         <category>machine-learning</category>
         
@@ -847,8 +847,8 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/33418.pdf&quot; target=&quot;\_blank&quot;&gt;An Overview of the Tesseract OCR Engine&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr/</guid>
+        <link>https://notes.pairml.com/2019/01/15/breaking-down-tesseract-ocr/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2019/01/15/breaking-down-tesseract-ocr/</guid>
         
         <category>vision</category>
         
@@ -1151,8 +1151,8 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
 &lt;small&gt;&lt;a href=&quot;http://fairness-measures.org/&quot; target=&quot;\_blank&quot;&gt;Fairness Measures&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/10/09/algorithmic-fairness/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/10/09/algorithmic-fairness/</guid>
+        <link>https://notes.pairml.com/2018/10/09/algorithmic-fairness/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2018/10/09/algorithmic-fairness/</guid>
         
         <category>machine-learning</category>
         
@@ -1403,8 +1403,8 @@ mem[a] = r3
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://onlinecourses.nptel.ac.in/noc18_cs29/unit?unit=6&amp;amp;lesson=8&quot; target=&quot;_blank&quot;&gt;NPTEL: Introduction to Computer Architecture&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 25 Jul 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture/</guid>
+        <link>https://notes.pairml.com/2018/07/25/introduction-to-computer-architecture/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2018/07/25/introduction-to-computer-architecture/</guid>
         
         <category>computer-science</category>
         
@@ -1891,8 +1891,8 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
 &lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://link.springer.com/article/10.1007/BF01083132#&quot; target=&quot;_blank&quot;&gt;Survival Analysis: A Survey&lt;/a&gt;&lt;/small&gt;&lt;br /&gt;&lt;/p&gt;
 </description>
         <pubDate>Mon, 23 Jul 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/07/23/survival-analysis/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/07/23/survival-analysis/</guid>
+        <link>https://notes.pairml.com/2018/07/23/survival-analysis/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2018/07/23/survival-analysis/</guid>
         
         <category>machine-learning</category>
         
@@ -2261,8 +2261,8 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
 &lt;small&gt;&lt;a href=&quot;https://www.blog.google/products/gmail/save-time-with-smart-reply-in-gmail/&quot; target=&quot;_blank&quot;&gt;Save time with Smart Reply in Gmail&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 22 Jul 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/07/22/google-smart-reply/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/07/22/google-smart-reply/</guid>
+        <link>https://notes.pairml.com/2018/07/22/google-smart-reply/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2018/07/22/google-smart-reply/</guid>
         
         <category>NLP</category>
         
@@ -2433,8 +2433,8 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
 &lt;small&gt;&lt;a href=&quot;https://www.coursera.org/learn/machine-learning/lecture/10sqI/map-reduce-and-data-parallelism&quot; target=&quot;_blank&quot;&gt;Machine Learning: Coursera - Map Reduce and Data Parallelism&lt;/a&gt;&lt;/small&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 22 Jun 2018 00:00:00 +0000</pubDate>
-        <link>https://machinelearningmedium.com/2018/06/22/large-scale-learning/</link>
-        <guid isPermaLink="true">https://machinelearningmedium.com/2018/06/22/large-scale-learning/</guid>
+        <link>https://notes.pairml.com/2018/06/22/large-scale-learning/</link>
+        <guid isPermaLink="true">https://notes.pairml.com/2018/06/22/large-scale-learning/</guid>
         
         <category>machine-learning</category>
         

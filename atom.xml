@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
- <title>Machine Learning Medium</title>
- <link href="https://machinelearningmedium.com/atom.xml" rel="self"/>
- <link href="https://machinelearningmedium.com/"/>
- <updated>2022-10-24T04:24:10+00:00</updated>
- <id>https://machinelearningmedium.com</id>
+ <title>Notes</title>
+ <link href="https://notes.pairml.com/atom.xml" rel="self"/>
+ <link href="https://notes.pairml.com/"/>
+ <updated>2022-10-25T04:24:02+00:00</updated>
+ <id>https://notes.pairml.com</id>
  <author>
    <name>Shams S</name>
-   <email>azam1@purdue.edu</email>
+   <email>s.shams.sam@gmail.com</email>
  </author>
 
  
  <entry>
    <title>Deep Learning without Poor Local Minima</title>
-   <link href="https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima/"/>
+   <link href="https://notes.pairml.com/2020/11/10/deep-learning-without-poor-local-minima/"/>
    <updated>2020-11-10T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2020/11/10/deep-learning-without-poor-local-minima</id>
+   <id>https://notes.pairml.com/2020/11/10/deep-learning-without-poor-local-minima</id>
    <content type="html">&lt;h3 id=&quot;importance&quot;&gt;Importance&lt;/h3&gt;
 
 &lt;p&gt;It has long been an open question to understand why is training a deep neural network tractable. Specifically, we know that deep neural networks are non-convex functions with possible local minima. We also know that stochastic gradient descent is prone to getting stuck in such local minima. What has confounded researchers for a long time is the fact that &lt;strong&gt;while searching such a huge solution space, why does a neural network not get stuck in local minima” more often&lt;/strong&gt; and learn bad solutions. This work tries to give some understanding about these open questions.&lt;/p&gt;
@@ -64,9 +64,9 @@
  
  <entry>
    <title>Generative Adversarial Networks</title>
-   <link href="https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks/"/>
+   <link href="https://notes.pairml.com/2019/10/29/generative-adversarial-networks/"/>
    <updated>2019-10-29T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2019/10/29/generative-adversarial-networks</id>
+   <id>https://notes.pairml.com/2019/10/29/generative-adversarial-networks</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;The basic &lt;strong&gt;adversarial&lt;/strong&gt; framework of the GAN architecture can be broken down into the following &lt;strong&gt;two players&lt;/strong&gt;:&lt;/p&gt;
@@ -217,9 +217,9 @@ C(G) &amp;= \mathbb{E}_{x\sim p_{data}} \left[log \frac{p_{data}(x)}{p_{data}(x)
  
  <entry>
    <title>Privacy Preserving Predictive Modeling GANs</title>
-   <link href="https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations/"/>
+   <link href="https://notes.pairml.com/2019/10/14/learning-informative-and-private-representations/"/>
    <updated>2019-10-14T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2019/10/14/learning-informative-and-private-representations</id>
+   <id>https://notes.pairml.com/2019/10/14/learning-informative-and-private-representations</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;In the current era of increasing data sharing and ubiquity of machine learning there is a very little focus on privacy of the subjects whose data is being shared at such large scale. While most data released promises anonymization of the PIIs, there is much work in literature to point of that simple anonymization techniques fail to mask users if there is an access to auxilliary dataset in which such features are not masked.&lt;/p&gt;
@@ -342,9 +342,9 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
  
  <entry>
    <title>Social Learning Networks</title>
-   <link href="https://machinelearningmedium.com/2019/06/02/social-learning-networks/"/>
+   <link href="https://notes.pairml.com/2019/06/02/social-learning-networks/"/>
    <updated>2019-06-02T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2019/06/02/social-learning-networks</id>
+   <id>https://notes.pairml.com/2019/06/02/social-learning-networks</id>
    <content type="html">&lt;h3 id=&quot;active-recall&quot;&gt;Active Recall&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;What is a SLN?&lt;/a&gt;&lt;/li&gt;
@@ -585,9 +585,9 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
  
  <entry>
    <title>Breaking down Tesseract OCR</title>
-   <link href="https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr/"/>
+   <link href="https://notes.pairml.com/2019/01/15/breaking-down-tesseract-ocr/"/>
    <updated>2019-01-15T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2019/01/15/breaking-down-tesseract-ocr</id>
+   <id>https://notes.pairml.com/2019/01/15/breaking-down-tesseract-ocr</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -818,9 +818,9 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
  
  <entry>
    <title>Social Bias in Machine Learning</title>
-   <link href="https://machinelearningmedium.com/2018/10/09/algorithmic-fairness/"/>
+   <link href="https://notes.pairml.com/2018/10/09/algorithmic-fairness/"/>
    <updated>2018-10-09T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/10/09/algorithmic-fairness</id>
+   <id>https://notes.pairml.com/2018/10/09/algorithmic-fairness</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Discrimination, injustice, oppression are some of the dark words that have been an integral part of human history. While there is a active effort to make world a fair place in every sphere of life, it is almost impossible to make the data that has been recorded over the years fair to all the caste, creeds, races and religions because the history is written in ink. Since the world was far more biased as we age backwards in time, it would not be incorrect to say that a historical record of data would often reflect these biases in terms of minority and majority classes. These are the very same data that is continuously used in training most of our machine learning models without actually giving a conscious thought to the fairness of the algorithm i.e. whether or not the algorithm reflects the biases that prevailed back then. Recently machine learning has seen its utilitization in a lot of important decision making pipelines such as predicting time of recidivism, college acceptance, loan approvals etc., and hence it becomes increasingly important to question the machine learning models being developed in terms of implicit bias that they might be inheriting from the data that they train on. In order to do away with such biases in a machine learning algorithm one needs to understand how exactly does bias creep in, what are the various metrics through which it can be measured and what are the methods through which one can remove such unfairness. This post is an attempt to summarize such issues and possible remedies.&lt;/p&gt;
@@ -1112,9 +1112,9 @@ Conference, Mar. 2006, pp. 265–284.&lt;/li&gt;
  
  <entry>
    <title>Introduction to Computer Architecture</title>
-   <link href="https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture/"/>
+   <link href="https://notes.pairml.com/2018/07/25/introduction-to-computer-architecture/"/>
    <updated>2018-07-25T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/07/25/introduction-to-computer-architecture</id>
+   <id>https://notes.pairml.com/2018/07/25/introduction-to-computer-architecture</id>
    <content type="html">&lt;h3 id=&quot;what-is-a-computer&quot;&gt;What is a Computer?&lt;/h3&gt;
 
 &lt;p&gt;A computer is a general purpose device that can be programmed process information, yield meaningful results.&lt;/p&gt;
@@ -1358,9 +1358,9 @@ mem[a] = r3
  
  <entry>
    <title>Introduction to Survival Analysis</title>
-   <link href="https://machinelearningmedium.com/2018/07/23/survival-analysis/"/>
+   <link href="https://notes.pairml.com/2018/07/23/survival-analysis/"/>
    <updated>2018-07-23T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/07/23/survival-analysis</id>
+   <id>https://notes.pairml.com/2018/07/23/survival-analysis</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Survival analysis refers to the set of statistical analyses that are used to analyze the length of time until an event of interest occurs. These methods have been traditionally used in analysing the survival times of patients and hence the name. But they also have a utility in a lot of different application including but not limited to analysis of the time of recidivism, failure of equipments, survival time of patients etc. Hence, simply put the phrase &lt;strong&gt;survival time&lt;/strong&gt; is used to refer to the type of variable of interest. It is often also referred by names such as &lt;strong&gt;failure time&lt;/strong&gt; and &lt;strong&gt;waiting time&lt;/strong&gt;.&lt;/p&gt;
@@ -1838,9 +1838,9 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
  
  <entry>
    <title>Google Smart Reply</title>
-   <link href="https://machinelearningmedium.com/2018/07/22/google-smart-reply/"/>
+   <link href="https://notes.pairml.com/2018/07/22/google-smart-reply/"/>
    <updated>2018-07-22T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/07/22/google-smart-reply</id>
+   <id>https://notes.pairml.com/2018/07/22/google-smart-reply</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Smart reply is an end to end method for automatically generating &lt;strong&gt;short yet semantically diverse&lt;/strong&gt; email repsonses. The feature also depends on some novel methods for &lt;strong&gt;semantic clustering of user-generated content&lt;/strong&gt; that requires minimal amount of explicitly labeled data.&lt;/p&gt;
 
@@ -2200,9 +2200,9 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
  
  <entry>
    <title>Large Scale Learning</title>
-   <link href="https://machinelearningmedium.com/2018/06/22/large-scale-learning/"/>
+   <link href="https://notes.pairml.com/2018/06/22/large-scale-learning/"/>
    <updated>2018-06-22T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/06/22/large-scale-learning</id>
+   <id>https://notes.pairml.com/2018/06/22/large-scale-learning</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;The popularity of machine learning techniques have increased in the recent past. One of the reasons leading to this trend is the exponential growth in data available to learn from. Large datasets coupled with a high variance model has the potential to perform well. But as the size of datasets increase, it poses various problems in terms of space and time complexities of the algorithms.&lt;/p&gt;
@@ -2364,9 +2364,9 @@ P(R=0) &amp;= P(Y=0) + P(Y=1)P(t \gt T \vert Y=1) \\
  
  <entry>
    <title>Recommender Systems</title>
-   <link href="https://machinelearningmedium.com/2018/05/11/recommender-systems/"/>
+   <link href="https://notes.pairml.com/2018/05/11/recommender-systems/"/>
    <updated>2018-05-11T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/05/11/recommender-systems</id>
+   <id>https://notes.pairml.com/2018/05/11/recommender-systems</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -2712,9 +2712,9 @@ Y = \left[
  
  <entry>
    <title>Anomaly Detection</title>
-   <link href="https://machinelearningmedium.com/2018/05/02/anomaly-detection/"/>
+   <link href="https://notes.pairml.com/2018/05/02/anomaly-detection/"/>
    <updated>2018-05-02T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/05/02/anomaly-detection</id>
+   <id>https://notes.pairml.com/2018/05/02/anomaly-detection</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -3086,9 +3086,9 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
  
  <entry>
    <title>Principal Component Analysis</title>
-   <link href="https://machinelearningmedium.com/2018/04/22/principal-component-analysis/"/>
+   <link href="https://notes.pairml.com/2018/04/22/principal-component-analysis/"/>
    <updated>2018-04-22T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/04/22/principal-component-analysis</id>
+   <id>https://notes.pairml.com/2018/04/22/principal-component-analysis</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -3360,9 +3360,9 @@ x_n &amp;\sim \mathcal{N}(\mu_n, \sigma_n^2) \\
  
  <entry>
    <title>K-Means Clustering</title>
-   <link href="https://machinelearningmedium.com/2018/04/19/k-means-clustering/"/>
+   <link href="https://notes.pairml.com/2018/04/19/k-means-clustering/"/>
    <updated>2018-04-19T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/04/19/k-means-clustering</id>
+   <id>https://notes.pairml.com/2018/04/19/k-means-clustering</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -3569,9 +3569,9 @@ Repeat \{ \\
  
  <entry>
    <title>Support Vector Machine</title>
-   <link href="https://machinelearningmedium.com/2018/04/10/support-vector-machines/"/>
+   <link href="https://notes.pairml.com/2018/04/10/support-vector-machines/"/>
    <updated>2018-04-10T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/04/10/support-vector-machines</id>
+   <id>https://notes.pairml.com/2018/04/10/support-vector-machines</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -3926,9 +3926,9 @@ f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert
  
  <entry>
    <title>Error Metrics for Skewed Classes and Using Large Datasets</title>
-   <link href="https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/"/>
+   <link href="https://notes.pairml.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets/"/>
    <updated>2018-04-08T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets</id>
+   <id>https://notes.pairml.com/2018/04/08/error-metrics-for-skewed-data-and-large-datasets</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -4057,9 +4057,9 @@ f_3 &amp;= similarity(x, l^{(3)}) = exp \left(- \frac {\lVert x - l^{(3)} \rVert
  
  <entry>
    <title>Docker for Machine Learning Developement</title>
-   <link href="https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development/"/>
+   <link href="https://notes.pairml.com/2018/04/06/docker-for-machine-learning-development/"/>
    <updated>2018-04-06T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/04/06/docker-for-machine-learning-development</id>
+   <id>https://notes.pairml.com/2018/04/06/docker-for-machine-learning-development</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Containerization, also known as operating-system-level virtualization is a feature of the operating system in which the kernel allows the existence of multiple isolated user-space instances. Such instances may be called containers, partitions, virtualization engines (VEs), or jails. These look like real computers from the point of view of a program running in them.&lt;/p&gt;
@@ -4365,9 +4365,9 @@ docker-machine &lt;span class=&quot;nt&quot;&gt;--native-ssh&lt;/span&gt; ssh &a
  
  <entry>
    <title>Evaluation of Learning Algorithm</title>
-   <link href="https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm/"/>
+   <link href="https://notes.pairml.com/2018/04/02/evaluation-of-learning-algorithm/"/>
    <updated>2018-04-02T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/04/02/evaluation-of-learning-algorithm</id>
+   <id>https://notes.pairml.com/2018/04/02/evaluation-of-learning-algorithm</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -4581,9 +4581,9 @@ docker-machine &lt;span class=&quot;nt&quot;&gt;--native-ssh&lt;/span&gt; ssh &a
  
  <entry>
    <title>How to train your Neural Network?</title>
-   <link href="https://machinelearningmedium.com/2018/03/31/how-to-train-your-neural-network/"/>
+   <link href="https://notes.pairml.com/2018/03/31/how-to-train-your-neural-network/"/>
    <updated>2018-03-31T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/03/31/how-to-train-your-neural-network</id>
+   <id>https://notes.pairml.com/2018/03/31/how-to-train-your-neural-network</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -4629,9 +4629,9 @@ docker-machine &lt;span class=&quot;nt&quot;&gt;--native-ssh&lt;/span&gt; ssh &a
  
  <entry>
    <title>Backpropagation Implementation and Gradient Checking</title>
-   <link href="https://machinelearningmedium.com/2018/03/29/backpropagation-implementation-and-gradient-checking/"/>
+   <link href="https://notes.pairml.com/2018/03/29/backpropagation-implementation-and-gradient-checking/"/>
    <updated>2018-03-29T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/03/29/backpropagation-implementation-and-gradient-checking</id>
+   <id>https://notes.pairml.com/2018/03/29/backpropagation-implementation-and-gradient-checking</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -4840,9 +4840,9 @@ from grad check:
  
  <entry>
    <title>Backpropagation Derivation</title>
-   <link href="https://machinelearningmedium.com/2018/03/20/backpropagation-derivation/"/>
+   <link href="https://notes.pairml.com/2018/03/20/backpropagation-derivation/"/>
    <updated>2018-03-20T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/03/20/backpropagation-derivation</id>
+   <id>https://notes.pairml.com/2018/03/20/backpropagation-derivation</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -5015,9 +5015,9 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
  
  <entry>
    <title>Program in PyTorch</title>
-   <link href="https://machinelearningmedium.com/2018/03/08/program-in-pytorch/"/>
+   <link href="https://notes.pairml.com/2018/03/08/program-in-pytorch/"/>
    <updated>2018-03-08T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/03/08/program-in-pytorch</id>
+   <id>https://notes.pairml.com/2018/03/08/program-in-pytorch</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;Pytorch provides two high-level features:&lt;/p&gt;
@@ -5356,9 +5356,9 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
  
  <entry>
    <title>Images, Noise and Filters</title>
-   <link href="https://machinelearningmedium.com/2018/02/04/images-noise-and-filters/"/>
+   <link href="https://notes.pairml.com/2018/02/04/images-noise-and-filters/"/>
    <updated>2018-02-04T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/02/04/images-noise-and-filters</id>
+   <id>https://notes.pairml.com/2018/02/04/images-noise-and-filters</id>
    <content type="html">&lt;h3 id=&quot;basics-to-computer-vision-series&quot;&gt;Basics to Computer Vision Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -5879,9 +5879,9 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
  
  <entry>
    <title>What is Computer Vision?</title>
-   <link href="https://machinelearningmedium.com/2018/02/01/what-is-computer-vision/"/>
+   <link href="https://notes.pairml.com/2018/02/01/what-is-computer-vision/"/>
    <updated>2018-02-01T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/02/01/what-is-computer-vision</id>
+   <id>https://notes.pairml.com/2018/02/01/what-is-computer-vision</id>
    <content type="html">&lt;h3 id=&quot;basics-to-computer-vision-series&quot;&gt;Basics to Computer Vision Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -5935,9 +5935,9 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
  
  <entry>
    <title>Understanding TensorFlow</title>
-   <link href="https://machinelearningmedium.com/2018/01/02/understanding-tensorflow/"/>
+   <link href="https://notes.pairml.com/2018/01/02/understanding-tensorflow/"/>
    <updated>2018-01-02T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2018/01/02/understanding-tensorflow</id>
+   <id>https://notes.pairml.com/2018/01/02/understanding-tensorflow</id>
    <content type="html">&lt;h3 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -6521,9 +6521,9 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
  
  <entry>
    <title>B-Money</title>
-   <link href="https://machinelearningmedium.com/2017/12/28/b-money-wei-dai/"/>
+   <link href="https://notes.pairml.com/2017/12/28/b-money-wei-dai/"/>
    <updated>2017-12-28T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/12/28/b-money-wei-dai</id>
+   <id>https://notes.pairml.com/2017/12/28/b-money-wei-dai</id>
    <content type="html">&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -6613,9 +6613,9 @@ a^{(4)} &amp;= g(z^{(4)}) = h(x^{(i)}) = \hat{y}^{(i)}
  
  <entry>
    <title>Bitcoin</title>
-   <link href="https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto/"/>
+   <link href="https://notes.pairml.com/2017/12/21/bitcoin-satoshi-nakamoto/"/>
    <updated>2017-12-21T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/12/21/bitcoin-satoshi-nakamoto</id>
+   <id>https://notes.pairml.com/2017/12/21/bitcoin-satoshi-nakamoto</id>
    <content type="html">&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -6968,9 +6968,9 @@ Output
  
  <entry>
    <title>Congruence and Modular Arithmetic</title>
-   <link href="https://machinelearningmedium.com/2017/12/20/congruence-and-modulo/"/>
+   <link href="https://notes.pairml.com/2017/12/20/congruence-and-modulo/"/>
    <updated>2017-12-20T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/12/20/congruence-and-modulo</id>
+   <id>https://notes.pairml.com/2017/12/20/congruence-and-modulo</id>
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -7152,9 +7152,9 @@ Output
  
  <entry>
    <title>The Mysterious Primes</title>
-   <link href="https://machinelearningmedium.com/2017/11/01/prime-numbers/"/>
+   <link href="https://notes.pairml.com/2017/11/01/prime-numbers/"/>
    <updated>2017-11-01T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/11/01/prime-numbers</id>
+   <id>https://notes.pairml.com/2017/11/01/prime-numbers</id>
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -7371,9 +7371,9 @@ Output
  
  <entry>
    <title>Mathematical Induction</title>
-   <link href="https://machinelearningmedium.com/2017/10/28/mathematical-induction/"/>
+   <link href="https://notes.pairml.com/2017/10/28/mathematical-induction/"/>
    <updated>2017-10-28T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/10/28/mathematical-induction</id>
+   <id>https://notes.pairml.com/2017/10/28/mathematical-induction</id>
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -7654,9 +7654,9 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
  
  <entry>
    <title>What is Number System ?</title>
-   <link href="https://machinelearningmedium.com/2017/10/27/number-system/"/>
+   <link href="https://notes.pairml.com/2017/10/27/number-system/"/>
    <updated>2017-10-27T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/10/27/number-system</id>
+   <id>https://notes.pairml.com/2017/10/27/number-system</id>
    <content type="html">&lt;h3 id=&quot;what-is-mathematics-series&quot;&gt;What is Mathematics Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -8103,9 +8103,9 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
  
  <entry>
    <title>Neural Networks: Cost Function and Backpropagation</title>
-   <link href="https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
+   <link href="https://notes.pairml.com/2017/10/03/neural-networks-cost-function-and-back-propagation/"/>
    <updated>2017-10-03T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/10/03/neural-networks-cost-function-and-back-propagation</id>
+   <id>https://notes.pairml.com/2017/10/03/neural-networks-cost-function-and-back-propagation</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -8312,9 +8312,9 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
  
  <entry>
    <title>Neural Networks Intuition</title>
-   <link href="https://machinelearningmedium.com/2017/09/27/neural-network-intuition/"/>
+   <link href="https://notes.pairml.com/2017/09/27/neural-network-intuition/"/>
    <updated>2017-09-27T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/27/neural-network-intuition</id>
+   <id>https://notes.pairml.com/2017/09/27/neural-network-intuition</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -8642,9 +8642,9 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
  
  <entry>
    <title>Neural Networks Theory</title>
-   <link href="https://machinelearningmedium.com/2017/09/21/neural-networks/"/>
+   <link href="https://notes.pairml.com/2017/09/21/neural-networks/"/>
    <updated>2017-09-21T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/21/neural-networks</id>
+   <id>https://notes.pairml.com/2017/09/21/neural-networks</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -8774,9 +8774,9 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
  
  <entry>
    <title>Non-linear Hypotheses</title>
-   <link href="https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses/"/>
+   <link href="https://notes.pairml.com/2017/09/20/non-linear-hypotheses/"/>
    <updated>2017-09-20T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/20/non-linear-hypotheses</id>
+   <id>https://notes.pairml.com/2017/09/20/non-linear-hypotheses</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -8813,9 +8813,9 @@ then all the statements \(A_s, A_{s+1}, \cdots\) are true; i.e. \(A_n\) is true 
  
  <entry>
    <title>Regularized Logistic Regression</title>
-   <link href="https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression/"/>
+   <link href="https://notes.pairml.com/2017/09/15/regularized-logistic-regression/"/>
    <updated>2017-09-15T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/15/regularized-logistic-regression</id>
+   <id>https://notes.pairml.com/2017/09/15/regularized-logistic-regression</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -8952,9 +8952,9 @@ Simultaneous update
  
  <entry>
    <title>Basics of Language Model</title>
-   <link href="https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling/"/>
+   <link href="https://notes.pairml.com/2017/09/12/basics-of-language-modeling/"/>
    <updated>2017-09-12T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/12/basics-of-language-modeling</id>
+   <id>https://notes.pairml.com/2017/09/12/basics-of-language-modeling</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Given the &lt;strong&gt;finite set of all the words&lt;/strong&gt; in a language, \(\nu\), a sentence in the language is the &lt;strong&gt;sequence of words&lt;/strong&gt;&lt;/p&gt;
 
@@ -9333,9 +9333,9 @@ q_{BO}(w|v) =
  
  <entry>
    <title>Regularized Linear Regression</title>
-   <link href="https://machinelearningmedium.com/2017/09/11/regularized-linear-regression/"/>
+   <link href="https://notes.pairml.com/2017/09/11/regularized-linear-regression/"/>
    <updated>2017-09-11T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/11/regularized-linear-regression</id>
+   <id>https://notes.pairml.com/2017/09/11/regularized-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -9509,9 +9509,9 @@ Regularized Version
  
  <entry>
    <title>Overfitting and Regularization</title>
-   <link href="https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization/"/>
+   <link href="https://notes.pairml.com/2017/09/08/overfitting-and-regularization/"/>
    <updated>2017-09-08T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/08/overfitting-and-regularization</id>
+   <id>https://notes.pairml.com/2017/09/08/overfitting-and-regularization</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -9593,9 +9593,9 @@ Regularized Version
  
  <entry>
    <title>Multiclass Logistic Regression</title>
-   <link href="https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression/"/>
+   <link href="https://notes.pairml.com/2017/09/06/multiclass-logistic-regression/"/>
    <updated>2017-09-06T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/06/multiclass-logistic-regression</id>
+   <id>https://notes.pairml.com/2017/09/06/multiclass-logistic-regression</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -9698,9 +9698,9 @@ Regularized Version
  
  <entry>
    <title>Logistic Regression Model</title>
-   <link href="https://machinelearningmedium.com/2017/09/02/logistic-regression-model/"/>
+   <link href="https://notes.pairml.com/2017/09/02/logistic-regression-model/"/>
    <updated>2017-09-02T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/09/02/logistic-regression-model</id>
+   <id>https://notes.pairml.com/2017/09/02/logistic-regression-model</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -10059,9 +10059,9 @@ Cost(h_\theta(x), y) =
  
  <entry>
    <title>Classification and Logistic Regression</title>
-   <link href="https://machinelearningmedium.com/2017/08/31/classification-and-representation/"/>
+   <link href="https://notes.pairml.com/2017/08/31/classification-and-representation/"/>
    <updated>2017-08-31T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/31/classification-and-representation</id>
+   <id>https://notes.pairml.com/2017/08/31/classification-and-representation</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -10213,9 +10213,9 @@ In first case say only red data points are in the dataset, then fitting the curv
  
  <entry>
    <title>Normal Equation</title>
-   <link href="https://machinelearningmedium.com/2017/08/28/normal-equation/"/>
+   <link href="https://notes.pairml.com/2017/08/28/normal-equation/"/>
    <updated>2017-08-28T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/28/normal-equation</id>
+   <id>https://notes.pairml.com/2017/08/28/normal-equation</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -10540,9 +10540,9 @@ Plot Graph
  
  <entry>
    <title>Multivariate Linear Regression</title>
-   <link href="https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression/"/>
+   <link href="https://notes.pairml.com/2017/08/23/multivariate-linear-regression/"/>
    <updated>2017-08-23T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/23/multivariate-linear-regression</id>
+   <id>https://notes.pairml.com/2017/08/23/multivariate-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -10836,9 +10836,9 @@ Gradient Descent For Multivariate Regression
  
  <entry>
    <title>Linear Algebra Review</title>
-   <link href="https://machinelearningmedium.com/2017/08/20/linear-algebra/"/>
+   <link href="https://notes.pairml.com/2017/08/20/linear-algebra/"/>
    <updated>2017-08-20T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/20/linear-algebra</id>
+   <id>https://notes.pairml.com/2017/08/20/linear-algebra</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11107,9 +11107,9 @@ Consider three hypothesis as follows,&lt;/p&gt;
  
  <entry>
    <title>Gradient Descent for Linear Regression</title>
-   <link href="https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression/"/>
+   <link href="https://notes.pairml.com/2017/08/17/gradient-descent-for-linear-regression/"/>
    <updated>2017-08-17T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/17/gradient-descent-for-linear-regression</id>
+   <id>https://notes.pairml.com/2017/08/17/gradient-descent-for-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11289,9 +11289,9 @@ Gradient Descent For Linear Regression
  
  <entry>
    <title>Gradient Descent</title>
-   <link href="https://machinelearningmedium.com/2017/08/15/gradient-descent/"/>
+   <link href="https://notes.pairml.com/2017/08/15/gradient-descent/"/>
    <updated>2017-08-15T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/15/gradient-descent</id>
+   <id>https://notes.pairml.com/2017/08/15/gradient-descent</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11402,9 +11402,9 @@ Gradient Descent For Linear Regression
  
  <entry>
    <title>Cost Function of Linear Regression</title>
-   <link href="https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression/"/>
+   <link href="https://notes.pairml.com/2017/08/11/cost-function-of-linear-regression/"/>
    <updated>2017-08-11T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/11/cost-function-of-linear-regression</id>
+   <id>https://notes.pairml.com/2017/08/11/cost-function-of-linear-regression</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11537,9 +11537,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Model Representation And Hypothesis</title>
-   <link href="https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis/"/>
+   <link href="https://notes.pairml.com/2017/08/10/model-representation-and-hypothesis/"/>
    <updated>2017-08-10T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/10/model-representation-and-hypothesis</id>
+   <id>https://notes.pairml.com/2017/08/10/model-representation-and-hypothesis</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11590,9 +11590,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Supervised and Unsupervised Learning</title>
-   <link href="https://machinelearningmedium.com/2017/08/09/supervised-learning/"/>
+   <link href="https://notes.pairml.com/2017/08/09/supervised-learning/"/>
    <updated>2017-08-09T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/09/supervised-learning</id>
+   <id>https://notes.pairml.com/2017/08/09/supervised-learning</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11654,9 +11654,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Introduction to Machine Learning</title>
-   <link href="https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning/"/>
+   <link href="https://notes.pairml.com/2017/08/09/introduction-to-machine-learning/"/>
    <updated>2017-08-09T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/08/09/introduction-to-machine-learning</id>
+   <id>https://notes.pairml.com/2017/08/09/introduction-to-machine-learning</id>
    <content type="html">&lt;h3 id=&quot;basics-of-machine-learning-series&quot;&gt;Basics of Machine Learning Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -11721,9 +11721,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>The Normal Distribution</title>
-   <link href="https://machinelearningmedium.com/2017/07/31/normal-distribution/"/>
+   <link href="https://notes.pairml.com/2017/07/31/normal-distribution/"/>
    <updated>2017-07-31T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/31/normal-distribution</id>
+   <id>https://notes.pairml.com/2017/07/31/normal-distribution</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;The concept of normal distribution as explained using the game of darts is easier to understand and explain. Consider a game of dart with aim of throwing the dart at the origin of a cartesian plane. The errors in throwing the dart at the origin will have random errors and produce varying results in different trials. Some of the assumptions one can make in this game are:&lt;/p&gt;
 
@@ -11937,9 +11937,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Random Projection in Dimensionality Reduction</title>
-   <link href="https://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction/"/>
+   <link href="https://notes.pairml.com/2017/07/28/random-projection-in-dimensionality-reduction/"/>
    <updated>2017-07-28T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/28/random-projection-in-dimensionality-reduction</id>
+   <id>https://notes.pairml.com/2017/07/28/random-projection-in-dimensionality-reduction</id>
    <content type="html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 &lt;p&gt;Random Projections have emerged as a powerful method for dimensionality reduction. Theoretical results indicate that it &lt;strong&gt;preserves distances&lt;/strong&gt; quite nicely but empirical results are &lt;strong&gt;sparse&lt;/strong&gt;. It is often employed in dimensionality reduction in both &lt;strong&gt;noisy and noiseless data&lt;/strong&gt; especially image and text data. Results of projecting on &lt;strong&gt;random lower-dimensional subspace&lt;/strong&gt; yields results comparable to conventional methods like PCA etc but using it is &lt;strong&gt;computationally less expensive&lt;/strong&gt; than the traditional alternatives.&lt;/p&gt;
 
@@ -12187,9 +12187,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Continuous Random Variables</title>
-   <link href="https://machinelearningmedium.com/2017/07/28/continuous-random-variable/"/>
+   <link href="https://notes.pairml.com/2017/07/28/continuous-random-variable/"/>
    <updated>2017-07-28T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/28/continuous-random-variable</id>
+   <id>https://notes.pairml.com/2017/07/28/continuous-random-variable</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -12400,9 +12400,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Improvements on Word2Vec</title>
-   <link href="https://machinelearningmedium.com/2017/07/26/improvements-on-word2vec/"/>
+   <link href="https://notes.pairml.com/2017/07/26/improvements-on-word2vec/"/>
    <updated>2017-07-26T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/26/improvements-on-word2vec</id>
+   <id>https://notes.pairml.com/2017/07/26/improvements-on-word2vec</id>
    <content type="html">&lt;h3 id=&quot;distributed-vector-representation-series&quot;&gt;Distributed Vector Representation Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -12561,9 +12561,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Discounted Cumulative Gain</title>
-   <link href="https://machinelearningmedium.com/2017/07/24/discounted-cumulative-gain/"/>
+   <link href="https://notes.pairml.com/2017/07/24/discounted-cumulative-gain/"/>
    <updated>2017-07-24T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/24/discounted-cumulative-gain</id>
+   <id>https://notes.pairml.com/2017/07/24/discounted-cumulative-gain</id>
    <content type="html">&lt;h3 id=&quot;discounted-cumulative-gain&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Discounted_cumulative_gain&quot; target=&quot;_blank&quot;&gt;Discounted cumulative gain&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;DCG measures the usefulness, or &lt;strong&gt;gain&lt;/strong&gt;, of a document based on its position in the result list. The gain is accumulated from the top of the result list to the bottom, with the gain of each result discounted at lower ranks.&lt;/p&gt;
 
@@ -12831,9 +12831,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Merge Sort</title>
-   <link href="https://machinelearningmedium.com/2017/07/21/merge-sort/"/>
+   <link href="https://notes.pairml.com/2017/07/21/merge-sort/"/>
    <updated>2017-07-21T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/21/merge-sort</id>
+   <id>https://notes.pairml.com/2017/07/21/merge-sort</id>
    <content type="html">&lt;h3 id=&quot;merge-sort&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Merge_sort&quot; target=&quot;_blank&quot;&gt;Merge Sort&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Merge sort is an efficient, general-purpose, comparison-based sorting algorithm. Most implementations produce a stable sort, which means that the implementation preserves the input order of equal elements in the sorted output. Merge sort is a &lt;strong&gt;divide and conquer&lt;/strong&gt; algorithm that was invented by John von Neumann in 1945.&lt;/p&gt;
 
@@ -13025,9 +13025,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>UMLS Knowledge Sources</title>
-   <link href="https://machinelearningmedium.com/2017/07/19/umls-knowledge-sources/"/>
+   <link href="https://notes.pairml.com/2017/07/19/umls-knowledge-sources/"/>
    <updated>2017-07-19T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/19/umls-knowledge-sources</id>
+   <id>https://notes.pairml.com/2017/07/19/umls-knowledge-sources</id>
    <content type="html">&lt;h3 id=&quot;umls&quot;&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Unified_Medical_Language_System&quot; target=&quot;_blank&quot;&gt;UMLS&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;The Unified Medical Language System (UMLS) is a compendium of many controlled vocabularies in the biomedical sciences (created 1986). It provides a mapping structure among these vocabularies and thus allows one to translate among the various terminology systems. It may also be viewed as a comprehensive thesaurus and ontology of biomedical concepts. UMLS further provides facilities for natural language processing. It is intended to be used mainly by developers of systems in medical informatics.&lt;/p&gt;
 
@@ -13100,9 +13100,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Divide and Conquer</title>
-   <link href="https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer/"/>
+   <link href="https://notes.pairml.com/2017/07/18/recursion-and-divide-and-conquer/"/>
    <updated>2017-07-18T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/18/recursion-and-divide-and-conquer</id>
+   <id>https://notes.pairml.com/2017/07/18/recursion-and-divide-and-conquer</id>
    <content type="html">&lt;h3 id=&quot;recursion&quot;&gt;Recursion&lt;/h3&gt;
 &lt;p&gt;The process in which a function calls itself directly or indirectly is called recursion and the corresponding function is called as &lt;strong&gt;recursive function&lt;/strong&gt;.&lt;/p&gt;
 
@@ -13148,9 +13148,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Basics of Linguistics</title>
-   <link href="https://machinelearningmedium.com/2017/07/14/introduction-to-linguistics/"/>
+   <link href="https://notes.pairml.com/2017/07/14/introduction-to-linguistics/"/>
    <updated>2017-07-14T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/14/introduction-to-linguistics</id>
+   <id>https://notes.pairml.com/2017/07/14/introduction-to-linguistics</id>
    <content type="html">&lt;h3 id=&quot;dimensions-of-human-language&quot;&gt;Dimensions of human language:&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;Discrete infinity&lt;/strong&gt;: A discrete set, a set with finite number of elements which can be used to make infinitely many combinations is called a discrete infinity. For example, the alphabets in english are 26 and form a discrete set but can be combined to form infinitely many sentences and hence is a discrete infinity.&lt;/li&gt;
@@ -13217,9 +13217,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Pseudocode</title>
-   <link href="https://machinelearningmedium.com/2017/07/13/pseudocode/"/>
+   <link href="https://notes.pairml.com/2017/07/13/pseudocode/"/>
    <updated>2017-07-13T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/13/pseudocode</id>
+   <id>https://notes.pairml.com/2017/07/13/pseudocode</id>
    <content type="html">&lt;h3 id=&quot;pseudocode&quot;&gt;Pseudocode&lt;/h3&gt;
 &lt;p&gt;Logic of algorithms is often expressed as pseudocode which is similar in many respects to languages like C, C++, Java etc. Major difference lies in that pseudocode uses the most &lt;strong&gt;concise and meaningful&lt;/strong&gt; way of expressing the algorithm which can be sometimes as simple as plain english.&lt;/p&gt;
 
@@ -13276,9 +13276,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Insertion Sort</title>
-   <link href="https://machinelearningmedium.com/2017/07/13/insertion-sort/"/>
+   <link href="https://notes.pairml.com/2017/07/13/insertion-sort/"/>
    <updated>2017-07-13T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/13/insertion-sort</id>
+   <id>https://notes.pairml.com/2017/07/13/insertion-sort</id>
    <content type="html">&lt;h3 id=&quot;insertion-sort&quot;&gt;Insertion Sort&lt;/h3&gt;
 &lt;p&gt;Given an array A[1…n] of length n to be sorted. The algorithm sorts the list &lt;strong&gt;inplace&lt;/strong&gt;. It picks an element i as &lt;strong&gt;key&lt;/strong&gt; and places it in the correct position in the sorted A[1..(i-1)].&lt;/p&gt;
 
@@ -13350,9 +13350,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Algorithms and Data Structures</title>
-   <link href="https://machinelearningmedium.com/2017/07/12/algorithms-in-computing/"/>
+   <link href="https://notes.pairml.com/2017/07/12/algorithms-in-computing/"/>
    <updated>2017-07-12T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/12/algorithms-in-computing</id>
+   <id>https://notes.pairml.com/2017/07/12/algorithms-in-computing</id>
    <content type="html">&lt;h3 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h3&gt;
 &lt;p&gt;Any well-defined computational procedure that takes some value, or set of values, as &lt;strong&gt;input&lt;/strong&gt; and produces some value, or set of values, as &lt;strong&gt;output&lt;/strong&gt;. So, algorithm is a sequence of computational steps that transform the input into the output. An algorithm is correct if, for every input instance of a problem, it halts with the correct output.&lt;/p&gt;
 
@@ -13394,9 +13394,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Word2Vec</title>
-   <link href="https://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations/"/>
+   <link href="https://notes.pairml.com/2017/07/11/word-to-vector-word-representations/"/>
    <updated>2017-07-11T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/11/word-to-vector-word-representations</id>
+   <id>https://notes.pairml.com/2017/07/11/word-to-vector-word-representations</id>
    <content type="html">&lt;h3 id=&quot;distributed-vector-representation-series&quot;&gt;Distributed Vector Representation Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -13579,9 +13579,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Building Stopword List for Information Retrieval System</title>
-   <link href="https://machinelearningmedium.com/2017/07/04/building-stopword-list-for-information-retrieval-system/"/>
+   <link href="https://notes.pairml.com/2017/07/04/building-stopword-list-for-information-retrieval-system/"/>
    <updated>2017-07-04T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/04/building-stopword-list-for-information-retrieval-system</id>
+   <id>https://notes.pairml.com/2017/07/04/building-stopword-list-for-information-retrieval-system</id>
    <content type="html">&lt;h3 id=&quot;what-are-stopwords-&quot;&gt;What are stopwords ?&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;Words in a document that are &lt;strong&gt;frequently occuring but meaningless&lt;/strong&gt; in terms of Information Retrieval (IR) are called &lt;strong&gt;stopwords&lt;/strong&gt;.&lt;/li&gt;
@@ -13838,9 +13838,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Zero Sum Subarrays</title>
-   <link href="https://machinelearningmedium.com/2017/07/03/zero-sum-subarray/"/>
+   <link href="https://notes.pairml.com/2017/07/03/zero-sum-subarray/"/>
    <updated>2017-07-03T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/03/zero-sum-subarray</id>
+   <id>https://notes.pairml.com/2017/07/03/zero-sum-subarray</id>
    <content type="html">&lt;h3 id=&quot;q-given-an-array-find-all-sub-arrays-that-have-sum-0&quot;&gt;Q: Given an array find all sub arrays that have sum 0.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -13898,9 +13898,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Sort Binary Array</title>
-   <link href="https://machinelearningmedium.com/2017/07/03/sort-binary-array/"/>
+   <link href="https://notes.pairml.com/2017/07/03/sort-binary-array/"/>
    <updated>2017-07-03T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/03/sort-binary-array</id>
+   <id>https://notes.pairml.com/2017/07/03/sort-binary-array</id>
    <content type="html">&lt;h3 id=&quot;q-sort-a-given-binary-array&quot;&gt;Q: Sort a given binary array.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -13981,9 +13981,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Pair Sums In An Array</title>
-   <link href="https://machinelearningmedium.com/2017/07/03/pair-sums-in-an-array/"/>
+   <link href="https://notes.pairml.com/2017/07/03/pair-sums-in-an-array/"/>
    <updated>2017-07-03T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/03/pair-sums-in-an-array</id>
+   <id>https://notes.pairml.com/2017/07/03/pair-sums-in-an-array</id>
    <content type="html">&lt;h3 id=&quot;q-given-an-array-find-a-pair-of-element-with-the-given-sum&quot;&gt;Q: Given an array find a pair of element with the given sum.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -14065,9 +14065,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Duplicate In Limited Range Array (XOR)</title>
-   <link href="https://machinelearningmedium.com/2017/07/03/duplicate-in-limited-range-array-using-xor/"/>
+   <link href="https://notes.pairml.com/2017/07/03/duplicate-in-limited-range-array-using-xor/"/>
    <updated>2017-07-03T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/03/duplicate-in-limited-range-array-using-xor</id>
+   <id>https://notes.pairml.com/2017/07/03/duplicate-in-limited-range-array-using-xor</id>
    <content type="html">&lt;h3 id=&quot;q-find-duplicate-in-limited-range-1-to-n-1-array-of-size-n-using-xor-operation&quot;&gt;Q: Find duplicate in limited range (1 to n-1) array of size n using XOR operation.&lt;/h3&gt;
 
 &lt;h4 id=&quot;input&quot;&gt;Input:&lt;/h4&gt;
@@ -14120,9 +14120,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Blockchain</title>
-   <link href="https://machinelearningmedium.com/2017/07/02/blockchain/"/>
+   <link href="https://notes.pairml.com/2017/07/02/blockchain/"/>
    <updated>2017-07-02T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/07/02/blockchain</id>
+   <id>https://notes.pairml.com/2017/07/02/blockchain</id>
    <content type="html">&lt;h3 id=&quot;cryptocurrency-series&quot;&gt;Cryptocurrency Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -14253,9 +14253,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Discrete Random Variables</title>
-   <link href="https://machinelearningmedium.com/2017/06/23/discrete-random-variables/"/>
+   <link href="https://notes.pairml.com/2017/06/23/discrete-random-variables/"/>
    <updated>2017-06-23T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/06/23/discrete-random-variables</id>
+   <id>https://notes.pairml.com/2017/06/23/discrete-random-variables</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -14509,9 +14509,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>Conditional Probability and Bayes' Rule</title>
-   <link href="https://machinelearningmedium.com/2017/06/22/bayes-rule-conditional-probability-chain-rule/"/>
+   <link href="https://notes.pairml.com/2017/06/22/bayes-rule-conditional-probability-chain-rule/"/>
    <updated>2017-06-22T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/06/22/bayes-rule-conditional-probability-chain-rule</id>
+   <id>https://notes.pairml.com/2017/06/22/bayes-rule-conditional-probability-chain-rule</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -14622,9 +14622,9 @@ In linear regression, the relationships are modeled using &lt;strong&gt;linear p
  
  <entry>
    <title>The One With Github Pages</title>
-   <link href="https://machinelearningmedium.com/2017/06/16/initial-site-setup/"/>
+   <link href="https://notes.pairml.com/2017/06/16/initial-site-setup/"/>
    <updated>2017-06-16T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/06/16/initial-site-setup</id>
+   <id>https://notes.pairml.com/2017/06/16/initial-site-setup</id>
    <content type="html">&lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot; target=&quot;_blank&quot;&gt;GitHub Pages&lt;/a&gt; is a web hosting service offered by &lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt; for hosting &lt;strong&gt;static web pages&lt;/strong&gt; for GitHub users, user blogs, project documentation, or even whole books.
 It is integrated with the &lt;a href=&quot;https://jekyllrb.com/&quot; target=&quot;_blank&quot;&gt;Jekyll&lt;/a&gt; software for static web site and blog generation. The Jekyll source pages for a web site can be stored on GitHub as a Git repository, and when the repository is updated, github servers will automatically regenerate the site.
 GitHub Pages was launched in late 2008. As with the rest of GitHub, it includes both free and paid tiers of service, instead of being supported by web advertising. Web sites generated through this service are hosted either as subdomains of the github.io domain, or as &lt;strong&gt;custom domains&lt;/strong&gt; bought through a third-party domain name registrars.&lt;/p&gt;
@@ -14662,9 +14662,9 @@ Head over to the post &lt;a href=&quot;http://patricksteadman.ca/2014/08/04/lany
  
  <entry>
    <title>Basic Probability Concepts</title>
-   <link href="https://machinelearningmedium.com/2017/06/16/basic-probability-models-and-rules/"/>
+   <link href="https://notes.pairml.com/2017/06/16/basic-probability-models-and-rules/"/>
    <updated>2017-06-16T00:00:00+00:00</updated>
-   <id>https://machinelearningmedium.com/2017/06/16/basic-probability-models-and-rules</id>
+   <id>https://notes.pairml.com/2017/06/16/basic-probability-models-and-rules</id>
    <content type="html">&lt;h3 id=&quot;probability-series&quot;&gt;Probability Series&lt;/h3&gt;
 
 &lt;blockquote&gt;
